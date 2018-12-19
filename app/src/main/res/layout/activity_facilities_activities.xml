@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Activities.FacilitiesActivities">
+
+        <ImageView
+            android:id="@+id/facilities_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.30" />
+
+        <TextView
+            android:id="@+id/approval_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/approval"
+            app:layout_constraintBottom_toTopOf="@+id/ammenities_header"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guideline15" />
+
+        <TextView
+            android:id="@+id/ammenities_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/ammenities_header_text"
+            app:layout_constraintBottom_toTopOf="@+id/metro_check"
+            app:layout_constraintStart_toStartOf="@+id/approval_header"
+            app:layout_constraintTop_toBottomOf="@+id/approval_header" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/metro_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/metro_water"
+            app:layout_constraintBottom_toTopOf="@+id/drainage_check"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ammenities_header" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/drainage_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/drainage_connection"
+            app:layout_constraintBottom_toTopOf="@+id/gym_check"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/metro_check" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/gym_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gym"
+            app:layout_constraintBottom_toTopOf="@+id/power_check"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/drainage_check" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/power_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/power_backup"
+            app:layout_constraintBottom_toTopOf="@+id/security_check"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gym_check" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/security_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/security_guard"
+            app:layout_constraintBottom_toTopOf="@+id/lift_check"
+            app:layout_constraintTop_toBottomOf="@+id/power_check"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/lift_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lift"
+            app:layout_constraintBottom_toTopOf="@+id/swimming_check"
+            app:layout_constraintTop_toBottomOf="@+id/security_check"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/swimming_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/swimming_pool"
+            app:layout_constraintBottom_toTopOf="@+id/cafetria_check"
+            app:layout_constraintTop_toBottomOf="@+id/lift_check"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/cafetria_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cafeteria"
+            app:layout_constraintBottom_toTopOf="@+id/garden_check"
+            app:layout_constraintTop_toBottomOf="@+id/swimming_check"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/garden_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/garden"
+            app:layout_constraintBottom_toTopOf="@+id/water_check"
+            app:layout_constraintTop_toBottomOf="@+id/cafetria_check"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/water_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/water"
+            app:layout_constraintBottom_toTopOf="@+id/maintance_check"
+            app:layout_constraintTop_toBottomOf="@+id/garden_check"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/maintance_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/maintance_fee"
+            app:layout_constraintBottom_toTopOf="@+id/ammenities_next_btn"
+            app:layout_constraintTop_toBottomOf="@+id/water_check"
+            tools:layout_editor_absoluteX="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <Button
+            android:id="@+id/ammenities_next_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/orange_button"
+            android:text="@string/next"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/maintance_check" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.NestedScrollView>

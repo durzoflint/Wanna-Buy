@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.nyxwolves.wannabuy">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.LoginActivity"
+            android:theme="@style/noActionbar" />
+        <activity
+            android:name=".Activities.NameAndEmail"
+            android:theme="@style/noActionbar" />
+        <activity
+            android:name=".Activities.PasswordActivity"
+            android:theme="@style/noActionbar" />
+        <activity
+            android:name=".Activities.HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/noActionbar" />
+        <activity
+            android:name=".Activities.EmailLogin"
+            android:theme="@style/noActionbar" />
+        <activity
+            android:name=".Activities.SplashScreen"
+            android:noHistory="true"
+            android:theme="@style/noActionbar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.BuyOrRent"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".Activities.AreaLocality"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".Activities.PropertyType"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".Activities.PropertySubType"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".Activities.FurnishedOrNot"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".Activities.Bhk"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".Activities.NewOrResale"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".Activities.Budget"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".Activities.PropertySize"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".Activities.FacingActivity"
+            android:theme="@style/questionTheme" />
+        <activity android:name=".Activities.RequirementsSearchActivity" />
+        <activity android:name=".Activities.FacilitiesActivities" />
+    </application>
+
+</manifest>

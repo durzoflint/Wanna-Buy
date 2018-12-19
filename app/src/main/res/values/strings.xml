@@ -1,0 +1,115 @@
+<resources>
+    <string name="facebook_app_id">341529946626279</string>
+    <string name="fb_login_protocol_scheme">fb341529946626279</string>
+
+
+    <string name="app_name">WannaBuy</string>
+    <string name="please_enter">Please Enter</string>
+    <string name="name_email">Name &amp; Email</string><!--amp; to escape character-->
+    <string name="email_header">Email ID</string>
+    <string name="name_header">Full Name</string>
+    <string name="continue_text">Continue</string>
+
+    <string name="create_pass">Please create</string>
+    <string name="your_pass">Your Password</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register_text">Done</string>
+
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_message">Message</string>
+    <string name="title_ads">Ads</string>
+    <string name="title_account">Account</string>
+    <string name="log_out">Log Out</string>
+    <string name="login_to">Login to</string>
+    <string name="user_already_registered">"The email address is already in use by another account."</string>
+
+    <!-- FRAGMENT IDs -->
+    <string name="HOME_FRAGMENT">HOME_FRAGMENT</string>
+    <string name="ADS_FRAGMENT">ADS_FRAGMENT</string>
+    <string name="MSG_FRAGMENT">MSG_FRAGMENT</string>
+    <string name="PROF_FRAGMENT">PROF_FRAGMENT</string>
+
+    <!-- TOOLBAR MENU -->
+    <string name="search">Search</string>
+    <string name="notify_text">Notifications</string>
+
+    <string name="next">Next</string>
+
+    <string name="BUY">Buy</string>
+    <string name="RENT">Rent</string>
+
+    <string name="property_type_header">What type of property needed?</string>
+    <string name="residential"> Residential</string>
+    <string name="commercial"> Commercial</string>
+    <string name="industrial"> Industrial</string>
+    <string name="instutional"> Instutional</string>
+
+    <string name="property_size_header">Choose the area of property</string>
+
+    <string name="property_sub_type_header">What type of Residential Property</string>
+
+    <string name="PROPERTY_TYPE">PROPERTY_TYPE</string>
+    <string name="house"> House</string>
+    <string name="villa"> Villa</string>
+    <string name="apartments"> Apartments</string>
+    <string name="land"> Land</string>
+
+    <string name="office_space"> Office Space</string>
+    <string name="showroom"> Showroom</string>
+
+    <string name="factory"> Factory</string>
+    <string name="warehouse"> Warehouse</string>
+    <string name="cold_storage"> Cold Storage</string>
+
+    <string name="bhk_header">How many Rooms?</string>
+    <string name="one_bhk_text"> 1 BHK</string>
+    <string name="two_bhk_text"> 2 BHK</string>
+    <string name="three_bhk_text"> 3 BHK</string>
+    <string name="four_bhk_text"> 4 BHK</string>
+    <string name="five_bhk_text"> 5 BHK+</string>
+
+    <string name="facing_header">Property Facing direction</string>
+    <string name="east_text">East</string>
+    <string name="west_text">West</string>
+    <string name="south_text">South</string>
+    <string name="north_text">North</string>
+
+    <string name="furnished"> Furnished</string>
+    <string name="un_furnished"> Un-Furnished</string>
+    <string name="semi_furnished"> Semi-Furnished</string>
+
+    <string name="with_setup"> With Setup</string>
+    <string name="without_setup"> Without Setup</string>
+
+    <string name="new_text"> New</string>
+    <string name="resale_text"> Resale</string>
+
+    <string name="budget_header">Budget</string>
+
+    <string name="ANY_QUERY">ANY_QUERY</string>
+    <string name="LOCATION_QUERY">LOCATION_QUERY</string>
+    <string name="TYPE_QUERY">TYPE_QUERY</string>
+    <string name="BHK_QUERY">BHK_QUERY</string>
+    <string name="BUDGET_QUERY">BUDGET_QUERY</string>
+    <string name="USER_ID_QUERY">USER_ID_QUERY</string>
+
+    <string name="POST_REQUIREMENT">POST_REQUIREMENT</string>
+    <string name="LOADING">Loading...</string>
+    <string name="wannasell">Wanna Sell</string>
+
+    <string name="approval">Approval</string>
+    <string name="ammenities_header_text">Facilities (Select all applicable)</string>
+    <string name="metro_water">  Metro Water</string>
+    <string name="gym">  Gym</string>
+    <string name="drainage_connection">  Drainage Connection</string>
+    <string name="power_backup">  Power Backup</string>
+    <string name="security_guard">  Security Guard</string>
+    <string name="lift">  Lift</string>
+    <string name="swimming_pool">  Swimming Pool</string>
+    <string name="cafeteria">  Cafeteria</string>
+    <string name="garden">  Garden</string>
+    <string name="water">  24hrs Water</string>
+    <string name="maintance_fee">  Maintance Fee</string>
+</resources>

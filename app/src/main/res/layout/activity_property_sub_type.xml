@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.PropertySubType">
+
+
+    <ImageView
+        android:id="@+id/subtype_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/sub_type_property"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/sub_type_mode_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="@string/RENT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline8" />
+
+    <TextView
+        android:id="@+id/subtype_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="@string/property_sub_type_header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/sub_type_mode_header"
+        app:layout_constraintTop_toBottomOf="@+id/sub_type_mode_header" />
+
+    <!-- radio group for residential property-->
+    <RadioGroup
+        android:id="@+id/radioGroup_residential"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subtype_header">
+
+        <RadioButton
+            android:id="@+id/resi_house"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:text="@string/house" />
+
+        <RadioButton
+            android:id="@+id/resi_villa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:text="@string/villa" />
+
+        <RadioButton
+            android:id="@+id/resi_apartments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:text="@string/apartments" />
+
+        <RadioButton
+            android:id="@+id/resi_land"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:text="@string/land" />
+    </RadioGroup>
+
+    <!-- radiogroup for commercial property-->
+
+    <RadioGroup
+        android:id="@+id/radioGroup_commercial"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subtype_header">
+
+        <RadioButton
+            android:id="@+id/comm_office_space"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:text="@string/office_space" />
+
+        <RadioButton
+            android:id="@+id/comm_showroom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:text="@string/showroom" />
+
+        <RadioButton
+            android:id="@+id/comm_land"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:text="@string/land" />
+    </RadioGroup>
+
+    <!-- radio group for industrial-->
+    <RadioGroup
+        android:id="@+id/radioGroup_industrial"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subtype_header">
+
+        <RadioButton
+            android:id="@+id/indus_land"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:text="@string/land" />
+
+        <RadioButton
+            android:id="@+id/indus_factory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:text="@string/factory" />
+
+        <RadioButton
+            android:id="@+id/indus_warehouse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:text="@string/warehouse" />
+
+        <RadioButton
+            android:id="@+id/indus_cold_storage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:text="@string/cold_storage" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/sub_type_next_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/orange_button"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="@string/next"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline9"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.30" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
+
+
+</android.support.constraint.ConstraintLayout>

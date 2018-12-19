@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "657794665214",
+    "firebase_url": "https://wannabuy-ef22b.firebaseio.com",
+    "project_id": "wannabuy-ef22b",
+    "storage_bucket": "wannabuy-ef22b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:657794665214:android:5126a4472830caaf",
+        "android_client_info": {
+          "package_name": "com.nyxwolves.wannabuy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "657794665214-lsg35brqgiltoumu87u3234jli8bhrut.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nyxwolves.wannabuy",
+            "certificate_hash": "b2a7d3c574a4f78264d9af74ee897c5f11d061fd"
+          }
+        },
+        {
+          "client_id": "657794665214-edb6sg6e1j07rk0knunqvmr2pdprolic.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzj9Yr0R5UCDUBbTo2LQV4lzVpz2LXfOQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "657794665214-edb6sg6e1j07rk0knunqvmr2pdprolic.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

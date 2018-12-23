@@ -11,5 +11,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Log.d("Abhinav", "Refreshed token: " + token);
 
         //sendRegistrationToServer(token);
+
+        //FirebaseMessaging.getInstance().subscribeToTopic("testing_topic");
     }
 }

@@ -16,13 +16,16 @@ public class Budget extends AppCompatActivity implements SeekBar.OnSeekBarChange
 
     SeekBar budgetSeekBar;
     Button nextButton;
-    TextView selectedPriceView;
+    TextView selectedPriceView,modeHeader;
 
     int budget=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_budget);
+
+        modeHeader=findViewById(R.id.budget_mode);
+        modeHeader.setText(Requirements.getInstance().buyorRent);
 
         selectedPriceView = findViewById(R.id.selected_price_view);
 
@@ -48,7 +51,13 @@ public class Budget extends AppCompatActivity implements SeekBar.OnSeekBarChange
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         budget = progress;
-        selectedPriceView.setText(""+progress);
+        if(progress < 100){
+            selectedPriceView.setText(progress+" Lakhs");
+        }else{
+            float inCrores = (float) progress/100;
+            selectedPriceView.setText(inCrores+"  Crores");
+        }
+
     }
 
     @Override

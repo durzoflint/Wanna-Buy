@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".Activities.AdsActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/post_ads_image"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:src="@drawable/location_property"
+            app:layout_constraintBottom_toTopOf="@+id/guideline19"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="200dp" />
+
+        <TextView
+            android:id="@+id/post_ad_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="@string/post_ad"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline19" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/post_ad_header"
+            app:layout_constraintTop_toBottomOf="@+id/post_ad_header">
+
+            <TextView
+                android:id="@+id/about_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/ad_header" />
+
+
+            <RadioButton
+                android:id="@+id/sell_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="15dp"
+                android:button="@drawable/custom_radio_button"
+                android:fontFamily="@font/montserrat_regular"
+                android:padding="5dp"
+                android:text="@string/SELL"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/about_header"
+                app:layout_constraintTop_toBottomOf="@+id/about_header" />
+
+            <RadioButton
+                android:id="@+id/rent_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="60dp"
+                android:layout_marginStart="8dp"
+                android:button="@drawable/custom_radio_button"
+                android:fontFamily="@font/montserrat_regular"
+                android:padding="5dp"
+                android:text="@string/RENT"
+                app:layout_constraintBottom_toBottomOf="@+id/sell_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.963"
+                app:layout_constraintStart_toEndOf="@+id/sell_btn"
+                app:layout_constraintTop_toTopOf="@+id/sell_btn"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/area_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+            <TextView
+                android:id="@+id/area_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/ad_area_header" />
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/ads_area_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/door_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/area_layout"
+            app:layout_constraintTop_toBottomOf="@+id/area_layout">
+
+            <TextView
+                android:id="@+id/door_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/door_number" />
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/ads_door_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/address_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/door_layout"
+            app:layout_constraintTop_toBottomOf="@+id/door_layout">
+
+            <TextView
+                android:id="@+id/address_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/address_header_text" />
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/ads_address_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular" />
+        </LinearLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/property_type_layout"
+            android:layout_width="0dp"
+            android:layout_height="113dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/address_layout"
+            app:layout_constraintTop_toBottomOf="@+id/address_layout">
+
+            <TextView
+                android:id="@+id/property_type_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/ad_property_type"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioButton
+                android:id="@+id/resi_radio_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:button="@drawable/custom_radio_button"
+                android:onClick="onRadioButtonClicked"
+                android:padding="5dp"
+                android:text="@string/residential"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/property_type_header" />
+
+            <RadioButton
+                android:id="@+id/comm_radio_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:button="@drawable/custom_radio_button"
+                android:onClick="onRadioButtonClicked"
+                android:padding="5dp"
+                android:text="@string/commercial"
+                app:layout_constraintBottom_toBottomOf="@+id/resi_radio_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/indus_radio_btn"
+                app:layout_constraintTop_toTopOf="@+id/resi_radio_btn"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <RadioButton
+                android:id="@+id/ins_radio_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:button="@drawable/custom_radio_button"
+                android:onClick="onRadioButtonClicked"
+                android:padding="5dp"
+                android:text="@string/institutional"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/resi_radio_btn"
+                app:layout_constraintTop_toBottomOf="@+id/resi_radio_btn" />
+
+            <RadioButton
+                android:id="@+id/indus_radio_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="8dp"
+                android:button="@drawable/custom_radio_button"
+                android:onClick="onRadioButtonClicked"
+                android:padding="5dp"
+                android:text="@string/industrial_land"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/ins_radio_btn"
+                app:layout_constraintTop_toTopOf="@+id/ins_radio_btn" />
+
+        </android.support.constraint.ConstraintLayout>
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/property_size_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.47"
+            app:layout_constraintStart_toStartOf="@+id/property_type_layout"
+            app:layout_constraintTop_toBottomOf="@+id/property_type_layout">
+
+            <TextView
+                android:id="@+id/size_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/size_header"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <SeekBar
+                android:id="@+id/ads_seekbar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/size_header"
+                app:layout_constraintTop_toBottomOf="@+id/size_header" />
+
+            <TextView
+                android:id="@+id/ads_min_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="0 sq.Ft"
+                app:layout_constraintStart_toStartOf="@+id/ads_seekbar"
+                app:layout_constraintTop_toBottomOf="@+id/ads_seekbar" />
+
+            <TextView
+                android:id="@+id/ads_selected_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                app:layout_constraintEnd_toStartOf="@+id/max_size"
+                app:layout_constraintStart_toEndOf="@+id/ads_min_text"
+                app:layout_constraintTop_toTopOf="@+id/ads_min_text" />
+
+            <TextView
+                android:id="@+id/max_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ads_seekbar" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/corner_plot_layout"
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/property_size_layout"
+            app:layout_constraintTop_toBottomOf="@+id/property_size_layout">
+
+            <TextView
+                android:id="@+id/corner_plot_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/corner_plot_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <RadioButton
+                android:id="@+id/yes_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="20dp"
+                android:button="@drawable/custom_radio_button"
+                android:padding="5dp"
+                android:text="@string/yes"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/corner_plot_header" />
+
+            <RadioButton
+                android:id="@+id/no_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="60dp"
+                android:layout_marginStart="8dp"
+                android:button="@drawable/custom_radio_button"
+                android:padding="5dp"
+                android:text="@string/no"
+                app:layout_constraintBottom_toBottomOf="@+id/yes_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/yes_btn"
+                app:layout_constraintTop_toTopOf="@+id/yes_btn" />
+        </android.support.constraint.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/property_sub_type_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/corner_plot_layout">
+
+            <include
+                layout="@layout/property_subtype_radio_grp_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:layout_editor_absoluteY="68dp" />
+
+        </LinearLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/property_sub_type_layout"
+            app:layout_constraintTop_toBottomOf="@+id/property_sub_type_layout">
+
+            <TextView
+                android:id="@+id/ads_bhk_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/how_many_rooms"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <RadioButton
+                android:id="@+id/one_bhk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginTop="20dp"
+                android:button="@drawable/custom_radio_button"
+                android:checked="false"
+                android:onClick="onRadioButtonClicked"
+                android:padding="5dp"
+                android:text="@string/one_bhk_text"
+                app:layout_constraintEnd_toStartOf="@+id/two_bhk"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ads_bhk_header" />
+
+            <RadioButton
+                android:id="@+id/two_bhk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/custom_radio_button"
+                android:checked="false"
+                android:onClick="onRadioButtonClicked"
+                android:padding="5dp"
+                android:text="@string/two_bhk_text"
+                app:layout_constraintEnd_toStartOf="@+id/three_bhk"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/one_bhk"
+                app:layout_constraintTop_toTopOf="@+id/one_bhk" />
+
+            <RadioButton
+                android:id="@+id/three_bhk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/custom_radio_button"
+                android:checked="false"
+                android:onClick="onRadioButtonClicked"
+                android:padding="5dp"
+                android:text="@string/three_bhk_text"
+                app:layout_constraintEnd_toStartOf="@+id/four_bhk"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/two_bhk"
+                app:layout_constraintTop_toTopOf="@+id/two_bhk" />
+
+            <RadioButton
+                android:id="@+id/four_bhk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/custom_radio_button"
+                android:checked="false"
+                android:onClick="onRadioButtonClicked"
+                android:padding="5dp"
+                android:text="@string/four_bhk_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/three_bhk"
+                app:layout_constraintTop_toTopOf="@+id/three_bhk" />
+
+            <RadioButton
+                android:id="@+id/five_bhk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="10dp"
+                android:button="@drawable/custom_radio_button"
+                android:checked="false"
+                android:onClick="onRadioButtonClicked"
+                android:padding="5dp"
+                android:text="@string/five_bhk_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/one_bhk"
+                app:layout_constraintTop_toBottomOf="@+id/one_bhk" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/facing_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout3"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+
+            <include layout="@layout/direction_check_box" />
+        </LinearLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/sell_type_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/facing_layout"
+            app:layout_constraintTop_toBottomOf="@+id/facing_layout">
+
+            <TextView
+                android:id="@+id/sell_type_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/sell_type_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioButton
+                android:id="@+id/new_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="15dp"
+                android:button="@drawable/custom_radio_button"
+                android:fontFamily="@font/montserrat_regular"
+                android:padding="5dp"
+                android:text="@string/new_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/sell_type_header"
+                app:layout_constraintTop_toBottomOf="@+id/sell_type_header" />
+
+            <RadioButton
+                android:id="@+id/resale_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="60dp"
+                android:layout_marginStart="8dp"
+                android:button="@drawable/custom_radio_button"
+                android:fontFamily="@font/montserrat_regular"
+                android:padding="5dp"
+                android:text="@string/resale_text"
+                app:layout_constraintBottom_toBottomOf="@+id/new_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.963"
+                app:layout_constraintStart_toEndOf="@+id/new_btn"
+                app:layout_constraintTop_toTopOf="@+id/new_btn"
+                app:layout_constraintVertical_bias="0.0" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/furnished_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/sell_type_layout"
+            app:layout_constraintTop_toBottomOf="@+id/sell_type_layout">
+
+            <TextView
+                android:id="@+id/furnished_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/ads_furnised_header"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioButton
+                android:id="@+id/furnished_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="15dp"
+                android:button="@drawable/custom_radio_button"
+                android:fontFamily="@font/montserrat_regular"
+                android:padding="5dp"
+                android:text="@string/furnished"
+                app:layout_constraintStart_toStartOf="@+id/furnished_header"
+                app:layout_constraintTop_toBottomOf="@+id/furnished_header" />
+
+            <RadioButton
+                android:id="@+id/un_furnished_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="60dp"
+                android:layout_marginStart="8dp"
+                android:button="@drawable/custom_radio_button"
+                android:fontFamily="@font/montserrat_regular"
+                android:padding="5dp"
+                android:text="@string/un_furnished"
+                app:layout_constraintBottom_toBottomOf="@+id/furnished_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.963"
+                app:layout_constraintStart_toEndOf="@+id/furnished_btn"
+                app:layout_constraintTop_toTopOf="@+id/furnished_btn"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <RadioButton
+                android:id="@+id/semi_furnished_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="10dp"
+                android:button="@drawable/custom_radio_button"
+                android:fontFamily="@font/montserrat_regular"
+                android:padding="5dp"
+                android:text="@string/semi_furnished"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/furnished_btn"
+                app:layout_constraintTop_toBottomOf="@+id/furnished_btn"
+                app:layout_constraintVertical_bias="0.0" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/price_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/furnished_layout"
+            app:layout_constraintTop_toBottomOf="@+id/furnished_layout">
+
+            <TextView
+                android:id="@+id/price_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/ads_price_header" />
+
+            <RadioButton
+                android:id="@+id/negotiable_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:button="@drawable/custom_radio_button"
+                android:fontFamily="@font/montserrat_regular"
+                android:padding="5dp"
+                android:text="@string/negotiable"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/price_header"
+                app:layout_constraintTop_toBottomOf="@+id/price_header" />
+
+            <RadioButton
+                android:id="@+id/non_negotiable_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="8dp"
+                android:button="@drawable/custom_radio_button"
+                android:fontFamily="@font/montserrat_regular"
+                android:padding="5dp"
+                android:text="@string/non_negotiable"
+                app:layout_constraintBottom_toBottomOf="@+id/negotiable_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/negotiable_btn"
+                app:layout_constraintTop_toTopOf="@+id/negotiable_btn" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/prop_pic_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/price_layout"
+            app:layout_constraintTop_toBottomOf="@+id/price_layout">
+
+            <Button
+                android:id="@+id/upload_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/orange_button"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="@string/upload_property_photo"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/prop_pic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/prop_pic"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/prop_pic"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="8dp"
+                app:civ_border_color="@color/orangeBtn"
+                app:civ_border_width="2dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <Button
+            android:id="@+id/payment_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/orange_button"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/make_payment"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/prop_pic_layout"
+            app:layout_constraintTop_toBottomOf="@+id/prop_pic_layout" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

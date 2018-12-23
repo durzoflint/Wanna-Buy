@@ -32,6 +32,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".Activities.SplashScreen"
+            android:noHistory="true"
+            android:theme="@style/noActionbar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".Activities.LoginActivity"
             android:theme="@style/noActionbar" />
         <activity
@@ -47,16 +57,6 @@
         <activity
             android:name=".Activities.EmailLogin"
             android:theme="@style/noActionbar" />
-        <activity
-            android:name=".Activities.SplashScreen"
-            android:noHistory="true"
-            android:theme="@style/noActionbar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".Activities.BuyOrRent"
             android:theme="@style/questionTheme" />
@@ -87,8 +87,45 @@
         <activity
             android:name=".Activities.FacingActivity"
             android:theme="@style/questionTheme" />
-        <activity android:name=".Activities.RequirementsSearchActivity" />
-        <activity android:name=".Activities.FacilitiesActivities" />
+        <activity
+            android:name=".Activities.RequirementsSearchActivity"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".Activities.FacilitiesActivities"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".Activities.ApprovalActivity"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".Activities.RoadWidth"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".Activities.RentalEndDate"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".Activities.RentalPropertyType"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".Activities.RentalAdvance"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".Activities.RentalTenantName"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".Activities.ROIRentalActivity"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".Activities.RentalInvestment"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".Activities.PetsActivity"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".Activities.AdsActivity"
+            android:theme="@style/questionTheme" />
+        <activity android:name=".Activities.MessageActivity" />
+        <activity android:name=".Activities.MyAdsActivity" />
+        <activity android:name=".Activities.AccountActivity"></activity>
     </application>
 
 </manifest>

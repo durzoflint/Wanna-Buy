@@ -17,7 +17,7 @@ public class PropertyType extends AppCompatActivity implements View.OnClickListe
 
     Button continueBtn,backBtn;
     RadioButton selectedProperty;
-    TextView minArea,maxArea;
+    TextView minArea,maxArea,modeHeader;
 
     String property_type;
 
@@ -27,6 +27,9 @@ public class PropertyType extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_property_type);
 
         //propertType = findViewById(R.id.radioGroup);
+
+        modeHeader  = findViewById(R.id.mode_header);
+        modeHeader.setText(Requirements.getInstance().buyorRent);
 
         continueBtn = findViewById(R.id.next_btn);
         continueBtn.setOnClickListener(this);
@@ -46,6 +49,9 @@ public class PropertyType extends AppCompatActivity implements View.OnClickListe
             case R.id.industrial:
                 property_type = getString(R.string.industrial);
                 break;
+            case R.id.instutional:
+                property_type = getString(R.string.institutional);
+                break;
         }
     }
     @Override
@@ -53,7 +59,7 @@ public class PropertyType extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.next_btn:
                 if(property_type != null) {
-                    Intent i = new Intent(PropertyType.this, PropertySize.class);
+                    Intent i = new Intent(PropertyType.this, PropertySubType.class);
                     i.putExtra(getString(R.string.PROPERTY_TYPE), property_type);
                     Requirements.getInstance().type = property_type;
                     startActivity(i);

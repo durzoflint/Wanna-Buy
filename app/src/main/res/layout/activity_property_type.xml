@@ -45,7 +45,7 @@
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toTopOf="@+id/next_btn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,41 +56,53 @@
             android:id="@+id/residential"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
+            android:layout_marginStart="0dp"
             android:button="@drawable/custom_radio_button"
             android:checked="false"
             android:onClick="radioButtonClicked"
-            android:text="@string/residential" />
+            android:padding="5dp"
+            android:text="@string/residential"
+            android:textSize="15sp" />
 
         <RadioButton
             android:id="@+id/commercial"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
+            android:layout_marginStart="0dp"
             android:button="@drawable/custom_radio_button"
             android:checked="false"
             android:onClick="radioButtonClicked"
-            android:text="@string/commercial" />
+            android:padding="5dp"
+            android:text="@string/commercial"
+            android:textSize="15sp" />
 
         <RadioButton
             android:id="@+id/industrial"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:button="@drawable/custom_radio_button"
             android:checked="false"
             android:onClick="radioButtonClicked"
-            android:text="@string/industrial" />
+            android:padding="5dp"
+            android:layout_marginStart="0dp"
+            android:text="@string/industrial"
+            android:textSize="15sp" />
 
         <RadioButton
             android:id="@+id/instutional"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
+            android:layout_marginStart="0dp"
             android:button="@drawable/custom_radio_button"
             android:checked="false"
             android:onClick="radioButtonClicked"
-            android:text="@string/instutional" />
+            android:padding="5dp"
+            android:text="@string/institutional"
+            android:textSize="15sp" />
     </RadioGroup>
 
     <Button

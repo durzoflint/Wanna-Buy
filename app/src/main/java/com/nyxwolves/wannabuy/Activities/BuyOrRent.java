@@ -30,11 +30,11 @@ public class BuyOrRent extends AppCompatActivity implements View.OnClickListener
         Intent i = new Intent(BuyOrRent.this,AreaLocality.class);
         switch (v.getId()){
             case R.id.buy_btn:
-                Requirements.getInstance().buyorRent="BUY";
+                Requirements.getInstance().buyorRent="Buy";
                 startActivity(i);
                 break;
             case R.id.rent_btn:
-                Requirements.getInstance().buyorRent="RENT";
+                Requirements.getInstance().buyorRent="Rent";
                 startActivity(i);
                 break;
         }

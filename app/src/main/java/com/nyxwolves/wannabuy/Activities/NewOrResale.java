@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nyxwolves.wannabuy.POJO.Requirements;
@@ -13,6 +14,7 @@ import com.nyxwolves.wannabuy.R;
 public class NewOrResale extends AppCompatActivity {
 
     Button nextButton;
+    TextView modeHeader;
 
     String newOrResale =null;//new =1 resale = 2
 
@@ -20,6 +22,9 @@ public class NewOrResale extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_or_resale);
+
+        modeHeader =  findViewById(R.id.new_resale_mode);
+        modeHeader.setText(Requirements.getInstance().buyorRent);
 
         nextButton = findViewById(R.id.new_resale_next_btn);
         nextButton.setOnClickListener(new View.OnClickListener() {

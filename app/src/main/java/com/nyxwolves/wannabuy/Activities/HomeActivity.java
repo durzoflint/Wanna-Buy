@@ -54,6 +54,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 RequirementHelper createHelper = new RequirementHelper(HomeActivity.this);
                 createHelper.createRequirement();
             }
+
+            if(getIntent().getAction().equals(getString(R.string.POST_AD))){
+                AdHelper adHelper = new AdHelper(HomeActivity.this);
+                adHelper.createAd();
+            }
         }
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -118,6 +123,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.nav_ads_btn:
                 FragmentTransaction adsTransaction = fragmentManager.beginTransaction();
                 adsTransaction.replace(R.id.fragment_holder, AdsFragment.getInstance()).commit();
+                startActivity(new Intent(HomeActivity.this,AdsActivity.class));
                 break;
             case R.id.nav_account_btn:
                 FragmentTransaction accountTransaction = fragmentManager.beginTransaction();

@@ -39,16 +39,17 @@
 
     <string name="BUY">Buy</string>
     <string name="RENT">Rent</string>
+    <string name="SELL">Sell</string>
 
+    <string name="property_location">Property Location</string>
     <string name="property_type_header">What type of property needed?</string>
     <string name="residential"> Residential</string>
     <string name="commercial"> Commercial</string>
     <string name="industrial"> Industrial</string>
-    <string name="instutional"> Instutional</string>
+    <string name="institutional"> Institutional</string>
+    <string name="industrial_land">Industrial Land</string>
 
     <string name="property_size_header">Choose the area of property</string>
-
-    <string name="property_sub_type_header">What type of Residential Property</string>
 
     <string name="PROPERTY_TYPE">PROPERTY_TYPE</string>
     <string name="house"> House</string>
@@ -56,12 +57,16 @@
     <string name="apartments"> Apartments</string>
     <string name="land"> Land</string>
 
-    <string name="office_space"> Office Space</string>
+    <string name="office_space">  Office Space</string>
     <string name="showroom"> Showroom</string>
 
     <string name="factory"> Factory</string>
     <string name="warehouse"> Warehouse</string>
-    <string name="cold_storage"> Cold Storage</string>
+    <string name="cold_storage">  Cold Storage</string>
+
+    <string name="hospital">Hospital</string>
+    <string name="school">School</string>
+    <string name="college">College</string>
 
     <string name="bhk_header">How many Rooms?</string>
     <string name="one_bhk_text"> 1 BHK</string>
@@ -96,6 +101,7 @@
     <string name="USER_ID_QUERY">USER_ID_QUERY</string>
 
     <string name="POST_REQUIREMENT">POST_REQUIREMENT</string>
+    <string name="POST_AD">POST_AD</string>
     <string name="LOADING">Loading...</string>
     <string name="wannasell">Wanna Sell</string>
 
@@ -112,4 +118,40 @@
     <string name="garden">  Garden</string>
     <string name="water">  24hrs Water</string>
     <string name="maintance_fee">  Maintance Fee</string>
+
+    <string name="approval_header">Type of Approval?</string>
+    <string name="dtcp_text">  DTCP</string>
+    <string name="cdma_text">  CDMA</string>
+
+    <string name="road_width">Road Width?</string>
+    <string name="min_road_width">0Ft.</string>
+
+    <string name="rent_end_header">Rental Property</string>
+    <string name="rent_end_date_text">Lease/Rent End Date</string>
+    <string name="rent_property_type_header">Lease/Rent Property</string>
+    <string name="rent_advance_header">Advance/Deposit</string>
+    <string name="tenant_name">Name of the tenant(optional)</string>
+    <string name="roi_text">ROI:</string>
+    <string name="investment_text">Investment  Price:</string>
+    <string name="pets_allowed">Allowed</string>
+    <string name="pets_not_allowed">Not Allowed</string>
+
+    <string name="post_ad">Post Ad</string>
+    <string name="ad_header">What your Ad is About?</string>
+    <string name="ad_area_header">Your Area / Locality / City?</string>
+    <string name="door_number">Door number</string>
+    <string name="address_header_text">Address</string>
+    <string name="ad_property_type">Type Of Property</string>
+    <string name="size_header">Choose the area of the Property</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="corner_plot_text">Corner Plot</string>
+    <string name="how_many_rooms">How Many Rooms?</string>
+    <string name="sell_type_text">New or Resale?</string>
+    <string name="ads_furnised_header">What type of property?</string>
+    <string name="ads_price_header">Price</string>
+    <string name="non_negotiable">Non-Negotiable</string>
+    <string name="negotiable">Negotiable</string>
+    <string name="upload_property_photo">Upload\nProperty\nPhoto</string>
+    <string name="make_payment">Make Payment</string>
 </resources>

@@ -2,12 +2,14 @@ package com.nyxwolves.wannabuy.RestApiHelper;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.firebase.auth.FirebaseAuth;
+import com.nyxwolves.wannabuy.POJO.SellerAd;
 
 import org.json.JSONObject;
 
@@ -28,6 +30,7 @@ public class AdHelper {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("ADS_RESPONSE_CREATED",response.toString());
+                Toast.makeText(ctx,"Ad Posted",Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -41,21 +44,22 @@ public class AdHelper {
     private void getJson(){
 
         try{
-            createParams.put("user_id", FirebaseAuth.getInstance().getCurrentUser().getEmail());
-            createParams.put("PROPERTY_LOCATION","VELACHERY");
-            createParams.put("PROPERTY_TYPE","APARTMENTS");
-            createParams.put("PROPERTY_SIZE","6000");
-            createParams.put("PROPERTY_ADDRESS","NO:32,ABCD NAGAR,VELACHERY,CHENNAI");
-            createParams.put("BHK","2");
-            createParams.put("FACING","EAST");
-            createParams.put("NEW","1");
-            createParams.put("MODE","BUY");
-            createParams.put("ADDITIONAL","UNFURNISHED");
-            createParams.put("BUDGET","9500000");
+            createParams.put("user_id",""+FirebaseAuth.getInstance().getCurrentUser().getEmail());
+            createParams.put("PROPERTY_LOCATION",""+SellerAd.getInstance().area.toUpperCase());
+            createParams.put("PROPERTY_TYPE",""+SellerAd.getInstance().subType.toUpperCase());
+            createParams.put("PROPERTY_SIZE",""+SellerAd.getInstance().size.toUpperCase());
+            createParams.put("PROPERTY_ADDRESS",""+SellerAd.getInstance().propertyAddress.toUpperCase());
+            createParams.put("BHK",""+SellerAd.getInstance().bhk.toUpperCase());
+            createParams.put("FACING",""+SellerAd.getInstance().facing.toUpperCase());
+            createParams.put("NEW",""+SellerAd.getInstance().isNew.toUpperCase());
+            createParams.put("MODE",""+SellerAd.getInstance().sellOrRent.toUpperCase());
+            createParams.put("ADDITIONAL",""+SellerAd.getInstance().furnished.toUpperCase());
+            createParams.put("BUDGET","650000");
             createParams.put("FLOOR","2");
-            createParams.put("NEGOTIABLE","1");
+            createParams.put("NEGOTIABLE",""+SellerAd.getInstance().budgetNegotiable.toUpperCase());
         }catch (Exception e){
             e.printStackTrace();
         }
     }
+
 }

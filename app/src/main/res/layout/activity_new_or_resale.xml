@@ -56,7 +56,10 @@
             android:id="@+id/new_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
+            android:layout_marginStart="0dp"
+            android:padding="5dp"
+            android:textSize="15sp"
             android:button="@drawable/custom_radio_button"
             android:onClick="onRadioButtonClicked"
             android:text="@string/new_text" />
@@ -65,7 +68,10 @@
             android:id="@+id/resale_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
+            android:layout_marginStart="0dp"
+            android:padding="5dp"
+            android:textSize="15sp"
             android:button="@drawable/custom_radio_button"
             android:onClick="onRadioButtonClicked"
             android:text="@string/resale_text" />

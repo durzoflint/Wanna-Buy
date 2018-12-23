@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nyxwolves.wannabuy.POJO.Requirements;
@@ -13,13 +14,16 @@ import com.nyxwolves.wannabuy.R;
 public class FacingActivity extends AppCompatActivity {
 
     Button nextBtn;
-
+    TextView modeHeader;
     String direction = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_facing);
+
+        modeHeader  = findViewById(R.id.facing_mode);
+        modeHeader.setText(Requirements.getInstance().buyorRent);
 
         nextBtn = findViewById(R.id.facing_next_btn);
         nextBtn.setOnClickListener(new View.OnClickListener() {
@@ -35,18 +39,18 @@ public class FacingActivity extends AppCompatActivity {
         });
     }
 
-    public void onRadioButtonClicked(View v){
+    public void onCheckBoxClicked(View v){
         switch (v.getId()){
-            case R.id.north:
+            case R.id.north_check_box:
                 direction = getString(R.string.north_text);
                 break;
-            case R.id.south:
+            case R.id.south_check_box:
                 direction = getString(R.string.south_text);
                 break;
-            case R.id.west:
+            case R.id.west_check_box:
                 direction = getString(R.string.west_text);
                 break;
-            case R.id.east:
+            case R.id.east_check_box:
                 direction = getString(R.string.east_text);
                 break;
         }

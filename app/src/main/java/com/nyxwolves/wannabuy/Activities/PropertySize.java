@@ -13,9 +13,9 @@ import android.widget.Toast;
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
 
-public class PropertySize extends AppCompatActivity implements View.OnClickListener,SeekBar.OnSeekBarChangeListener{
+public class PropertySize extends AppCompatActivity implements View.OnClickListener, SeekBar.OnSeekBarChangeListener {
 
-    TextView minSize,maxSize;
+    TextView minSize, maxSize, modeHeader,selectedSize;
     SeekBar sizeSeekBar;
     Button nextButton;
 
@@ -27,7 +27,8 @@ public class PropertySize extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_property_size);
 
-        propertyType = getIntent().getStringExtra(getString(R.string.PROPERTY_TYPE));
+        modeHeader = findViewById(R.id.mode_header);
+        modeHeader.setText(Requirements.getInstance().buyorRent);
 
         sizeSeekBar = findViewById(R.id.area_seekbar);
         sizeSeekBar.setOnSeekBarChangeListener(this);
@@ -36,24 +37,25 @@ public class PropertySize extends AppCompatActivity implements View.OnClickListe
         nextButton.setOnClickListener(this);
 
         minSize = findViewById(R.id.min_size);
-        maxSize  = findViewById(R.id.max_size);
+        maxSize = findViewById(R.id.max_size);
+        selectedSize = findViewById(R.id.selected_size);
 
-        String propertyType = getIntent().getStringExtra(getString(R.string.PROPERTY_TYPE));
+        propertyType = Requirements.getInstance().type;
         setLimits(propertyType);
     }
 
-    private void setLimits(String option){
+    private void setLimits(String option) {
         minSize.setText("0 sq. Ft");
-        if(option.equals(getString(R.string.residential))){
+        if (option.equals(getString(R.string.residential))) {
             maxSize.setText("10000 sq. Ft");
             sizeSeekBar.setMax(10000);
-        }else if(option.equals(getString(R.string.commercial))){
+        } else if (option.equals(getString(R.string.commercial))) {
             maxSize.setText("100000+ sq. Ft");
             sizeSeekBar.setMax(100000);
-        }else if(option.equals(getString(R.string.industrial))){
+        } else if (option.equals(getString(R.string.industrial))) {
             maxSize.setText("100000+ sq. Ft");
             sizeSeekBar.setMax(100000);
-        }else if(option.equals(getString(R.string.instutional))){
+        } else if (option.equals(getString(R.string.institutional))) {
             maxSize.setText("100000+ sq. Ft");
             sizeSeekBar.setMax(100000);
         }
@@ -61,15 +63,19 @@ public class PropertySize extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.size_next_btn:
-                if(sizeOfProperty != 0) {
+                if (sizeOfProperty != 0) {
                     Requirements.getInstance().size = String.valueOf(sizeOfProperty);
-                    Intent i = new Intent(PropertySize.this, PropertySubType.class);
-                    i.putExtra(getString(R.string.PROPERTY_TYPE),propertyType);
+                    Intent i;
+                    if (Requirements.getInstance().subType.equals(getString(R.string.house)) | Requirements.getInstance().subType.equals(getString(R.string.apartments)) | Requirements.getInstance().subType.equals(getString(R.string.villa))) {
+                        i = new Intent(PropertySize.this, FurnishedOrNot.class);
+                    } else {
+                        i = new Intent(PropertySize.this, FacingActivity.class);
+                    }
                     startActivity(i);
-                }else{
-                    Toast.makeText(PropertySize.this,"Choose the size of property",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(PropertySize.this, "Choose the size of property", Toast.LENGTH_SHORT).show();
                 }
         }
     }
@@ -77,8 +83,8 @@ public class PropertySize extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         sizeOfProperty = progress;
-        maxSize.setText(""+progress);
-        Log.d("PROGRESS",""+sizeOfProperty);
+        selectedSize.setText("" + progress);
+        Log.d("PROGRESS", "" + sizeOfProperty);
     }
 
     @Override

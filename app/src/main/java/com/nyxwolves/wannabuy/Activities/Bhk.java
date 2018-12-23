@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nyxwolves.wannabuy.POJO.Requirements;
@@ -13,6 +14,7 @@ import com.nyxwolves.wannabuy.R;
 public class Bhk extends AppCompatActivity {
 
     Button nextBtn;
+    TextView modeHeader;
 
     int BHK=0;
 
@@ -20,6 +22,9 @@ public class Bhk extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bhk);
+
+        modeHeader =  findViewById(R.id.bhk_mode);
+        modeHeader.setText(Requirements.getInstance().buyorRent);
 
         nextBtn = findViewById(R.id.bhk_next_btn);
         nextBtn.setOnClickListener(new View.OnClickListener() {

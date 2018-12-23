@@ -10,6 +10,7 @@ public class Requirements {
     public String bhk = "NOT_NEEDED";
     public String isNew;
     public String budget;
+    public String subType;
     public String floor="1";
     public String  furnished  ="UNFURNISHED";
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scroll_view"
@@ -34,10 +34,9 @@
             android:id="@+id/approval_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="5dp"
             android:text="@string/approval"
-            app:layout_constraintBottom_toTopOf="@+id/ammenities_header"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/guideline15" />
 
@@ -45,7 +44,7 @@
             android:id="@+id/ammenities_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:text="@string/ammenities_header_text"
             app:layout_constraintBottom_toTopOf="@+id/metro_check"
             app:layout_constraintStart_toStartOf="@+id/approval_header"
@@ -60,7 +59,9 @@
             app:layout_constraintBottom_toTopOf="@+id/drainage_check"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ammenities_header" />
+            app:layout_constraintTop_toBottomOf="@+id/ammenities_header"
+            android:clickable="true"
+            android:onClick="oncheckBoxClicked"/>
 
         <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/drainage_check"
@@ -70,7 +71,8 @@
             app:layout_constraintBottom_toTopOf="@+id/gym_check"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/metro_check" />
+            app:layout_constraintTop_toBottomOf="@+id/metro_check"
+            android:onClick="oncheckBoxClicked"/>
 
         <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/gym_check"
@@ -80,7 +82,8 @@
             app:layout_constraintBottom_toTopOf="@+id/power_check"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/drainage_check" />
+            app:layout_constraintTop_toBottomOf="@+id/drainage_check"
+            android:onClick="oncheckBoxClicked"/>
 
         <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/power_check"
@@ -100,7 +103,8 @@
             app:layout_constraintBottom_toTopOf="@+id/lift_check"
             app:layout_constraintTop_toBottomOf="@+id/power_check"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:onClick="oncheckBoxClicked"/>
 
         <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/lift_check"
@@ -110,7 +114,8 @@
             app:layout_constraintBottom_toTopOf="@+id/swimming_check"
             app:layout_constraintTop_toBottomOf="@+id/security_check"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:onClick="oncheckBoxClicked"/>
 
         <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/swimming_check"
@@ -120,7 +125,8 @@
             app:layout_constraintBottom_toTopOf="@+id/cafetria_check"
             app:layout_constraintTop_toBottomOf="@+id/lift_check"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:onClick="oncheckBoxClicked"/>
 
         <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/cafetria_check"
@@ -130,7 +136,8 @@
             app:layout_constraintBottom_toTopOf="@+id/garden_check"
             app:layout_constraintTop_toBottomOf="@+id/swimming_check"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:onClick="oncheckBoxClicked"/>
 
         <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/garden_check"
@@ -140,7 +147,8 @@
             app:layout_constraintBottom_toTopOf="@+id/water_check"
             app:layout_constraintTop_toBottomOf="@+id/cafetria_check"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:onClick="oncheckBoxClicked"/>
 
         <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/water_check"
@@ -150,7 +158,8 @@
             app:layout_constraintBottom_toTopOf="@+id/maintance_check"
             app:layout_constraintTop_toBottomOf="@+id/garden_check"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:onClick="oncheckBoxClicked"/>
 
         <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/maintance_check"
@@ -161,18 +170,19 @@
             app:layout_constraintTop_toBottomOf="@+id/water_check"
             tools:layout_editor_absoluteX="0dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:onClick="oncheckBoxClicked"/>
 
         <Button
             android:id="@+id/ammenities_next_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:background="@drawable/orange_button"
             android:text="@string/next"
             android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/maintance_check" />
     </android.support.constraint.ConstraintLayout>
-</android.support.v4.widget.NestedScrollView>
+</ScrollView>

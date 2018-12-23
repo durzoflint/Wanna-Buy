@@ -55,7 +55,6 @@ public class RequirementHelper {
             }
         });
 
-        CustomRequestQueue.getInstance(ctx).getRequestQueue();
         CustomRequestQueue.getInstance(ctx).addRequest(createRequest);
     }
 

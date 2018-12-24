@@ -4,19 +4,26 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.nyxwolves.wannabuy.R;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class ChatActivity extends AppCompatActivity {
+    DatabaseReference databaseReference;
+    ChildEventListener childEventListener;
+    List<Message> messageList;
+    MessageAdapter messageAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,28 +32,34 @@ public class ChatActivity extends AppCompatActivity {
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         //Remove the dot(.) from the email ids
-        final DatabaseReference databaseReference = firebaseDatabase.getReference().child
-                ("messages")
-                .child("aaaorbhinav@gmailcom facebookidlog@gmailcom");
+        databaseReference = firebaseDatabase.getReference()
+                .child("messages")
+                .child("aaaorabhinav@gmailcom abhinavu1201@gmailcom");
 
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String time = new Date().toString();
-                databaseReference.push().setValue(new Message(time, "Test Message "));
-            }
+        messageList = new ArrayList<>();
+        setupRecyclerView();
+        attachDatabaseListener();
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
+        //Todo: To send a msg
+        String time = new Date().toString();
+        //databaseReference.push().setValue(new Message(time, "Test Message 101",
+        // "aaaorabhinav@gmail.com"));
+    }
 
-        //Todo: remove the listener in the on destory
-        databaseReference.addChildEventListener(new ChildEventListener() {
+    private void setupRecyclerView() {
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        messageAdapter = new MessageAdapter(messageList, this);
+        recyclerView.setAdapter(messageAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void attachDatabaseListener() {
+        childEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Message message = dataSnapshot.getValue(Message.class);
-                Log.d("Abhinav", message.message + " " + message.time);
+                messageList.add(message);
+                messageAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -63,7 +76,15 @@ public class ChatActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(ChatActivity.this, "An Error Occurred", Toast.LENGTH_SHORT).show();
             }
-        });
+        };
+        databaseReference.addChildEventListener(childEventListener);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        databaseReference.removeEventListener(childEventListener);
     }
 }

@@ -9,7 +9,6 @@ import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.nyxwolves.wannabuy.R;
-import com.nyxwolves.wannabuy.chat.ChatActivity;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -35,8 +34,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-                    //startActivity(new Intent(SplashScreen.this, HomeActivity.class));
-                    startActivity(new Intent(SplashScreen.this, ChatActivity.class));
+                    startActivity(new Intent(SplashScreen.this, HomeActivity.class));
                 } else {
                     startActivity(new Intent(SplashScreen.this, LoginActivity.class));
                 }

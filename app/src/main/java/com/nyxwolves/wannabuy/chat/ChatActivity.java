@@ -1,11 +1,16 @@
 package com.nyxwolves.wannabuy.chat;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
@@ -40,10 +45,20 @@ public class ChatActivity extends AppCompatActivity {
         setupRecyclerView();
         attachDatabaseListener();
 
-        //Todo: To send a msg
-        String time = new Date().toString();
-        //databaseReference.push().setValue(new Message(time, "Test Message 101",
-        // "aaaorabhinav@gmail.com"));
+        ImageButton send = findViewById(R.id.send);
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context
+                        .INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                EditText msg = findViewById(R.id.msg);
+                String time = new Date().toString();
+                databaseReference.push().setValue(new Message(time, msg.getText().toString(),
+                        "aaaorabhinav@gmail.com"));
+                msg.setText("");
+            }
+        });
     }
 
     private void setupRecyclerView() {

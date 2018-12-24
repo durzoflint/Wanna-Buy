@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
@@ -29,11 +30,18 @@ public class ChatActivity extends AppCompatActivity {
     ChildEventListener childEventListener;
     List<Message> messageList;
     MessageAdapter messageAdapter;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+
+        //Todo: Replace with the user's name
+        setTitle("Abhinav");
+
+        progressBar = findViewById(R.id.progress_bar);
+        progressBar.setVisibility(View.VISIBLE);
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         //Remove the dot(.) from the email ids
@@ -54,6 +62,7 @@ public class ChatActivity extends AppCompatActivity {
                 imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 EditText msg = findViewById(R.id.msg);
                 String time = new Date().toString();
+                //Todo: Change the email to firebase one
                 databaseReference.push().setValue(new Message(time, msg.getText().toString(),
                         "aaaorabhinav@gmail.com"));
                 msg.setText("");
@@ -75,6 +84,7 @@ public class ChatActivity extends AppCompatActivity {
                 Message message = dataSnapshot.getValue(Message.class);
                 messageList.add(message);
                 messageAdapter.notifyDataSetChanged();
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override

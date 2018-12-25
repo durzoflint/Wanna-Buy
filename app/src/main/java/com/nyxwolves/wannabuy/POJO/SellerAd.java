@@ -12,6 +12,9 @@ public class SellerAd {
     public String size;
     public String bhk = "NOT_NEEDED";
     public String isNew;
+    public String floor;
+    public String budget;
+    public String buyOrRent;
     public String budgetNegotiable;
     public String cornerPlot;
     public String  furnished  ="UNFURNISHED";

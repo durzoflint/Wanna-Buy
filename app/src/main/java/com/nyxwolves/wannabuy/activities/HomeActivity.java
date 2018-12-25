@@ -64,6 +64,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         navigationView.setNavigationItemSelectedListener(this);
 
         homeButton = findViewById(R.id.nav_home_btn);
+        homeButton.setImageDrawable(getDrawable(R.drawable.home_orange));
         homeButton.setOnClickListener(this);
 
         msgButton = findViewById(R.id.nav_msg_btn);

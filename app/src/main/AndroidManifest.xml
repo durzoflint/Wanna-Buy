@@ -116,7 +116,7 @@
 
         <activity
             android:name=".activities.RequirementsSearchActivity"
-            android:theme="@style/questionTheme" />
+            android:theme="@style/noActionbar"/>
         <activity
             android:name=".activities.FacilitiesActivities"
             android:theme="@style/questionTheme" />

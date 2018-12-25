@@ -111,7 +111,7 @@ public class RequirementHelper {
             @Override
             public void onResponse(String response) {
                 Log.d("READ_RESPONSE", response.toString());
-                getData(response);
+                getReqData(response);
                 //closeDialog();
             }
         }, new Response.ErrorListener() {
@@ -125,7 +125,7 @@ public class RequirementHelper {
         CustomRequestQueue.getInstance(ctx).addRequest(getRequirementRequest);
     }
 
-    private void getData(String readResponse) {
+    private void getReqData(String readResponse) {
         Log.d("RESPONSE_CHECK", readResponse);
         try {
             JSONObject jsonObject = new JSONObject(readResponse);

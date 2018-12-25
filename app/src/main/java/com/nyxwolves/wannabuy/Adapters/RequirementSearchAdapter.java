@@ -25,7 +25,6 @@ public class RequirementSearchAdapter extends RecyclerView.Adapter<RequirementSe
     }
 
     public void setData(List<Requirements>dataList){
-        this.dataList.clear();
         this.dataList = dataList;
         notifyDataSetChanged();
     }
@@ -46,7 +45,7 @@ public class RequirementSearchAdapter extends RecyclerView.Adapter<RequirementSe
         requirementSearchHolder.propertyLccation.setText(obj.area);
         requirementSearchHolder.propertySize.setText(obj.size);
         int price = Integer.parseInt(obj.budget);
-        if(price > 100){
+        if(price >= 100){
             float crores = (float) price/100;
             requirementSearchHolder.propertyBudget.setText(String.valueOf(crores));
             requirementSearchHolder.propertyBudgettext.setText("Crores");

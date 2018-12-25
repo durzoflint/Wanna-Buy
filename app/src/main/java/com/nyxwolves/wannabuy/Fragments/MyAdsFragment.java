@@ -8,14 +8,21 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.nyxwolves.wannabuy.Adapters.MyAdsAdapter;
+import com.nyxwolves.wannabuy.POJO.SellerAd;
+import com.nyxwolves.wannabuy.RestApiHelper.AdHelper;
 import com.nyxwolves.wannabuy.activities.AdsActivity;
 import com.nyxwolves.wannabuy.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyAdsFragment extends Fragment {
 
@@ -24,18 +31,23 @@ public class MyAdsFragment extends Fragment {
     SharedPreferences sharedPreferences;
     CardView firstAdCard;
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    MyAdsAdapter adsAdapter;
+
+    public MyAdsFragment(){
+
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View v = inflater.inflate(R.layout.fragment_ads,container,false);
+       return inflater.inflate(R.layout.fragment_ads,container,false);
+    }
 
-        myAdList = v.findViewById(R.id.my_ads_list);
-        postReqBtn = v.findViewById(R.id.first_ad_btn);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        postReqBtn = view.findViewById(R.id.first_ad_btn);
         postReqBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,14 +55,24 @@ public class MyAdsFragment extends Fragment {
             }
         });
 
-        firstAdCard = v.findViewById(R.id.first_time_ad_layout);
+        firstAdCard = view.findViewById(R.id.first_time_ad_layout);
         firstAdCard.setVisibility(View.GONE);
 
         sharedPreferences = getActivity().getSharedPreferences(getString(R.string.shared_pref), Context.MODE_PRIVATE);
-        if(sharedPreferences.getBoolean("FIRST_REQ",true)){
+        if(sharedPreferences.getBoolean(getString(R.string.shared_first_ad),true)){
             firstAdCard.setVisibility(View.VISIBLE);
         }
 
-        return v;
+        //recyclerview
+        myAdList = view.findViewById(R.id.my_ads_list);
+        myAdList.setVisibility(View.VISIBLE);
+        myAdList.setHasFixedSize(true);
+        AdHelper adhelper = new AdHelper(getActivity());
+        adhelper.readAd();
+        List<SellerAd> dataList = adhelper.adDataList;
+        adsAdapter = new MyAdsAdapter(getActivity());
+        adsAdapter.setData(dataList);
+        myAdList.setLayoutManager(new LinearLayoutManager(getContext()));
+        myAdList.setAdapter(adsAdapter);
     }
 }

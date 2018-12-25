@@ -9,6 +9,7 @@ import android.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.support.v7.widget.Toolbar;
 
 import com.nyxwolves.wannabuy.Adapters.RequirementSearchAdapter;
 import com.nyxwolves.wannabuy.R;
@@ -18,11 +19,14 @@ public class RequirementsSearchActivity extends AppCompatActivity {
 
     RecyclerView searchList;
     RequirementSearchAdapter searchAdapter;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requirements_search);
 
+        toolbar = findViewById(R.id.search_toolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(" ");
 
         searchList = findViewById(R.id.search_result_list);

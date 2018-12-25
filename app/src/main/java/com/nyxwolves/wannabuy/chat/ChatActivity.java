@@ -30,12 +30,13 @@ import java.util.Date;
 import java.util.List;
 
 public class ChatActivity extends AppCompatActivity {
+    FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     ChildEventListener childEventListener;
     List<Message> messageList;
     MessageAdapter messageAdapter;
     ProgressBar progressBar;
-    String name, email, userEmail;
+    String name, email, source, userEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,18 +49,22 @@ public class ChatActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
         Intent intent = getIntent();
         name = intent.getStringExtra(ContactActivity.NAME);
         email = intent.getStringExtra(ContactActivity.EMAIL);
+        source = intent.getStringExtra(ContactActivity.SOURCE);
+
+        if (!source.equals(ContactActivity.CONTACT))
+            addContact();
 
         String node = (email.compareTo(userEmail) > 0) ? (userEmail + " " + email) : (email + " "
                 + userEmail);
-        node = node.replace(".", "");
+        node = node.replaceAll("\\.", "");
 
         setTitle(name);
 
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference()
                 .child("messages")
                 .child(node);
@@ -78,7 +83,7 @@ public class ChatActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Toast.makeText(ChatActivity.this, "Some Error Occurred", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -93,6 +98,33 @@ public class ChatActivity extends AppCompatActivity {
                 String time = new Date().toString();
                 databaseReference.push().setValue(new Message(time, msg.getText().toString(), userEmail));
                 msg.setText("");
+            }
+        });
+    }
+
+    private void addContact() {
+        final DatabaseReference contactReference = firebaseDatabase.getReference()
+                .child("messages").child("users").child(userEmail.replaceAll("\\.", ""));
+        contactReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    boolean found = false;
+                    Iterable<DataSnapshot> emails = dataSnapshot.getChildren();
+                    for (DataSnapshot node : emails) {
+                        if (node.getValue().toString().equals(email))
+                            found = true;
+                    }
+                    if (!found)
+                        contactReference.push().setValue(email);
+                } else {
+                    contactReference.push().setValue(email);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(ChatActivity.this, "Some Error Occurred", Toast.LENGTH_SHORT).show();
             }
         });
     }

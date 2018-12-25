@@ -1,6 +1,5 @@
 package com.nyxwolves.wannabuy.Helpers;
 
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -26,7 +25,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.nyxwolves.wannabuy.Activities.HomeActivity;
+import com.nyxwolves.wannabuy.activities.HomeActivity;
 import com.nyxwolves.wannabuy.R;
 
 public class FirebaseHelper {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.RentalPropertyType">
+    tools:context=".activities.RentalPropertyType">
 
     <ImageView
         android:id="@+id/rent_property_type_image"

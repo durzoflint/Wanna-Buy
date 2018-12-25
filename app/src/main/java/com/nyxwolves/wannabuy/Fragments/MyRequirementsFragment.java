@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.nyxwolves.wannabuy.Activities.AdsActivity;
+import com.nyxwolves.wannabuy.activities.AdsActivity;
 import com.nyxwolves.wannabuy.R;
 
 public class MyRequirementsFragment extends Fragment {

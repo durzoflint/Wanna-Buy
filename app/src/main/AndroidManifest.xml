@@ -16,6 +16,27 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCJyWOI91uaP3SaGzsuful39Iqi0_A5Wzc"/>
 
+        <service android:name=".notifications.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!--
+     Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notifications" />
+        <!--
+             Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -37,7 +58,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.SplashScreen"
+            android:name=".activities.SplashScreen"
             android:noHistory="true"
             android:theme="@style/noActionbar">
             <intent-filter>
@@ -47,92 +68,96 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.LoginActivity"
+            android:name=".activities.LoginActivity"
             android:theme="@style/noActionbar" />
         <activity
-            android:name=".Activities.NameAndEmail"
+            android:name=".activities.NameAndEmail"
             android:theme="@style/noActionbar" />
         <activity
-            android:name=".Activities.PasswordActivity"
+            android:name=".activities.PasswordActivity"
             android:theme="@style/noActionbar" />
         <activity
-            android:name=".Activities.HomeActivity"
+            android:name=".activities.HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/noActionbar" />
         <activity
-            android:name=".Activities.EmailLogin"
+            android:name=".activities.EmailLogin"
             android:theme="@style/noActionbar" />
         <activity
-            android:name=".Activities.BuyOrRent"
+            android:name=".activities.BuyOrRent"
             android:theme="@style/questionTheme" />
         <activity
-            android:name=".Activities.AreaLocality"
+            android:name=".activities.AreaLocality"
             android:theme="@style/questionTheme" />
         <activity
-            android:name=".Activities.PropertyType"
+            android:name=".activities.PropertyType"
             android:theme="@style/questionTheme" />
         <activity
-            android:name=".Activities.PropertySubType"
+            android:name=".activities.PropertySubType"
             android:theme="@style/questionTheme" />
         <activity
-            android:name=".Activities.FurnishedOrNot"
+            android:name=".activities.FurnishedOrNot"
             android:theme="@style/questionTheme" />
         <activity
-            android:name=".Activities.Bhk"
+            android:name=".activities.Bhk"
             android:theme="@style/questionTheme" />
         <activity
-            android:name=".Activities.NewOrResale"
+            android:name=".activities.NewOrResale"
             android:theme="@style/questionTheme" />
         <activity
-            android:name=".Activities.Budget"
+            android:name=".activities.Budget"
             android:theme="@style/questionTheme" />
         <activity
-            android:name=".Activities.PropertySize"
+            android:name=".activities.PropertySize"
             android:theme="@style/questionTheme" />
         <activity
-            android:name=".Activities.FacingActivity"
+            android:name=".activities.FacingActivity"
+            android:theme="@style/questionTheme" />
+
+        <activity
+            android:name=".activities.RequirementsSearchActivity"/>
+        <activity
+            android:name=".activities.FacilitiesActivities"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".activities.ApprovalActivity"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".activities.RoadWidth"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".activities.RentalEndDate"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".activities.RentalPropertyType"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".activities.RentalAdvance"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".activities.RentalTenantName"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".activities.ROIRentalActivity"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".activities.RentalInvestment"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".activities.PetsActivity"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".activities.AdsActivity"
+            android:theme="@style/questionTheme" />
+
+        <activity android:name=".activities.MessageActivity"
             android:theme="@style/questionTheme"/>
-        <activity
-            android:name=".Activities.RequirementsSearchActivity"/>
-        <activity
-            android:name=".Activities.FacilitiesActivities"
-            android:theme="@style/questionTheme" />
-        <activity
-            android:name=".Activities.ApprovalActivity"
-            android:theme="@style/questionTheme" />
-        <activity
-            android:name=".Activities.RoadWidth"
-            android:theme="@style/questionTheme" />
-        <activity
-            android:name=".Activities.RentalEndDate"
-            android:theme="@style/questionTheme" />
-        <activity
-            android:name=".Activities.RentalPropertyType"
-            android:theme="@style/questionTheme" />
-        <activity
-            android:name=".Activities.RentalAdvance"
-            android:theme="@style/questionTheme" />
-        <activity
-            android:name=".Activities.RentalTenantName"
-            android:theme="@style/questionTheme" />
-        <activity
-            android:name=".Activities.ROIRentalActivity"
-            android:theme="@style/questionTheme" />
-        <activity
-            android:name=".Activities.RentalInvestment"
-            android:theme="@style/questionTheme" />
-        <activity
-            android:name=".Activities.PetsActivity"
-            android:theme="@style/questionTheme" />
-        <activity
-            android:name=".Activities.AdsActivity"
-            android:theme="@style/questionTheme" />
-        <activity android:name=".Activities.MessageActivity"
-            android:theme="@style/questionTheme"/>
-        <activity android:name=".Activities.MyAdsActivity"
+        <activity android:name=".activities.MyAdsActivity"
             android:theme="@style/noActionbar"/>
-        <activity android:name=".Activities.AccountActivity"
-            android:theme="@style/noActionbar"></activity>
+        <activity android:name=".activities.AccountActivity"
+            android:theme="@style/noActionbar" />
+
+        <activity android:name=".chat.ChatActivity" />
     </application>
 
 </manifest>

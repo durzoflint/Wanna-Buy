@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.Bhk">
+    tools:context=".activities.Bhk">
 
     <ImageView
         android:id="@+id/bhk_image_view"

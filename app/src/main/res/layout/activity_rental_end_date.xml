@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.RentalEndDate">
+    tools:context=".activities.RentalEndDate">
 
     <ImageView
         android:id="@+id/rent_date_end_image"

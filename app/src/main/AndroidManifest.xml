@@ -115,7 +115,8 @@
             android:theme="@style/questionTheme" />
 
         <activity
-            android:name=".activities.RequirementsSearchActivity"/>
+            android:name=".activities.RequirementsSearchActivity"
+            android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.FacilitiesActivities"
             android:theme="@style/questionTheme" />
@@ -152,8 +153,10 @@
 
         <activity android:name=".activities.MessageActivity"
             android:theme="@style/questionTheme"/>
+
         <activity android:name=".activities.MyAdsActivity"
             android:theme="@style/noActionbar"/>
+
         <activity android:name=".activities.AccountActivity"
             android:theme="@style/noActionbar" />
 

@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.nyxwolves.wannabuy.R;
+import com.nyxwolves.wannabuy.contacts.Contact;
 import com.nyxwolves.wannabuy.contacts.ContactActivity;
 
 import java.util.ArrayList;
@@ -110,15 +111,16 @@ public class ChatActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     boolean found = false;
-                    Iterable<DataSnapshot> emails = dataSnapshot.getChildren();
-                    for (DataSnapshot node : emails) {
-                        if (node.getValue().toString().equals(email))
+                    Iterable<DataSnapshot> contacts = dataSnapshot.getChildren();
+                    for (DataSnapshot node : contacts) {
+                        Contact contact = node.getValue(Contact.class);
+                        if (contact.email.equals(email))
                             found = true;
                     }
                     if (!found)
-                        contactReference.push().setValue(email);
+                        contactReference.push().setValue(new Contact(name, email));
                 } else {
-                    contactReference.push().setValue(email);
+                    contactReference.push().setValue(new Contact(name, email));
                 }
             }
 

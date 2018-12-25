@@ -64,6 +64,7 @@ public class ContactActivity extends AppCompatActivity {
                 if (!dataSnapshot.exists()) {
                     Toast.makeText(ContactActivity.this, "No Contacts so far. Chat with someone " +
                             "to add contacts", Toast.LENGTH_SHORT).show();
+                    finish();
                 } else {
                     Iterable<DataSnapshot> contacts = dataSnapshot.getChildren();
                     for (DataSnapshot node : contacts) {

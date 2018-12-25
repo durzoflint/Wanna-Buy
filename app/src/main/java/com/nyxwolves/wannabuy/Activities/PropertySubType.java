@@ -84,39 +84,49 @@ public class PropertySubType extends AppCompatActivity implements View.OnClickLi
         switch (v.getId()){
             case R.id.resi_house:
                 subPropertyType = getString(R.string.house);
+                Requirements.getInstance().subType = subPropertyType;
                 break;
             case R.id.resi_villa:
                 subPropertyType = getString(R.string.villa);
+                Requirements.getInstance().subType = subPropertyType;
                 break;
             case R.id.resi_apartments:
                 subPropertyType = getString(R.string.apartments);
+                Requirements.getInstance().subType = subPropertyType;
                 break;
             case R.id.resi_land:
                 subPropertyType = getString(R.string.land);
+                Requirements.getInstance().subType = subPropertyType;
                 break;
             case R.id.comm_land:
                 subPropertyType = getString(R.string.land);
+                Requirements.getInstance().subType = subPropertyType;
                 break;
             case R.id.comm_showroom:
                 subPropertyType = getString(R.string.showroom);
+                Requirements.getInstance().subType = subPropertyType;
                 break;
             case R.id.comm_office_space:
                 subPropertyType = getString(R.string.office_space);
+                Requirements.getInstance().subType = subPropertyType;
                 break;
             case R.id.indus_cold_storage:
                 subPropertyType = getString(R.string.cold_storage);
+                Requirements.getInstance().subType = subPropertyType;
                 break;
             case R.id.indus_factory:
                 subPropertyType = getString(R.string.factory);
+                Requirements.getInstance().subType = subPropertyType;
                 break;
             case R.id.indus_warehouse:
                 subPropertyType = getString(R.string.warehouse);
+                Requirements.getInstance().subType = subPropertyType;
                 break;
             case R.id.indus_land:
                 subPropertyType = getString(R.string.land);
+                Requirements.getInstance().subType = subPropertyType;
                 break;
         }
-        Requirements.getInstance().subType = subPropertyType;
     }
 }
 

@@ -1,6 +1,7 @@
 package com.nyxwolves.wannabuy.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.nyxwolves.wannabuy.Activities.AdsActivity;
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
 import com.nyxwolves.wannabuy.RestApiHelper.AdHelper;
@@ -45,12 +47,20 @@ public class RequirementSearchAdapter extends RecyclerView.Adapter<RequirementSe
         requirementSearchHolder.propertyType.setText(obj.type);
         requirementSearchHolder.propertyLccation.setText(obj.area);
         requirementSearchHolder.propertySize.setText(obj.size);
-        requirementSearchHolder.propertyBudget.setText(obj.budget);
+        int price = Integer.parseInt(obj.budget);
+        if(price > 100){
+            float crores = (float) price/100;
+            requirementSearchHolder.propertyBudget.setText(String.valueOf(crores));
+            requirementSearchHolder.propertyBudgettext.setText("Crores");
+        }else{
+            requirementSearchHolder.propertyBudget.setText(String.valueOf(price));
+            requirementSearchHolder.propertyBudgettext.setText("Lakhs");
+        }
+
         requirementSearchHolder.postAd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AdHelper helper = new AdHelper(ctx);
-                helper.createAd();
+               ctx.startActivity(new Intent(ctx, AdsActivity.class));
             }
         });
     }

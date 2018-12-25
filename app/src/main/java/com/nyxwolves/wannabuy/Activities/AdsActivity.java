@@ -4,20 +4,25 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TextInputEditText;
-import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.AutocompleteFilter;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.Places;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.nyxwolves.wannabuy.POJO.SellerAd;
 import com.nyxwolves.wannabuy.R;
-import com.nyxwolves.wannabuy.RestApiHelper.AdHelper;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -34,13 +39,15 @@ public class AdsActivity extends AppCompatActivity implements SeekBar.OnSeekBarC
     RadioButton resiBtn,commBtn,indusBtn,instiBtn,indusLanBtn,indusFactoryBtn,indusWareBtn,indusColdBtn;
 
     final int IMAGE_REQ=1002;
-
+    final int LOCATION_REQUEST = 1003;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ads);
 
         cityInput = findViewById(R.id.ads_area_input);
+        cityInput.setOnClickListener(this);
+
         doorNumberInput = findViewById(R.id.ads_door_input);
         addressInput = findViewById(R.id.ads_address_input);
 
@@ -77,8 +84,26 @@ public class AdsActivity extends AppCompatActivity implements SeekBar.OnSeekBarC
                     startActivity(i);
                 }
                 break;
+            case R.id.ads_area_input:
+                getLocation();
+                break;
         }
     }
+
+    private void getLocation(){
+        try {
+            AutocompleteFilter filter = new AutocompleteFilter.Builder().setCountry("IN").build();
+            Intent locationIntent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                    .setFilter(filter)
+                    .build(this);
+            startActivityForResult(locationIntent, LOCATION_REQUEST);
+        } catch (GooglePlayServicesNotAvailableException e) {
+            Toast.makeText(this, "Google Play Services missing", Toast.LENGTH_SHORT).show();
+        } catch (GooglePlayServicesRepairableException e) {
+            Toast.makeText(this, "Google Play Services error", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     private boolean checkAddress(){
         if(addressInput.getText().toString().length() > 0){
@@ -240,9 +265,11 @@ public class AdsActivity extends AppCompatActivity implements SeekBar.OnSeekBarC
                 break;
             case R.id.negotiable_btn:
                 SellerAd.getInstance().budgetNegotiable = getString(R.string.negotiable);
+                Log.d("TEST","REACHED");
                 break;
             case R.id.non_negotiable_btn:
                 SellerAd.getInstance().budgetNegotiable = getString(R.string.non_negotiable);
+                Log.d("TEST","REACH00ED");
                 break;
         }
     }
@@ -259,6 +286,10 @@ public class AdsActivity extends AppCompatActivity implements SeekBar.OnSeekBarC
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == IMAGE_REQ && resultCode == RESULT_OK && data != null){
             propertyPic.setImageURI(data.getData());
+        }
+        if(requestCode == LOCATION_REQUEST && resultCode == RESULT_OK){
+            Place place = PlaceAutocomplete.getPlace(AdsActivity.this,data);
+            cityInput.setText(place.getName().toString());
         }
     }
 

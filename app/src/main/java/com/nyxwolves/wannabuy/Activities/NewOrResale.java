@@ -43,10 +43,10 @@ public class NewOrResale extends AppCompatActivity {
     public void onRadioButtonClicked(View v){
         switch (v.getId()){
             case R.id.new_btn:
-                newOrResale = "NEW";
+                newOrResale = "NEW_PROPERTY";
                 break;
             case R.id.resale_btn:
-                newOrResale = "RESALE";
+                newOrResale = "RESALE_PROPERTY";
                 break;
         }
     }

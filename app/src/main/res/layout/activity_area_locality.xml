@@ -47,7 +47,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/location_5" />
+        app:layout_constraintTop_toBottomOf="@+id/location_five" />
 
     <Button
         android:id="@+id/area_next_btn"
@@ -68,9 +68,16 @@
 
     <TextView
         android:id="@+id/location_one"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:maxLines="1"
+        android:padding="5dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toStartOf="@+id/location_two"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,36 +85,59 @@
 
     <TextView
         android:id="@+id/location_two"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/location_3"
+        android:layout_marginEnd="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:maxLines="1"
+        android:padding="5dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/location_three"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/location_one"
         app:layout_constraintTop_toTopOf="@+id/location_one" />
 
     <TextView
-        android:id="@+id/location_3"
-        android:layout_width="wrap_content"
+        android:id="@+id/location_three"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/location_4"
+        android:layout_marginEnd="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:maxLines="1"
+        android:padding="5dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/location_four"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/location_two"
         app:layout_constraintTop_toTopOf="@+id/location_two" />
 
     <TextView
-        android:id="@+id/location_4"
-        android:layout_width="wrap_content"
+        android:id="@+id/location_four"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:maxLines="1"
+        android:padding="5dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/location_3"
-        app:layout_constraintTop_toTopOf="@+id/location_3" />
+        app:layout_constraintStart_toEndOf="@+id/location_three"
+        app:layout_constraintTop_toTopOf="@+id/location_three" />
 
     <TextView
-        android:id="@+id/location_5"
-        android:layout_width="wrap_content"
+        android:id="@+id/location_five"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:maxLines="1"
+        android:padding="5dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="@+id/location_one"
         app:layout_constraintTop_toBottomOf="@+id/location_one" />
 

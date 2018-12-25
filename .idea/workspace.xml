@@ -17,6 +17,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="READ_RES" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
@@ -36,12 +37,29 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$/app">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="WannaBuy" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="WannaBuy" type="f1a62948:ProjectNode" />
+                <item name=":app" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="WannaBuy" type="f1a62948:ProjectNode" />
+                <item name=":app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
             </expand>
             <select />
@@ -52,83 +70,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="HomeActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/HomeActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="84" column="40" lean-forward="false" selection-start-line="84" selection-start-column="40" selection-end-line="84" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_home.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="8" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_home_content.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home_content.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="19" column="34" lean-forward="true" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_message.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_message.xml">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
+      <file leaf-file-name="requirements_search.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/requirements_search.xml">
           <provider selected="true" editor-type-id="android-designer2">
             <state />
           </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="317">
+              <caret line="78" column="44" lean-forward="false" selection-start-line="78" selection-start-column="44" selection-end-line="78" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
         </entry>
       </file>
-      <file leaf-file-name="MessageActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/MessageActivity.java">
+      <file leaf-file-name="RequirementsSearchActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/RequirementsSearchActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="220">
-              <caret line="14" column="4" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+              <caret line="54" column="21" lean-forward="false" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
+              <folding>
+                <element signature="e#2290#2324#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RequirementSearchAdapter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Adapters/RequirementSearchAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="50" column="6" lean-forward="false" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_my_ads.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_my_ads.xml">
+      <file leaf-file-name="RequirementSearchHolder.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Adapters/RequirementSearchHolder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyAdsActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/MyAdsActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state relative-caret-position="260">
+              <caret line="19" column="60" lean-forward="false" selection-start-line="19" selection-start-column="60" selection-end-line="19" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -2198,61 +2179,61 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_road_width.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/POJO/Requirements.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_facing.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/Bhk.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/Budget.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/NewOrResale.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/FacingActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/PropertySubType.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_property_size.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_date_range.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_rental_end_date.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Adapters/MatchesViewHolder.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Adapters/MatchesAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/bottom_bar.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/RentalEndDate.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/RentalPropertyType.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_rental_property_type.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/RentalAdvance.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_rental_advance.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_rental_tenant_name.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/RentalTenantName.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/ROIRentalActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_roirental.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/RentalInvestment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_rental_investment.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/PetsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/ROIRentalActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/RentalPropertyType.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_rental_advance.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_rental_end_date.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_rental_investment.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_rental_property_type.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_rental_tenant_name.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_pets.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_budget.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/BuyOrRent.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_buy_or_rent.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_bhk.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_new_or_resale.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_property_sub_type.xml" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_property_type.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/PropertySize.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/PropertyType.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/direction_check_box.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_area_locality.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/AreaLocality.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/HomeActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/RestApiHelper/RequirementHelper.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/POJO/SellerAd.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/property_subtype_radio_grp_horizontal.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_ads.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/AdsActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_ads.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/RestApiHelper/AdHelper.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/MessageActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/MyAdsActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/AccountActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_roirental.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_home_content.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Fragments/MyMatches.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_matches.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Fragments/MyPostedAds.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Fragments/MyMatchesFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_my_ads.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/MyAdsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/PropertySize.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/selected_city_item.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/selected_location.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_area_locality.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/PropertySubType.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/AreaLocality.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/AdsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_ads.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/POJO/Requirements.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/Bhk.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_my_requirement.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_ads.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Fragments/MyRequirementsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Adapters/MyAdsViewHolder.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/RestApiHelper/AdHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Adapters/MyAdsAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Fragments/ViewPagerAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/HomeActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Fragments/MyAdsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/NewOrResale.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/RequirementsSearchActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/RestApiHelper/RequirementHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/requirements_search.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Adapters/RequirementSearchHolder.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Adapters/RequirementSearchAdapter.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="601" />
     <option name="y" value="20" />
     <option name="width" value="755" />
@@ -2274,38 +2255,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="WannaBuy" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="WannaBuy" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="WannaBuy" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="wannabuy" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WannaBuy" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="wannabuy" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="Activities" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -2352,6 +2301,63 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="WannaBuy" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="WannaBuy" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="WannaBuy" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="wannabuy" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WannaBuy" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="wannabuy" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Activities" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WannaBuy" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="wannabuy" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Adapters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WannaBuy" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="wannabuy" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Fragments" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WannaBuy" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="WannaBuy" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2360,7 +2366,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="show.migrate.to.gradle.popup" value="false" />
     <property name="device.picker.selection" value="ecba4707cf4" />
-    <property name="SearchEverywhereHistoryKey" value="activity_home&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_home_content.xml&#10;AdHelper&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/RestApiHelper/AdHelper.java&#10;AdsActivity&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/Activities/AdsActivity.java&#10;fragment_ads&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/fragment_ads.xml&#10;proper&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/property_subtype_radio_grp_horizontal.xml&#10;SEl&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/POJO/SellerAd.java&#10;Ads&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_ads.xml&#10;Custom&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/RestApiHelper/CustomRequestQueue.java&#10;Requireme&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/RestApiHelper/RequirementHelper.java&#10;Require&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/POJO/Requirements.java&#10;Home&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/Activities/HomeActivity.java&#10;Budget&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/Activities/Budget.java&#10;AdH&#9;PSI&#9;JAVA://com.nyxwolves.wannabuy.RestApiHelper.AdHelper&#10;Seller&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/POJO/SellerAd.java&#10;prop&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/property_subtype_radio_grp_horizontal.xml&#10;activity_ads&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_ads.xml&#10;Strings&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/values/strings.xml&#10;are&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_area_locality.xml&#10;direc&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/direction_check_box.xml&#10;activity_&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_ads.xml&#10;property&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/property_subtype_radio_grp_horizontal.xml&#10;Proper&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/Activities/PropertySize.java&#10;activity_facing&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_facing.xml&#10;activity_pr&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_property_sub_type.xml&#10;String&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/values/strings.xml&#10;activity_new&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_new_or_resale.xml&#10;bu&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/Activities/BuyOrRent.java&#10;activity_re&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_rental_advance.xml&#10;Strin&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/values/strings.xml&#10;activity_property&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_property_sub_type.xml&#10;activity_fac&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_facing.xml&#10;activity_prope&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_property_type.xml&#10;activity_proper&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_property_sub_type.xml&#10;activity_bu&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_budget.xml&#10;activity_bhk&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_bhk.xml&#10;activity&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_facing.xml&#10;activity_sub&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_property_sub_type.xml&#10;Requirem&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/POJO/Requirements.java&#10;activity_s&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_property_size.xml&#10;activity_budget&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_budget.xml&#10;requirem&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/requirements_search.xml&#10;ADB wifi&#9;ACTION&#9;Adbwifi&#10;HomeAc&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/Activities/HomeActivity.java&#10;activity_size&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_property_size.xml&#10;activity_bud&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_budget.xml&#10;HomeA&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/Activities/HomeActivity.java&#10;Strings.xm&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/values/strings.xml&#10;activity_prop&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_property_sub_type.xml&#10;activity_area&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_area_locality.xml&#10;styles&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/values/styles.xml" />
+    <property name="SearchEverywhereHistoryKey" value="require&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/requirements_search.xml&#10;nEW&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/Activities/NewOrResale.java&#10;Home&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/Activities/HomeActivity.java&#10;Requ&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/RestApiHelper/RequirementHelper.java&#10;AdHelper&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/RestApiHelper/AdHelper.java&#10;Require&#9;PSI&#9;JAVA://com.nyxwolves.wannabuy.RestApiHelper.RequirementHelper&#10;String&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/values/strings.xml&#10;Bhk&#9;PSI&#9;JAVA://com.nyxwolves.wannabuy.Activities.Bhk&#10;activity_ads&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_ads.xml&#10;Seller&#9;PSI&#9;JAVA://com.nyxwolves.wannabuy.POJO.SellerAd&#10;AdH&#9;PSI&#9;JAVA://com.nyxwolves.wannabuy.RestApiHelper.AdHelper&#10;Requi&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/RestApiHelper/RequirementHelper.java&#10;Area&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/Activities/AreaLocality.java&#10;activity_area&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_area_locality.xml&#10;Proper&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/Activities/PropertySubType.java&#10;Re&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/POJO/Requirements.java&#10;Requirements&#9;PSI&#9;JAVA://com.nyxwolves.wannabuy.POJO.Requirements&#10;bottom&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/bottom_bar.xml&#10;activity_home&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_home_content.xml&#10;activity_my&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_my_ads.xml&#10;activity_roi&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_roirental.xml&#10;activity_pets&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_pets.xml&#10;activity_inv&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_rental_investment.xml&#10;activity_rental&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_rental_tenant_name.xml&#10;activity_rental_ad&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_rental_advance.xml&#10;RentalAdva&#9;PSI&#9;JAVA://com.nyxwolves.wannabuy.Activities.RentalAdvance&#10;activity&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_rental_property_type.xml&#10;activity_end&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_rental_end_date.xml&#10;str&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/values/strings.xml&#10;activity_se&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_requirements_search.xml&#10;AdsActivity&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/Activities/AdsActivity.java&#10;fragment_ads&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/fragment_ads.xml&#10;proper&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/property_subtype_radio_grp_horizontal.xml&#10;SEl&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/POJO/SellerAd.java&#10;Ads&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_ads.xml&#10;Custom&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/RestApiHelper/CustomRequestQueue.java&#10;Requireme&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/RestApiHelper/RequirementHelper.java&#10;Budget&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/Activities/Budget.java&#10;prop&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/property_subtype_radio_grp_horizontal.xml&#10;Strings&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/values/strings.xml&#10;are&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_area_locality.xml&#10;direc&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/direction_check_box.xml&#10;activity_&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_ads.xml&#10;property&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/property_subtype_radio_grp_horizontal.xml&#10;activity_facing&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_facing.xml&#10;activity_pr&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_property_sub_type.xml&#10;activity_new&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_new_or_resale.xml&#10;bu&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/java/com/nyxwolves/wannabuy/Activities/BuyOrRent.java&#10;activity_re&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/layout/activity_rental_advance.xml&#10;Strin&#9;FILE&#9;file://C:/Users/sibi/Documents/AndroidProjects/WannaBuy/app/src/main/res/values/strings.xml" />
     <property name="android.profiler.active" value="true" />
     <property name="ExportApk.ApkPath" value="C:\Users\sibi\Documents\AndroidProjects\WannaBuy\app" />
     <property name="ExportApk.Flavors" value="" />
@@ -2588,78 +2594,43 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14220877" sideWeight="0.5065789" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22203948" sideWeight="0.5030257" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Flutter Outline" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.4969743" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22203948" sideWeight="0.4969743" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.49546143" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15733737" sideWeight="0.49342105" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Flutter Inspector" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Assistant" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20574887" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-    </layout>
-    <layout-to-restore>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14220877" sideWeight="0.5065789" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22203948" sideWeight="0.5030257" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Flutter Outline" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.4969743" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Assistant" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20574887" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22203948" sideWeight="0.4969743" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.49546143" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15733737" sideWeight="0.49342105" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Flutter Inspector" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Assistant" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20574887" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -2673,458 +2644,553 @@
     <option name="LAST_COMMIT_MESSAGE" value="commit made by sibi" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_rental_advance.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/RentalEndDate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="73" column="51" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="73" selection-end-column="51" />
+        <state relative-caret-position="86">
+          <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+          <folding>
+            <element signature="e#1178#1179#0" expanded="false" />
+          </folding>
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_rental_tenant_name.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="43" column="41" lean-forward="false" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="41" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/RentalTenantName.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/RentalInvestment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="260">
+          <caret line="28" column="85" lean-forward="false" selection-start-line="28" selection-start-column="85" selection-end-line="28" selection-end-column="85" />
+          <folding>
+            <element signature="e#718#975#0" expanded="false" />
+            <element signature="e#974#975#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/ROIRentalActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="13" column="5" lean-forward="false" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+        <state relative-caret-position="100">
+          <caret line="17" column="56" lean-forward="true" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
+          <folding>
+            <element signature="e#687#986#0" expanded="false" />
+            <element signature="e#985#986#0" expanded="false" />
+          </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_roirental.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="43" column="38" lean-forward="false" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/RentalInvestment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="13" column="5" lean-forward="false" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_rental_investment.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="43" column="45" lean-forward="false" selection-start-line="43" selection-start-column="45" selection-end-line="43" selection-end-column="45" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/PetsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="320">
+          <caret line="24" column="18" lean-forward="false" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+          <folding>
+            <element signature="e#605#763#0" expanded="false" />
+            <element signature="e#762#763#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_pets.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="75" column="57" lean-forward="false" selection-start-line="75" selection-start-column="57" selection-end-line="75" selection-end-column="57" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/RentalEndDate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="29" column="40" lean-forward="false" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/BuyOrRent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="36" column="58" lean-forward="false" selection-start-line="36" selection-start-column="58" selection-end-line="36" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_budget.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="-1109">
-          <caret line="47" column="61" lean-forward="false" selection-start-line="47" selection-start-column="61" selection-end-line="47" selection-end-column="61" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/size_property.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_buy_or_rent.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="29" column="28" lean-forward="false" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_property_type.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_new_or_resale.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="61" column="34" lean-forward="false" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-27">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="20">
+          <caret line="51" column="35" lean-forward="true" selection-start-line="42" selection-start-column="8" selection-end-line="51" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_property_sub_type.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="237" column="17" lean-forward="true" selection-start-line="172" selection-start-column="4" selection-end-line="237" selection-end-column="17" />
-        </state>
-      </provider>
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bhk.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="126" column="0" lean-forward="true" selection-start-line="54" selection-start-column="4" selection-end-line="126" selection-end-column="0" />
+        <state relative-caret-position="431">
+          <caret line="114" column="0" lean-forward="true" selection-start-line="47" selection-start-column="4" selection-end-line="114" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/RentalPropertyType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_rental_advance.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="37" lean-forward="false" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_rental_end_date.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_facing.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="107" column="0" lean-forward="true" selection-start-line="48" selection-start-column="4" selection-end-line="107" selection-end-column="0" />
+        <state relative-caret-position="280">
+          <caret line="14" column="37" lean-forward="false" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_rental_investment.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="14" column="37" lean-forward="false" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_rental_property_type.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="37" lean-forward="false" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_rental_tenant_name.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="14" column="37" lean-forward="false" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_pets.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="37" lean-forward="false" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_roirental.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="14" column="38" lean-forward="false" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_matches.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Fragments/MyMatchesFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="42" column="55" lean-forward="false" selection-start-line="42" selection-start-column="55" selection-end-line="42" selection-end-column="55" />
+        <state relative-caret-position="240">
+          <caret line="12" column="49" lean-forward="false" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home_content.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="38" lean-forward="false" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_property_type.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/FurnishedOrNot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="103" column="39" lean-forward="false" selection-start-line="103" selection-start-column="39" selection-end-line="103" selection-end-column="39" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/PropertyType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="52" column="56" lean-forward="false" selection-start-line="52" selection-start-column="56" selection-end-line="52" selection-end-column="56" />
+        <state relative-caret-position="-120">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/PropertySize.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-71">
-          <caret line="57" column="57" lean-forward="false" selection-start-line="57" selection-start-column="57" selection-end-line="57" selection-end-column="57" />
+        <state relative-caret-position="100">
+          <caret line="71" column="61" lean-forward="false" selection-start-line="71" selection-start-column="61" selection-end-line="71" selection-end-column="61" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/direction_check_box.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="72" column="39" lean-forward="false" selection-start-line="72" selection-start-column="39" selection-end-line="72" selection-end-column="39" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_my_ads.xml">
       <provider selected="true" editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_property_size.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="26" column="0" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="26" selection-end-column="0" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="29" column="40" lean-forward="false" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/bottom_bar.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/AreaLocality.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="37" column="22" lean-forward="false" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
+        <state relative-caret-position="60">
+          <caret line="3" column="55" lean-forward="false" selection-start-line="3" selection-start-column="55" selection-end-line="3" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="18" lean-forward="true" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/selected_city_item.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/selected_location.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="45" lean-forward="false" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_area_locality.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="52" column="34" lean-forward="true" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/Budget.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="103" column="34" lean-forward="false" selection-start-line="103" selection-start-column="34" selection-end-line="103" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/POJO/Requirements.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="45" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="14" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/RestApiHelper/CustomRequestQueue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-140">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/RestApiHelper/RequirementHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="740">
-          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/property_subtype_radio_grp_horizontal.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="26" column="35" lean-forward="false" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="android-designer2">
         <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="136" column="8" lean-forward="false" selection-start-line="136" selection-start-column="8" selection-end-line="136" selection-end-column="8" />
+          <folding>
+            <element signature="e#1435#1462#0" expanded="false" />
+            <element signature="e#2449#2463#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" column="66" lean-forward="false" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
+          <folding>
+            <element signature="e#332#350#0" expanded="false" />
+            <element signature="e#733#758#0" expanded="false" />
+            <element signature="e#960#978#0" expanded="false" />
+            <element signature="e#1385#1419#0" expanded="false" />
+            <element signature="e#2312#2341#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/PropertyType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-760">
+          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/PropertySubType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="126" column="69" lean-forward="false" selection-start-line="126" selection-start-column="69" selection-end-line="126" selection-end-column="69" />
+          <folding>
+            <element signature="e#1895#1928#0" expanded="false" />
+            <element signature="e#1963#1994#0" expanded="false" />
+            <element signature="e#2386#2416#0" expanded="false" />
+            <element signature="e#2807#2837#0" expanded="false" />
+            <element signature="e#3348#3373#0" expanded="false" />
+            <element signature="e#3536#3561#0" expanded="false" />
+            <element signature="e#3729#3759#0" expanded="false" />
+            <element signature="e#3921#3945#0" expanded="false" />
+            <element signature="e#4107#4131#0" expanded="false" />
+            <element signature="e#4297#4325#0" expanded="false" />
+            <element signature="e#4495#4527#0" expanded="false" />
+            <element signature="e#4698#4730#0" expanded="false" />
+            <element signature="e#4896#4923#0" expanded="false" />
+            <element signature="e#5091#5120#0" expanded="false" />
+            <element signature="e#5283#5307#0" expanded="false" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/POJO/SellerAd.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="25" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_ads.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="880">
-          <caret line="376" column="48" lean-forward="false" selection-start-line="376" selection-start-column="48" selection-end-line="376" selection-end-column="48" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2480">
-          <caret line="124" column="47" lean-forward="false" selection-start-line="124" selection-start-column="47" selection-end-line="124" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Fragments/AdsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_ads.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="46" lean-forward="true" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/RestApiHelper/AdHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="58" column="98" lean-forward="false" selection-start-line="58" selection-start-column="98" selection-end-line="58" selection-end-column="98" />
-          <folding />
+          <caret line="14" column="34" lean-forward="false" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/AdsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="260" column="51" lean-forward="false" selection-start-line="260" selection-start-column="51" selection-end-line="260" selection-end-column="51" />
+        <state relative-caret-position="140">
+          <caret line="38" column="104" lean-forward="false" selection-start-line="38" selection-start-column="104" selection-end-line="38" selection-end-column="104" />
           <folding>
+            <element signature="method#checkAddress#0;class#AdsActivity#0" expanded="false" />
+            <element signature="method#checkArea#0;class#AdsActivity#0" expanded="false" />
+            <element signature="method#checkDoor#0;class#AdsActivity#0" expanded="false" />
             <element signature="method#onRadioButtonClicked#0;class#AdsActivity#0" expanded="false" />
+            <element signature="method#chooseImage#0;class#AdsActivity#0" expanded="false" />
+            <element signature="method#onProgressChanged#0;class#AdsActivity#0" expanded="false" />
+            <element signature="method#onStartTrackingTouch#0;class#AdsActivity#0" expanded="false" />
+            <element signature="method#onStopTrackingTouch#0;class#AdsActivity#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/MessageActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="14" column="4" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_account.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_ads.xml">
+      <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/AccountActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="13" column="5" lean-forward="false" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+        <state relative-caret-position="-5889">
+          <caret line="425" column="37" lean-forward="false" selection-start-line="425" selection-start-column="37" selection-end-line="425" selection-end-column="37" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/AreaLocality.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1101">
+          <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="method#getLocationName#0;class#AreaLocality#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/POJO/Requirements.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="19" column="18" lean-forward="false" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/Bhk.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="33" column="56" lean-forward="false" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_my_requirement.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-480">
+          <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+          <folding>
+            <element signature="e#1939#1966#0" expanded="false" />
+            <element signature="e#2753#2771#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_ads.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-109">
+          <caret line="45" column="46" lean-forward="false" selection-start-line="45" selection-start-column="46" selection-end-line="45" selection-end-column="46" />
+          <folding>
+            <element signature="e#2695#2713#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Fragments/MyRequirementsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="45" column="20" lean-forward="false" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1138#1331#0" expanded="false" />
+            <element signature="e#1330#1331#0" expanded="false" />
+            <element signature="e#1512#1543#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Adapters/MyAdsViewHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Adapters/MyAdsAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#349#350#0" expanded="false" />
+            <element signature="e#376#377#0" expanded="false" />
+            <element signature="e#529#530#0" expanded="false" />
+            <element signature="e#553#554#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/RestApiHelper/AdHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="50" column="26" lean-forward="false" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
+          <folding>
+            <element signature="e#1372#1411#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/MyAdsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <caret line="33" column="68" lean-forward="false" selection-start-line="33" selection-start-column="68" selection-end-line="33" selection-end-column="68" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/RequirementsSearchActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Fragments/ViewPagerAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-320">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        <state relative-caret-position="320">
+          <caret line="21" column="38" lean-forward="false" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/HomeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="84" column="40" lean-forward="false" selection-start-line="84" selection-start-column="40" selection-end-line="84" selection-end-column="40" />
-          <folding />
+        <state relative-caret-position="466">
+          <caret line="137" column="16" lean-forward="false" selection-start-line="137" selection-start-column="16" selection-end-line="137" selection-end-column="16" />
+          <folding>
+            <element signature="e#3807#3842#0" expanded="false" />
+            <element signature="method#onCreateOptionsMenu#0;class#HomeActivity#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#HomeActivity#0" expanded="false" />
+            <element signature="method#changeIcon#0;class#HomeActivity#0" expanded="false" />
+            <element signature="method#onNavigationItemSelected#0;class#HomeActivity#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home_content.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Fragments/MyAdsFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
-          <caret line="19" column="34" lean-forward="true" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
-          <folding />
+          <caret line="42" column="67" lean-forward="false" selection-start-line="42" selection-start-column="67" selection-end-line="42" selection-end-column="67" />
+          <folding>
+            <element signature="e#1338#1531#0" expanded="false" />
+            <element signature="e#1530#1531#0" expanded="false" />
+            <element signature="e#1710#1741#0" expanded="false" />
+          </folding>
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/NewOrResale.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state relative-caret-position="203">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_message.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/RestApiHelper/RequirementHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="136" column="73" lean-forward="false" selection-start-line="136" selection-start-column="73" selection-end-line="136" selection-end-column="73" />
+          <folding>
+            <element signature="method#getJson#0;class#RequirementHelper#0" expanded="false" />
+            <element signature="e#7060#7061#0" expanded="false" />
+            <element signature="e#7100#7101#0" expanded="false" />
+          </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/requirements_search.xml">
       <provider selected="true" editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_my_ads.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="78" column="44" lean-forward="false" selection-start-line="78" selection-start-column="44" selection-end-line="78" selection-end-column="44" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Adapters/RequirementSearchHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="19" column="60" lean-forward="false" selection-start-line="19" selection-start-column="60" selection-end-line="19" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Activities/RequirementsSearchActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="54" column="21" lean-forward="false" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
+          <folding>
+            <element signature="e#2290#2324#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nyxwolves/wannabuy/Adapters/RequirementSearchAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="50" column="6" lean-forward="false" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="6" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>

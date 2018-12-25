@@ -46,7 +46,7 @@ public class RequirementsSearchActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                searchHelper.getRequirement(getString(R.string.ANY_QUERY),query.toUpperCase());
+                searchHelper.getRequirement(getString(R.string.LOCATION_QUERY),query.toUpperCase());
 
                 searchAdapter.setData(searchHelper.dataList);
                 return false;
@@ -54,7 +54,7 @@ public class RequirementsSearchActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                searchHelper.getRequirement(getString(R.string.ANY_QUERY),newText.toUpperCase());
+                searchHelper.getRequirement(getString(R.string.LOCATION_QUERY),newText.toUpperCase());
 
                 searchAdapter.setData(searchHelper.dataList);
                 return false;

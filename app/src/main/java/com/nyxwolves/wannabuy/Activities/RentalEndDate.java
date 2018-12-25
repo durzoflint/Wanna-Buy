@@ -1,9 +1,11 @@
 package com.nyxwolves.wannabuy.Activities;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -14,6 +16,7 @@ public class RentalEndDate extends AppCompatActivity implements DatePickerDialog
 
     ImageView dateIcon;
     EditText dateInput;
+    Button nextBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,16 @@ public class RentalEndDate extends AppCompatActivity implements DatePickerDialog
         dateIcon = findViewById(R.id.date_icon);
         dateInput = findViewById(R.id.date_input_text);
 
+        nextBtn = findViewById(R.id.end_date_next_btn);
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkInput()){
+                    startActivity(new Intent(RentalEndDate.this,RentalPropertyType.class));
+                }
+            }
+        });
+
         dateIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,6 +43,14 @@ public class RentalEndDate extends AppCompatActivity implements DatePickerDialog
                 datePickerDialog.show();
             }
         });
+    }
+
+    private boolean checkInput(){
+        if(dateInput.getText().toString().trim().length() > 0){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     @Override

@@ -69,7 +69,7 @@ public class PropertySize extends AppCompatActivity implements View.OnClickListe
                     Requirements.getInstance().size = String.valueOf(sizeOfProperty);
                     Intent i;
                     if (Requirements.getInstance().subType.equals(getString(R.string.house)) | Requirements.getInstance().subType.equals(getString(R.string.apartments)) | Requirements.getInstance().subType.equals(getString(R.string.villa))) {
-                        i = new Intent(PropertySize.this, FurnishedOrNot.class);
+                        i = new Intent(PropertySize.this, Bhk.class);
                     } else {
                         i = new Intent(PropertySize.this, FacingActivity.class);
                     }

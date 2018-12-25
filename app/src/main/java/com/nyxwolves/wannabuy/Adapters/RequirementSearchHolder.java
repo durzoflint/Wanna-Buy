@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.nyxwolves.wannabuy.R;
 
 public class RequirementSearchHolder extends RecyclerView.ViewHolder {
-    TextView propertyType,propertyBudget,propertySize,cityName,propertyLccation,propertyBhk;
+    TextView propertyType,propertyBudget,propertySize,cityName,propertyLccation,propertyBhk,propertyBudgettext;
     Button postAd;
 
     public RequirementSearchHolder(@NonNull View itemView) {
@@ -17,6 +17,7 @@ public class RequirementSearchHolder extends RecyclerView.ViewHolder {
 
         propertyType = itemView.findViewById(R.id.property_type_item);
         propertyBudget = itemView.findViewById(R.id.budget_value);
+        propertyBudgettext = itemView.findViewById(R.id.lakh_text);
         propertySize = itemView.findViewById(R.id.size_value);
         cityName = itemView.findViewById(R.id.city_name_item);
         propertyLccation = itemView.findViewById(R.id.property_location_item);

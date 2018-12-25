@@ -1,11 +1,11 @@
 package com.nyxwolves.wannabuy.Activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -14,15 +14,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.nyxwolves.wannabuy.Fragments.AdsFragment;
 import com.nyxwolves.wannabuy.Fragments.FragmentToActivity;
-import com.nyxwolves.wannabuy.Fragments.MessageFragment;
-import com.nyxwolves.wannabuy.Fragments.MyHomeFragment;
-import com.nyxwolves.wannabuy.Fragments.ProfileFragment;
 import com.nyxwolves.wannabuy.R;
 import com.nyxwolves.wannabuy.RestApiHelper.AdHelper;
 import com.nyxwolves.wannabuy.RestApiHelper.RequirementHelper;
@@ -31,11 +28,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
 
     ImageView homeButton,msgButton,adsButton,profileButton,postRequirement;
-    FragmentManager fragmentManager;
-    FragmentTransaction fragmentTransaction;
+    Button rentButton,postAdBtn,builderBtn;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +57,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 adHelper.createAd();
             }
         }
+
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -79,10 +77,28 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         postRequirement = findViewById(R.id.wanna_buy);
         postRequirement.setOnClickListener(this);
 
-        fragmentManager= getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
+        postAdBtn = findViewById(R.id.post_property_btn);
+        postAdBtn.setOnClickListener(this);
 
-        fragmentTransaction.add(R.id.fragment_holder,MyHomeFragment.getInstance()).commit();
+        rentButton = findViewById(R.id.home_rent_btn);
+        rentButton.setOnClickListener(this);
+
+        sharedPreferences = getSharedPreferences(getString(R.string.shared_pref), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        if(sharedPreferences.getBoolean(getString(R.string.shared_first_req),true)){
+            editor.putBoolean(getString(R.string.shared_first_req),true);
+        }else{
+            editor.putBoolean(getString(R.string.shared_first_req),false);
+        }
+
+        if(sharedPreferences.getBoolean(getString(R.string.shared_first_ad),true)){
+            editor.putBoolean(getString(R.string.shared_first_ad),true);
+        }else{
+            editor.putBoolean(getString(R.string.shared_first_ad),false);
+        }
+        editor.apply();
+
     }
 
     @Override
@@ -112,25 +128,28 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
 
         switch (v.getId()){
-            case R.id.nav_home_btn:
-                FragmentTransaction homeTransaction = fragmentManager.beginTransaction();
-                homeTransaction.replace(R.id.fragment_holder,MyHomeFragment.getInstance()).commit();
-                break;
+
             case R.id.nav_msg_btn:
-                FragmentTransaction messageTransaction = fragmentManager.beginTransaction();
-                messageTransaction.replace(R.id.fragment_holder, MessageFragment.getInstance()).commit();
+
                 break;
             case R.id.nav_ads_btn:
-                FragmentTransaction adsTransaction = fragmentManager.beginTransaction();
-                adsTransaction.replace(R.id.fragment_holder, AdsFragment.getInstance()).commit();
-                startActivity(new Intent(HomeActivity.this,AdsActivity.class));
+                Intent i = new Intent(HomeActivity.this,MyAdsActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(i);
+                //startActivity(new Intent(HomeActivity.this,AdsActivity.class));
                 break;
             case R.id.nav_account_btn:
-                FragmentTransaction accountTransaction = fragmentManager.beginTransaction();
-                accountTransaction.replace(R.id.fragment_holder, ProfileFragment.getInstance()).commit();
+
                 break;
             case R.id.wanna_buy:
                 startActivity(new Intent(HomeActivity.this,BuyOrRent.class));
+                break;
+
+            case R.id.home_rent_btn:
+                startActivity(new Intent(HomeActivity.this,RentalEndDate.class));
+                break;
+            case R.id.post_property_btn:
+                startActivity(new Intent(HomeActivity.this,AdsActivity.class));
                 break;
         }
     }

@@ -76,6 +76,7 @@
             android:layout_marginEnd="264dp"
             android:layout_marginTop="10dp"
             android:text="TextView"
+            android:textAlignment="viewStart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/bhk_item"
             app:layout_constraintTop_toBottomOf="@+id/bhk_item" />
@@ -109,7 +110,7 @@
             android:id="@+id/lakh_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="20dp"
             android:text="Lakhs"
             app:layout_constraintBottom_toBottomOf="@+id/budget_value"
             app:layout_constraintStart_toEndOf="@+id/budget_value"

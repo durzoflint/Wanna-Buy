@@ -10,6 +10,9 @@
         android:id="@+id/rental_investment_image"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:src="@drawable/invest_image"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/guideline18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -56,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/rental_invest_header" />
 
     <Button
-        android:id="@+id/rent_advance_next_btn"
+        android:id="@+id/rent_invest_next_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"

@@ -2,6 +2,9 @@
     <string name="facebook_app_id">341529946626279</string>
     <string name="fb_login_protocol_scheme">fb341529946626279</string>
 
+    <string name="shared_pref">SHARED_PREF</string>
+    <string name="shared_first_req">FIRST_REQ</string>
+    <string name="shared_first_ad">FIRST_AD</string>
 
     <string name="app_name">WannaBuy</string>
     <string name="please_enter">Please Enter</string>
@@ -154,4 +157,17 @@
     <string name="negotiable">Negotiable</string>
     <string name="upload_property_photo">Upload\nProperty\nPhoto</string>
     <string name="make_payment">Make Payment</string>
+
+    <string name="recent_search_header">Your Recent Searches</string>
+    <string name="your_matches_header"><b>Your Matches</b></string>
+    <string name="looking_for_something_else">Looking for Something else?</string>
+    <string name="post_your_property">Post Your Property</string>
+    <string name="looking_for_rent">Looking For Rent?</string>
+    <string name="are_you_builder">Are you Builder?</string>
+    <string name="view_all">View All</string>
+    <string name="details">Details</string>
+
+    <string name="first_requirement">You have not posted Any Requirements</string>
+    <string name="post_now">Post Now</string>
+    <string name="first_ad">You have not Posted Any Ad</string>
 </resources>

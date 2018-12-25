@@ -10,6 +10,9 @@
         android:id="@+id/rent_property_type_image"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:src="@drawable/rental_type"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/guideline18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -44,4 +47,89 @@
         android:text="@string/rent_end_date_text"
         app:layout_constraintStart_toStartOf="@+id/rental_mode"
         app:layout_constraintTop_toBottomOf="@+id/rental_mode" />
+
+    <!-- radio group for residential property-->
+    <RadioGroup
+        android:id="@+id/rental_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/rental_property_next_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/property_type_header">
+
+        <RadioButton
+            android:id="@+id/rental_house"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginStart="0dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:padding="10dp"
+            android:text="@string/house"
+            android:textSize="15sp" />
+
+        <RadioButton
+            android:id="@+id/rental_villa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginStart="0dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:padding="5dp"
+            android:text="@string/villa"
+            android:textSize="15sp" />
+
+        <RadioButton
+            android:id="@+id/resi_apartments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginStart="0dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:padding="5dp"
+            android:text="@string/apartments"
+            android:textSize="15sp" />
+
+        <RadioButton
+            android:id="@+id/rental_land"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginStart="0dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:padding="5dp"
+            android:text="@string/land"
+            android:textSize="15sp" />
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/rental_property_next_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/orange_button"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="@string/next"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

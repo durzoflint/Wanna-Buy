@@ -11,6 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCJyWOI91uaP3SaGzsuful39Iqi0_A5Wzc"/>
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -86,10 +91,9 @@
             android:theme="@style/questionTheme" />
         <activity
             android:name=".Activities.FacingActivity"
-            android:theme="@style/questionTheme" />
+            android:theme="@style/questionTheme"/>
         <activity
-            android:name=".Activities.RequirementsSearchActivity"
-            android:theme="@style/questionTheme" />
+            android:name=".Activities.RequirementsSearchActivity"/>
         <activity
             android:name=".Activities.FacilitiesActivities"
             android:theme="@style/questionTheme" />
@@ -123,9 +127,12 @@
         <activity
             android:name=".Activities.AdsActivity"
             android:theme="@style/questionTheme" />
-        <activity android:name=".Activities.MessageActivity" />
-        <activity android:name=".Activities.MyAdsActivity" />
-        <activity android:name=".Activities.AccountActivity"></activity>
+        <activity android:name=".Activities.MessageActivity"
+            android:theme="@style/questionTheme"/>
+        <activity android:name=".Activities.MyAdsActivity"
+            android:theme="@style/noActionbar"/>
+        <activity android:name=".Activities.AccountActivity"
+            android:theme="@style/noActionbar"></activity>
     </application>
 
 </manifest>

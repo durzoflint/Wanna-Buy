@@ -16,7 +16,7 @@ public class Bhk extends AppCompatActivity {
     Button nextBtn;
     TextView modeHeader;
 
-    int BHK=0;
+    String BHK = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +30,8 @@ public class Bhk extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(BHK != 0){
-                    Requirements.getInstance().bhk = String.valueOf(BHK);
+                if(!BHK.equals("0")){
+                    Requirements.getInstance().bhk = BHK;
                     startActivity(new Intent(Bhk.this,FacingActivity.class));
                 }else{
                     Toast.makeText(Bhk.this,"Choose number of rooms",Toast.LENGTH_SHORT).show();
@@ -43,19 +43,19 @@ public class Bhk extends AppCompatActivity {
     public void onRadioButtonClicked(View v){
         switch (v.getId()){
             case R.id.one_bhk:
-                BHK = 1;
+                BHK = "1";
                 break;
             case R.id.two_bhk:
-                BHK = 2;
+                BHK = "2";
                 break;
             case R.id.three_bhk:
-                BHK = 3;
+                BHK = "3";
                 break;
             case R.id.four_bhk:
-                BHK = 4;
+                BHK = "4";
                 break;
             case R.id.five_bhk:
-                BHK = 5;
+                BHK = "5";
                 break;
         }
     }

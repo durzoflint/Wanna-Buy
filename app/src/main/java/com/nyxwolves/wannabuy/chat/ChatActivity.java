@@ -1,6 +1,7 @@
 package com.nyxwolves.wannabuy.chat;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,12 +15,15 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.nyxwolves.wannabuy.R;
+import com.nyxwolves.wannabuy.contacts.ContactActivity;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,27 +35,52 @@ public class ChatActivity extends AppCompatActivity {
     List<Message> messageList;
     MessageAdapter messageAdapter;
     ProgressBar progressBar;
+    String name, email, userEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        //Todo: Replace with the user's name
-        setTitle("Abhinav");
-
         progressBar = findViewById(R.id.progress_bar);
         progressBar.setVisibility(View.VISIBLE);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
+        Intent intent = getIntent();
+        name = intent.getStringExtra(ContactActivity.NAME);
+        email = intent.getStringExtra(ContactActivity.EMAIL);
+
+        String node = (email.compareTo(userEmail) > 0) ? (userEmail + " " + email) : (email + " "
+                + userEmail);
+        node = node.replace(".", "");
+
+        setTitle(name);
+
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        //Remove the dot(.) from the email ids
         databaseReference = firebaseDatabase.getReference()
                 .child("messages")
-                .child("aaaorabhinav@gmailcom abhinavu1201@gmailcom");
+                .child(node);
 
         messageList = new ArrayList<>();
         setupRecyclerView();
         attachDatabaseListener();
+
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (!dataSnapshot.exists()) {
+                    progressBar.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         ImageButton send = findViewById(R.id.send);
         send.setOnClickListener(new View.OnClickListener() {
@@ -62,9 +91,7 @@ public class ChatActivity extends AppCompatActivity {
                 imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 EditText msg = findViewById(R.id.msg);
                 String time = new Date().toString();
-                //Todo: Change the email to firebase one
-                databaseReference.push().setValue(new Message(time, msg.getText().toString(),
-                        "aaaorabhinav@gmail.com"));
+                databaseReference.push().setValue(new Message(time, msg.getText().toString(), userEmail));
                 msg.setText("");
             }
         });

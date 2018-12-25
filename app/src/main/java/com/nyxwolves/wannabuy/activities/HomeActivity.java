@@ -23,7 +23,7 @@ import com.nyxwolves.wannabuy.Fragments.FragmentToActivity;
 import com.nyxwolves.wannabuy.R;
 import com.nyxwolves.wannabuy.RestApiHelper.AdHelper;
 import com.nyxwolves.wannabuy.RestApiHelper.RequirementHelper;
-import com.nyxwolves.wannabuy.chat.ChatActivity;
+import com.nyxwolves.wannabuy.contacts.ContactActivity;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener, FragmentToActivity, NavigationView.OnNavigationItemSelectedListener{
 
@@ -132,7 +132,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
 
             case R.id.nav_msg_btn:
-                startActivity(new Intent(this, ChatActivity.class));
+                startActivity(new Intent(this, ContactActivity.class));
                 break;
             case R.id.nav_ads_btn:
                 Intent i = new Intent(HomeActivity.this,MyAdsActivity.class);

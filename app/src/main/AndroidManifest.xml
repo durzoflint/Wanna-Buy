@@ -11,10 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCJyWOI91uaP3SaGzsuful39Iqi0_A5Wzc"/>
+            android:value="AIzaSyCJyWOI91uaP3SaGzsuful39Iqi0_A5Wzc" />
 
         <service android:name=".notifications.MyFirebaseMessagingService">
             <intent-filter>
@@ -36,7 +35,6 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
-
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -113,7 +111,6 @@
         <activity
             android:name=".activities.FacingActivity"
             android:theme="@style/questionTheme" />
-
         <activity
             android:name=".activities.RequirementsSearchActivity"
             android:theme="@style/noActionbar"/>
@@ -150,17 +147,19 @@
         <activity
             android:name=".activities.AdsActivity"
             android:theme="@style/questionTheme" />
-
-        <activity android:name=".activities.MessageActivity"
-            android:theme="@style/questionTheme"/>
-
-        <activity android:name=".activities.MyAdsActivity"
-            android:theme="@style/noActionbar"/>
-
-        <activity android:name=".activities.AccountActivity"
+        <activity
+            android:name=".activities.MessageActivity"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".activities.MyAdsActivity"
             android:theme="@style/noActionbar" />
-
+        <activity
+            android:name=".activities.AccountActivity"
+            android:theme="@style/noActionbar" />
         <activity android:name=".chat.ChatActivity" />
+        <activity
+            android:name=".contacts.ContactActivity"
+            android:theme="@style/noActionbar" />
     </application>
 
 </manifest>

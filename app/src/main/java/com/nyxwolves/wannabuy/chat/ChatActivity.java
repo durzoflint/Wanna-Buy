@@ -2,6 +2,7 @@ package com.nyxwolves.wannabuy.chat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -26,6 +27,11 @@ import com.nyxwolves.wannabuy.R;
 import com.nyxwolves.wannabuy.contacts.Contact;
 import com.nyxwolves.wannabuy.contacts.ContactActivity;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -99,6 +105,7 @@ public class ChatActivity extends AppCompatActivity {
                 String time = new Date().toString();
                 databaseReference.push().setValue(new Message(time, msg.getText().toString(), userEmail));
                 msg.setText("");
+                new SendNotification().execute(email, name, "You have a new Message");
             }
         });
     }
@@ -172,5 +179,43 @@ public class ChatActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         databaseReference.removeEventListener(childEventListener);
+    }
+
+    private class SendNotification extends AsyncTask<String, Void, Void> {
+        String baseUrl = "http://www.wannabuy.in/api/notifications/";
+        String webPage = "";
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            URL url;
+            HttpURLConnection urlConnection = null;
+            try {
+                String myURL = baseUrl + "sendNotification.php?email=" + strings[0] + "&title="
+                        + strings[1] + "&body=" + strings[2];
+                myURL = myURL.replaceAll(" ", "%20");
+                myURL = myURL.replaceAll("\'", "%27");
+                myURL = myURL.replaceAll("\'", "%22");
+                myURL = myURL.replaceAll("\\+'", "%2B");
+                myURL = myURL.replaceAll("\\(", "%28");
+                myURL = myURL.replaceAll("\\)", "%29");
+                myURL = myURL.replaceAll("\\{", "%7B");
+                myURL = myURL.replaceAll("\\}", "%7B");
+                myURL = myURL.replaceAll("\\]", "%22");
+                myURL = myURL.replaceAll("\\[", "%22");
+                url = new URL(myURL);
+                urlConnection = (HttpURLConnection) url.openConnection();
+                BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection
+                        .getInputStream()));
+                String data;
+                while ((data = br.readLine()) != null)
+                    webPage = webPage + data;
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (urlConnection != null)
+                    urlConnection.disconnect();
+            }
+            return null;
+        }
     }
 }

@@ -3,6 +3,7 @@ package com.nyxwolves.wannabuy.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -11,6 +12,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,11 +21,19 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.nyxwolves.wannabuy.Fragments.FragmentToActivity;
 import com.nyxwolves.wannabuy.R;
 import com.nyxwolves.wannabuy.RestApiHelper.AdHelper;
 import com.nyxwolves.wannabuy.RestApiHelper.RequirementHelper;
 import com.nyxwolves.wannabuy.contacts.ContactActivity;
+import com.nyxwolves.wannabuy.notifications.MyFirebaseMessagingService;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener, FragmentToActivity, NavigationView.OnNavigationItemSelectedListener{
 
@@ -101,6 +111,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
         editor.apply();
 
+        SharedPreferences firebasePreferences = getSharedPreferences(MyFirebaseMessagingService
+                .FIREBASEPREFS, Context.MODE_PRIVATE);
+        String token = firebasePreferences.getString(MyFirebaseMessagingService.TOKEN, "");
+        if (!token.isEmpty()) {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            new AddToken().execute(token, user.getEmail(), user.getDisplayName());
+            firebasePreferences.edit().clear().apply();
+        }
     }
 
     @Override
@@ -195,5 +213,53 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
         }
         return false;
+    }
+
+    private class AddToken extends AsyncTask<String, Void, Void> {
+        String baseUrl = "http://www.wannabuy.in/api/notifications/";
+        String webPage = "";
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            URL url;
+            HttpURLConnection urlConnection = null;
+            try {
+                String myURL = baseUrl + "addToken.php?firebase_token=" + strings[0] + "&email="
+                        + strings[1] + "&name=" + strings[2];
+                myURL = myURL.replaceAll(" ", "%20");
+                myURL = myURL.replaceAll("\'", "%27");
+                myURL = myURL.replaceAll("\'", "%22");
+                myURL = myURL.replaceAll("\\+'", "%2B");
+                myURL = myURL.replaceAll("\\(", "%28");
+                myURL = myURL.replaceAll("\\)", "%29");
+                myURL = myURL.replaceAll("\\{", "%7B");
+                myURL = myURL.replaceAll("\\}", "%7B");
+                myURL = myURL.replaceAll("\\]", "%22");
+                myURL = myURL.replaceAll("\\[", "%22");
+                url = new URL(myURL);
+                urlConnection = (HttpURLConnection) url.openConnection();
+                BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection
+                        .getInputStream()));
+                String data;
+                while ((data = br.readLine()) != null)
+                    webPage = webPage + data;
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (urlConnection != null)
+                    urlConnection.disconnect();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            Log.d("Abhinav", "The webpage is(" + webPage + ")");
+            if (!webPage.equals("success")) {
+                Toast.makeText(HomeActivity.this, "Error Occurred while adding user", Toast
+                        .LENGTH_SHORT).show();
+            }
+        }
     }
 }

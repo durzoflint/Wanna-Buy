@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.nyxwolves.wannabuy.R;
 
 import java.util.List;
@@ -57,9 +58,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemViewType(int position) {
-        //Todo: Change the email to firebase one
-        //String email = FirebaseAuth.getInstance().getCurrentUser().getEmail().trim();
-        String email = "aaaorabhinav@gmail.com";
+        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         if (list.get(position).email.equals(email))
             return OUTGOING;
         else

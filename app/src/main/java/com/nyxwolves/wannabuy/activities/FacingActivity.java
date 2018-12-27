@@ -31,7 +31,7 @@ public class FacingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (direction != null){
                     Requirements.getInstance().facing = direction;
-                    startActivity(new Intent(FacingActivity.this,NewOrResale.class));
+                    startActivity(new Intent(FacingActivity.this,ApprovalActivity.class));
                 }else{
                     Toast.makeText(FacingActivity.this,"Choose any direction",Toast.LENGTH_SHORT).show();
                 }

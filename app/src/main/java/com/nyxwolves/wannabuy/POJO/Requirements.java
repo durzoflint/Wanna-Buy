@@ -11,7 +11,9 @@ public class Requirements {
     public String area;
     public String buyorRent;
     public String facing;
-    public String size;
+    public String minSize;
+    public String maxSize;
+    public String approval;
     public String bhk;
     public String isNew;
     public String budget;

@@ -76,7 +76,7 @@ public class RequirementHelper {
             params.put("PROPERTY_LOCATION_FIVE", Requirements.getInstance().locationFive.toUpperCase());
             params.put("PROPERTY_TYPE", Requirements.getInstance().type.toUpperCase());
             params.put("PROPERTY_SUB_TYPE", Requirements.getInstance().subType.toUpperCase());
-            params.put("PROPERTY_SIZE", Requirements.getInstance().size.toUpperCase());
+            params.put("PROPERTY_SIZE", Requirements.getInstance().minSize.toUpperCase());
             params.put("BHK", Requirements.getInstance().bhk);
             params.put("FLOOR", Requirements.getInstance().floor.toUpperCase());
             params.put("BUDGET", Requirements.getInstance().budget.toUpperCase());
@@ -135,7 +135,7 @@ public class RequirementHelper {
                 JSONObject object = responseArray.getJSONObject(i);
                 Requirements tempData = new Requirements();
                 tempData.area = object.getString("PROPERTY_LOCATION_QUERY");
-                tempData.size = object.getString("PROPERTY_SIZE");
+                tempData.minSize = object.getString("PROPERTY_SIZE");
                 tempData.type = object.getString("PROPERTY_SUB_TYPE");
                 tempData.bhk = object.getString("BHK");
                 tempData.floor = object.getString("FLOOR");

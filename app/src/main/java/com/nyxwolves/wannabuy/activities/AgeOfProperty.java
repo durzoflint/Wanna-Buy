@@ -9,32 +9,25 @@ import android.widget.Button;
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
 
-public class BuyOrRent extends AppCompatActivity{
+public class AgeOfProperty extends AppCompatActivity {
 
     Button nextBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buy_or_rent);
+        setContentView(R.layout.activity_age_of_property);
 
-        nextBtn = findViewById(R.id.buy_next_btn);
+        nextBtn = findViewById(R.id.age_next_btn);
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(BuyOrRent.this,AreaLocality.class));
+                if(Requirements.getInstance().subType.equals(getString(R.string.house)) || Requirements.getInstance().subType.equals(getString(R.string.villa))){
+                    startActivity(new Intent(AgeOfProperty.this,CornerActivity.class));
+                }else{
+                    startActivity(new Intent(AgeOfProperty.this,FurnishedOrNot.class));
+                }
             }
         });
-    }
-
-    public void onRadioButtonClicked(View v){
-        switch (v.getId()){
-            case R.id.buy_radio_btn:
-                Requirements.getInstance().buyorRent="Buy";
-                break;
-            case R.id.rent_radio_btn:
-                Requirements.getInstance().buyorRent="Rent";
-                break;
-        }
     }
 }

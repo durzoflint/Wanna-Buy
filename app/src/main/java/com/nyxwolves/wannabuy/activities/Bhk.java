@@ -32,7 +32,12 @@ public class Bhk extends AppCompatActivity {
             public void onClick(View v) {
                 if(!BHK.equals("0")){
                     Requirements.getInstance().bhk = BHK;
-                    startActivity(new Intent(Bhk.this,FacingActivity.class));
+                    if(Requirements.getInstance().subType.equals(getString(R.string.house)) || Requirements.getInstance().subType.equals(getString(R.string.villa))){
+                        startActivity(new Intent(Bhk.this,CarParking.class));
+                    }else{
+                        startActivity(new Intent(Bhk.this,FacingActivity.class));
+                    }
+
                 }else{
                     Toast.makeText(Bhk.this,"Choose number of rooms",Toast.LENGTH_SHORT).show();
                 }

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.FlooringActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/tenant_image"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/guideline25"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <TextView
+        android:id="@+id/flooring_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:text="Number of Floors"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline25" />
+
+    <RadioGroup
+        android:id="@+id/radio_group_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flooring_header">
+
+        <RadioButton
+            android:id="@+id/floor_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="1" />
+
+        <RadioButton
+            android:id="@+id/floor_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="2" />
+
+        <RadioButton
+            android:id="@+id/floor_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="3" />
+
+        <RadioButton
+            android:id="@+id/floor_four"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="4" />
+
+        <RadioButton
+            android:id="@+id/floor_five"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="5" />
+
+        <RadioButton
+            android:id="@+id/floor_six"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="6" />
+
+        <RadioButton
+            android:id="@+id/floor_seven"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="7" />
+    </RadioGroup>
+
+
+    <!--second row-->
+
+    <RadioGroup
+        android:id="@+id/radio_group_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group_one">
+
+        <RadioButton
+            android:id="@+id/floor_eight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="8" />
+
+        <RadioButton
+            android:id="@+id/floor_nine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="9" />
+
+        <RadioButton
+            android:id="@+id/floor_ten"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="10" />
+
+        <RadioButton
+            android:id="@+id/floor_eleven"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="11" />
+
+        <RadioButton
+            android:id="@+id/floor_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="12" />
+
+        <RadioButton
+            android:id="@+id/floor_13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="13" />
+
+        <RadioButton
+            android:id="@+id/floor_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="14" />
+    </RadioGroup>
+
+    <!--thrid row-->
+
+    <RadioGroup
+        android:id="@+id/radio_group_third"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group_two">
+
+        <RadioButton
+            android:id="@+id/floor_15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="15" />
+
+        <RadioButton
+            android:id="@+id/floor_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="16" />
+
+        <RadioButton
+            android:id="@+id/floor_17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="17" />
+
+        <RadioButton
+            android:id="@+id/floor_18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="18" />
+
+        <RadioButton
+            android:id="@+id/floor_19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="19" />
+
+        <RadioButton
+            android:id="@+id/floor_20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="20" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/flooring_next_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/next"
+        android:textColor="@android:color/white"
+        android:background="@drawable/orange_button"
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

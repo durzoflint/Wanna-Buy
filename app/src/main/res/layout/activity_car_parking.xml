@@ -4,103 +4,99 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.FurnishedOrNot">
+    tools:context=".activities.CarParking">
 
     <ImageView
-        android:id="@+id/furnished_image_view"
+        android:id="@+id/car_parking_image"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:adjustViewBounds="true"
         android:scaleType="center"
-        android:src="@drawable/new_resale"
-        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        android:src="@drawable/buy_rent_image"
+        app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- radio group for residential and commercial-->
-    <RadioGroup
-        android:id="@+id/furnished_radio_group"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/furnished_next_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.196"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
-
-        <RadioButton
-            android:id="@+id/furnished"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:button="@drawable/custom_radio_button"
-            android:checked="false"
-            android:fontFamily="@font/montserrat_regular"
-            android:onClick="radioButtonClicked"
-            android:padding="5dp"
-            android:text="@string/furnished" />
-
-        <RadioButton
-            android:id="@+id/un_furnished"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:button="@drawable/custom_radio_button"
-            android:checked="false"
-            android:fontFamily="@font/montserrat_regular"
-            android:onClick="radioButtonClicked"
-            android:padding="5dp"
-            android:text="@string/un_furnished" />
-
-        <RadioButton
-            android:id="@+id/semi_furnished"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:button="@drawable/custom_radio_button"
-            android:checked="false"
-            android:fontFamily="@font/montserrat_regular"
-            android:onClick="radioButtonClicked"
-            android:padding="5dp"
-            android:text="@string/semi_furnished" />
-
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/furnished_next_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="8dp"
-        android:background="@drawable/orange_button"
-        android:fontFamily="@font/montserrat_regular"
-        android:text="@string/next"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <android.support.constraint.Guideline
-        android:id="@+id/guideline5"
+        android:id="@+id/guideline14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.3" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/car_parking_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
-        android:text="Furnished or not?"
+        android:text="@string/car_parking"
+        android:fontFamily="@font/montserrat_regular"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline5" />
+        app:layout_constraintTop_toTopOf="@+id/guideline14" />
 
+    <RadioGroup
+        android:id="@+id/car_parking_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/buy_next_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/car_parking_header">
+
+        <RadioButton
+            android:id="@+id/covered_parking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:onClick="onRadioButtonClicked"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="@string/covered_parking" />
+
+
+        <RadioButton
+            android:id="@+id/uncovered_parking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:onClick="onRadioButtonClicked"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="@string/uncovered_parking" />
+
+        <RadioButton
+            android:id="@+id/not_present"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:onClick="onRadioButtonClicked"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:text="@string/not_present" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/car_parking_next_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/next"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/montserrat_regular"
+        android:background="@drawable/orange_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

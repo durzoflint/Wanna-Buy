@@ -44,6 +44,8 @@
     <string name="RENT">Rent</string>
     <string name="SELL">Sell</string>
 
+    <string name="what_do_you_want_to_do">What do you want to do Today?</string>
+
     <string name="property_location">Property Location</string>
     <string name="property_type_header">What type of property needed?</string>
     <string name="residential"> Residential</string>
@@ -51,6 +53,8 @@
     <string name="industrial"> Industrial</string>
     <string name="institutional"> Institutional</string>
     <string name="industrial_land">Industrial Land</string>
+    <string name="pg_rent">PG(Rent)</string>
+    <string name="rental_income">Rental Income</string>
 
     <string name="property_size_header">Choose the area of property</string>
 
@@ -58,8 +62,12 @@
     <string name="house"> House</string>
     <string name="villa"> Villa</string>
     <string name="apartments"> Apartments</string>
-    <string name="land"> Land</string>
-
+    <string name="land">Land</string>
+    <string name="residential_land">Residentail Land</string>
+    <string name="commercial_land">Commercial Land</string>
+    <string name="institutional_land">Institutional Land</string>
+    <string name="floorspace">FloorSpace</string>
+    <string name="independent">Independent</string>
     <string name="office_space">  Office Space</string>
     <string name="showroom"> Showroom</string>
 
@@ -123,8 +131,8 @@
     <string name="maintance_fee">  Maintance Fee</string>
 
     <string name="approval_header">Type of Approval?</string>
-    <string name="dtcp_text">  DTCP</string>
-    <string name="cdma_text">  CDMA</string>
+    <string name="dtcp_text">DTCP</string>
+    <string name="cdma_text">CDMA</string>
 
     <string name="road_width">Road Width?</string>
     <string name="min_road_width">0Ft.</string>
@@ -170,4 +178,9 @@
     <string name="first_requirement">You have not posted Any Requirements</string>
     <string name="post_now">Post Now</string>
     <string name="first_ad">You have not Posted Any Ad</string>
+
+    <string name="car_parking">Car Parking</string>
+    <string name="covered_parking">Covered Parking</string>
+    <string name="uncovered_parking">Unconvered Parking</string>
+    <string name="not_present">Not Present</string>
 </resources>

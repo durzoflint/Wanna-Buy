@@ -114,7 +114,6 @@
     </RadioGroup>
 
     <!-- radiogroup for commercial property-->
-
     <RadioGroup
         android:id="@+id/radioGroup_commercial"
         android:layout_width="0dp"
@@ -130,7 +129,7 @@
         app:layout_constraintTop_toBottomOf="@+id/subtype_header">
 
         <RadioButton
-            android:id="@+id/comm_office_space"
+            android:id="@+id/comm_floor_space"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -138,12 +137,12 @@
             android:button="@drawable/custom_radio_button"
             android:checked="false"
             android:onClick="radioButtonClicked"
-            android:text="@string/office_space"
+            android:text="@string/floorspace"
             android:padding="5dp"
             android:textSize="15sp"/>
 
         <RadioButton
-            android:id="@+id/comm_showroom"
+            android:id="@+id/comm_independent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -151,7 +150,7 @@
             android:button="@drawable/custom_radio_button"
             android:checked="false"
             android:onClick="radioButtonClicked"
-            android:text="@string/showroom"
+            android:text="@string/independent"
             android:padding="5dp"
             android:textSize="15sp"/>
 
@@ -183,19 +182,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subtype_header">
-
-        <RadioButton
-            android:id="@+id/indus_land"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginStart="0dp"
-            android:button="@drawable/custom_radio_button"
-            android:checked="false"
-            android:onClick="radioButtonClicked"
-            android:text="@string/land"
-            android:padding="5dp"
-            android:textSize="15sp"/>
 
         <RadioButton
             android:id="@+id/indus_factory"
@@ -233,6 +219,74 @@
             android:checked="false"
             android:onClick="radioButtonClicked"
             android:text="@string/cold_storage"
+            android:padding="5dp"
+            android:textSize="15sp"/>
+    </RadioGroup>
+
+    <!--radio group for institutional-->
+    <RadioGroup
+        android:id="@+id/radio_group_institutional"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subtype_header">
+
+        <RadioButton
+            android:id="@+id/ins_school"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginStart="0dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:text="@string/school"
+            android:padding="5dp"
+            android:textSize="15sp"/>
+
+        <RadioButton
+            android:id="@+id/ins_college"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginStart="0dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:text="@string/college"
+            android:padding="5dp"
+            android:textSize="15sp"/>
+
+        <RadioButton
+            android:id="@+id/ins_hospital"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginStart="0dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:text="@string/hospital"
+            android:padding="5dp"
+            android:textSize="15sp"/>
+
+        <RadioButton
+            android:id="@+id/ins_land"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginStart="0dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:text="@string/land"
             android:padding="5dp"
             android:textSize="15sp"/>
     </RadioGroup>

@@ -113,7 +113,7 @@
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.RequirementsSearchActivity"
-            android:theme="@style/noActionbar"/>
+            android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.FacilitiesActivities"
             android:theme="@style/questionTheme" />
@@ -160,6 +160,14 @@
         <activity
             android:name=".contacts.ContactActivity"
             android:theme="@style/noActionbar" />
+        <activity android:name=".activities.CarParking"
+            android:theme="@style/questionTheme"/>
+        <activity android:name=".activities.AgeOfProperty"
+            android:theme="@style/questionTheme"/>
+        <activity android:name=".activities.CornerActivity"
+            android:theme="@style/questionTheme"/>
+        <activity android:name=".activities.FlooringActivity"
+            android:theme="@style/questionTheme"/>
     </application>
 
 </manifest>

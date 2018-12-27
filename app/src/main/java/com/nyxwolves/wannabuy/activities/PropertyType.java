@@ -51,6 +51,12 @@ public class PropertyType extends AppCompatActivity implements View.OnClickListe
             case R.id.instutional:
                 property_type = getString(R.string.institutional);
                 break;
+            case R.id.pg_rent:
+                property_type = getString(R.string.pg_rent);
+                break;
+            case R.id.rental_income:
+                property_type = getString(R.string.rental_income);
+
         }
     }
     @Override
@@ -66,9 +72,6 @@ public class PropertyType extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(PropertyType.this,"Select anyone",Toast.LENGTH_SHORT).show();
                 }
                break;
-            case R.id.back_btn:
-                super.onBackPressed();
-                break;
         }
     }
 }

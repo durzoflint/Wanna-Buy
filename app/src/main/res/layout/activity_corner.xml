@@ -4,79 +4,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.FurnishedOrNot">
+    tools:context=".activities.CornerActivity">
 
     <ImageView
-        android:id="@+id/furnished_image_view"
+        android:id="@+id/corner_image_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:src="@drawable/facing_property"
         android:adjustViewBounds="true"
         android:scaleType="center"
-        android:src="@drawable/new_resale"
-        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintBottom_toTopOf="@+id/guideline24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- radio group for residential and commercial-->
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3068783" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:text="Is It Corner Property?"
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline24" />
+
     <RadioGroup
-        android:id="@+id/furnished_radio_group"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/furnished_next_btn"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/corner_next_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.196"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <RadioButton
-            android:id="@+id/furnished"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:button="@drawable/custom_radio_button"
-            android:checked="false"
-            android:fontFamily="@font/montserrat_regular"
-            android:onClick="radioButtonClicked"
-            android:padding="5dp"
-            android:text="@string/furnished" />
-
-        <RadioButton
-            android:id="@+id/un_furnished"
+            android:id="@+id/yes_corner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:button="@drawable/custom_radio_button"
-            android:checked="false"
             android:fontFamily="@font/montserrat_regular"
-            android:onClick="radioButtonClicked"
             android:padding="5dp"
-            android:text="@string/un_furnished" />
+            android:text="@string/yes" />
 
         <RadioButton
-            android:id="@+id/semi_furnished"
+            android:id="@+id/no_corner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:button="@drawable/custom_radio_button"
-            android:checked="false"
             android:fontFamily="@font/montserrat_regular"
-            android:onClick="radioButtonClicked"
             android:padding="5dp"
-            android:text="@string/semi_furnished" />
-
+            android:text="@string/no" />
     </RadioGroup>
 
     <Button
-        android:id="@+id/furnished_next_btn"
+        android:id="@+id/corner_next_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/orange_button"
         android:fontFamily="@font/montserrat_regular"
@@ -85,22 +84,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:text="Furnished or not?"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline5" />
-
 </android.support.constraint.ConstraintLayout>

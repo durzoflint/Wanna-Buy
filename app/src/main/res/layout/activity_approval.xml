@@ -10,6 +10,9 @@
         android:id="@+id/approval_image_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:src="@drawable/facing_property"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/guideline16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -46,9 +49,13 @@
 
     <RadioGroup
         android:id="@+id/radioGroup3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/approval_next_btn"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/approval_header"
         app:layout_constraintTop_toBottomOf="@+id/approval_header">
 
@@ -56,21 +63,25 @@
             android:id="@+id/dtcp_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:button="@drawable/custom_radio_button"
-            android:text="@string/dtcp_text"
             android:clickable="true"
-            android:onClick="onRadioButtonClicked"/>
+            android:fontFamily="@font/montserrat_regular"
+            android:onClick="onRadioButtonClicked"
+            android:padding="5dp"
+            android:text="@string/dtcp_text" />
 
         <RadioButton
             android:id="@+id/cmda_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:button="@drawable/custom_radio_button"
-            android:text="@string/cdma_text"
             android:clickable="true"
-            android:onClick="onRadioButtonClicked"/>
+            android:fontFamily="@font/montserrat_regular"
+            android:onClick="onRadioButtonClicked"
+            android:padding="5dp"
+            android:text="@string/cdma_text" />
     </RadioGroup>
 
     <Button
@@ -80,14 +91,11 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/orange_button"
         android:text="@string/next"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup3"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

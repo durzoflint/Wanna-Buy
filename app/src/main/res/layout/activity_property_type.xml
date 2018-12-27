@@ -103,6 +103,32 @@
             android:padding="5dp"
             android:text="@string/institutional"
             android:textSize="15sp" />
+
+        <RadioButton
+            android:id="@+id/pg_rent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginStart="0dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:padding="5dp"
+            android:text="@string/pg_rent"
+            android:textSize="15sp" />
+
+        <RadioButton
+            android:id="@+id/rental_income"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginStart="0dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:padding="5dp"
+            android:text="@string/rental_income"
+            android:textSize="15sp" />
     </RadioGroup>
 
     <Button

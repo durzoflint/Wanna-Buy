@@ -34,8 +34,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-                    //startActivity(new Intent(SplashScreen.this, HomeActivity.class));
-                    startActivity(new Intent(SplashScreen.this, SettingsActivity.class));
+                    startActivity(new Intent(SplashScreen.this, HomeActivity.class));
                 } else {
                     startActivity(new Intent(SplashScreen.this, LoginActivity.class));
                 }

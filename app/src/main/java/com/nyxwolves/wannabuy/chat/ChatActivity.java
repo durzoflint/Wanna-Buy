@@ -2,6 +2,7 @@ package com.nyxwolves.wannabuy.chat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -23,19 +24,26 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.nyxwolves.wannabuy.R;
+import com.nyxwolves.wannabuy.contacts.Contact;
 import com.nyxwolves.wannabuy.contacts.ContactActivity;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class ChatActivity extends AppCompatActivity {
+    FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     ChildEventListener childEventListener;
     List<Message> messageList;
     MessageAdapter messageAdapter;
     ProgressBar progressBar;
-    String name, email, userEmail;
+    String name, email, source, userEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,18 +56,22 @@ public class ChatActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
         Intent intent = getIntent();
         name = intent.getStringExtra(ContactActivity.NAME);
         email = intent.getStringExtra(ContactActivity.EMAIL);
+        source = intent.getStringExtra(ContactActivity.SOURCE);
+
+        if (!source.equals(ContactActivity.CONTACT))
+            addContact();
 
         String node = (email.compareTo(userEmail) > 0) ? (userEmail + " " + email) : (email + " "
                 + userEmail);
-        node = node.replace(".", "");
+        node = node.replaceAll("\\.", "");
 
         setTitle(name);
 
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference()
                 .child("messages")
                 .child(node);
@@ -78,7 +90,7 @@ public class ChatActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Toast.makeText(ChatActivity.this, "Some Error Occurred", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -93,6 +105,35 @@ public class ChatActivity extends AppCompatActivity {
                 String time = new Date().toString();
                 databaseReference.push().setValue(new Message(time, msg.getText().toString(), userEmail));
                 msg.setText("");
+                new SendNotification().execute(email, name, "You have a new Message");
+            }
+        });
+    }
+
+    private void addContact() {
+        final DatabaseReference contactReference = firebaseDatabase.getReference()
+                .child("messages").child("users").child(userEmail.replaceAll("\\.", ""));
+        contactReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    boolean found = false;
+                    Iterable<DataSnapshot> contacts = dataSnapshot.getChildren();
+                    for (DataSnapshot node : contacts) {
+                        Contact contact = node.getValue(Contact.class);
+                        if (contact.email.equals(email))
+                            found = true;
+                    }
+                    if (!found)
+                        contactReference.push().setValue(new Contact(name, email));
+                } else {
+                    contactReference.push().setValue(new Contact(name, email));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(ChatActivity.this, "Some Error Occurred", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -138,5 +179,43 @@ public class ChatActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         databaseReference.removeEventListener(childEventListener);
+    }
+
+    private class SendNotification extends AsyncTask<String, Void, Void> {
+        String baseUrl = "http://www.wannabuy.in/api/notifications/";
+        String webPage = "";
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            URL url;
+            HttpURLConnection urlConnection = null;
+            try {
+                String myURL = baseUrl + "sendNotification.php?email=" + strings[0] + "&title="
+                        + strings[1] + "&body=" + strings[2];
+                myURL = myURL.replaceAll(" ", "%20");
+                myURL = myURL.replaceAll("\'", "%27");
+                myURL = myURL.replaceAll("\'", "%22");
+                myURL = myURL.replaceAll("\\+'", "%2B");
+                myURL = myURL.replaceAll("\\(", "%28");
+                myURL = myURL.replaceAll("\\)", "%29");
+                myURL = myURL.replaceAll("\\{", "%7B");
+                myURL = myURL.replaceAll("\\}", "%7B");
+                myURL = myURL.replaceAll("\\]", "%22");
+                myURL = myURL.replaceAll("\\[", "%22");
+                url = new URL(myURL);
+                urlConnection = (HttpURLConnection) url.openConnection();
+                BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection
+                        .getInputStream()));
+                String data;
+                while ((data = br.readLine()) != null)
+                    webPage = webPage + data;
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (urlConnection != null)
+                    urlConnection.disconnect();
+            }
+            return null;
+        }
     }
 }

@@ -159,7 +159,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 //startActivity(new Intent(HomeActivity.this,AdsActivity.class));
                 break;
             case R.id.nav_account_btn:
-
+                startActivity(new Intent(this, AccountActivity.class));
                 break;
             case R.id.wanna_buy:
                 startActivity(new Intent(HomeActivity.this,BuyOrRent.class));

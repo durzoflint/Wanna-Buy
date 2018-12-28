@@ -11,11 +11,11 @@ import android.widget.TextView;
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
 
-public class Budget extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
+public class Budget extends AppCompatActivity{
 
-    SeekBar budgetSeekBar;
+    SeekBar minBudgetSeekBar,maxBudgetSeekBar;
     Button nextButton;
-    TextView selectedPriceView,modeHeader;
+    TextView minSelectedPrice,maxSelectedPrice,modeHeader;
 
     int budget=0;
     @Override
@@ -26,46 +26,94 @@ public class Budget extends AppCompatActivity implements SeekBar.OnSeekBarChange
         modeHeader=findViewById(R.id.budget_mode);
         modeHeader.setText(Requirements.getInstance().buyorRent);
 
-        selectedPriceView = findViewById(R.id.selected_price_view);
+        minSelectedPrice = findViewById(R.id.min_selected_price);
+        maxSelectedPrice = findViewById(R.id.max_selected_price);
 
-        budgetSeekBar = findViewById(R.id.budget_seekbar);
-        budgetSeekBar.setOnSeekBarChangeListener(this);
-        budgetSeekBar.setMax(1000);
+        minBudgetSeekBar = findViewById(R.id.min_budget_seekbar);
+        minBudgetSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                budget = progress;
+                if(progress < 100){
+                    minSelectedPrice.setText(progress+" Lakhs");
+                }else{
+                    float inCrores = (float) progress/100;
+                    minSelectedPrice.setText(inCrores+"  Crores");
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        minBudgetSeekBar.setMax(1000);
+
+        maxBudgetSeekBar = findViewById(R.id.max_budget_seekbar);
+        maxBudgetSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                budget = progress;
+                if(progress < 100){
+                    maxSelectedPrice.setText(progress+" Lakhs");
+                }else{
+                    float inCrores = (float) progress/100;
+                    maxSelectedPrice.setText(inCrores+"  Crores");
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        maxBudgetSeekBar.setMax(1000);
 
         nextButton = findViewById(R.id.budget_next_btn);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if(budget != 0){
                     Requirements.getInstance().budget = String.valueOf(budget);
-                    Intent i = new Intent(Budget.this,HomeActivity.class);
-                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    i.setAction(getString(R.string.POST_REQUIREMENT));
-                    startActivity(i);
+                    if(checkCondition()) {
+                        Intent i = new Intent(Budget.this, PetsActivity.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        i.setAction(getString(R.string.POST_REQUIREMENT));
+                        startActivity(i);
+                    }else{
+                        Intent i = new Intent(Budget.this, HomeActivity.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        i.setAction(getString(R.string.POST_REQUIREMENT));
+                        startActivity(i);
+                    }
                 }
             }
         });
     }
 
-    @Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        budget = progress;
-        if(progress < 100){
-            selectedPriceView.setText(progress+" Lakhs");
+    private boolean checkCondition(){
+        String type = Requirements.getInstance().subType;
+        String buyOrRent = Requirements.getInstance().buyorRent;
+
+        if(type.equals(getString(R.string.house)) || type.equals(getString(R.string.villa)) || type.equals(getString(R.string.apartments))){
+            if(buyOrRent.equals(getString(R.string.RENT))){
+                return true;
+            }else{
+                return false;
+            }
         }else{
-            float inCrores = (float) progress/100;
-            selectedPriceView.setText(inCrores+"  Crores");
+            return false;
         }
-
-    }
-
-    @Override
-    public void onStartTrackingTouch(SeekBar seekBar) {
-
-    }
-
-    @Override
-    public void onStopTrackingTouch(SeekBar seekBar) {
-
     }
 }

@@ -17,15 +17,15 @@ import java.util.List;
 
 public class MyAdsAdapter extends RecyclerView.Adapter<MyAdsViewHolder> {
 
-    private List<SellerAd> dataList;
+    private List<SellerAd> adDataList;
     Context ctx;
 
     public MyAdsAdapter(Context ctx){
         this.ctx = ctx;
     }
 
-    public void setData(List<SellerAd> dataList){
-        this.dataList = dataList;
+    public void setData(List<SellerAd> adDataList){
+        this.adDataList = adDataList;
         notifyDataSetChanged();
     }
 
@@ -39,7 +39,7 @@ public class MyAdsAdapter extends RecyclerView.Adapter<MyAdsViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyAdsViewHolder myAdsViewHolder, int i) {
-        SellerAd obj = dataList.get(i);
+        SellerAd obj = adDataList.get(i);
         myAdsViewHolder.areaName.setText(obj.area);
         myAdsViewHolder.cityName.setText("Chennai");
         myAdsViewHolder.priceText.setText("1000000");
@@ -51,6 +51,6 @@ public class MyAdsAdapter extends RecyclerView.Adapter<MyAdsViewHolder> {
 
     @Override
     public int getItemCount() {
-        return dataList.size();
+        return adDataList.size();
     }
 }

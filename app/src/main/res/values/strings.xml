@@ -183,4 +183,34 @@
     <string name="covered_parking">Covered Parking</string>
     <string name="uncovered_parking">Unconvered Parking</string>
     <string name="not_present">Not Present</string>
+
+    <string name="property_details_header">Property Details</string>
+    <string name="covered_area">Covered Area</string>
+    <string name="is_furnished">Is Furnished</string>
+
+    <string name="call">Call</string>
+    <string name="email">Email</string>
+    <string name="chat">Chat</string>
+
+    <string name="farm_land">Farm Land</string>
+
+    <string name="no_of_cov_car_park">No.of Covered Parking</string>
+    <string name="no_of_un_car_park">No.of Open Parking</string>
+    <string name="flooring_header">Preferential Number of Floors</string>
+
+    <string name="min_age_header">Minimum Age</string>
+    <string name="max_age_header">Maximum Age</string>
+
+    <string name="age_years">Age In Years</string>
+    <string name="age_months">Age In Months</string>
+
+    <string name="panchayat">Panchayat</string>
+    <string name="corporation">Corporation</string>
+
+    <string name="min_budget_header">Minimum Budget</string>
+    <string name="max_budget_header">Maximum Budget</string>
+
+    <string name="facilities_available">Facilities Available</string>
+
+    <string name="do_not_deviate">Do Not Deviate</string>
 </resources>

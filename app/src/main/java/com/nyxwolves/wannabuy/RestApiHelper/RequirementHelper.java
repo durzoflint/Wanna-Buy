@@ -28,7 +28,8 @@ import java.util.Map;
 public class RequirementHelper {
     private Context ctx;
     private JSONObject params = new JSONObject();
-    public List<Requirements> dataList = new ArrayList<>();
+    public static List<Requirements> reqDataList = new ArrayList<>();
+
     ProgressDialog progressDialog;
 
     public RequirementHelper(Context ctx) {
@@ -111,7 +112,7 @@ public class RequirementHelper {
             @Override
             public void onResponse(String response) {
                 Log.d("READ_RESPONSE", response.toString());
-                getReqData(response);
+                reqDataList = getReqData(response);
                 //closeDialog();
             }
         }, new Response.ErrorListener() {
@@ -125,16 +126,17 @@ public class RequirementHelper {
         CustomRequestQueue.getInstance(ctx).addRequest(getRequirementRequest);
     }
 
-    private void getReqData(String readResponse) {
+    private List<Requirements> getReqData(String readResponse) {
         Log.d("RESPONSE_CHECK", readResponse);
         try {
             JSONObject jsonObject = new JSONObject(readResponse);
             JSONArray responseArray = jsonObject.getJSONArray("requirements");
 
+            List<Requirements>tempList = new ArrayList<>();
             for (int i = 0; i < responseArray.length(); i++) {
                 JSONObject object = responseArray.getJSONObject(i);
                 Requirements tempData = new Requirements();
-                tempData.area = object.getString("PROPERTY_LOCATION_QUERY");
+                tempData.locationOne = object.getString("PROPERTY_LOCATION_ONE");
                 tempData.minSize = object.getString("PROPERTY_SIZE");
                 tempData.type = object.getString("PROPERTY_SUB_TYPE");
                 tempData.bhk = object.getString("BHK");
@@ -145,10 +147,12 @@ public class RequirementHelper {
                 tempData.budget = object.getString("BUDGET");
                 tempData.buyorRent = object.getString("MODE");
 
-                dataList.add(tempData);
+                tempList.add(tempData);
             }
+            return tempList;
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
 
     }
@@ -165,4 +169,5 @@ public class RequirementHelper {
         progressDialog.dismiss();
     }
 }
+
 

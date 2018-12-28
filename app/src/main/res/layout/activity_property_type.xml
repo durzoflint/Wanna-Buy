@@ -115,7 +115,21 @@
             android:onClick="radioButtonClicked"
             android:padding="5dp"
             android:text="@string/pg_rent"
+            android:visibility="gone"
             android:textSize="15sp" />
+
+        <RadioButton
+            android:id="@+id/farm_land"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:visibility="gone"
+            android:button="@drawable/custom_radio_button"
+            android:onClick="radioButtonClicked"
+            android:text="@string/farm_land"
+            android:fontFamily="@font/montserrat_regular"/>
+
 
         <RadioButton
             android:id="@+id/rental_income"

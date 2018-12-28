@@ -1,5 +1,6 @@
 package com.nyxwolves.wannabuy.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +21,10 @@ public class PetsActivity extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent i = new Intent()
+                Intent i = new Intent(PetsActivity.this,HomeActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.setAction(getString(R.string.POST_REQUIREMENT));
+                startActivity(i);
             }
         });
     }

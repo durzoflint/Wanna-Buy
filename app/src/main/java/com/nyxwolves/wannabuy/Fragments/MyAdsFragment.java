@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,19 +34,14 @@ public class MyAdsFragment extends Fragment {
 
     MyAdsAdapter adsAdapter;
 
-    public MyAdsFragment(){
+    public MyAdsFragment() {
 
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       return inflater.inflate(R.layout.fragment_ads,container,false);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_ads, container, false);
 
         postReqBtn = view.findViewById(R.id.first_ad_btn);
         postReqBtn.setOnClickListener(new View.OnClickListener() {
@@ -59,20 +55,24 @@ public class MyAdsFragment extends Fragment {
         firstAdCard.setVisibility(View.GONE);
 
         sharedPreferences = getActivity().getSharedPreferences(getString(R.string.shared_pref), Context.MODE_PRIVATE);
-        if(sharedPreferences.getBoolean(getString(R.string.shared_first_ad),true)){
-            firstAdCard.setVisibility(View.VISIBLE);
+        if (sharedPreferences.getBoolean(getString(R.string.shared_first_ad), true)) {
+            firstAdCard.setVisibility(View.GONE);
         }
 
         //recyclerview
         myAdList = view.findViewById(R.id.my_ads_list);
         myAdList.setVisibility(View.VISIBLE);
-        myAdList.setHasFixedSize(true);
-        AdHelper adhelper = new AdHelper(getActivity());
+
+        final AdHelper adhelper = new AdHelper(getActivity());
         adhelper.readAd();
-        List<SellerAd> dataList = adhelper.adDataList;
+
+        myAdList.setLayoutManager(new LinearLayoutManager(getActivity()));
+
         adsAdapter = new MyAdsAdapter(getActivity());
-        adsAdapter.setData(dataList);
-        myAdList.setLayoutManager(new LinearLayoutManager(getContext()));
+        Log.d("DATA_SIZE_NEW",""+adhelper.adDataList.size());
         myAdList.setAdapter(adsAdapter);
+        adsAdapter.setData(adhelper.adDataList);
+
+        return view;
     }
 }

@@ -9,7 +9,7 @@ public class Requirements {
     public String locationFive = "DEFAULT";
     public String type;
     public String area;
-    public String buyorRent;
+    public String buyorRent = null;
     public String facing;
     public String minSize;
     public String maxSize;

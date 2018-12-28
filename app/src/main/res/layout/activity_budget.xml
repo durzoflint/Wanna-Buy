@@ -47,78 +47,140 @@
         app:layout_constraintStart_toStartOf="@+id/budget_mode"
         app:layout_constraintTop_toBottomOf="@+id/budget_mode" />
 
-
     <SeekBar
-        android:id="@+id/budget_seekbar"
+        android:id="@+id/min_budget_seekbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:progressBackgroundTint="@android:color/darker_gray"
         android:scrollbarSize="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/budget_size_header"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/min_budget_header" />
 
     <Button
         android:id="@+id/budget_next_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/orange_button"
+        android:clickable="true"
         android:fontFamily="@font/montserrat_medium"
         android:text="@string/next"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/budget_seekbar"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5537919" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/min_price"
+        android:id="@+id/min_min_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="10dp"
         android:text="0 Lakh"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintStart_toStartOf="@+id/min_budget_seekbar"
+        app:layout_constraintTop_toBottomOf="@+id/min_budget_seekbar" />
 
     <TextView
-        android:id="@+id/max_price"
+        android:id="@+id/min_max_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="10dp"
         android:text="10 Crores"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintEnd_toEndOf="@+id/min_budget_seekbar"
+        app:layout_constraintTop_toBottomOf="@+id/min_budget_seekbar" />
 
     <TextView
-        android:id="@+id/selected_price_view"
+        android:id="@+id/min_selected_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/max_price"
-        app:layout_constraintEnd_toStartOf="@+id/max_price"
-        app:layout_constraintStart_toEndOf="@+id/min_price"
-        app:layout_constraintTop_toTopOf="@+id/min_price" />
+        app:layout_constraintBottom_toBottomOf="@+id/min_max_price"
+        app:layout_constraintEnd_toStartOf="@+id/min_max_price"
+        app:layout_constraintStart_toEndOf="@+id/min_min_price"
+        app:layout_constraintTop_toTopOf="@+id/min_min_price" />
+
+    <TextView
+        android:id="@+id/min_budget_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="@string/min_budget_header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/budget_size_header" />
+
+    <TextView
+        android:id="@+id/max_budget_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/max_budget_header"
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/min_min_price" />
+
+    <SeekBar
+        android:id="@+id/max_budget_seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:progressBackgroundTint="@android:color/darker_gray"
+        android:scrollbarSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/max_budget_header" />
+
+    <TextView
+        android:id="@+id/max_min_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="0 Lakh"
+        app:layout_constraintStart_toStartOf="@+id/max_budget_seekbar"
+        app:layout_constraintTop_toBottomOf="@+id/max_budget_seekbar" />
+
+    <TextView
+        android:id="@+id/max_max_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="10dp"
+        android:text="10 Crore"
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintEnd_toEndOf="@+id/max_budget_seekbar"
+        app:layout_constraintTop_toBottomOf="@+id/max_budget_seekbar" />
+
+    <TextView
+        android:id="@+id/max_selected_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintBottom_toBottomOf="@+id/max_max_price"
+        app:layout_constraintEnd_toStartOf="@+id/max_max_price"
+        app:layout_constraintStart_toEndOf="@+id/max_min_price"
+        app:layout_constraintTop_toTopOf="@+id/max_min_price" />
 
 </android.support.constraint.ConstraintLayout>

@@ -161,20 +161,23 @@
         <activity
             android:name=".contacts.ContactActivity"
             android:theme="@style/noActionbar" />
-
-        <activity android:name=".activities.CarParking"
-            android:theme="@style/questionTheme"/>
-        <activity android:name=".activities.AgeOfProperty"
-            android:theme="@style/questionTheme"/>
-        <activity android:name=".activities.CornerActivity"
-            android:theme="@style/questionTheme"/>
-        <activity android:name=".activities.FlooringActivity"
-            android:theme="@style/questionTheme"/>
-
+        <activity
+            android:name=".activities.CarParking"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".activities.AgeOfProperty"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".activities.CornerActivity"
+            android:theme="@style/questionTheme" />
+        <activity
+            android:name=".activities.FlooringActivity"
+            android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.SettingsActivity"
             android:theme="@style/noActionbar" />
-
+        <activity android:name=".activities.AdsDetailActivity"
+            android:theme="@style/noActionbar"/>
     </application>
 
 </manifest>

@@ -10,6 +10,9 @@
         android:id="@+id/age_image_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:src="@drawable/tenant_image"
+        android:adjustViewBounds="true"
+        android:scaleType="center"
         app:layout_constraintBottom_toTopOf="@+id/guideline23"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,30 +37,30 @@
         app:layout_constraintTop_toTopOf="@+id/guideline23" />
 
     <EditText
-        android:id="@+id/age_years_input"
+        android:id="@+id/min_age_years_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="30dp"
-        android:hint="Age in Years"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/montserrat_regular"
+        android:hint="@string/age_years"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/age_header" />
+        app:layout_constraintTop_toBottomOf="@+id/min_age_header" />
 
     <EditText
-        android:id="@+id/age_month_input"
+        android:id="@+id/min_age_month_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/montserrat_regular"
-        android:hint="Age in Months"
+        android:hint="@string/age_months"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/age_years_input" />
+        app:layout_constraintTop_toBottomOf="@+id/min_age_years_input" />
 
     <Button
         android:id="@+id/age_next_btn"
@@ -66,14 +69,63 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/next"
-        android:fontFamily="@font/montserrat_regular"
         android:background="@drawable/orange_button"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="@string/next"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/min_age_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="@string/min_age_header"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/age_month_input"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/age_header" />
+
+    <TextView
+        android:id="@+id/max_age_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="@string/max_age_header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/min_age_month_input" />
+
+    <EditText
+        android:id="@+id/max_age_years_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:hint="@string/age_years"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/max_age_header" />
+
+    <EditText
+        android:id="@+id/max_age_in_months_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:hint="@string/age_months"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/max_age_years_input"
+        app:layout_constraintTop_toBottomOf="@+id/max_age_years_input" />
 
 </android.support.constraint.ConstraintLayout>

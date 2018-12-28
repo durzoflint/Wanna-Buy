@@ -22,7 +22,9 @@ public class BuyOrRent extends AppCompatActivity{
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(BuyOrRent.this,AreaLocality.class));
+                if(Requirements.getInstance().buyorRent != null) {
+                    startActivity(new Intent(BuyOrRent.this, AreaLocality.class));
+                }
             }
         });
     }
@@ -30,10 +32,10 @@ public class BuyOrRent extends AppCompatActivity{
     public void onRadioButtonClicked(View v){
         switch (v.getId()){
             case R.id.buy_radio_btn:
-                Requirements.getInstance().buyorRent="Buy";
+                Requirements.getInstance().buyorRent=getString(R.string.BUY);
                 break;
             case R.id.rent_radio_btn:
-                Requirements.getInstance().buyorRent="Rent";
+                Requirements.getInstance().buyorRent=getString(R.string.RENT);
                 break;
         }
     }

@@ -51,7 +51,7 @@ public class RequirementsSearchActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 searchHelper.getRequirement(getString(R.string.LOCATION_QUERY),query.toUpperCase());
 
-                searchAdapter.setData(searchHelper.dataList);
+                searchAdapter.setData(searchHelper.reqDataList);
                 return false;
             }
 
@@ -59,7 +59,7 @@ public class RequirementsSearchActivity extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
                 searchHelper.getRequirement(getString(R.string.LOCATION_QUERY),newText.toUpperCase());
 
-                searchAdapter.setData(searchHelper.dataList);
+                searchAdapter.setData(searchHelper.reqDataList);
                 return false;
             }
         });

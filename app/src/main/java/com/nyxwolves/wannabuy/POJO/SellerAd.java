@@ -17,7 +17,7 @@ public class SellerAd {
     public String buyOrRent;
     public String budgetNegotiable;
     public String cornerPlot;
-    public String  furnished  ="UNFURNISHED";
+    public String furnished  ="NOT_NEEDED";
 
     private static SellerAd instance = null;
 

@@ -19,12 +19,13 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AdHelper {
 
     private Context ctx;
     private JSONObject createParams = new JSONObject();
-    public ArrayList<SellerAd>adDataList = new ArrayList<>();
+    public static List<SellerAd> adDataList = new ArrayList<>();
 
     public AdHelper(Context ctx){
         this.ctx = ctx;
@@ -84,7 +85,8 @@ public class AdHelper {
             @Override
             public void onResponse(String response) {
                 Log.d("READ_RESPONSE", response.toString());
-                getAdData(response);
+                adDataList = getAdData(response);
+                Log.d("TEST_SIZE",""+adDataList.size());
             }
         }, new Response.ErrorListener() {
             @Override
@@ -95,14 +97,18 @@ public class AdHelper {
 
         CustomRequestQueue.getInstance(ctx).addRequest(getRequirementRequest);
     }
-    private void getAdData(String readResponse) {
+
+    private List<SellerAd> getAdData(String readResponse) {
         Log.d("RESPONSE_CHECK", readResponse);
+        List<SellerAd> tempList = new ArrayList<>();
+
         try {
             JSONObject jsonObject = new JSONObject(readResponse);
             JSONArray responseArray = jsonObject.getJSONArray("ads");
 
             for (int i = 0; i < responseArray.length(); i++) {
                 JSONObject object = responseArray.getJSONObject(i);
+
                 SellerAd tempData = new SellerAd();
                 tempData.area = object.getString("PROPERTY_LOCATION");
                 tempData.size = object.getString("PROPERTY_SIZE");
@@ -115,15 +121,14 @@ public class AdHelper {
                 tempData.budget = object.getString("BUDGET");
                 tempData.buyOrRent = object.getString("MODE");
 
-                adDataList.add(tempData);
+                tempList.add(tempData);
             }
+            return tempList;
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
 
     }
 
-    public ArrayList<SellerAd> getAdDataList() {
-        return adDataList;
-    }
 }

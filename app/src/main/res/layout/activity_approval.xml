@@ -82,6 +82,28 @@
             android:onClick="onRadioButtonClicked"
             android:padding="5dp"
             android:text="@string/cdma_text" />
+
+        <RadioButton
+            android:id="@+id/corp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/corporation"
+            android:fontFamily="@font/montserrat_regular"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:onClick="onRadioButtonClicked"
+            android:button="@drawable/custom_radio_button"/>
+
+        <RadioButton
+            android:id="@+id/panchayat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/panchayat"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:onClick="onRadioButtonClicked"
+            android:button="@drawable/custom_radio_button"
+            android:layout_margin="5dp"/>
     </RadioGroup>
 
     <Button

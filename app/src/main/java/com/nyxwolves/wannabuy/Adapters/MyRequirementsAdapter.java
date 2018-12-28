@@ -13,7 +13,7 @@ import java.util.List;
 
 public class MyRequirementsAdapter extends RecyclerView.Adapter<MyRequirementsHolder> {
 
-    List<Requirements> dataList;
+    private List<Requirements> dataList;
 
     public MyRequirementsAdapter(){
 

@@ -260,6 +260,7 @@
                 app:layout_constraintTop_toTopOf="@+id/ins_radio_btn" />
 
         </android.support.constraint.ConstraintLayout>
+
         <android.support.constraint.ConstraintLayout
             android:id="@+id/property_size_layout"
             android:layout_width="0dp"
@@ -626,14 +627,271 @@
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/ammenities_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/furnished_layout">
+
+            <TextView
+                android:id="@+id/ammenities_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/ammenities_header_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/metro_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:onClick="oncheckBoxClicked"
+                android:padding="5dp"
+                android:text="@string/metro_water"
+                app:layout_constraintBottom_toTopOf="@+id/drainage_check"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ammenities_header" />
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/drainage_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:onClick="oncheckBoxClicked"
+                android:padding="5dp"
+                android:text="@string/drainage_connection"
+                app:layout_constraintBottom_toTopOf="@+id/gym_check"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/metro_check" />
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/gym_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:onClick="oncheckBoxClicked"
+                android:padding="5dp"
+                android:text="@string/gym"
+                app:layout_constraintBottom_toTopOf="@+id/power_check"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/drainage_check" />
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/power_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:padding="5dp"
+                android:text="@string/power_backup"
+                app:layout_constraintBottom_toTopOf="@+id/security_check"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gym_check" />
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/security_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:onClick="oncheckBoxClicked"
+                android:padding="5dp"
+                android:text="@string/security_guard"
+                app:layout_constraintBottom_toTopOf="@+id/lift_check"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/power_check" />
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/lift_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:onClick="oncheckBoxClicked"
+                android:padding="5dp"
+                android:text="@string/lift"
+                app:layout_constraintBottom_toTopOf="@+id/swimming_check"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/security_check" />
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/swimming_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:onClick="oncheckBoxClicked"
+                android:padding="5dp"
+                android:text="@string/swimming_pool"
+                app:layout_constraintBottom_toTopOf="@+id/cafetria_check"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lift_check" />
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/cafetria_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:onClick="oncheckBoxClicked"
+                android:padding="5dp"
+                android:text="@string/cafeteria"
+                app:layout_constraintBottom_toTopOf="@+id/garden_check"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/swimming_check" />
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/garden_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:onClick="oncheckBoxClicked"
+                android:padding="5dp"
+                android:text="@string/garden"
+                app:layout_constraintBottom_toTopOf="@+id/water_check"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cafetria_check" />
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/water_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:onClick="oncheckBoxClicked"
+                android:padding="5dp"
+                android:text="@string/water"
+                app:layout_constraintBottom_toTopOf="@+id/maintance_check"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/garden_check" />
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/maintance_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:onClick="oncheckBoxClicked"
+                android:padding="5dp"
+                android:text="@string/maintance_fee"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/water_check" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/budget_layout"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ammenities_layout">
+
+            <TextView
+                android:id="@+id/ads_budget_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/max_budget_header"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <SeekBar
+                android:id="@+id/ads_budget_seek_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:progressBackgroundTint="@android:color/darker_gray"
+                android:scrollbarSize="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ads_budget_header" />
+
+            <TextView
+                android:id="@+id/ads_min_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="0 Lakh"
+                app:layout_constraintStart_toStartOf="@+id/ads_budget_seek_bar"
+                app:layout_constraintTop_toBottomOf="@+id/ads_budget_seek_bar" />
+
+            <TextView
+                android:id="@+id/ads_max_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="10 Crore"
+                app:layout_constraintEnd_toEndOf="@+id/ads_budget_seek_bar"
+                app:layout_constraintTop_toBottomOf="@+id/ads_budget_seek_bar" />
+
+            <TextView
+                android:id="@+id/ads_selected_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                app:layout_constraintBottom_toBottomOf="@+id/ads_max_price"
+                app:layout_constraintEnd_toStartOf="@+id/ads_max_price"
+                app:layout_constraintStart_toEndOf="@+id/ads_min_price"
+                app:layout_constraintTop_toTopOf="@+id/ads_min_price" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
             android:id="@+id/price_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/furnished_layout"
-            app:layout_constraintTop_toBottomOf="@+id/furnished_layout">
+            app:layout_constraintStart_toStartOf="@+id/budget_layout"
+            app:layout_constraintTop_toBottomOf="@+id/budget_layout">
 
             <TextView
                 android:id="@+id/price_header"

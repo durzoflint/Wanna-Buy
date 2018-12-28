@@ -281,6 +281,9 @@ public class AdsActivity extends AppCompatActivity implements SeekBar.OnSeekBarC
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), IMAGE_REQ);
     }
 
+    public void oncheckBoxClicked(View v){
+
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

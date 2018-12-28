@@ -64,7 +64,10 @@ public class PropertySubType extends AppCompatActivity implements View.OnClickLi
                     }else if(subPropertyType.equals(getString(R.string.floorspace)) ||
                             subPropertyType.equals(getString(R.string.school)) ||
                             subPropertyType.equals(getString(R.string.hospital)) ||
-                            subPropertyType.equals(getString(R.string.college))){
+                            subPropertyType.equals(getString(R.string.college)) ||
+                            subPropertyType.equals(getString(R.string.warehouse)) ||
+                            subPropertyType.equals(getString(R.string.cold_storage)) ||
+                            subPropertyType.equals(getString(R.string.factory))){
                         startActivity(new Intent(PropertySubType.this,CarParking.class));
 
                     }else if(subPropertyType.equals(getString(R.string.institutional_land))){

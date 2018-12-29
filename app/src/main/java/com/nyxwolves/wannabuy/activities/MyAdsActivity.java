@@ -1,11 +1,11 @@
 package com.nyxwolves.wannabuy.activities;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
@@ -50,6 +50,9 @@ public class MyAdsActivity extends AppCompatActivity implements View.OnClickList
 
         profileButton = findViewById(R.id.nav_account_btn);
         profileButton.setOnClickListener(this);
+
+        ImageView wannaBuy = findViewById(R.id.wanna_buy);
+        wannaBuy.setOnClickListener(this);
     }
 
     @Override
@@ -66,6 +69,12 @@ public class MyAdsActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.nav_account_btn:
+                Intent i1 = new Intent(MyAdsActivity.this, AccountActivity.class);
+                i1.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(i1);
+                break;
+            case R.id.wanna_buy:
+                startActivity(new Intent(MyAdsActivity.this, BuyOrRent.class));
                 break;
         }
     }

@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.nyxwolves.wannabuy.R;
+import com.nyxwolves.wannabuy.contacts.ContactActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -50,6 +51,38 @@ public class AccountActivity extends AppCompatActivity {
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
                 finish();
+            }
+        });
+
+        ImageView home = findViewById(R.id.nav_home_btn);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AccountActivity.this, HomeActivity.class));
+                finish();
+            }
+        });
+        ImageView msg = findViewById(R.id.nav_msg_btn);
+        msg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AccountActivity.this, ContactActivity.class));
+                finish();
+            }
+        });
+        ImageView ads = findViewById(R.id.nav_ads_btn);
+        ads.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AccountActivity.this, AdsActivity.class));
+                finish();
+            }
+        });
+        ImageView wannaBuy = findViewById(R.id.wanna_buy);
+        wannaBuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AccountActivity.this, BuyOrRent.class));
             }
         });
     }

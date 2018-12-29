@@ -20,6 +20,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.nyxwolves.wannabuy.R;
+import com.nyxwolves.wannabuy.activities.AccountActivity;
+import com.nyxwolves.wannabuy.activities.AdsActivity;
+import com.nyxwolves.wannabuy.activities.BuyOrRent;
 import com.nyxwolves.wannabuy.chat.ChatActivity;
 
 import java.util.ArrayList;
@@ -79,6 +82,38 @@ public class ContactActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(ContactActivity.this, "An Error Occurred", Toast.LENGTH_SHORT)
                         .show();
+            }
+        });
+
+        ImageView home = findViewById(R.id.nav_home_btn);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+                finish();
+            }
+        });
+        ImageView msg = findViewById(R.id.nav_account_btn);
+        msg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ContactActivity.this, AccountActivity.class));
+                finish();
+            }
+        });
+        ImageView ads = findViewById(R.id.nav_ads_btn);
+        ads.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ContactActivity.this, AdsActivity.class));
+                finish();
+            }
+        });
+        ImageView wannaBuy = findViewById(R.id.wanna_buy);
+        wannaBuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ContactActivity.this, BuyOrRent.class));
             }
         });
     }

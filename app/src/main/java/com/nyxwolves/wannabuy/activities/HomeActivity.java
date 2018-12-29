@@ -12,7 +12,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -255,7 +254,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            Log.d("Abhinav", "The webpage is(" + webPage + ")");
             if (!webPage.equals("success")) {
                 Toast.makeText(HomeActivity.this, "Error Occurred while adding user", Toast
                         .LENGTH_SHORT).show();

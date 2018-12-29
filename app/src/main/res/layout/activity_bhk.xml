@@ -52,93 +52,75 @@
         app:layout_constraintStart_toStartOf="@+id/bhk_mode"
         app:layout_constraintTop_toBottomOf="@+id/bhk_mode" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/bhk_do_not_deviate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bhk_header">
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/bhk_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="5dp"
+        android:text="@string/one_bhk_text"
+        app:layout_constraintStart_toStartOf="@+id/bhk_header"
+        app:layout_constraintTop_toBottomOf="@+id/bhk_header" />
 
-        <RadioButton
-            android:id="@+id/one_bhk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginStart="0dp"
-            android:button="@drawable/custom_radio_button"
-            android:checked="false"
-            android:onClick="onRadioButtonClicked"
-            android:padding="5dp"
-            android:text="@string/one_bhk_text" />
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/bhk_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="5dp"
+        android:text="@string/two_bhk_text"
+        app:layout_constraintStart_toStartOf="@+id/bhk_one"
+        app:layout_constraintTop_toBottomOf="@+id/bhk_one" />
 
-        <RadioButton
-            android:id="@+id/two_bhk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginStart="0dp"
-            android:button="@drawable/custom_radio_button"
-            android:checked="false"
-            android:onClick="onRadioButtonClicked"
-            android:padding="5dp"
-            android:text="@string/two_bhk_text" />
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/bhk_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="5dp"
+        android:text="@string/three_bhk_text"
+        app:layout_constraintStart_toStartOf="@+id/bhk_two"
+        app:layout_constraintTop_toBottomOf="@+id/bhk_two" />
 
-        <RadioButton
-            android:id="@+id/three_bhk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginStart="0dp"
-            android:button="@drawable/custom_radio_button"
-            android:checked="false"
-            android:onClick="onRadioButtonClicked"
-            android:padding="5dp"
-            android:text="@string/three_bhk_text" />
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/bhk_four"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="5dp"
+        android:text="@string/four_bhk_text"
+        app:layout_constraintStart_toStartOf="@+id/bhk_three"
+        app:layout_constraintTop_toBottomOf="@+id/bhk_three" />
 
-        <RadioButton
-            android:id="@+id/four_bhk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginStart="0dp"
-            android:button="@drawable/custom_radio_button"
-            android:checked="false"
-            android:onClick="onRadioButtonClicked"
-            android:padding="5dp"
-            android:text="@string/four_bhk_text" />
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/bhk_five"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="5dp"
+        android:text="@string/five_bhk_text"
+        app:layout_constraintStart_toStartOf="@+id/bhk_four"
+        app:layout_constraintTop_toBottomOf="@+id/bhk_four" />
 
-        <RadioButton
-            android:id="@+id/five_bhk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginStart="0dp"
-            android:button="@drawable/custom_radio_button"
-            android:checked="false"
-            android:onClick="onRadioButtonClicked"
-            android:padding="5dp"
-            android:text="@string/five_bhk_text" />
-    </RadioGroup>
 
     <android.support.v7.widget.AppCompatCheckBox
         android:id="@+id/bhk_do_not_deviate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:fontFamily="@font/montserrat_regular"
         android:padding="5dp"
         android:text="@string/do_not_deviate"
         app:layout_constraintBottom_toTopOf="@+id/guideline11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/radioGroup2" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline11"

@@ -29,23 +29,14 @@
 
 
     <TextView
-        android:id="@+id/approval_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/approval"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline16" />
-
-    <TextView
         android:id="@+id/approval_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="@string/approval_header"
-        app:layout_constraintStart_toStartOf="@+id/approval_text"
-        app:layout_constraintTop_toBottomOf="@+id/approval_text" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline16" />
 
     <RadioGroup
         android:id="@+id/radioGroup3"
@@ -99,6 +90,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/panchayat"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:onClick="onRadioButtonClicked"
+            android:button="@drawable/custom_radio_button"
+            android:layout_margin="5dp"/>
+
+        <RadioButton
+            android:id="@+id/commercial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/commercial"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="5dp"
+            android:onClick="onRadioButtonClicked"
+            android:button="@drawable/custom_radio_button"
+            android:layout_margin="5dp"/>
+
+        <RadioButton
+            android:id="@+id/industrial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/industrial"
             android:fontFamily="@font/montserrat_regular"
             android:padding="5dp"
             android:onClick="onRadioButtonClicked"

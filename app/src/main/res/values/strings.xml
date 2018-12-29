@@ -92,8 +92,8 @@
     <string name="south_text">South</string>
     <string name="north_text">North</string>
 
-    <string name="furnished"> Furnished</string>
-    <string name="un_furnished"> Un-Furnished</string>
+    <string name="furnished"> Fully Furnished</string>
+    <string name="un_furnished">Warmshell</string>
     <string name="semi_furnished"> Semi-Furnished</string>
 
     <string name="with_setup"> With Setup</string>
@@ -129,6 +129,7 @@
     <string name="garden">  Garden</string>
     <string name="water">  24hrs Water</string>
     <string name="maintance_fee">  Maintance Fee</string>
+    <string name="play_area">Children Play Area</string>
 
     <string name="approval_header">Type of Approval?</string>
     <string name="dtcp_text">DTCP</string>
@@ -213,4 +214,12 @@
     <string name="facilities_available">Facilities Available</string>
 
     <string name="do_not_deviate">Do Not Deviate</string>
+    <string name="maintance_text">Enter Maintance Amount</string>
+
+    <string name="owner">Owner</string>
+    <string name="dealer">Dealer</string>
+
+    <string name="user_mode">USER_MODE</string>
+    <string name="who_are_you">Who Are You?</string>
+    <string name="iam_a">Iam a</string>
 </resources>

@@ -17,6 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -43,7 +44,7 @@ public class ChatActivity extends AppCompatActivity {
     List<Message> messageList;
     MessageAdapter messageAdapter;
     ProgressBar progressBar;
-    String name, email, source, userEmail;
+    String name, email, userEmail, userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,16 +56,16 @@ public class ChatActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        userEmail = user.getEmail();
+        userName = user.getDisplayName();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
         Intent intent = getIntent();
         name = intent.getStringExtra(ContactActivity.NAME);
         email = intent.getStringExtra(ContactActivity.EMAIL);
-        source = intent.getStringExtra(ContactActivity.SOURCE);
 
-        if (!source.equals(ContactActivity.CONTACT))
-            addContact();
+        addContact();
 
         String node = (email.compareTo(userEmail) > 0) ? (userEmail + " " + email) : (email + " "
                 + userEmail);
@@ -113,6 +114,8 @@ public class ChatActivity extends AppCompatActivity {
     private void addContact() {
         final DatabaseReference contactReference = firebaseDatabase.getReference()
                 .child("messages").child("users").child(userEmail.replaceAll("\\.", ""));
+        final DatabaseReference contactReference2 = firebaseDatabase.getReference()
+                .child("messages").child("users").child(email.replaceAll("\\.", ""));
         contactReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -124,8 +127,10 @@ public class ChatActivity extends AppCompatActivity {
                         if (contact.email.equals(email))
                             found = true;
                     }
-                    if (!found)
+                    if (!found) {
                         contactReference.push().setValue(new Contact(name, email));
+                        contactReference2.push().setValue(new Contact(userName, userEmail));
+                    }
                 } else {
                     contactReference.push().setValue(new Contact(name, email));
                 }

@@ -32,7 +32,6 @@ public class ContactActivity extends AppCompatActivity {
     public static final String EMAIL = "email";
     public static final String NAME = "name";
     public static final String SOURCE = "source";
-    public static final String CONTACT = "contact";
     ContactAdapter contactAdapter;
     List<Contact> contactList;
     FirebaseDatabase firebaseDatabase;
@@ -126,7 +125,6 @@ public class ContactActivity extends AppCompatActivity {
                 Intent intent = new Intent(ContactActivity.this, ChatActivity.class);
                 intent.putExtra(EMAIL, contactList.get(position).email);
                 intent.putExtra(NAME, contactList.get(position).name);
-                intent.putExtra(SOURCE, CONTACT);
                 startActivity(intent);
             }
         });

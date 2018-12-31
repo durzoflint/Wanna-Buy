@@ -8,29 +8,21 @@ import android.widget.Button;
 
 import com.nyxwolves.wannabuy.R;
 
-public class FacilitiesActivities extends AppCompatActivity {
+public class MaintanceActivity extends AppCompatActivity {
 
     Button nextBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_facilities_activities);
+        setContentView(R.layout.activity_maintance);
 
-        nextBtn = findViewById(R.id.facilities_next_btn);
+        nextBtn = findViewById(R.id.maintance_next_btn);
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(FacilitiesActivities.this,MaintanceActivity.class));
+                startActivity(new Intent(MaintanceActivity.this,RoadWidth.class));
             }
         });
-    }
-
-    public void oncheckBoxClicked(View v){
-
-        switch (v.getId()){
-            case R.id.metro_check:
-                break;
-        }
     }
 }

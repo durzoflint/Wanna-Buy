@@ -15,7 +15,7 @@ import com.nyxwolves.wannabuy.R;
 public class PropertyType extends AppCompatActivity implements View.OnClickListener{
 
     Button continueBtn;
-    RadioButton selectedProperty,pgRent,farmLand;
+    RadioButton selectedProperty,pgRent,farmLand,rentalIncome;
     TextView modeHeader;
 
     String property_type;
@@ -35,12 +35,16 @@ public class PropertyType extends AppCompatActivity implements View.OnClickListe
 
         pgRent = findViewById(R.id.pg_rent);
         farmLand = findViewById(R.id.farm_land);
+        rentalIncome = findViewById(R.id.rental_income);
+
         selectedProperty = findViewById(R.id.residential);
 
         if(Requirements.getInstance().buyorRent.equals(getString(R.string.BUY))){
             farmLand.setVisibility(View.VISIBLE);
+            rentalIncome.setVisibility(View.VISIBLE);
         }else{
             pgRent.setVisibility(View.VISIBLE);
+            rentalIncome.setVisibility(View.GONE);
         }
     }
 

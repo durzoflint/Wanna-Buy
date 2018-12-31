@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scroll_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:fillViewport="true">
 
     <android.support.constraint.ConstraintLayout
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="5dp"
-            android:text="@string/approval"
+            android:text="@string/facilities_available"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/guideline15" />
 
@@ -199,25 +199,25 @@
             android:onClick="oncheckBoxClicked"
             android:padding="5dp"
             android:text="@string/water"
-            app:layout_constraintBottom_toTopOf="@+id/maintance_check"
+            app:layout_constraintBottom_toTopOf="@+id/play_area"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/garden_check" />
 
         <android.support.v7.widget.AppCompatCheckBox
-            android:id="@+id/maintance_check"
+            android:id="@+id/play_area"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/play_area"
             android:layout_marginBottom="10dp"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:onClick="oncheckBoxClicked"
             android:padding="5dp"
-            android:text="@string/maintance_fee"
             app:layout_constraintBottom_toTopOf="@+id/facilities_next_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_check" />
+            app:layout_constraintTop_toBottomOf="@+id/water_check"/>
 
         <Button
             android:id="@+id/facilities_next_btn"

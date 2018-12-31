@@ -65,7 +65,7 @@
         app:layout_constraintTop_toBottomOf="@+id/road_width_seekbar" />
 
     <TextView
-        android:id="@+id/max_width"
+        android:id="@+id/selected_width"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

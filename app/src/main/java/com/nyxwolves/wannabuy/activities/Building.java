@@ -104,7 +104,11 @@ public class Building extends Activity {
     public void onRadioButtonClicked(View v){
         switch (v.getId()){
             case R.id.resi_independent:
-                Requirements.getInstance().subType = getString(R.string.residential_independent);
+                if(Requirements.getInstance().type.equals(getString(R.string.pg_rent))){
+                    Requirements.getInstance().subType = getString(R.string.pg_rent_independent);
+                }else{
+                    Requirements.getInstance().subType = getString(R.string.residential_independent);
+                }
                 break;
             case R.id.resi_apartments:
                 Requirements.getInstance().subType = getString(R.string.apartments);

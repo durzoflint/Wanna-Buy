@@ -43,7 +43,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/area_text"
+        android:fontFamily="@font/montserrat_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +58,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/orange_button"
         android:text="@string/next"
         android:textColor="@android:color/white"
@@ -72,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/montserrat_regular"
         android:maxLines="1"
         android:padding="5dp"
@@ -81,7 +83,7 @@
         app:layout_constraintEnd_toStartOf="@+id/location_two"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/location_header" />
+        app:layout_constraintTop_toBottomOf="@+id/city_input" />
 
     <TextView
         android:id="@+id/location_two"
@@ -132,7 +134,7 @@
         android:id="@+id/location_five"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/montserrat_regular"
         android:maxLines="1"
         android:padding="5dp"
@@ -140,5 +142,33 @@
         android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="@+id/location_one"
         app:layout_constraintTop_toBottomOf="@+id/location_one" />
+
+    <EditText
+        android:id="@+id/state_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:fontFamily="@font/montserrat_regular"
+        android:hint="@string/state_text"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/location_header"
+        app:layout_constraintTop_toBottomOf="@+id/location_header" />
+
+    <EditText
+        android:id="@+id/city_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/city_text"
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/state_input"
+        app:layout_constraintTop_toBottomOf="@+id/state_input" />
 
 </android.support.constraint.ConstraintLayout>

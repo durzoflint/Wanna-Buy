@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
 
 public class PgRentOptions extends AppCompatActivity {
@@ -24,5 +25,22 @@ public class PgRentOptions extends AppCompatActivity {
                 startActivity(new Intent(PgRentOptions.this,Building.class));
             }
         });
+    }
+
+    public void onRadioButtonClicked(View v){
+        switch (v.getId()){
+            case R.id.girls_btn:
+                Requirements.getInstance().pgRentType = getString(R.string.girls);
+                break;
+            case R.id.boys_btn:
+                Requirements.getInstance().pgRentType = getString(R.string.boys);
+                break;
+            case R.id.family:
+                Requirements.getInstance().pgRentType = getString(R.string.family);
+                break;
+            case R.id.short_stay:
+                Requirements.getInstance().pgRentType = getString(R.string.short_stay);
+                break;
+        }
     }
 }

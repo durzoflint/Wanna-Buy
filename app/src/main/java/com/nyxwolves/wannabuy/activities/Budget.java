@@ -17,7 +17,8 @@ public class Budget extends AppCompatActivity{
     Button nextButton;
     TextView minSelectedPrice,maxSelectedPrice,modeHeader;
 
-    int budget=0;
+    int minBudget = 0;
+    int maxBudget = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +34,7 @@ public class Budget extends AppCompatActivity{
         minBudgetSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                budget = progress;
+                minBudget = progress;
                 if(progress < 100){
                     minSelectedPrice.setText(progress+" Lakhs");
                 }else{
@@ -58,7 +59,7 @@ public class Budget extends AppCompatActivity{
         maxBudgetSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                budget = progress;
+                maxBudget = progress;
                 if(progress < 100){
                     maxSelectedPrice.setText(progress+" Lakhs");
                 }else{
@@ -84,8 +85,10 @@ public class Budget extends AppCompatActivity{
             @Override
             public void onClick(View v) {
 
-                if(budget != 0){
-                    Requirements.getInstance().budget = String.valueOf(budget);
+                if(minBudget != 0 && maxBudget !=0){
+                    Requirements.getInstance().minbudget = String.valueOf(minBudget);
+                    Requirements.getInstance().maxBudget = String.valueOf(maxBudget);
+
                     if(Requirements.getInstance().subType.equals(getString(R.string.residential_independent)) ||
                             Requirements.getInstance().subType.equals(getString(R.string.commercial_independent)) ||
                             Requirements.getInstance().subType.equals(getString(R.string.commercial_floorspace)) ||
@@ -110,20 +113,6 @@ public class Budget extends AppCompatActivity{
         });
     }
 
-    private boolean checkCondition(){
-        String type = Requirements.getInstance().subType;
-        String buyOrRent = Requirements.getInstance().buyorRent;
-
-        if(type.equals(getString(R.string.house)) || type.equals(getString(R.string.villa)) || type.equals(getString(R.string.apartments))){
-            if(buyOrRent.equals(getString(R.string.RENT))){
-                return true;
-            }else{
-                return false;
-            }
-        }else{
-            return false;
-        }
-    }
 }
 
 

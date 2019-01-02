@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.AmmenitiesActivity">
+    tools:context=".activities.FacilitiesActivities">
 
     <ImageView
         android:id="@+id/facilities_image_view"
@@ -81,6 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:onClick="onRadioButtonClicked"
             android:button="@drawable/custom_radio_button"
             android:fontFamily="@font/montserrat_regular"
             android:padding="5dp"
@@ -91,6 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:onClick="onRadioButtonClicked"
             android:button="@drawable/custom_radio_button"
             android:fontFamily="@font/montserrat_regular"
             android:padding="5dp"
@@ -125,6 +127,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:onClick="onRadioButtonClicked"
             android:button="@drawable/custom_radio_button"
             android:fontFamily="@font/montserrat_regular"
             android:padding="5dp"
@@ -135,6 +138,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:onClick="onRadioButtonClicked"
             android:button="@drawable/custom_radio_button"
             android:fontFamily="@font/montserrat_regular"
             android:padding="5dp"

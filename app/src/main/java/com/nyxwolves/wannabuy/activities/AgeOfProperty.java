@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -17,10 +19,14 @@ public class AgeOfProperty extends AppCompatActivity {
     SeekBar minAgeBar,maxAgeBar;
     TextView minSelectedAge,maxSelectedAge;
 
+    int minAge = 0;
+    int maxAge = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_age_of_property);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         minSelectedAge = findViewById(R.id.min_selected_age);
         maxSelectedAge = findViewById(R.id.max_selected_age);
@@ -29,7 +35,7 @@ public class AgeOfProperty extends AppCompatActivity {
         minAgeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                Requirements.getInstance().minAge = String.valueOf(progress);
+                minAge = progress;
                 minSelectedAge.setText(String.valueOf(progress));
             }
 
@@ -48,7 +54,7 @@ public class AgeOfProperty extends AppCompatActivity {
         maxAgeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                Requirements.getInstance().maxAge = String.valueOf(progress);
+                maxAge = progress;
                 maxSelectedAge.setText(String.valueOf(progress));
             }
 
@@ -67,7 +73,12 @@ public class AgeOfProperty extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AgeOfProperty.this,AmmenitiesActivity.class));
+                if(minAge != 0 || maxAge != 0) {
+                    Requirements.getInstance().minAge = String.valueOf(minAge);
+                    Requirements.getInstance().maxAge = String.valueOf(maxAge);
+
+                    startActivity(new Intent(AgeOfProperty.this, AmmenitiesActivity.class));
+                }
             }
         });
     }

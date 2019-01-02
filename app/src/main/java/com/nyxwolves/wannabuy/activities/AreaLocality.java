@@ -6,6 +6,7 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,11 +25,13 @@ import com.nyxwolves.wannabuy.R;
 public class AreaLocality extends AppCompatActivity implements View.OnClickListener {
 
     Button nextBtn;
-    EditText locationInput;
+    EditText areaInput,cityInput,stateInput;
     GeoDataClient geoDataClient;
     TextView locationOne, locationTwo, locationThree, locationFour, locationFive;
 
     final int LOCATION_REQUEST = 1200;
+    final int CITY_REQUEST = 1300;
+    final int STATE_REQUEST = 1400;
     boolean isOneFull = false;
     boolean isTwoFull = false;
     boolean isThreeFull = false;
@@ -40,6 +43,8 @@ public class AreaLocality extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_area_locality);
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        
         geoDataClient = Places.getGeoDataClient(this);
 
         locationOne = findViewById(R.id.location_one);
@@ -57,8 +62,14 @@ public class AreaLocality extends AppCompatActivity implements View.OnClickListe
         locationFive = findViewById(R.id.location_five);
         locationFive.setOnClickListener(this);
 
-        locationInput = findViewById(R.id.location_input);
-        locationInput.setOnClickListener(this);
+        areaInput = findViewById(R.id.location_input);
+        areaInput.setOnClickListener(this);
+
+        stateInput = findViewById(R.id.state_input);
+        stateInput.setOnClickListener(this);
+
+        cityInput = findViewById(R.id.city_input);
+        cityInput.setOnClickListener(this);
 
         nextBtn = findViewById(R.id.area_next_btn);
         nextBtn.setOnClickListener(this);
@@ -76,6 +87,12 @@ public class AreaLocality extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.location_input:
+                getLocationName();
+                break;
+            case R.id.state_input:
+                getStateName();
+                break;
+            case R.id.city_input:
                 getLocationName();
                 break;
             case R.id.location_five:
@@ -111,6 +128,20 @@ public class AreaLocality extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    private void getStateName(){
+        try {
+            AutocompleteFilter filter = new AutocompleteFilter.Builder().setTypeFilter(Place.TYPE_COUNTRY).setCountry("IN").build();
+            Intent cityIntent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                    .setFilter(filter)
+                    .build(this);
+            startActivityForResult(cityIntent, STATE_REQUEST);
+        } catch (GooglePlayServicesNotAvailableException e) {
+            Toast.makeText(this, "Google Play Services missing", Toast.LENGTH_SHORT).show();
+        } catch (GooglePlayServicesRepairableException e) {
+            Toast.makeText(this, "Google Play Services error", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     private void getLocationName() {
         try {
             AutocompleteFilter filter = new AutocompleteFilter.Builder().setCountry("IN").build();
@@ -131,6 +162,9 @@ public class AreaLocality extends AppCompatActivity implements View.OnClickListe
         if (requestCode == LOCATION_REQUEST && resultCode == RESULT_OK) {
             Place places = PlaceAutocomplete.getPlace(this, data);
             showPlaces(places.getName().toString());
+        }else if(requestCode == STATE_REQUEST && resultCode == RESULT_OK){
+            Place places = PlaceAutocomplete.getPlace(this,data);
+            stateInput.setText(places.getName().toString());
         }
     }
 

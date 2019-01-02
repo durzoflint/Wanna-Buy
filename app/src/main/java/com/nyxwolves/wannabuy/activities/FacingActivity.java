@@ -29,8 +29,7 @@ public class FacingActivity extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (direction != null){
-                    Requirements.getInstance().facing = direction;
+                if (Requirements.getInstance().checkFacing()){
                     if(Requirements.getInstance().subType.equals(getString(R.string.residential_land)) ||
                             Requirements.getInstance().subType.equals(getString(R.string.commercial_land)) ||
                             Requirements.getInstance().subType.equals(getString(R.string.industrial_land)) ||
@@ -49,16 +48,28 @@ public class FacingActivity extends AppCompatActivity {
     public void onCheckBoxClicked(View v){
         switch (v.getId()){
             case R.id.north_check_box:
-                direction = getString(R.string.north_text);
+                Requirements.getInstance().facingNorth = getString(R.string.yes);
+                Requirements.getInstance().facingSouth = getString(R.string.no);
+                Requirements.getInstance().facingEast = getString(R.string.no);
+                Requirements.getInstance().facingWest = getString(R.string.no);
                 break;
             case R.id.south_check_box:
-                direction = getString(R.string.south_text);
+                Requirements.getInstance().facingNorth = getString(R.string.no);
+                Requirements.getInstance().facingSouth = getString(R.string.yes);
+                Requirements.getInstance().facingEast = getString(R.string.no);
+                Requirements.getInstance().facingWest = getString(R.string.no);
                 break;
             case R.id.west_check_box:
-                direction = getString(R.string.west_text);
+                Requirements.getInstance().facingNorth = getString(R.string.no);
+                Requirements.getInstance().facingSouth = getString(R.string.no);
+                Requirements.getInstance().facingEast = getString(R.string.no);
+                Requirements.getInstance().facingWest = getString(R.string.yes);
                 break;
             case R.id.east_check_box:
-                direction = getString(R.string.east_text);
+                Requirements.getInstance().facingNorth = getString(R.string.no);
+                Requirements.getInstance().facingSouth = getString(R.string.no);
+                Requirements.getInstance().facingEast = getString(R.string.yes);
+                Requirements.getInstance().facingWest = getString(R.string.no);
                 break;
         }
     }

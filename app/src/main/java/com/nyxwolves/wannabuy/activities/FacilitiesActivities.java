@@ -27,10 +27,19 @@ public class FacilitiesActivities extends AppCompatActivity {
         });
     }
 
-    public void oncheckBoxClicked(View v){
-
-        switch (v.getId()){
-            case R.id.metro_check:
+    public void onRadioButtonClicked(View v){
+        switch(v.getId()){
+            case R.id.metro_yes:
+                Requirements.getInstance().metroWater= getString(R.string.yes);
+                break;
+            case R.id.metro_no:
+                Requirements.getInstance().metroWater= getString(R.string.no);
+                break;
+            case R.id.drainage_yes:
+                Requirements.getInstance().drainageConnection = getString(R.string.yes);
+                break;
+            case R.id.drainage_no:
+                Requirements.getInstance().drainageConnection = getString(R.string.no);
                 break;
         }
     }

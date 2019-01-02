@@ -3,8 +3,10 @@ package com.nyxwolves.wannabuy.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -15,7 +17,7 @@ public class ApprovalActivity extends AppCompatActivity {
 
     Button nextBtn;
     boolean checkInput = false;
-    RadioButton cdma,dtcp,corporation,panchayat,commercial,industrial;
+    CheckBox cdma,dtcp,corporation,panchayat,commercial,industrial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +38,11 @@ public class ApprovalActivity extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //if(checkInput){
+                if(Requirements.getInstance().checkApproval()){
                     startActivity(new Intent(ApprovalActivity.this,FacilitiesActivities.class));
-                //}else{
-                  //  Toast.makeText(ApprovalActivity.this,"Cannot Be Empty",Toast.LENGTH_SHORT).show();
-                //}
+                }else{
+                    Toast.makeText(ApprovalActivity.this,"Cannot Be Empty",Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -53,23 +55,35 @@ public class ApprovalActivity extends AppCompatActivity {
             industrial.setVisibility(View.VISIBLE);
         }
     }
-    public void onRadioButtonClicked(View v){
+
+    private String setData(CheckBox checkBox){
+        if(checkBox.isChecked()){
+            Log.d("APPROVAL","YES");
+            return getString(R.string.yes);
+        }else{
+            Log.d("APPROVAL","NO");
+            return getString(R.string.no);
+        }
+    }
+    public void onCheckBoxClicked(View v){
         switch (v.getId()){
             case R.id.dtcp_btn:
-                checkInput = true;
-                Requirements.getInstance().approval = getString(R.string.dtcp_text);
+                Requirements.getInstance().dtcpApproved = setData((CheckBox)v);
                 break;
             case R.id.cmda_btn:
-                checkInput = true;
-                Requirements.getInstance().approval = getString(R.string.cdma_text);
+                Requirements.getInstance().cdmaApproved = setData((CheckBox)v);
+                break;
+            case R.id.panchayat:
+                Requirements.getInstance().panchayatApproved = setData((CheckBox)v);
+                break;
+            case R.id.corp:
+                Requirements.getInstance().corporationApproved = setData((CheckBox)v);
                 break;
             case R.id.commercial:
-                checkInput = true;
-                Requirements.getInstance().approval = getString(R.string.commercial);
+                Requirements.getInstance().commercialApproved = setData((CheckBox)v);
                 break;
             case  R.id.industrial:
-                checkInput = true;
-                Requirements.getInstance().approval = getString(R.string.industrial);
+                Requirements.getInstance().industrialApproved = setData((CheckBox)v);
                 break;
         }
     }

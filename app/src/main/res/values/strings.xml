@@ -69,7 +69,7 @@
     <string name="residential_land">Residential_Land</string>
     <string name="residential_building">Residential_Building</string>
     <string name="residential_independent">Residential_Independent</string>
-
+    <string name="pg_rent_independent">PG_Rent_Independent</string>
     <string name="commercial_land">Commercial_Land</string>
     <string name="commercial_building">Commercial_Building</string>
     <string name="commercial_independent">Commercial_Independent</string>
@@ -285,4 +285,7 @@
     <string name="working_men_hostel">Working Men Hostel</string>
     <string name="working_women_hostel">Working Women Hostel</string>
     <string name="name_your_requirement">Name your Requirement</string>
+    <string name="state_text">State Name</string>
+    <string name="city_text">City Name</string>
+    <string name="area_text">Area Name</string>
 </resources>

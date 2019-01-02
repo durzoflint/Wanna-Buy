@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
 
 public class RoadWidth extends AppCompatActivity {
@@ -16,6 +17,7 @@ public class RoadWidth extends AppCompatActivity {
     SeekBar roadWidth;
     TextView selectedWidth;
 
+    int width = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,11 @@ public class RoadWidth extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RoadWidth.this,RequirementName.class));
+                if(width  != 0){
+                    Requirements.getInstance().roadWidth = String.valueOf(width);
+                    startActivity(new Intent(RoadWidth.this,RequirementName.class));
+                }
+
             }
         });
 
@@ -36,6 +42,7 @@ public class RoadWidth extends AppCompatActivity {
         roadWidth.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                width = progress;
                 selectedWidth.setText(Integer.toString(progress));
             }
 

@@ -38,43 +38,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline16" />
 
-    <RadioGroup
+    <LinearLayout
         android:id="@+id/radioGroup3"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="20dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/approval_next_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/approval_header"
         app:layout_constraintTop_toBottomOf="@+id/approval_header">
 
-        <RadioButton
+        <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/dtcp_btn"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:button="@drawable/custom_radio_button"
-            android:clickable="true"
             android:fontFamily="@font/montserrat_regular"
-            android:onClick="onRadioButtonClicked"
+            android:onClick="onCheckBoxClicked"
             android:padding="5dp"
             android:text="@string/dtcp_text" />
 
-        <RadioButton
+        <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/cmda_btn"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:button="@drawable/custom_radio_button"
-            android:clickable="true"
             android:fontFamily="@font/montserrat_regular"
-            android:onClick="onRadioButtonClicked"
+            android:onClick="onCheckBoxClicked"
             android:padding="5dp"
             android:text="@string/cdma_text" />
 
-        <RadioButton
+        <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/corp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -82,42 +79,38 @@
             android:fontFamily="@font/montserrat_regular"
             android:layout_margin="5dp"
             android:padding="5dp"
-            android:onClick="onRadioButtonClicked"
-            android:button="@drawable/custom_radio_button"/>
+            android:onClick="onCheckBoxClicked"/>
 
-        <RadioButton
+        <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/panchayat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/panchayat"
             android:fontFamily="@font/montserrat_regular"
             android:padding="5dp"
-            android:onClick="onRadioButtonClicked"
-            android:button="@drawable/custom_radio_button"
+            android:onClick="onCheckBoxClicked"
             android:layout_margin="5dp"/>
 
-        <RadioButton
+        <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/commercial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/commercial"
             android:fontFamily="@font/montserrat_regular"
             android:padding="5dp"
-            android:onClick="onRadioButtonClicked"
-            android:button="@drawable/custom_radio_button"
+            android:onClick="onCheckBoxClicked"
             android:layout_margin="5dp"/>
 
-        <RadioButton
+        <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/industrial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/industrial"
             android:fontFamily="@font/montserrat_regular"
             android:padding="5dp"
-            android:onClick="onRadioButtonClicked"
-            android:button="@drawable/custom_radio_button"
+            android:onClick="onCheckBoxClicked"
             android:layout_margin="5dp"/>
-    </RadioGroup>
+    </LinearLayout>
 
     <Button
         android:id="@+id/approval_next_btn"

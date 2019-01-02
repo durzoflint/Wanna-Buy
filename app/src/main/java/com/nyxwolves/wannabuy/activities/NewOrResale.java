@@ -31,11 +31,23 @@ public class NewOrResale extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //Requirements.getInstance().isNew = newOrResale;
-                startActivity(new Intent(NewOrResale.this, Building.class));
+                if(Requirements.getInstance().checkNewOrResale()) {
+                    startActivity(new Intent(NewOrResale.this, Building.class));
+                }
 
             }
         });
+    }
+
+    public void onCheckBoxClicked(View v){
+        switch (v.getId()){
+            case R.id.new_check:
+                Requirements.getInstance().isNew = getString(R.string.new_text);
+                break;
+            case R.id.resale_check:
+                Requirements.getInstance().isResale = getString(R.string.resale_text);
+                break;
+        }
     }
 
 

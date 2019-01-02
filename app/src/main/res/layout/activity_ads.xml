@@ -8,26 +8,16 @@
     android:fillViewport="true"
     tools:context=".activities.AdsActivity">
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/post_ads_image"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:src="@drawable/location_property"
-            app:layout_constraintBottom_toTopOf="@+id/guideline19"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline19"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="200dp" />
+            android:src="@drawable/location_property" />
 
         <TextView
             android:id="@+id/post_ad_header"
@@ -36,9 +26,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/montserrat_regular"
-            android:text="@string/post_ad"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline19" />
+            android:text="@string/post_ad" />
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraintLayout2"
@@ -46,10 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/post_ad_header"
-            app:layout_constraintTop_toBottomOf="@+id/post_ad_header">
+            android:layout_marginTop="8dp">
 
             <TextView
                 android:id="@+id/about_header"
@@ -98,15 +83,12 @@
 
         <LinearLayout
             android:id="@+id/area_layout"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/area_header"
@@ -126,9 +108,10 @@
 
         <LinearLayout
             android:id="@+id/door_layout"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -154,9 +137,10 @@
 
         <LinearLayout
             android:id="@+id/address_layout"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -182,13 +166,11 @@
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/property_type_layout"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/address_layout"
-            app:layout_constraintTop_toBottomOf="@+id/address_layout">
+            android:layout_marginTop="20dp">
 
             <TextView
                 android:id="@+id/property_type_header"
@@ -593,28 +575,22 @@
 
         <FrameLayout
             android:id="@+id/pg_rent_layout"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="20dp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/property_type_layout"
-            app:layout_constraintTop_toBottomOf="@+id/property_type_layout">
+            android:visibility="gone">
             <include  layout="@layout/sample_layout"/>
         </FrameLayout>
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/property_size_layout"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.47"
-            app:layout_constraintStart_toStartOf="@+id/pg_rent_layout"
-            app:layout_constraintTop_toBottomOf="@+id/pg_rent_layout">
+            android:layout_marginTop="20dp">
 
             <TextView
                 android:id="@+id/size_header"
@@ -670,14 +646,12 @@
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraintLayout3"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/property_size_layout"
-            app:layout_constraintTop_toBottomOf="@+id/property_size_layout">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/ads_bhk_header"
@@ -765,9 +739,10 @@
 
         <LinearLayout
             android:id="@+id/facing_layout"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginTop="20dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -831,13 +806,11 @@
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/sell_type_layout"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/facing_layout"
-            app:layout_constraintTop_toBottomOf="@+id/facing_layout">
+            android:layout_marginTop="20dp">
 
             <TextView
                 android:id="@+id/sell_type_header"
@@ -885,8 +858,9 @@
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/furnished_layout"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -956,12 +930,8 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/furnished_layout">
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp">
 
             <TextView
                 android:id="@+id/facilities_header"
@@ -1009,12 +979,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/facilities_layout">
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp">
 
             <TextView
                 android:id="@+id/ammenities_header"
@@ -1260,8 +1226,8 @@
             android:id="@+id/lease_start_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -1307,13 +1273,9 @@
             android:id="@+id/lease_end_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lease_start_layout">
+            android:layout_marginEnd="10dp">
 
             <TextView
                 android:id="@+id/end_date_header"
@@ -1354,13 +1316,9 @@
             android:id="@+id/advance_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lease_end_layout">
+            android:layout_marginEnd="10dp">
 
             <TextView
                 android:id="@+id/rental_advance_header"
@@ -1387,14 +1345,10 @@
             android:id="@+id/lease_rent_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginTop="20dp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/advance_layout">
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/lease_rent_header"
@@ -1444,14 +1398,10 @@
             android:id="@+id/tenant_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginTop="20dp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lease_rent_layout">
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/tenant_name_header"
@@ -1483,14 +1433,10 @@
             android:id="@+id/rental_roi_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginTop="20dp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tenant_name">
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/roi_header"
@@ -1519,14 +1465,10 @@
             android:id="@+id/rental_investment_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginTop="20dp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rental_roi_layout">
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/rental_invest_header"
@@ -1556,12 +1498,9 @@
             android:id="@+id/budget_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rental_investment_layout">
+            android:layout_marginEnd="10dp">
 
             <TextView
                 android:id="@+id/ads_budget_header"
@@ -1623,13 +1562,11 @@
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/price_layout"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/budget_layout"
-            app:layout_constraintTop_toBottomOf="@+id/budget_layout">
+            android:layout_marginStart="10dp">
 
             <TextView
                 android:id="@+id/price_header"
@@ -1675,15 +1612,12 @@
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/prop_pic_layout"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/price_layout"
-            app:layout_constraintTop_toBottomOf="@+id/price_layout">
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/upload_btn"
@@ -1723,15 +1657,11 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
             android:background="@drawable/orange_button"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:text="@string/make_payment"
-            android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/prop_pic_layout"
-            app:layout_constraintTop_toBottomOf="@+id/prop_pic_layout" />
-
-    </android.support.constraint.ConstraintLayout>
+            android:textColor="@android:color/white" />
+    </LinearLayout>
 </ScrollView>

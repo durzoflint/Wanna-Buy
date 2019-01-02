@@ -9,6 +9,7 @@ public class Requirements {
     public String locationFive = "DEFAULT";
     public String type;
     public String area;
+    public String minAge,maxAge;
     public String buyorRent = null;
     public String facing;
     public String minSize;

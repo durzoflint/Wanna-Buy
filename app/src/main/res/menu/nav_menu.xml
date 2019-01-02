@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item android:id="@+id/user_account"
+        android:title="@string/title_account"/>
+
+    <item android:id="@+id/post_requirement"
+        android:title="@string/POST_REQUIREMENT"/>
+
+    <item android:id="@+id/my_matches"
+        android:title="@string/your_matches_header"/>
+
+    <item android:id="@+id/how_we_work"
+        android:title="@string/how_we_work"/>
+
+    <item android:id="@+id/contact"
+        android:title="@string/contact"/>
+
     <item android:id="@+id/log_out"
         android:title="@string/log_out"/>
+
 </menu>

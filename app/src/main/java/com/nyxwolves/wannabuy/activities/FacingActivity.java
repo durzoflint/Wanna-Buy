@@ -31,7 +31,14 @@ public class FacingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (direction != null){
                     Requirements.getInstance().facing = direction;
-                    startActivity(new Intent(FacingActivity.this,ApprovalActivity.class));
+                    if(Requirements.getInstance().subType.equals(getString(R.string.residential_land)) ||
+                            Requirements.getInstance().subType.equals(getString(R.string.commercial_land)) ||
+                            Requirements.getInstance().subType.equals(getString(R.string.industrial_land)) ||
+                            Requirements.getInstance().subType.equals(getString(R.string.institutional_land))){
+                        startActivity(new Intent(FacingActivity.this,ApprovalActivity.class));
+                    }else {
+                        startActivity(new Intent(FacingActivity.this, AgeOfProperty.class));
+                    }
                 }else{
                     Toast.makeText(FacingActivity.this,"Choose any direction",Toast.LENGTH_SHORT).show();
                 }

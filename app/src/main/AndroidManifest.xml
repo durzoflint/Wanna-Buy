@@ -179,9 +179,25 @@
         <activity
             android:name=".activities.AdsDetailActivity"
             android:theme="@style/noActionbar" />
-        <activity android:name=".activities.MaintanceActivity"
-            android:theme="@style/noActionbar"/>
-        <activity android:name=".activities.OwnerOrDealer"
+        <activity
+            android:name=".activities.MaintanceActivity"
+            android:theme="@style/noActionbar" />
+        <activity
+            android:name=".activities.OwnerOrDealer"
+            android:theme="@style/noActionbar" />
+        <activity
+            android:name=".activities.AmmenitiesActivity"
+            android:theme="@style/noActionbar" />
+        <activity
+            android:name=".activities.Building"
+            android:label="@string/title_activity_building" />
+        <activity
+            android:name=".activities.SchoolCollegeHospital"
+            android:theme="@style/noActionbar" />
+        <activity
+            android:name=".activities.PgRentOptions"
+            android:theme="@style/noActionbar" />
+        <activity android:name=".activities.RequirementName"
             android:theme="@style/noActionbar"/>
     </application>
 

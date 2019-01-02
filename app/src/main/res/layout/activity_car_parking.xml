@@ -30,9 +30,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/car_parking"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/montserrat_regular"
+        android:text="@string/car_parking"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline14" />
 
@@ -40,79 +40,62 @@
         android:id="@+id/covered_parking_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/montserrat_regular"
-        android:padding="5dp"
         android:onClick="onCheckBoxClicked"
+        android:padding="5dp"
         android:text="@string/covered_parking"
         app:layout_constraintStart_toStartOf="@+id/car_parking_header"
         app:layout_constraintTop_toBottomOf="@+id/car_parking_header" />
 
-    <EditText
-        android:id="@+id/no_of_cov_car_park"
+    <NumberPicker
+        android:id="@+id/cov_picker"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:fontFamily="@font/montserrat_regular"
-        android:hint="@string/no_of_cov_car_park"
-        android:inputType="number"
+        android:layout_height="80dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="8dp"
         android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/covered_parking_check"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/covered_parking_check"
-        app:layout_constraintTop_toBottomOf="@+id/covered_parking_check" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/covered_parking_check"
+        app:layout_constraintTop_toTopOf="@+id/covered_parking_check" />
 
     <android.support.v7.widget.AppCompatCheckBox
         android:id="@+id/un_cov_car_park"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="@font/montserrat_regular"
-        android:padding="5dp"
         android:onClick="onCheckBoxClicked"
+        android:padding="5dp"
         android:text="@string/uncovered_parking"
         app:layout_constraintStart_toStartOf="@+id/covered_parking_check"
-        app:layout_constraintTop_toBottomOf="@+id/no_of_cov_car_park" />
+        app:layout_constraintTop_toBottomOf="@+id/covered_parking_check" />
 
-    <EditText
-        android:id="@+id/no_of_un_cov_car_park"
+    <NumberPicker
+        android:id="@+id/uncov_picker"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:inputType="number"
-        android:fontFamily="@font/montserrat_regular"
+        android:layout_height="80dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="8dp"
         android:visibility="gone"
-        android:hint="@string/no_of_un_car_park"
+        app:layout_constraintBottom_toBottomOf="@+id/un_cov_car_park"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/un_cov_car_park"
-        app:layout_constraintTop_toBottomOf="@+id/un_cov_car_park" />
-
-    <android.support.v7.widget.AppCompatCheckBox
-        android:id="@+id/no_parking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/montserrat_regular"
-        android:padding="5dp"
-        android:onClick="onCheckBoxClicked"
-        android:text="@string/not_present"
-        app:layout_constraintStart_toStartOf="@+id/no_of_un_cov_car_park"
-        app:layout_constraintTop_toBottomOf="@+id/no_of_un_cov_car_park" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/un_cov_car_park"
+        app:layout_constraintTop_toTopOf="@+id/un_cov_car_park" />
 
     <android.support.v7.widget.AppCompatCheckBox
         android:id="@+id/car_do_not_deviate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:fontFamily="@font/montserrat_regular"
         android:padding="5dp"
         android:text="@string/do_not_deviate"
         app:layout_constraintBottom_toTopOf="@+id/car_parking_next_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/no_parking" />
+        app:layout_constraintStart_toStartOf="parent" />
     <Button
         android:id="@+id/car_parking_next_btn"
         android:layout_width="wrap_content"

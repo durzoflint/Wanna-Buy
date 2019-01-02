@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.nyxwolves.wannabuy.Fragments.FragmentToActivity;
+import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
 import com.nyxwolves.wannabuy.RestApiHelper.AdHelper;
 import com.nyxwolves.wannabuy.RestApiHelper.RequirementHelper;
@@ -165,7 +166,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.home_rent_btn:
-                startActivity(new Intent(HomeActivity.this,RentalEndDate.class));
+                //startActivity(new Intent(HomeActivity.this,RentalEndDate.class));
+                Requirements.getInstance().buyorRent = getString(R.string.RENT);
+                startActivity(new Intent(HomeActivity.this,AreaLocality.class));
                 break;
             case R.id.post_property_btn:
                 startActivity(new Intent(HomeActivity.this,AdsActivity.class));
@@ -210,6 +213,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
                 finish();
+                break;
+
+            case R.id.my_matches:
+                startActivity(new Intent(HomeActivity.this,MyAdsActivity.class));
+                break;
+            case R.id.user_account:
+                startActivity(new Intent(HomeActivity.this,AccountActivity.class));
+                break;
         }
         return false;
     }

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/no_of_rooms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="@string/no_of_rooms"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <SeekBar
+        android:id="@+id/no_of_rooms_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:progressBackgroundTint="@android:color/darker_gray"
+        android:scrollbarSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/no_of_rooms" />
+
+    <TextView
+        android:id="@+id/no_of_rooms_selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/no_of_rooms_bar" />
+
+
+    <TextView
+        android:id="@+id/no_of_person_per_room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="@string/no_of_person"
+        app:layout_constraintStart_toStartOf="@+id/no_of_rooms"
+        app:layout_constraintTop_toBottomOf="@+id/no_of_rooms_selected" />
+
+    <SeekBar
+        android:id="@+id/no_of_persons_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:progressBackgroundTint="@android:color/darker_gray"
+        android:scrollbarSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/no_of_person_per_room" />
+
+
+    <TextView
+        android:id="@+id/with_food"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="@string/with_food"
+        app:layout_constraintStart_toStartOf="@+id/no_of_person_per_room"
+        app:layout_constraintTop_toBottomOf="@+id/no_of_person_selected" />
+
+    <TextView
+        android:id="@+id/no_of_person_selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/no_of_persons_bar" />
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/with_food">
+
+        <RadioButton
+            android:id="@+id/yes_food"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:onClick="onRadioButtonClicked"
+            android:padding="5dp"
+            android:text="@string/yes" />
+
+        <RadioButton
+            android:id="@+id/no_food"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:onClick="onRadioButtonClicked"
+            android:padding="5dp"
+            android:text="@string/no" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/rent_per_month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="@string/rent_per_month"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
+
+    <EditText
+        android:id="@+id/rent_per_month_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:hint="in Rupees"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/rent_per_month"
+        app:layout_constraintTop_toBottomOf="@+id/rent_per_month" />
+
+    <TextView
+        android:id="@+id/corp_guest_house_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/corp_guest_house_header"
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintStart_toStartOf="@+id/rent_per_month_input"
+        app:layout_constraintTop_toBottomOf="@+id/rent_per_month_input" />
+
+    <EditText
+        android:id="@+id/corp_guest_house_price_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:hint="in Rupees"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/corp_guest_house_price"
+        app:layout_constraintTop_toBottomOf="@+id/corp_guest_house_price" />
+
+    <TextView
+        android:id="@+id/boys_hostel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/boys_hostel_header"
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintStart_toStartOf="@+id/corp_guest_house_price_input"
+        app:layout_constraintTop_toBottomOf="@+id/corp_guest_house_price_input" />
+
+    <EditText
+        android:id="@+id/boys_hostel_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:hint="in Rupees"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/boys_hostel"
+        app:layout_constraintTop_toBottomOf="@+id/boys_hostel" />
+
+    <TextView
+        android:id="@+id/girls_hostel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/girls_hostel_header"
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintStart_toStartOf="@+id/boys_hostel_input"
+        app:layout_constraintTop_toBottomOf="@+id/boys_hostel_input" />
+
+    <EditText
+        android:id="@+id/girls_hostel_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:hint="in Rupees"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/girls_hostel"
+        app:layout_constraintTop_toBottomOf="@+id/girls_hostel" />
+
+    <TextView
+        android:id="@+id/working_men_hostel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/working_men_hostel"
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintStart_toStartOf="@+id/girls_hostel_input"
+        app:layout_constraintTop_toBottomOf="@+id/girls_hostel_input" />
+
+    <EditText
+        android:id="@+id/working_men_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:hint="in Rupees"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/working_men_hostel"
+        app:layout_constraintTop_toBottomOf="@+id/working_men_hostel" />
+
+    <TextView
+        android:id="@+id/working_women_hostel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/working_women_hostel"
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintStart_toStartOf="@+id/working_men_input"
+        app:layout_constraintTop_toBottomOf="@+id/working_men_input" />
+
+    <EditText
+        android:id="@+id/working_women_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:hint="in Rupees"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/working_women_hostel"
+        app:layout_constraintTop_toBottomOf="@+id/working_women_hostel" />
+
+
+
+</android.support.constraint.ConstraintLayout>

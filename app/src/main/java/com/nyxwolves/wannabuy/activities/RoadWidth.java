@@ -27,11 +27,12 @@ public class RoadWidth extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RoadWidth.this,Budget.class));
+                startActivity(new Intent(RoadWidth.this,RequirementName.class));
             }
         });
 
         roadWidth = findViewById(R.id.road_width_seekbar);
+        roadWidth.setMax(200);
         roadWidth.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {

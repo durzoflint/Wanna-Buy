@@ -30,17 +30,22 @@ public class Bhk extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!BHK.equals("0")){
+                //if(!BHK.equals("0")){
                     Requirements.getInstance().bhk = BHK;
-                    if(Requirements.getInstance().subType.equals(getString(R.string.house)) || Requirements.getInstance().subType.equals(getString(R.string.villa))){
+                    if(Requirements.getInstance().subType.equals(getString(R.string.residential_independent))){
                         startActivity(new Intent(Bhk.this,CarParking.class));
+
+                    }else if(Requirements.getInstance().subType.equals(getString(R.string.apartments))){
+                        startActivity(new Intent(Bhk.this,FlooringActivity.class));
+
                     }else{
                         startActivity(new Intent(Bhk.this,FacingActivity.class));
+
                     }
 
-                }else{
-                    Toast.makeText(Bhk.this,"Choose number of rooms",Toast.LENGTH_SHORT).show();
-                }
+                //}else{
+                    //Toast.makeText(Bhk.this,"Choose number of rooms",Toast.LENGTH_SHORT).show();
+                //}
             }
         });
     }

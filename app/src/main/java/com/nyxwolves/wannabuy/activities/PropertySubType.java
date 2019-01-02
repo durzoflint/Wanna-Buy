@@ -17,7 +17,6 @@ public class PropertySubType extends AppCompatActivity implements View.OnClickLi
 
     RadioGroup residentialGroup,commercialGroup,industrialGroup,institutionalGroup;
     Button continueBtn;
-    RadioButton selectedButton;
     TextView subtypeHeader, modeHeader;
     String subPropertyType;
 
@@ -49,14 +48,115 @@ public class PropertySubType extends AppCompatActivity implements View.OnClickLi
                 if(subPropertyType != null) {
                     Requirements.getInstance().subType = subPropertyType;
 
-                    if(subPropertyType.equals(getString(R.string.residential_land))){
+                    if(subPropertyType.equals(getString(R.string.residential_land)) ||
+                            subPropertyType.equals(getString(R.string.commercial_land)) ||
+                            subPropertyType.equals(getString(R.string.industrial_land))){
+                        startActivity(new Intent(PropertySubType.this,Budget.class));
+
+                    }else if(subPropertyType.equals(getString(R.string.residential_building))){
+                        startActivity(new Intent(PropertySubType.this,NewOrResale.class));
+
+                    }else if(subPropertyType.equals(getString(R.string.commercial_building))){
+                        startActivity(new Intent(PropertySubType.this,Building.class));
+
+                    }else if(subPropertyType.equals(getString(R.string.industrial_building))){
+                        startActivity(new Intent(PropertySubType.this,Building.class));
+
+                    }else if(subPropertyType.equals(getString(R.string.institutional_land))){
+                        startActivity(new Intent(PropertySubType.this,SchoolCollegeHospital.class));
+
+                    }else if(subPropertyType.equals(getString(R.string.institutional_building))){
                         startActivity(new Intent(PropertySubType.this,PropertySize.class));
+
+                    }else if(subPropertyType.equals(getString(R.string.farm_land))){
+                        startActivity(new Intent(PropertySubType.this,Building.class));
+                    }
+                }
+                break;
+        }
+    }
+
+    private void showRadioGroup(){
+        String property_type = Requirements.getInstance().type;
+        if(property_type.equals(getString(R.string.residential))){
+            subtypeHeader.setText("What type of "+property_type+" Property");
+            residentialGroup.setVisibility(View.VISIBLE);
+            commercialGroup.setVisibility(View.GONE);
+            industrialGroup.setVisibility(View.GONE);
+            institutionalGroup.setVisibility(View.GONE);
+
+        }else if(property_type.equals(getString(R.string.commercial))){
+            subtypeHeader.setText("What type of "+property_type+" Property");
+            residentialGroup.setVisibility(View.GONE);
+            commercialGroup.setVisibility(View.VISIBLE);
+            industrialGroup.setVisibility(View.GONE);
+            institutionalGroup.setVisibility(View.GONE);
+        }else if(property_type.equals(getString(R.string.industrial))){
+            subtypeHeader.setText("What type of "+property_type+" Property");
+            residentialGroup.setVisibility(View.GONE);
+            commercialGroup.setVisibility(View.GONE);
+            industrialGroup.setVisibility(View.VISIBLE);
+            institutionalGroup.setVisibility(View.GONE);
+        }else if(property_type.equals(getString(R.string.institutional))){
+            subtypeHeader.setText("What type of "+property_type+" Property");
+            residentialGroup.setVisibility(View.GONE);
+            commercialGroup.setVisibility(View.GONE);
+            industrialGroup.setVisibility(View.GONE);
+            institutionalGroup.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void radioButtonClicked(View v){
+        switch (v.getId()){
+
+            case R.id.resi_land:
+                subPropertyType = getString(R.string.residential_land);
+                Requirements.getInstance().subType = subPropertyType;
+                break;
+            case R.id.resi_building:
+                subPropertyType = getString(R.string.residential_building);
+                break;
+            case R.id.comm_land:
+                subPropertyType = getString(R.string.commercial_land);
+                Requirements.getInstance().subType = subPropertyType;
+                break;
+            case R.id.comm_building:
+                subPropertyType=  getString(R.string.commercial_building);
+                break;
+            case R.id.indus_land:
+                subPropertyType = getString(R.string.industrial_land);
+                break;
+            case R.id.indus_building:
+                subPropertyType = getString(R.string.industrial_building);
+                break;
+            case R.id.ins_land:
+                subPropertyType = getString(R.string.institutional_land);
+                break;
+            case R.id.ins_building:
+                subPropertyType  = getString(R.string.institutional_building);
+                break;
+        }
+    }
+}
+
+
+
+
+
+ /*if(subPropertyType.equals(getString(R.string.residential_land))){
+                        startActivity(new Intent(PropertySubType.this,PropertySize.class));
+
+                    }else  if(subPropertyType.equals(getString(R.string.residential_building))){
+                        startActivity(new Intent(PropertySubType.this,NewOrResale.class));
 
                     }else if(subPropertyType.equals(getString(R.string.apartments))){
                         startActivity(new Intent(PropertySubType.this,FlooringActivity.class));
 
                     }else if(subPropertyType.equals(getString(R.string.commercial_land))){
                         startActivity(new Intent(PropertySubType.this,PropertySize.class));
+
+                    }else if(subPropertyType.equals(getString(R.string.commercial_building))){
+                        startActivity(new Intent(PropertySubType.this,Building.class));
 
                     }else if(subPropertyType.equals(getString(R.string.house)) || subPropertyType.equals(getString(R.string.villa))){
                         startActivity(new Intent(PropertySubType.this,Bhk.class));
@@ -72,109 +172,4 @@ public class PropertySubType extends AppCompatActivity implements View.OnClickLi
 
                     }else if(subPropertyType.equals(getString(R.string.institutional_land))){
                         startActivity(new Intent(PropertySubType.this,PropertySize.class));
-                    }
-
-                }
-                break;
-        }
-    }
-
-    private void showRadioGroup(){
-        String property_type = getIntent().getStringExtra(getString(R.string.PROPERTY_TYPE));
-        if(property_type.equals(getString(R.string.residential))){
-            subtypeHeader.setText("What type of "+property_type+" Property");
-            residentialGroup.setVisibility(View.VISIBLE);
-            commercialGroup.setVisibility(View.GONE);
-            industrialGroup.setVisibility(View.GONE);
-            institutionalGroup.setVisibility(View.GONE);
-            selectedButton = findViewById(R.id.resi_house);
-            selectedButton.setChecked(false);
-        }else if(property_type.equals(getString(R.string.commercial))){
-            subtypeHeader.setText("What type of "+property_type+" Property");
-            residentialGroup.setVisibility(View.GONE);
-            commercialGroup.setVisibility(View.VISIBLE);
-            industrialGroup.setVisibility(View.GONE);
-            institutionalGroup.setVisibility(View.GONE);
-            selectedButton = findViewById(R.id.comm_floor_space);
-            selectedButton.setChecked(false);
-        }else if(property_type.equals(getString(R.string.industrial))){
-            subtypeHeader.setText("What type of "+property_type+" Property");
-            residentialGroup.setVisibility(View.GONE);
-            commercialGroup.setVisibility(View.GONE);
-            industrialGroup.setVisibility(View.VISIBLE);
-            institutionalGroup.setVisibility(View.GONE);
-            selectedButton = findViewById(R.id.indus_factory);
-            selectedButton.setChecked(false);
-        }else if(property_type.equals(getString(R.string.institutional))){
-            subtypeHeader.setText("What type of "+property_type+" Property");
-            residentialGroup.setVisibility(View.GONE);
-            commercialGroup.setVisibility(View.GONE);
-            industrialGroup.setVisibility(View.GONE);
-            institutionalGroup.setVisibility(View.VISIBLE);
-            selectedButton = findViewById(R.id.ins_school);
-            selectedButton.setChecked(false);
-        }
-    }
-
-    public void radioButtonClicked(View v){
-        switch (v.getId()){
-            case R.id.resi_house:
-                subPropertyType = getString(R.string.house);
-                Requirements.getInstance().subType = subPropertyType;
-                break;
-            case R.id.resi_villa:
-                subPropertyType = getString(R.string.villa);
-                Requirements.getInstance().subType = subPropertyType;
-                break;
-            case R.id.resi_apartments:
-                subPropertyType = getString(R.string.apartments);
-                Requirements.getInstance().subType = subPropertyType;
-                break;
-            case R.id.resi_land:
-                subPropertyType = getString(R.string.residential_land);
-                Requirements.getInstance().subType = subPropertyType;
-                break;
-            case R.id.comm_floor_space:
-                subPropertyType = getString(R.string.floorspace);
-                Requirements.getInstance().subType = subPropertyType;
-                break;
-            case R.id.comm_independent:
-                subPropertyType = getString(R.string.independent);
-                Requirements.getInstance().subType = subPropertyType;
-                break;
-            case R.id.comm_land:
-                subPropertyType = getString(R.string.commercial_land);
-                Requirements.getInstance().subType = subPropertyType;
-                break;
-            case R.id.indus_cold_storage:
-                subPropertyType = getString(R.string.cold_storage);
-                Requirements.getInstance().subType = subPropertyType;
-                break;
-            case R.id.indus_factory:
-                subPropertyType = getString(R.string.factory);
-                Requirements.getInstance().subType = subPropertyType;
-                break;
-            case R.id.indus_warehouse:
-                subPropertyType = getString(R.string.warehouse);
-                Requirements.getInstance().subType = subPropertyType;
-                break;
-            case R.id.ins_school:
-                subPropertyType = getString(R.string.school);
-                Requirements.getInstance().subType = subPropertyType;
-                break;
-            case R.id.ins_college:
-                subPropertyType = getString(R.string.college);
-                Requirements.getInstance().subType = subPropertyType;
-                break;
-            case R.id.ins_hospital:
-                subPropertyType = getString(R.string.hospital);
-                Requirements.getInstance().subType = subPropertyType;
-                break;
-            case R.id.ins_land:
-                subPropertyType = getString(R.string.institutional_land);
-                Requirements.getInstance().subType = subPropertyType;
-                break;
-        }
-    }
-}
-
+                    }*/

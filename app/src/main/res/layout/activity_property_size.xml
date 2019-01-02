@@ -41,12 +41,31 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:text="@string/property_size_header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/mode_header"
         app:layout_constraintTop_toBottomOf="@+id/mode_header" />
 
+    <TextView
+        android:id="@+id/choose_size_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="@string/choose_unit"
+        app:layout_constraintStart_toStartOf="@+id/property_size_header"
+        app:layout_constraintTop_toBottomOf="@+id/property_size_header" />
+
+    <Spinner
+        android:id="@+id/unit_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/choose_size_unit"
+        app:layout_constraintStart_toEndOf="@+id/choose_size_unit"
+        app:layout_constraintTop_toTopOf="@+id/choose_size_unit"
+        app:layout_constraintVertical_bias="0.666" />
 
     <SeekBar
         android:id="@+id/min_area_seekbar"
@@ -118,12 +137,13 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat_medium"
         android:text="Min"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/property_size_header" />
+        app:layout_constraintTop_toBottomOf="@+id/choose_size_unit" />
 
     <TextView
         android:id="@+id/max_header"

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
 
+import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
 
 public class FurnishedOrNot extends AppCompatActivity{
@@ -22,7 +23,14 @@ public class FurnishedOrNot extends AppCompatActivity{
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(FurnishedOrNot.this,PropertySize.class));
+                if(Requirements.getInstance().subType.equals(getString(R.string.residential_independent))){
+                    startActivity(new Intent(FurnishedOrNot.this,Bhk.class));
+
+                }else{
+                    startActivity(new Intent(FurnishedOrNot.this,CarParking.class));
+
+                }
+
             }
         });
 

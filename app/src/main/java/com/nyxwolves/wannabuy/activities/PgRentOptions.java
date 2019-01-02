@@ -8,20 +8,20 @@ import android.widget.Button;
 
 import com.nyxwolves.wannabuy.R;
 
-public class MaintanceActivity extends AppCompatActivity {
+public class PgRentOptions extends AppCompatActivity {
 
-    Button nextBtn;
+    Button  nextButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maintance);
+        setContentView(R.layout.activity_pg_rent_options);
 
-        nextBtn = findViewById(R.id.maintance_next_btn);
-        nextBtn.setOnClickListener(new View.OnClickListener() {
+        nextButton = findViewById(R.id.pg_rent_next_btn);
+        nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MaintanceActivity.this,ApprovalActivity.class));
+                startActivity(new Intent(PgRentOptions.this,Building.class));
             }
         });
     }

@@ -67,7 +67,9 @@ public class PropertyType extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.rental_income:
                 property_type = getString(R.string.rental_income);
-
+            case R.id.farm_land:
+                property_type = getString(R.string.farm_land);
+                break;
         }
     }
     @Override
@@ -75,10 +77,16 @@ public class PropertyType extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.next_btn:
                 if(property_type != null) {
-                    Intent i = new Intent(PropertyType.this, PropertySubType.class);
-                    i.putExtra(getString(R.string.PROPERTY_TYPE), property_type);
                     Requirements.getInstance().type = property_type;
-                    startActivity(i);
+                    if(property_type.equals(getString(R.string.farm_land))){
+                        Requirements.getInstance().subType =  property_type;
+                        startActivity(new Intent(PropertyType.this,Building.class));
+                    }else if(property_type.equals(getString(R.string.pg_rent))){
+                        Requirements.getInstance().type = property_type;
+                        startActivity(new Intent(PropertyType.this,PgRentOptions.class));
+                    }else {
+                        startActivity(new Intent(PropertyType.this, PropertySubType.class));
+                    }
                 }else{
                     Toast.makeText(PropertyType.this,"Select anyone",Toast.LENGTH_SHORT).show();
                 }

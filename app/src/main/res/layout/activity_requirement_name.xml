@@ -1,66 +1,68 @@
-<?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MaintanceActivity">
+    tools:context=".activities.RequirementName">
 
     <ImageView
-        android:id="@+id/maintance_image"
+        android:id="@+id/requirement_name_image"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:src="@drawable/tenant_image"
         android:adjustViewBounds="true"
-        android:scaleType="center"
-        app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/guideline18"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline7"
+        android:id="@+id/guideline18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.3" />
 
     <TextView
-        android:id="@+id/maintance_header"
+        android:id="@+id/tenant_name_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/maintance_fee"
         android:fontFamily="@font/montserrat_regular"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+        android:text="@string/name_your_requirement"
+        app:layout_constraintTop_toTopOf="@+id/guideline18"
+        tools:layout_editor_absoluteX="8dp" />
 
     <EditText
-        android:id="@+id/maintance_fee_input"
-        android:layout_width="match_parent"
+        android:id="@+id/req_name_input"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="30dp"
-        android:hint="@string/maintance_text"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/maintance_header" />
+        android:hint="@string/name_your_requirement"
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintStart_toStartOf="@+id/tenant_name_header"
+        app:layout_constraintTop_toBottomOf="@+id/tenant_name_header" />
 
     <Button
-        android:id="@+id/maintance_next_btn"
+        android:id="@+id/req_name_next_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="112dp"
         android:background="@drawable/orange_button"
         android:fontFamily="@font/montserrat_regular"
         android:text="@string/next"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/req_name_input"
+        app:layout_constraintVertical_bias="1.0" />
 </android.support.constraint.ConstraintLayout>

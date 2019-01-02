@@ -7,29 +7,34 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.RadioButton;
 
+import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
 
 public class CarParking extends AppCompatActivity {
 
     Button nextBtn;
-    EditText noOfCoveredParking,noOfUnCoveredParking;
     CheckBox checkBox;
+    NumberPicker covPicker,unCovPicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_parking);
 
-        noOfUnCoveredParking = findViewById(R.id.no_of_un_cov_car_park);
-        noOfCoveredParking = findViewById(R.id.no_of_cov_car_park);
+        covPicker = findViewById(R.id.cov_picker);
+        covPicker.setMaxValue(50);
+
+        unCovPicker = findViewById(R.id.uncov_picker);
+        unCovPicker.setMaxValue(50);
 
         nextBtn = findViewById(R.id.car_parking_next_btn);
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(CarParking.this,AgeOfProperty.class));
+                startActivity(new Intent(CarParking.this,FacingActivity.class));
             }
         });
     }
@@ -39,17 +44,17 @@ public class CarParking extends AppCompatActivity {
             case R.id.covered_parking_check:
                 checkBox = (CheckBox) v;
                 if(checkBox.isChecked()) {
-                    noOfCoveredParking.setVisibility(View.VISIBLE);
+                    covPicker.setVisibility(View.VISIBLE);
                 }else{
-                    noOfCoveredParking.setVisibility(View.GONE);
+                    covPicker.setVisibility(View.GONE);
                 }
                 break;
             case R.id.un_cov_car_park:
                 checkBox = (CheckBox) v;
                 if(checkBox.isChecked()) {
-                    noOfUnCoveredParking.setVisibility(View.VISIBLE);
+                    unCovPicker.setVisibility(View.VISIBLE);
                 }else{
-                    noOfUnCoveredParking.setVisibility(View.GONE);
+                    unCovPicker.setVisibility(View.GONE);
                 }
                 break;
         }

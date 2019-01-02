@@ -9,29 +9,29 @@ import android.widget.Button;
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
 
-public class FacilitiesActivities extends AppCompatActivity {
+public class AmmenitiesActivity extends AppCompatActivity {
 
     Button nextBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_facilities_activities);
+        setContentView(R.layout.activity_ammenities);
 
-        nextBtn = findViewById(R.id.facilities_next_btn);
+        nextBtn = findViewById(R.id.ammenities_next_btn);
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(FacilitiesActivities.this,RoadWidth.class));
+                if(Requirements.getInstance().subType.equals(getString(R.string.apartments))){
+                    startActivity(new Intent(AmmenitiesActivity.this, MaintanceActivity.class));
+                }else{
+                    startActivity(new Intent(AmmenitiesActivity.this,ApprovalActivity.class));
+                }
             }
         });
     }
 
     public void oncheckBoxClicked(View v){
 
-        switch (v.getId()){
-            case R.id.metro_check:
-                break;
-        }
     }
 }

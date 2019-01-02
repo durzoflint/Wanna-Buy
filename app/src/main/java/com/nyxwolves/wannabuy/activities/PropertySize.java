@@ -5,19 +5,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
 
-public class PropertySize extends AppCompatActivity implements View.OnClickListener{
+public class PropertySize extends AppCompatActivity implements View.OnClickListener,AdapterView.OnItemSelectedListener{
 
     TextView minMinSize, minMaxSize, maxMinSize,maxMaxSize,modeHeader,minSelectedSize, maxSelectedSize;
     SeekBar minSizeSeekBar,maxSizeSeekBar;
     Button nextButton;
+    Spinner unitSpinner;
 
     int minSizeOfProperty, maxSizeOfProperty;
     String propertyType;
@@ -62,7 +66,7 @@ public class PropertySize extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 maxSizeOfProperty = progress;
-                //maxSelectedSize.setText(progress);
+                maxSelectedSize.setText(String.valueOf(progress));
             }
 
             @Override
@@ -79,42 +83,125 @@ public class PropertySize extends AppCompatActivity implements View.OnClickListe
         nextButton = findViewById(R.id.size_next_btn);
         nextButton.setOnClickListener(this);
 
+        //spinner
+        unitSpinner = findViewById(R.id.unit_spinner);
+        ArrayAdapter<CharSequence>adapter = ArrayAdapter.createFromResource(this,R.array.unit_spinner,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        unitSpinner.setAdapter(adapter);
+        unitSpinner.setOnItemSelectedListener(this);
 
-
-        propertyType = Requirements.getInstance().type;
-        setLimits(propertyType);
     }
 
-    private void setLimits(String option) {
+    private void setLimits(int areaUnit) {
+        String option = Requirements.getInstance().type;
         minMinSize.setText("0 sq. Ft");
         maxMinSize.setText("0 sq, Ft");
 
         if (option.equals(getString(R.string.residential))) {
-            minMaxSize.setText("10000 sq. Ft");
-            maxMaxSize.setText("10000 sq. Ft");
+            if(areaUnit == 0){
+                minMaxSize.setText("10000 sq. Ft");
+                maxMaxSize.setText("10000 sq. Ft");
 
-            minSizeSeekBar.setMax(10000);
-            maxSizeSeekBar.setMax(10000);
+                minSizeSeekBar.setMax(10000);
+                maxSizeSeekBar.setMax(10000);
+            }else if(areaUnit == 1){
+                minMaxSize.setText("10000 Ground");
+                maxMaxSize.setText("10000 Ground");
+
+                minSizeSeekBar.setMax(10000);
+                maxSizeSeekBar.setMax(10000);
+            }else if(areaUnit == 2){
+                minMaxSize.setText("10000 Cents");
+                maxMaxSize.setText("10000 Cents");
+
+                minSizeSeekBar.setMax(10000);
+                maxSizeSeekBar.setMax(10000);
+            }else if(areaUnit  == 3){
+                minMaxSize.setText("20000 Acres");
+                maxMaxSize.setText("20000 Acres");
+
+                minSizeSeekBar.setMax(20000);
+                maxSizeSeekBar.setMax(20000);
+            }
+
         } else if (option.equals(getString(R.string.commercial))) {
-            minMaxSize.setText("100000+ sq. Ft");
-            maxMaxSize.setText("100000+ sq. Ft");
-
-            minSizeSeekBar.setMax(100000);
-            maxSizeSeekBar.setMax(100000);
+            if(areaUnit == 0){
+                minMaxSize.setText("100000+ sq. Ft");
+                maxMaxSize.setText("100000+ sq. Ft");
+                minSizeSeekBar.setMax(100000);
+                maxSizeSeekBar.setMax(100000);
+            }else if(areaUnit == 1){
+                minMaxSize.setText("100000+ Ground");
+                maxMaxSize.setText("100000+ Ground");
+                minSizeSeekBar.setMax(100000);
+                maxSizeSeekBar.setMax(100000);
+            }else if(areaUnit == 2){
+                minMaxSize.setText("100000+ Cents");
+                maxMaxSize.setText("100000+ Cents");
+                minSizeSeekBar.setMax(100000);
+                maxSizeSeekBar.setMax(100000);
+            }else if(areaUnit  == 3){
+                minMaxSize.setText("200000+ Acres");
+                maxMaxSize.setText("200000+ Acres");
+                minSizeSeekBar.setMax(200000);
+                maxSizeSeekBar.setMax(200000);
+            }
 
         } else if (option.equals(getString(R.string.industrial))) {
-            minMaxSize.setText("100000+ sq. Ft");
-            maxMaxSize.setText("100000+ sq. Ft");
-
-            minSizeSeekBar.setMax(100000);
-            maxSizeSeekBar.setMax(100000);
+            if(areaUnit == 0){
+                minMaxSize.setText("100000+ sq. Ft");
+                maxMaxSize.setText("100000+ sq. Ft");
+                minSizeSeekBar.setMax(100000);
+                maxSizeSeekBar.setMax(100000);
+            }else if(areaUnit == 1){
+                minMaxSize.setText("100000+ Ground");
+                maxMaxSize.setText("100000+ Ground");
+                minSizeSeekBar.setMax(100000);
+                maxSizeSeekBar.setMax(100000);
+            }else if(areaUnit == 2){
+                minMaxSize.setText("100000+ Cents");
+                maxMaxSize.setText("100000+ Cents");
+                minSizeSeekBar.setMax(100000);
+                maxSizeSeekBar.setMax(100000);
+            }else if(areaUnit  == 3){
+                minMaxSize.setText("200000+ Acres");
+                maxMaxSize.setText("200000+ Acres");
+                minSizeSeekBar.setMax(200000);
+                maxSizeSeekBar.setMax(200000);
+            }
         } else if (option.equals(getString(R.string.institutional))) {
-            minMaxSize.setText("100000+ sq. Ft");
-            maxMaxSize.setText("100000+ sq. Ft");
-
-            minSizeSeekBar.setMax(100000);
-            maxSizeSeekBar.setMax(100000);
+            if(areaUnit == 0){
+                minMaxSize.setText("100000+ sq. Ft");
+                maxMaxSize.setText("100000+ sq. Ft");
+                minSizeSeekBar.setMax(100000);
+                maxSizeSeekBar.setMax(100000);
+            }else if(areaUnit == 1){
+                minMaxSize.setText("100000+ Ground");
+                maxMaxSize.setText("100000+ Ground");
+                minSizeSeekBar.setMax(100000);
+                maxSizeSeekBar.setMax(100000);
+            }else if(areaUnit == 2){
+                minMaxSize.setText("100000+ Cents");
+                maxMaxSize.setText("100000+ Cents");
+                minSizeSeekBar.setMax(100000);
+                maxSizeSeekBar.setMax(100000);
+            }else if(areaUnit  == 3){
+                minMaxSize.setText("200000+ Acres");
+                maxMaxSize.setText("200000+ Acres");
+                minSizeSeekBar.setMax(200000);
+                maxSizeSeekBar.setMax(200000);
+            }
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        setLimits(position);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
     @Override
@@ -125,7 +212,15 @@ public class PropertySize extends AppCompatActivity implements View.OnClickListe
                     Requirements.getInstance().minSize = String.valueOf(minSizeOfProperty);
                     Requirements.getInstance().maxSize = String.valueOf(maxSizeOfProperty);
 
-                    startActivity(new Intent(PropertySize.this,FacingActivity.class));
+                    if(Requirements.getInstance().subType.equals(getString(R.string.residential_land)) ||
+                            Requirements.getInstance().subType.equals(getString(R.string.commercial_land)) ||
+                            Requirements.getInstance().subType.equals(getString(R.string.institutional_land))||
+                            Requirements.getInstance().subType.equals(getString(R.string.industrial_land)) ||
+                            Requirements.getInstance().subType.equals(getString(R.string.farm_land))){
+                        startActivity(new Intent(PropertySize.this,FacingActivity.class));
+                    }else {
+                        startActivity(new Intent(PropertySize.this, Budget.class));
+                    }
                 } else {
                     Toast.makeText(PropertySize.this, "Choose the size of property", Toast.LENGTH_SHORT).show();
                 }

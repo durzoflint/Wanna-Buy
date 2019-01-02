@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
@@ -26,7 +27,7 @@ import com.nyxwolves.wannabuy.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class AdsActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener,View.OnClickListener{
+public class AdsActivity extends AppCompatActivity implements View.OnClickListener{
 
     TextView selectedSize,maxSize;
     TextInputEditText cityInput,doorNumberInput,addressInput;
@@ -34,9 +35,11 @@ public class AdsActivity extends AppCompatActivity implements SeekBar.OnSeekBarC
     Button picUploadBtn,paymentBtn;
     CircleImageView propertyPic;
 
-    RadioGroup residentialGroup,commercialGroup,institutionalGroup;
+    RadioGroup resiSub,commSub,insSub,indusSub;
+    RadioGroup resiBuild,commBuild,insBuild,indusBuild;
     ConstraintLayout industrialGroup;
-    RadioButton resiBtn,commBtn,indusBtn,instiBtn,indusLanBtn,indusFactoryBtn,indusWareBtn,indusColdBtn;
+    FrameLayout pgRentLayout;
+
 
     final int IMAGE_REQ=1002;
     final int LOCATION_REQUEST = 1003;
@@ -44,6 +47,19 @@ public class AdsActivity extends AppCompatActivity implements SeekBar.OnSeekBarC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ads);
+
+        resiSub = findViewById(R.id.resi_sub);
+        resiBuild = findViewById(R.id.resi_building_group);
+
+        commSub = findViewById(R.id.comm_sub);
+        commBuild = findViewById(R.id.comm_building_group);
+
+        insSub = findViewById(R.id.ins_sub);
+
+        indusSub = findViewById(R.id.indus_sub);
+        indusBuild = findViewById(R.id.indus_building_group);
+
+        pgRentLayout =findViewById(R.id.pg_rent_layout);
 
         cityInput = findViewById(R.id.ads_area_input);
         cityInput.setOnClickListener(this);
@@ -55,7 +71,7 @@ public class AdsActivity extends AppCompatActivity implements SeekBar.OnSeekBarC
         maxSize = findViewById(R.id.max_size);
 
         sizeSeekBar = findViewById(R.id.ads_seekbar);
-        sizeSeekBar.setOnSeekBarChangeListener(this);
+
 
         propertyPic = findViewById(R.id.prop_pic);
 
@@ -65,10 +81,7 @@ public class AdsActivity extends AppCompatActivity implements SeekBar.OnSeekBarC
         paymentBtn = findViewById(R.id.payment_btn);
         paymentBtn.setOnClickListener(this);
 
-        residentialGroup = findViewById(R.id.radio_group_residential);
-        industrialGroup = findViewById(R.id.radio_group_industrial);
-        commercialGroup = findViewById(R.id.radio_group_commercial);
-        institutionalGroup  =findViewById(R.id.radio_group_institutional);
+
     }
 
     @Override
@@ -143,89 +156,62 @@ public class AdsActivity extends AppCompatActivity implements SeekBar.OnSeekBarC
             case R.id.resi_radio_btn:
                 sizeSeekBar.setMax(10000);
                 maxSize.setText("10000");
-                residentialGroup.setVisibility(View.VISIBLE);
-                commercialGroup.setVisibility(View.GONE);
-                industrialGroup.setVisibility(View.GONE);
-                institutionalGroup.setVisibility(View.GONE);
-                SellerAd.getInstance().type = getString(R.string.residential);
+                resiSub.setVisibility(View.VISIBLE);
+                commSub.setVisibility(View.GONE);
+                insSub.setVisibility(View.GONE);
+                indusSub.setVisibility(View.GONE);
                 break;
             case R.id.comm_radio_btn:
                 sizeSeekBar.setMax(100000);
                 maxSize.setText("100000");
-                residentialGroup.setVisibility(View.GONE);
-                commercialGroup.setVisibility(View.VISIBLE);
-                industrialGroup.setVisibility(View.GONE);
-                institutionalGroup.setVisibility(View.GONE);
-                SellerAd.getInstance().type = getString(R.string.commercial);
+                resiSub.setVisibility(View.GONE);
+                commSub.setVisibility(View.VISIBLE);
+                insSub.setVisibility(View.GONE);
+                indusSub.setVisibility(View.GONE);
                 break;
             case R.id.indus_radio_btn:
                 sizeSeekBar.setMax(100000);
                 maxSize.setText("100000");
-                residentialGroup.setVisibility(View.GONE);
-                commercialGroup.setVisibility(View.GONE);
-                industrialGroup.setVisibility(View.VISIBLE);
-                institutionalGroup.setVisibility(View.GONE);
-                SellerAd.getInstance().type = getString(R.string.industrial);
+                resiSub.setVisibility(View.GONE);
+                commSub.setVisibility(View.GONE);
+                insSub.setVisibility(View.GONE);
+                indusSub.setVisibility(View.VISIBLE);
                 break;
             case R.id.ins_radio_btn:
                 sizeSeekBar.setMax(100000);
                 maxSize.setText("100000");
-                residentialGroup.setVisibility(View.GONE);
-                commercialGroup.setVisibility(View.GONE);
-                industrialGroup.setVisibility(View.GONE);
-                institutionalGroup.setVisibility(View.VISIBLE);
-                SellerAd.getInstance().type = getString(R.string.institutional);
+                resiSub.setVisibility(View.GONE);
+                commSub.setVisibility(View.GONE);
+                insSub.setVisibility(View.VISIBLE);
+                indusSub.setVisibility(View.GONE);
+                break;
+            case R.id.pg_rent:
+                resiSub.setVisibility(View.GONE);
+                commSub.setVisibility(View.GONE);
+                insSub.setVisibility(View.GONE);
+                indusSub.setVisibility(View.GONE);
+                pgRentLayout.setVisibility(View.VISIBLE);
+                break;
+            case R.id.resi_building:
+                resiBuild.setVisibility(View.VISIBLE);
+                commBuild.setVisibility(View.GONE);
+                indusBuild.setVisibility(View.GONE);
+                break;
+            case R.id.comm_building:
+                resiBuild.setVisibility(View.GONE);
+                commBuild.setVisibility(View.VISIBLE);
+                indusBuild.setVisibility(View.GONE);
+                break;
+            case R.id.indus_building:
+                resiBuild.setVisibility(View.GONE);
+                commBuild.setVisibility(View.GONE);
+                indusBuild.setVisibility(View.VISIBLE);
                 break;
             case R.id.new_btn:
                 SellerAd.getInstance().isNew = getString(R.string.new_text);
                 break;
             case R.id.resale_btn:
                 SellerAd.getInstance().isNew = getString(R.string.resale_text);
-                break;
-            case R.id.yes_btn:
-                SellerAd.getInstance().cornerPlot = getString(R.string.yes);
-                break;
-            case R.id.no_btn:
-                SellerAd.getInstance().cornerPlot = getString(R.string.no);
-                break;
-            case R.id.ads_resi_house:
-                SellerAd.getInstance().subType = getString(R.string.house);
-                break;
-            case R.id.ads_resi_apartments:
-                SellerAd.getInstance().subType = getString(R.string.apartments);
-                break;
-            case R.id.ads_resi_villa:
-                SellerAd.getInstance().subType = getString(R.string.villa);
-                break;
-            case R.id.ads_resi_land:
-                SellerAd.getInstance().subType = getString(R.string.land);
-                break;
-            case R.id.ads_comm_land:
-                SellerAd.getInstance().subType = getString(R.string.land);
-                break;
-            case R.id.ads_comm_office_space:
-                SellerAd.getInstance().subType = getString(R.string.office_space);
-                break;
-            case R.id.ads_comm_showroom:
-                SellerAd.getInstance().subType  = getString(R.string.showroom);
-                break;
-            case R.id.ads_indus_cold_storage:
-                SellerAd.getInstance().subType = getString(R.string.cold_storage);
-                break;
-            case R.id.ads_indus_factory:
-                SellerAd.getInstance().subType = getString(R.string.factory);
-                break;
-            case R.id.ads_indus_land:
-                SellerAd.getInstance().subType = getString(R.string.land);
-                break;
-            case R.id.ads_ins_college:
-                SellerAd.getInstance().subType = getString(R.string.college);
-                break;
-            case R.id.ads_ins_hospital:
-                SellerAd.getInstance().subType = getString(R.string.hospital);
-                break;
-            case R.id.ads_ins_school:
-                SellerAd.getInstance().subType = getString(R.string.school);
                 break;
             case R.id.one_bhk:
                 SellerAd.getInstance().bhk = String.valueOf(1);
@@ -277,6 +263,7 @@ public class AdsActivity extends AppCompatActivity implements SeekBar.OnSeekBarC
     private void chooseImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), IMAGE_REQ);
     }
@@ -296,19 +283,4 @@ public class AdsActivity extends AppCompatActivity implements SeekBar.OnSeekBarC
         }
     }
 
-    @Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        selectedSize.setText(progress+" sq.Ft");
-        SellerAd.getInstance().size = String.valueOf(progress);
-    }
-
-    @Override
-    public void onStartTrackingTouch(SeekBar seekBar) {
-
-    }
-
-    @Override
-    public void onStopTrackingTouch(SeekBar seekBar) {
-
-    }
 }

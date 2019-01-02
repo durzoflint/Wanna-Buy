@@ -61,45 +61,6 @@
         app:layout_constraintTop_toBottomOf="@+id/subtype_header">
 
         <RadioButton
-            android:id="@+id/resi_house"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginStart="0dp"
-            android:button="@drawable/custom_radio_button"
-            android:checked="false"
-            android:onClick="radioButtonClicked"
-            android:text="@string/house"
-            android:padding="10dp"
-            android:textSize="15sp"/>
-
-        <RadioButton
-            android:id="@+id/resi_villa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginStart="0dp"
-            android:button="@drawable/custom_radio_button"
-            android:checked="false"
-            android:onClick="radioButtonClicked"
-            android:text="@string/villa"
-            android:padding="5dp"
-            android:textSize="15sp"/>
-
-        <RadioButton
-            android:id="@+id/resi_apartments"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginStart="0dp"
-            android:button="@drawable/custom_radio_button"
-            android:checked="false"
-            android:onClick="radioButtonClicked"
-            android:text="@string/apartments"
-            android:padding="5dp"
-            android:textSize="15sp"/>
-
-        <RadioButton
             android:id="@+id/resi_land"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -108,7 +69,22 @@
             android:button="@drawable/custom_radio_button"
             android:checked="false"
             android:onClick="radioButtonClicked"
+            android:fontFamily="@font/montserrat_regular"
             android:text="@string/land"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+        <RadioButton
+            android:id="@+id/resi_building"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginStart="0dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:text="@string/building"
             android:padding="5dp"
             android:textSize="15sp"/>
     </RadioGroup>
@@ -129,32 +105,6 @@
         app:layout_constraintTop_toBottomOf="@+id/subtype_header">
 
         <RadioButton
-            android:id="@+id/comm_floor_space"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginStart="0dp"
-            android:button="@drawable/custom_radio_button"
-            android:checked="false"
-            android:onClick="radioButtonClicked"
-            android:text="@string/floorspace"
-            android:padding="5dp"
-            android:textSize="15sp"/>
-
-        <RadioButton
-            android:id="@+id/comm_independent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginStart="0dp"
-            android:button="@drawable/custom_radio_button"
-            android:checked="false"
-            android:onClick="radioButtonClicked"
-            android:text="@string/independent"
-            android:padding="5dp"
-            android:textSize="15sp"/>
-
-        <RadioButton
             android:id="@+id/comm_land"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -166,6 +116,20 @@
             android:text="@string/land"
             android:padding="5dp"
             android:textSize="15sp"/>
+
+        <RadioButton
+            android:id="@+id/comm_building"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginStart="0dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:text="@string/building"
+            android:padding="5dp"
+            android:textSize="15sp"/>
+
     </RadioGroup>
 
     <!-- radio group for industrial-->
@@ -184,7 +148,7 @@
         app:layout_constraintTop_toBottomOf="@+id/subtype_header">
 
         <RadioButton
-            android:id="@+id/indus_factory"
+            android:id="@+id/indus_land"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -192,12 +156,12 @@
             android:button="@drawable/custom_radio_button"
             android:checked="false"
             android:onClick="radioButtonClicked"
-            android:text="@string/factory"
+            android:text="@string/land"
             android:padding="5dp"
             android:textSize="15sp"/>
 
         <RadioButton
-            android:id="@+id/indus_warehouse"
+            android:id="@+id/indus_building"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -205,20 +169,7 @@
             android:button="@drawable/custom_radio_button"
             android:checked="false"
             android:onClick="radioButtonClicked"
-            android:text="@string/warehouse"
-            android:padding="5dp"
-            android:textSize="15sp"/>
-
-        <RadioButton
-            android:id="@+id/indus_cold_storage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginStart="0dp"
-            android:button="@drawable/custom_radio_button"
-            android:checked="false"
-            android:onClick="radioButtonClicked"
-            android:text="@string/cold_storage"
+            android:text="@string/building"
             android:padding="5dp"
             android:textSize="15sp"/>
     </RadioGroup>
@@ -239,45 +190,6 @@
         app:layout_constraintTop_toBottomOf="@+id/subtype_header">
 
         <RadioButton
-            android:id="@+id/ins_school"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginStart="0dp"
-            android:button="@drawable/custom_radio_button"
-            android:checked="false"
-            android:onClick="radioButtonClicked"
-            android:text="@string/school"
-            android:padding="5dp"
-            android:textSize="15sp"/>
-
-        <RadioButton
-            android:id="@+id/ins_college"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginStart="0dp"
-            android:button="@drawable/custom_radio_button"
-            android:checked="false"
-            android:onClick="radioButtonClicked"
-            android:text="@string/college"
-            android:padding="5dp"
-            android:textSize="15sp"/>
-
-        <RadioButton
-            android:id="@+id/ins_hospital"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginStart="0dp"
-            android:button="@drawable/custom_radio_button"
-            android:checked="false"
-            android:onClick="radioButtonClicked"
-            android:text="@string/hospital"
-            android:padding="5dp"
-            android:textSize="15sp"/>
-
-        <RadioButton
             android:id="@+id/ins_land"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -289,7 +201,63 @@
             android:text="@string/land"
             android:padding="5dp"
             android:textSize="15sp"/>
+
+        <RadioButton
+            android:id="@+id/ins_building"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginStart="0dp"
+            android:button="@drawable/custom_radio_button"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:text="@string/building"
+            android:padding="5dp"
+            android:textSize="15sp"/>
+
     </RadioGroup>
+
+    <!--layout for farm land-->
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/farm_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subtype_header">
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/farm_land_check_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="@string/land"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/farm_house_check_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="@string/house"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/farm_land_check_btn"
+            app:layout_constraintTop_toBottomOf="@+id/farm_land_check_btn"
+            app:layout_constraintVertical_bias="0.0" />
+    </android.support.constraint.ConstraintLayout>
 
     <Button
         android:id="@+id/sub_type_next_btn"

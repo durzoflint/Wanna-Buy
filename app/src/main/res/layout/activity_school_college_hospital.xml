@@ -4,64 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.NewOrResale">
+    tools:context=".activities.SchoolCollegeHospital">
 
     <ImageView
-        android:id="@+id/new_resale_image_view"
+        android:id="@+id/school_image_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/new_resale"
-        app:layout_constraintBottom_toTopOf="@+id/guideline13"
+        android:scaleType="center"
+        android:src="@drawable/tenant_image"
+        app:layout_constraintBottom_toTopOf="@+id/guideline30"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline13"
+        android:id="@+id/guideline30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.30" />
+        app:layout_constraintGuide_percent="0.3" />
 
-    <TextView
-        android:id="@+id/new_resale_mode"
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/school_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/montserrat_regular"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:onClick="onCheckBoxClicked"
+        android:padding="5dp"
+        android:text="@string/school"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline13" />
+        app:layout_constraintTop_toBottomOf="@+id/mode" />
 
     <android.support.v7.widget.AppCompatCheckBox
-        android:id="@+id/new_check"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/montserrat_regular"
-        android:padding="5dp"
-        android:text="@string/new_text"
-        app:layout_constraintStart_toStartOf="@+id/new_resale_mode"
-        app:layout_constraintTop_toBottomOf="@+id/new_resale_mode" />
-
-    <android.support.v7.widget.AppCompatCheckBox
-        android:id="@+id/resale_check"
+        android:id="@+id/college_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat_regular"
+        android:onClick="onCheckBoxClicked"
         android:padding="5dp"
-        android:text="@string/resale_text"
-        app:layout_constraintStart_toStartOf="@+id/new_check"
-        app:layout_constraintTop_toBottomOf="@+id/new_check" />
+        android:text="@string/college"
+        app:layout_constraintStart_toStartOf="@+id/school_btn"
+        app:layout_constraintTop_toBottomOf="@+id/school_btn" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/hospital"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:onClick="onCheckBoxClicked"
+        android:padding="5dp"
+        android:text="@string/hospital"
+        app:layout_constraintStart_toStartOf="@+id/college_btn"
+        app:layout_constraintTop_toBottomOf="@+id/college_btn" />
 
     <Button
-        android:id="@+id/new_resale_next_btn"
+        android:id="@+id/school_next_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -74,5 +76,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline30" />
 
 </android.support.constraint.ConstraintLayout>

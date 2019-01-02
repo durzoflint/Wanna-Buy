@@ -48,11 +48,12 @@
 
     <string name="property_location">Property Location</string>
     <string name="property_type_header">What type of property needed?</string>
+
     <string name="residential"> Residential</string>
     <string name="commercial"> Commercial</string>
     <string name="industrial"> Industrial</string>
     <string name="institutional"> Institutional</string>
-    <string name="industrial_land">Industrial Land</string>
+
     <string name="pg_rent">PG(Rent)</string>
     <string name="rental_income">Rental Income</string>
 
@@ -62,10 +63,27 @@
     <string name="house"> House</string>
     <string name="villa"> Villa</string>
     <string name="apartments"> Apartments</string>
+
     <string name="land">Land</string>
-    <string name="residential_land">Residentail Land</string>
-    <string name="commercial_land">Commercial Land</string>
-    <string name="institutional_land">Institutional Land</string>
+
+    <string name="residential_land">Residential_Land</string>
+    <string name="residential_building">Residential_Building</string>
+    <string name="residential_independent">Residential_Independent</string>
+
+    <string name="commercial_land">Commercial_Land</string>
+    <string name="commercial_building">Commercial_Building</string>
+    <string name="commercial_independent">Commercial_Independent</string>
+    <string name="commercial_floorspace">Commercial_Floorspace</string>
+
+    <string name="institutional_land">Institutional_Land</string>
+    <string name="institutional_building">Institutional_Building</string>
+    <string name="institutional_independent">Institutional_Independent</string>
+
+    <string name="industrial_land">Industrial_Land</string>
+    <string name="industrial_building">Industrial_Building</string>
+    <string name="industrial_independent">Industrial_Independent</string>
+    <string name="industrial_floorspace">Industrial_Floorspace</string>
+
     <string name="floorspace">FloorSpace</string>
     <string name="independent">Independent</string>
     <string name="office_space">  Office Space</string>
@@ -117,8 +135,9 @@
     <string name="wannasell">Wanna Sell</string>
 
     <string name="approval">Approval</string>
-    <string name="ammenities_header_text">Facilities (Select all applicable)</string>
-    <string name="metro_water">  Metro Water</string>
+    <string name="ammenities_header_text">Ammenities(Select all applicable)</string>
+    <string name="ammenities_header">Ammenities</string>
+    <string name="metro_water">  Metro Water Connection</string>
     <string name="gym">  Gym</string>
     <string name="drainage_connection">  Drainage Connection</string>
     <string name="power_backup">  Power Backup</string>
@@ -197,7 +216,7 @@
 
     <string name="no_of_cov_car_park">No.of Covered Parking</string>
     <string name="no_of_un_car_park">No.of Open Parking</string>
-    <string name="flooring_header">Preferential Number of Floors</string>
+    <string name="flooring_header">Preferential  Floor</string>
 
     <string name="min_age_header">Minimum Age</string>
     <string name="max_age_header">Maximum Age</string>
@@ -222,4 +241,48 @@
     <string name="user_mode">USER_MODE</string>
     <string name="who_are_you">Who Are You?</string>
     <string name="iam_a">Iam a</string>
+
+    <string name="choose_unit">Choose Unit</string>
+
+    <string-array name="unit_spinner">
+        <item name="sq.ft">Sq. Ft</item>
+        <item name="ground">Ground</item>
+        <item name="cents">Cents</item>
+        <item name="acres">Acre</item>
+    </string-array>
+
+    <string name="pets_header">Pets Allowed?</string>
+    <string name="how_we_work">How We Work</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="contact">Contact</string>
+
+    <string name="no_preference">No Preference</string>
+
+    <string name="zero_years">0 Years</string>
+    <string name="hundred_years">100 Years</string>
+
+    <string name="building">Building</string>
+    <string name="title_activity_building">Building</string>
+    <string name="building_type">Building Type</string>
+    <string name="no_top_floor">No Top Floor</string>
+
+    <string name="girls">Girls</string>
+    <string name="boys">Boys</string>
+    <string name="family">Family</string>
+    <string name="short_stay">Short Stay</string>
+    <string name="rent_start_date">Lease/Rent Start date</string>
+    <string name="lease_or_rent">Lease Or Rent</string>
+    <string name="lease_text">Lease</string>
+    <string name="rent_text">Rent</string>
+
+    <string name="no_of_rooms">No.of Rooms</string>
+    <string name="no_of_person">No.of Person Per Room</string>
+    <string name="with_food">With Food</string>
+    <string name="rent_per_month">Rent Per Month</string>
+    <string name="corp_guest_house_header">Corporate Guest House Price</string>
+    <string name="boys_hostel_header">Boys Hostel Price</string>
+    <string name="girls_hostel_header">Girls Hostel Price</string>
+    <string name="working_men_hostel">Working Men Hostel</string>
+    <string name="working_women_hostel">Working Women Hostel</string>
+    <string name="name_your_requirement">Name your Requirement</string>
 </resources>

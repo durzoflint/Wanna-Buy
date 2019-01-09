@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +22,8 @@ public class FacingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_facing);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         modeHeader  = findViewById(R.id.facing_mode);
         modeHeader.setText(Requirements.getInstance().buyorRent);
@@ -72,5 +75,14 @@ public class FacingActivity extends AppCompatActivity {
                 Requirements.getInstance().facingWest = getString(R.string.no);
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Requirements.getInstance().facingWest = getString(R.string.not_set_text);
+        Requirements.getInstance().facingNorth = getString(R.string.not_set_text);
+        Requirements.getInstance().facingSouth = getString(R.string.not_set_text);
+        Requirements.getInstance().facingEast = getString(R.string.not_set_text);
     }
 }

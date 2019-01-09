@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import com.nyxwolves.wannabuy.POJO.Requirements;
@@ -17,6 +18,8 @@ public class PgRentOptions extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pg_rent_options);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
 
         nextButton = findViewById(R.id.pg_rent_next_btn);
         nextButton.setOnClickListener(new View.OnClickListener() {

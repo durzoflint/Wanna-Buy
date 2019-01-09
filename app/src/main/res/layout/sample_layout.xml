@@ -17,15 +17,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <SeekBar
+    <EditText
         android:id="@+id/no_of_rooms_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:progressBackgroundTint="@android:color/darker_gray"
-        android:scrollbarSize="10dp"
+        android:hint="@string/no_of_rooms"
+        android:fontFamily="@font/montserrat_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/no_of_rooms" />
@@ -53,15 +53,15 @@
         app:layout_constraintStart_toStartOf="@+id/no_of_rooms"
         app:layout_constraintTop_toBottomOf="@+id/no_of_rooms_selected" />
 
-    <SeekBar
+    <EditText
         android:id="@+id/no_of_persons_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:progressBackgroundTint="@android:color/darker_gray"
-        android:scrollbarSize="10dp"
+        android:hint="@string/no_of_person"
+        android:fontFamily="@font/montserrat_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/no_of_person_per_room" />

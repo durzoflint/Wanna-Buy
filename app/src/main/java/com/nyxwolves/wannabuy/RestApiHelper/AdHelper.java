@@ -65,11 +65,10 @@ public class AdHelper {
             createParams.put("PROPERTY_ADDRESS",""+SellerAd.getInstance().propertyAddress.toUpperCase());
             createParams.put("BHK",""+SellerAd.getInstance().bhk.toUpperCase());
             createParams.put("FACING",""+SellerAd.getInstance().facing.toUpperCase());
-            createParams.put("CORNER_PLOT",SellerAd.getInstance().cornerPlot.toUpperCase());
             createParams.put("NEW",""+SellerAd.getInstance().isNew.toUpperCase());
             createParams.put("MODE",""+SellerAd.getInstance().sellOrRent.toUpperCase());
-            createParams.put("ADDITIONAL",""+SellerAd.getInstance().furnished.toUpperCase());
-            createParams.put("BUDGET","650000");
+            createParams.put("FURNISHED",""+SellerAd.getInstance().furnished.toUpperCase());
+            //createParams.put("BUDGET",);
             createParams.put("FLOOR","2");
             createParams.put("NEGOTIABLE",""+SellerAd.getInstance().budgetNegotiable.toUpperCase());
         }catch (Exception e){

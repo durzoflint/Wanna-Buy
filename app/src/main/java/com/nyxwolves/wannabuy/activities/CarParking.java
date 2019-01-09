@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -27,6 +28,8 @@ public class CarParking extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_parking);
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         covPicker = findViewById(R.id.cov_picker);
         covPicker.setMaxValue(50);
         covPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
@@ -49,6 +52,8 @@ public class CarParking extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Requirements.getInstance().noOfUnCovParking = String.valueOf(noOfUnCov);
+                Requirements.getInstance().noOfCovParking = String.valueOf(noOfCov);
                 if(Requirements.getInstance().checkCovParking() || Requirements.getInstance().checkUnCovParking()){
                     startActivity(new Intent(CarParking.this,FacingActivity.class));
                 }

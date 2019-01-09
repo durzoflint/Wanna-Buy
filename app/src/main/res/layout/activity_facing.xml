@@ -122,10 +122,21 @@
         android:fontFamily="@font/montserrat_regular"
         android:padding="5dp"
         android:text="@string/no_preference"
-        app:layout_constraintBottom_toTopOf="@+id/guideline12"
+        app:layout_constraintBottom_toTopOf="@+id/do_not_deviate_facing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/west_check_box" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/do_not_deviate_facing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="5dp"
+        android:text="@string/do_not_deviate"
+        app:layout_constraintBottom_toTopOf="@+id/guideline12"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/facing_next_btn"

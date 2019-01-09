@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
@@ -23,6 +24,8 @@ public class ApprovalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_approval);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         cdma = findViewById(R.id.cmda_btn);
         dtcp = findViewById(R.id.dtcp_btn);
@@ -85,6 +88,20 @@ public class ApprovalActivity extends AppCompatActivity {
             case  R.id.industrial:
                 Requirements.getInstance().industrialApproved = setData((CheckBox)v);
                 break;
+            case R.id.rera:
+                Requirements.getInstance().reraApproved = setData((CheckBox)v);
+                break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Requirements.getInstance().cdmaApproved = getString(R.string.not_set_text);
+        Requirements.getInstance().dtcpApproved = getString(R.string.not_set_text);
+        Requirements.getInstance().corporationApproved = getString(R.string.not_set_text);
+        Requirements.getInstance().industrialApproved = getString(R.string.not_set_text);
+        Requirements.getInstance().panchayatApproved = getString(R.string.not_set_text);
+        Requirements.getInstance().reraApproved = getString(R.string.not_set_text);
     }
 }

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 
@@ -20,14 +21,16 @@ public class AmmenitiesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ammenities);
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         nextBtn = findViewById(R.id.ammenities_next_btn);
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Requirements.getInstance().subType.equals(getString(R.string.apartments))){
-                    startActivity(new Intent(AmmenitiesActivity.this, MaintanceActivity.class));
-                }else{
-                    startActivity(new Intent(AmmenitiesActivity.this,ApprovalActivity.class));
+                if(Requirements.getInstance().buyorRent.equals(getString(R.string.rent_text)) ||
+                        Requirements.getInstance().subType.equals(getString(R.string.apartments))){
+                        startActivity(new Intent(AmmenitiesActivity.this,PetsActivity.class));
+                }else {
+                    startActivity(new Intent(AmmenitiesActivity.this, ApprovalActivity.class));
                 }
             }
         });

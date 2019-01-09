@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import com.nyxwolves.wannabuy.POJO.Requirements;
@@ -18,19 +19,14 @@ public class PetsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pets);
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         nextBtn = findViewById(R.id.rent_pets_next_btn);
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(Requirements.getInstance().type.equals(getString(R.string.rental_income))){
-                    startActivity(new Intent(PetsActivity.this,PropertySize.class));
-                }else{
-                    Intent i = new Intent(PetsActivity.this, HomeActivity.class);
-                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    i.setAction(getString(R.string.POST_REQUIREMENT));
-                    startActivity(i);
-                }
+                startActivity(new Intent(PetsActivity.this,ApprovalActivity.class));
             }
         });
     }

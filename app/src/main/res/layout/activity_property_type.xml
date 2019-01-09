@@ -119,7 +119,7 @@
             android:checked="false"
             android:onClick="radioButtonClicked"
             android:padding="5dp"
-            android:text="@string/pg_rent"
+            android:text="@string/pg_rent_service_aparments"
             android:visibility="gone"
             android:textSize="15sp" />
 
@@ -137,7 +137,7 @@
 
 
         <RadioButton
-            android:id="@+id/rental_income"
+            android:id="@+id/rental_income_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"

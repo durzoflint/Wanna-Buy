@@ -153,7 +153,7 @@
     <string name="approval_header">Type of Approval?</string>
     <string name="dtcp_text">DTCP</string>
     <string name="cdma_text">CDMA</string>
-
+    <string name="rera_text">RERA</string>
     <string name="road_width">Road Width?</string>
     <string name="min_road_width">0Ft.</string>
 
@@ -288,4 +288,22 @@
     <string name="state_text">State Name</string>
     <string name="city_text">City Name</string>
     <string name="area_text">Area Name</string>
+
+    <string name="land_area">Land Area</string>
+    <string name="built_up_area">Built Up Area</string>
+    <string name="pg_rent_apartment">PG_Rent_Apartments</string>
+
+
+    <string name="default_text">DEFAULT</string>
+    <string name="not_set_text">NOT_SET_TEXT</string>
+    <string name="price_in">Price In</string>
+
+    <string-array name="price_unit">
+        <item>Thousands</item>
+        <item>Lakhs</item>
+        <item>Crores</item>
+    </string-array>
+
+    <string name="pg_rent_service_aparments">PG Rent/Service Apartment</string>
+    <string name="wannabuy_tag_line">AN EXCLUSIVE BUYER\'S PORTAL</string>
 </resources>

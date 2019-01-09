@@ -43,8 +43,8 @@ public class RequirementSearchAdapter extends RecyclerView.Adapter<RequirementSe
         requirementSearchHolder.propertyBhk.setText(obj.bhk+" Bhk");
         requirementSearchHolder.propertyType.setText(obj.type);
         requirementSearchHolder.propertyLccation.setText(obj.area);
-        requirementSearchHolder.propertySize.setText(obj.minSize);
-        int price = Integer.parseInt(obj.budget);
+        //requirementSearchHolder.propertySize.setText(obj.minSize);
+        int price = Integer.parseInt(obj.maxBudget);
         if(price >= 100){
             float crores = (float) price/100;
             requirementSearchHolder.propertyBudget.setText(String.valueOf(crores));

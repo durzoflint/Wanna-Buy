@@ -1,209 +1,380 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".activities.PropertySize">
 
-    <ImageView
-        android:id="@+id/size_image_view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:src="@drawable/size_property"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/size_guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/size_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.30" />
-
-    <TextView
-        android:id="@+id/mode_header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/RENT"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/size_guideline" />
-
-    <TextView
-        android:id="@+id/property_size_header"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/property_size_header"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/mode_header"
-        app:layout_constraintTop_toBottomOf="@+id/mode_header" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/choose_size_unit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/montserrat_regular"
-        android:text="@string/choose_unit"
-        app:layout_constraintStart_toStartOf="@+id/property_size_header"
-        app:layout_constraintTop_toBottomOf="@+id/property_size_header" />
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/image_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <Spinner
-        android:id="@+id/unit_spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/choose_size_unit"
-        app:layout_constraintStart_toEndOf="@+id/choose_size_unit"
-        app:layout_constraintTop_toTopOf="@+id/choose_size_unit"
-        app:layout_constraintVertical_bias="0.666" />
+            <ImageView
+                android:id="@+id/size_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/size_property"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <SeekBar
-        android:id="@+id/min_area_seekbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
-        android:progressBackgroundTint="@android:color/darker_gray"
-        android:scrollbarSize="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/min_size_header" />
+            <TextView
+                android:id="@+id/mode_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/RENT"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/size_image_view" />
 
-    <TextView
-        android:id="@+id/min_size"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/montserrat_regular"
-        android:text="0 sq. Ft"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/min_area_seekbar" />
+            <TextView
+                android:id="@+id/property_size_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/property_size_header"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/mode_header"
+                app:layout_constraintTop_toBottomOf="@+id/mode_header" />
 
-    <TextView
-        android:id="@+id/max_size"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/montserrat_regular"
-        android:text="100000 sq. Ft"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/min_area_seekbar" />
+        </android.support.constraint.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/selected_size"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/montserrat_regular"
-        app:layout_constraintEnd_toStartOf="@+id/max_size"
-        app:layout_constraintStart_toEndOf="@+id/min_size"
-        app:layout_constraintTop_toBottomOf="@+id/min_area_seekbar" />
-
-    <Button
-        android:id="@+id/size_next_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:background="@drawable/orange_button"
-        android:clickable="true"
-        android:fontFamily="@font/montserrat_medium"
-        android:text="@string/next"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/min_size_header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/montserrat_medium"
-        android:text="Min"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/choose_size_unit" />
-
-    <TextView
-        android:id="@+id/max_header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/montserrat_medium"
-        android:text="Max"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/min_size" />
-
-    <SeekBar
-        android:id="@+id/max_area_seekbar"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
-        android:progressBackgroundTint="@android:color/darker_gray"
-        android:scrollbarSize="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/max_header" />
-
-    <TextView
-        android:id="@+id/max_min_size"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/montserrat_regular"
-        android:text="0 sq. Ft"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/max_area_seekbar" />
-
-    <TextView
-        android:id="@+id/max_max_size"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/montserrat_regular"
-        android:text="100000 sq. Ft"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/max_area_seekbar" />
-
-    <TextView
-        android:id="@+id/max_selected_size"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/montserrat_regular"
-        app:layout_constraintEnd_toStartOf="@+id/max_max_size"
-        app:layout_constraintStart_toEndOf="@+id/max_min_size"
-        app:layout_constraintTop_toBottomOf="@+id/max_area_seekbar" />
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/land_area_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
 
-</android.support.constraint.ConstraintLayout>
+            <TextView
+                android:id="@+id/choose_size_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/choose_unit"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/land_area_header" />
+
+            <Spinner
+                android:id="@+id/unit_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/choose_size_unit"
+                app:layout_constraintStart_toEndOf="@+id/choose_size_unit"
+                app:layout_constraintTop_toTopOf="@+id/choose_size_unit"
+                app:layout_constraintVertical_bias="0.666" />
+
+            <SeekBar
+                android:id="@+id/min_area_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:progressBackgroundTint="@android:color/darker_gray"
+                android:scrollbarSize="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/min_size_header" />
+
+            <TextView
+                android:id="@+id/min_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="0 sq. Ft"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/min_area_seekbar" />
+
+            <TextView
+                android:id="@+id/max_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="100000 sq. Ft"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/min_area_seekbar" />
+
+            <TextView
+                android:id="@+id/selected_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                app:layout_constraintEnd_toStartOf="@+id/max_size"
+                app:layout_constraintStart_toEndOf="@+id/min_size"
+                app:layout_constraintTop_toBottomOf="@+id/min_area_seekbar" />
+
+
+            <TextView
+                android:id="@+id/min_size_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Min"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/choose_size_unit" />
+
+            <TextView
+                android:id="@+id/max_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Max"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/min_size" />
+
+            <SeekBar
+                android:id="@+id/max_area_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:progressBackgroundTint="@android:color/darker_gray"
+                android:scrollbarSize="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/max_header" />
+
+            <TextView
+                android:id="@+id/max_min_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="0 sq. Ft"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/max_area_seekbar" />
+
+            <TextView
+                android:id="@+id/max_max_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="100000 sq. Ft"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/max_area_seekbar" />
+
+            <TextView
+                android:id="@+id/max_selected_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                app:layout_constraintEnd_toStartOf="@+id/max_max_size"
+                app:layout_constraintStart_toEndOf="@+id/max_min_size"
+                app:layout_constraintTop_toBottomOf="@+id/max_area_seekbar" />
+
+            <TextView
+                android:id="@+id/land_area_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/land_area"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/built_up_area_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+
+            <SeekBar
+                android:id="@+id/min_area_seekbar_built_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:progressBackgroundTint="@android:color/darker_gray"
+                android:scrollbarSize="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/min_size_header_built_up" />
+
+            <TextView
+                android:id="@+id/min_size_built_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="0 sq. Ft"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/min_area_seekbar_built_up" />
+
+            <TextView
+                android:id="@+id/max_size_built_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="100000 sq. Ft"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/min_area_seekbar_built_up" />
+
+            <TextView
+                android:id="@+id/selected_size_built_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                app:layout_constraintEnd_toStartOf="@+id/max_size_built_up"
+                app:layout_constraintStart_toEndOf="@+id/min_size_built_up"
+                app:layout_constraintTop_toBottomOf="@+id/min_area_seekbar_built_up" />
+
+            <TextView
+                android:id="@+id/min_size_header_built_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Min"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buiilt_up_area_header" />
+
+            <TextView
+                android:id="@+id/max_header_built_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Max"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/min_size_built_up" />
+
+            <SeekBar
+                android:id="@+id/max_area_seekbar_built_up"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:progressBackgroundTint="@android:color/darker_gray"
+                android:scrollbarSize="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/max_header_built_up" />
+
+            <TextView
+                android:id="@+id/max_min_size_built_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="0 sq. Ft"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/max_area_seekbar_built_up" />
+
+            <TextView
+                android:id="@+id/max_max_size_built_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="100000 sq. Ft"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/max_area_seekbar_built_up" />
+
+            <TextView
+                android:id="@+id/max_selected_size_built_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                app:layout_constraintEnd_toStartOf="@+id/max_max_size_built_up"
+                app:layout_constraintStart_toEndOf="@+id/max_min_size_built_up"
+                app:layout_constraintTop_toBottomOf="@+id/max_area_seekbar_built_up" />
+
+            <TextView
+                android:id="@+id/buiilt_up_area_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/built_up_area"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+
+        <Button
+            android:id="@+id/size_next_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/orange_button"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="@string/next"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+</ScrollView>

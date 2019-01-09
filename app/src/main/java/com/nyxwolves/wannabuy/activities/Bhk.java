@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +24,8 @@ public class Bhk extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bhk);
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         modeHeader =  findViewById(R.id.bhk_mode);
         modeHeader.setText(Requirements.getInstance().buyorRent);
 
@@ -32,10 +35,12 @@ public class Bhk extends AppCompatActivity {
             public void onClick(View v) {
                 //if(!BHK.equals("0")){
                     Requirements.getInstance().bhk = BHK;
-                    if(Requirements.getInstance().subType.equals(getString(R.string.residential_independent))){
+                    if(Requirements.getInstance().subType.equals(getString(R.string.residential_independent)) ||
+                            Requirements.getInstance().subType.equals(getString(R.string.pg_rent_independent))){
                         startActivity(new Intent(Bhk.this,CarParking.class));
 
-                    }else if(Requirements.getInstance().subType.equals(getString(R.string.apartments))){
+                    }else if(Requirements.getInstance().subType.equals(getString(R.string.apartments)) ||
+                            Requirements.getInstance().subType.equals(getString(R.string.pg_rent_apartment))){
                         startActivity(new Intent(Bhk.this,FlooringActivity.class));
 
                     }else{

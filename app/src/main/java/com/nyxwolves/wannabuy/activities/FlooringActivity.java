@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RadioGroup;
 
@@ -20,6 +21,8 @@ public class FlooringActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flooring);
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         firstRow = findViewById(R.id.radio_group_one);
         secondRow = findViewById(R.id.radio_group_two);
         thirdRow = findViewById(R.id.radio_group_third);
@@ -27,8 +30,8 @@ public class FlooringActivity extends AppCompatActivity {
         firstRow.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                secondRow.clearCheck();
-                thirdRow.clearCheck();
+                //secondRow.clearCheck();
+                //thirdRow.clearCheck();
                 switch(checkedId){
                     case R.id.floor_one:
                         Requirements.getInstance().floor = "1";
@@ -58,8 +61,8 @@ public class FlooringActivity extends AppCompatActivity {
         secondRow.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                firstRow.clearCheck();
-                thirdRow.clearCheck();
+                //firstRow.clearCheck();
+                //thirdRow.clearCheck();
                 switch(checkedId){
                     case R.id.floor_eight:
                         Requirements.getInstance().floor = "8";
@@ -89,8 +92,8 @@ public class FlooringActivity extends AppCompatActivity {
         thirdRow.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                firstRow.clearCheck();
-                secondRow.clearCheck();
+                //firstRow.clearCheck();
+                //secondRow.clearCheck();
                 switch(checkedId){
                     case R.id.floor_15:
                         Requirements.getInstance().floor = "15";

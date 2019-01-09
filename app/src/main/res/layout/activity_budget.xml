@@ -59,7 +59,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/min_budget_header" />
+        app:layout_constraintTop_toBottomOf="@+id/min_unit_header" />
 
     <Button
         android:id="@+id/budget_next_btn"
@@ -83,7 +83,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="10dp"
-        android:text="0 Lakh"
         android:fontFamily="@font/montserrat_regular"
         app:layout_constraintStart_toStartOf="@+id/min_budget_seekbar"
         app:layout_constraintTop_toBottomOf="@+id/min_budget_seekbar" />
@@ -94,7 +93,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="10dp"
-        android:text="10 Crores"
         android:fontFamily="@font/montserrat_regular"
         app:layout_constraintEnd_toEndOf="@+id/min_budget_seekbar"
         app:layout_constraintTop_toBottomOf="@+id/min_budget_seekbar" />
@@ -146,8 +144,9 @@
         android:progressBackgroundTint="@android:color/darker_gray"
         android:scrollbarSize="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/max_budget_header" />
+        app:layout_constraintTop_toBottomOf="@+id/max_unit_header" />
 
     <TextView
         android:id="@+id/max_min_price"
@@ -156,7 +155,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/montserrat_regular"
-        android:text="0 Lakh"
         app:layout_constraintStart_toStartOf="@+id/max_budget_seekbar"
         app:layout_constraintTop_toBottomOf="@+id/max_budget_seekbar" />
 
@@ -166,7 +164,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="10dp"
-        android:text="10 Crore"
         android:fontFamily="@font/montserrat_regular"
         app:layout_constraintEnd_toEndOf="@+id/max_budget_seekbar"
         app:layout_constraintTop_toBottomOf="@+id/max_budget_seekbar" />
@@ -182,5 +179,51 @@
         app:layout_constraintEnd_toStartOf="@+id/max_max_price"
         app:layout_constraintStart_toEndOf="@+id/max_min_price"
         app:layout_constraintTop_toTopOf="@+id/max_min_price" />
+
+    <Spinner
+        android:id="@+id/min_price_unit_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/min_unit_header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/min_unit_header"
+        app:layout_constraintTop_toTopOf="@+id/min_unit_header" />
+
+    <TextView
+        android:id="@+id/min_unit_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="@string/price_in"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/min_budget_header" />
+
+    <TextView
+        android:id="@+id/max_unit_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="@string/price_in"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/max_budget_header" />
+
+    <Spinner
+        android:id="@+id/max_price_unit_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/max_unit_header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/max_unit_header"
+        app:layout_constraintTop_toTopOf="@+id/max_unit_header" />
 
 </android.support.constraint.ConstraintLayout>

@@ -102,35 +102,78 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/montserrat_medium"
         android:text="@string/looking_for_something_else"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/post_property_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline21" />
 
-    <Button
+    <LinearLayout
         android:id="@+id/post_property_btn"
-        android:layout_width="240dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="@string/post_your_property"
-        app:layout_constraintBottom_toTopOf="@+id/home_rent_btn"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/round_corner_bg"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/looking_for_header">
 
-    <Button
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/post_property_image" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="@string/post_your_property"
+            android:textAlignment="center"
+            android:textColor="@color/dark_blue"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/home_rent_btn"
-        android:layout_width="240dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="@string/looking_for_rent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/round_corner_bg"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/post_property_btn">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="@string/looking_for_rent"
+            android:textAlignment="center"
+            android:textColor="@color/dark_blue"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="10dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/rent_image" />
+
+    </LinearLayout>
 
 
     <Button

@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,7 +40,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
 
     ImageView homeButton,msgButton,adsButton,profileButton,postRequirement;
-    Button rentButton,postAdBtn,builderBtn;
+    LinearLayout rentButton,postAdBtn;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;

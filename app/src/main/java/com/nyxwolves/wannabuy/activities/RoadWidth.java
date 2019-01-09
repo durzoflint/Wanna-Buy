@@ -31,19 +31,28 @@ public class RoadWidth extends AppCompatActivity {
             public void onClick(View v) {
                 if(width  != 0){
                     Requirements.getInstance().roadWidth = String.valueOf(width);
-                    startActivity(new Intent(RoadWidth.this,RequirementName.class));
+                    if(Requirements.getInstance().isRentalIncome.equals(getString(R.string.yes))){
+                        startActivity(new Intent(RoadWidth.this,ROIRentalActivity.class));
+                    }else {
+                        startActivity(new Intent(RoadWidth.this, RequirementName.class));
+                    }
                 }
 
             }
         });
 
         roadWidth = findViewById(R.id.road_width_seekbar);
-        roadWidth.setMax(200);
+        roadWidth.setMax(201);
         roadWidth.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 width = progress;
-                selectedWidth.setText(Integer.toString(progress));
+                if(progress  == seekBar.getMax()){
+                    String displayText = String.valueOf(progress-1)+" +";
+                    selectedWidth.setText(displayText);
+                }else{
+                    selectedWidth.setText(String.valueOf(progress));
+                }
             }
 
             @Override

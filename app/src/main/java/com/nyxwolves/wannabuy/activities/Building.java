@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -17,7 +18,7 @@ public class Building extends Activity {
     Button nextBtn;
     RadioButton factoryBtn,wareHouseBtn,coldStorageBtn;
     RadioButton schoolBtn,collegeBtn,hospitalBtn;
-    RadioGroup resiGroup,commGroup,indusGroup,instiGroup;
+    RadioGroup resiGroup,commGroup,indusGroup,instiGroup,indusIndependentSub,rentalGroup;
     ConstraintLayout farmLandLayout;
 
     @Override
@@ -25,10 +26,15 @@ public class Building extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_building);
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         resiGroup = findViewById(R.id.resi_building_group);
         commGroup = findViewById(R.id.comm_building_group);
         indusGroup = findViewById(R.id.indus_building_group);
         instiGroup = findViewById(R.id.ins_building_group);
+        rentalGroup = findViewById(R.id.rental_income_group);
+
+        indusIndependentSub = findViewById(R.id.indus_independent_sub);
 
         factoryBtn = findViewById(R.id.indus_factory);
         wareHouseBtn = findViewById(R.id.indus_ware_house);
@@ -47,11 +53,9 @@ public class Building extends Activity {
             @Override
             public void onClick(View v) {
                 if(Requirements.getInstance().subType.equals(getString(R.string.residential_independent))||
-                        Requirements.getInstance().subType.equals(getString(R.string.apartments))){
+                        Requirements.getInstance().subType.equals(getString(R.string.apartments)) ||
+                        Requirements.getInstance().subType.equals(getString(R.string.pg_rent_independent))){
                     startActivity(new Intent(Building.this,PropertySize.class));
-
-                }else if(Requirements.getInstance().subType.equals(getString(R.string.apartments))){
-                    startActivity(new Intent(Building.this,FlooringActivity.class));
 
                 }else if(Requirements.getInstance().subType.equals(getString(R.string.commercial_floorspace))||
                         Requirements.getInstance().subType.equals(getString(R.string.industrial_floorspace))){
@@ -60,10 +64,26 @@ public class Building extends Activity {
                 }else if(Requirements.getInstance().subType.equals(getString(R.string.commercial_independent)) ||
                         Requirements.getInstance().subType.equals(getString(R.string.industrial_independent))){
                     startActivity(new Intent(Building.this,PropertySize.class));
+
                 }else if(Requirements.getInstance().type.equals(getString(R.string.farm_land))){
                     startActivity(new Intent(Building.this,Budget.class));
-                }
+                }else if(Requirements.getInstance().subType.equals(getString(R.string.factory)) ||
+                        Requirements.getInstance().subType.equals(getString(R.string.cold_storage)) ||
+                        Requirements.getInstance().subType.equals(getString(R.string.warehouse))){
+                    startActivity(new Intent(Building.this,PropertySize.class));
 
+                }else if(Requirements.getInstance().type.equals(getString(R.string.farm_land)) &&
+                        Requirements.getInstance().isRentalIncome.equals(getString(R.string.yes))){
+                    startActivity(new Intent(Building.this,Budget.class));
+
+                }else if(Requirements.getInstance().type.equals(getString(R.string.pg_rent)) &&
+                        Requirements.getInstance().isRentalIncome.equals(getString(R.string.yes))){
+                    startActivity(new Intent(Building.this,PgRentOptions.class));
+
+                }else if(Requirements.getInstance().isRentalIncome.equals(getString(R.string.yes))){
+                    startActivity(new Intent(Building.this,PropertySubType.class));
+
+                }
             }
         });
     }
@@ -99,6 +119,13 @@ public class Building extends Activity {
             instiGroup.setVisibility(View.GONE);
             indusGroup.setVisibility(View.GONE);
             farmLandLayout.setVisibility(View.VISIBLE);
+        }else if(propertyType.equals(getString(R.string.rental_income))){
+            commGroup.setVisibility(View.GONE);
+            resiGroup.setVisibility(View.GONE);
+            instiGroup.setVisibility(View.GONE);
+            indusGroup.setVisibility(View.GONE);
+            farmLandLayout.setVisibility(View.GONE);
+            rentalGroup.setVisibility(View.VISIBLE);
         }
     }
     public void onRadioButtonClicked(View v){
@@ -111,7 +138,11 @@ public class Building extends Activity {
                 }
                 break;
             case R.id.resi_apartments:
-                Requirements.getInstance().subType = getString(R.string.apartments);
+                if(Requirements.getInstance().type.equals(getString(R.string.pg_rent))){
+                    Requirements.getInstance().subType = getString(R.string.pg_rent_apartment);
+                }else {
+                    Requirements.getInstance().subType = getString(R.string.apartments);
+                }
                 break;
             case R.id.comm_independent:
                 Requirements.getInstance().subType = getString(R.string.commercial_independent);
@@ -120,9 +151,7 @@ public class Building extends Activity {
                 Requirements.getInstance().subType = getString(R.string.commercial_floorspace);
                 break;
             case R.id.indus_independent:
-                factoryBtn.setVisibility(View.VISIBLE);
-                coldStorageBtn.setVisibility(View.VISIBLE);
-                wareHouseBtn.setVisibility(View.VISIBLE);
+                indusIndependentSub.setVisibility(View.VISIBLE);
                 break;
             case R.id.indus_factory:
                 Requirements.getInstance().subType  = getString(R.string.factory);
@@ -134,6 +163,7 @@ public class Building extends Activity {
                 Requirements.getInstance().subType = getString(R.string.warehouse);
                 break;
             case R.id.indus_floorspace:
+                indusIndependentSub.setVisibility(View.GONE);
                 Requirements.getInstance().subType = getString(R.string.industrial_floorspace);
                 break;
             case R.id.ins_independent:
@@ -149,6 +179,30 @@ public class Building extends Activity {
                 break;
             case R.id.ins_hospital:
                 Requirements.getInstance().subType =  getString(R.string.hospital);
+                break;
+            case R.id.rental_resi:
+                Requirements.getInstance().type = getString(R.string.residential);
+                Requirements.getInstance().isRentalIncome = getString(R.string.yes);
+                break;
+            case R.id.rental_comm:
+                Requirements.getInstance().type = getString(R.string.commercial);
+                Requirements.getInstance().isRentalIncome = getString(R.string.yes);
+                break;
+            case R.id.rental_ins:
+                Requirements.getInstance().type = getString(R.string.institutional);
+                Requirements.getInstance().isRentalIncome = getString(R.string.yes);
+                break;
+            case R.id.rental_indus:
+                Requirements.getInstance().type = getString(R.string.industrial);
+                Requirements.getInstance().isRentalIncome = getString(R.string.yes);
+                break;
+            case R.id.rental_farm_land:
+                Requirements.getInstance().type = getString(R.string.farm_land);
+                Requirements.getInstance().isRentalIncome = getString(R.string.yes);
+                break;
+            case R.id.rental_pg_rent_service_apartment:
+                Requirements.getInstance().type = getString(R.string.pg_rent);
+                Requirements.getInstance().isRentalIncome = getString(R.string.yes);
                 break;
         }
     }

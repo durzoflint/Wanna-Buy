@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -24,6 +25,8 @@ public class PropertySubType extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_property_sub_type);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
 
         modeHeader = findViewById(R.id.sub_type_mode_header);
         modeHeader.setText(Requirements.getInstance().buyorRent);
@@ -63,10 +66,10 @@ public class PropertySubType extends AppCompatActivity implements View.OnClickLi
                         startActivity(new Intent(PropertySubType.this,Building.class));
 
                     }else if(subPropertyType.equals(getString(R.string.institutional_land))){
-                        startActivity(new Intent(PropertySubType.this,SchoolCollegeHospital.class));
+                        startActivity(new Intent(PropertySubType.this,PropertySize.class));
 
                     }else if(subPropertyType.equals(getString(R.string.institutional_building))){
-                        startActivity(new Intent(PropertySubType.this,PropertySize.class));
+                        startActivity(new Intent(PropertySubType.this,SchoolCollegeHospital.class));
 
                     }else if(subPropertyType.equals(getString(R.string.farm_land))){
                         startActivity(new Intent(PropertySubType.this,Building.class));
@@ -137,39 +140,14 @@ public class PropertySubType extends AppCompatActivity implements View.OnClickLi
                 break;
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Requirements.getInstance().subType = getString(R.string.not_set_text);
+    }
 }
 
 
 
 
-
- /*if(subPropertyType.equals(getString(R.string.residential_land))){
-                        startActivity(new Intent(PropertySubType.this,PropertySize.class));
-
-                    }else  if(subPropertyType.equals(getString(R.string.residential_building))){
-                        startActivity(new Intent(PropertySubType.this,NewOrResale.class));
-
-                    }else if(subPropertyType.equals(getString(R.string.apartments))){
-                        startActivity(new Intent(PropertySubType.this,FlooringActivity.class));
-
-                    }else if(subPropertyType.equals(getString(R.string.commercial_land))){
-                        startActivity(new Intent(PropertySubType.this,PropertySize.class));
-
-                    }else if(subPropertyType.equals(getString(R.string.commercial_building))){
-                        startActivity(new Intent(PropertySubType.this,Building.class));
-
-                    }else if(subPropertyType.equals(getString(R.string.house)) || subPropertyType.equals(getString(R.string.villa))){
-                        startActivity(new Intent(PropertySubType.this,Bhk.class));
-
-                    }else if(subPropertyType.equals(getString(R.string.floorspace)) ||
-                            subPropertyType.equals(getString(R.string.school)) ||
-                            subPropertyType.equals(getString(R.string.hospital)) ||
-                            subPropertyType.equals(getString(R.string.college)) ||
-                            subPropertyType.equals(getString(R.string.warehouse)) ||
-                            subPropertyType.equals(getString(R.string.cold_storage)) ||
-                            subPropertyType.equals(getString(R.string.factory))){
-                        startActivity(new Intent(PropertySubType.this,CarParking.class));
-
-                    }else if(subPropertyType.equals(getString(R.string.institutional_land))){
-                        startActivity(new Intent(PropertySubType.this,PropertySize.class));
-                    }*/

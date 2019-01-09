@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import com.nyxwolves.wannabuy.POJO.Requirements;
@@ -17,6 +18,8 @@ public class FacilitiesActivities extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_facilities_activities);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         nextBtn = findViewById(R.id.facilities_next_btn);
         nextBtn.setOnClickListener(new View.OnClickListener() {
@@ -42,5 +45,12 @@ public class FacilitiesActivities extends AppCompatActivity {
                 Requirements.getInstance().drainageConnection = getString(R.string.no);
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Requirements.getInstance().metroWater = getString(R.string.not_set_text);
+        Requirements.getInstance().drainageConnection = getString(R.string.not_set_text);
     }
 }

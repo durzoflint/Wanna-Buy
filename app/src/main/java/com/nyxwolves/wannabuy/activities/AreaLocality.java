@@ -44,7 +44,7 @@ public class AreaLocality extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_area_locality);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        
+
         geoDataClient = Places.getGeoDataClient(this);
 
         locationOne = findViewById(R.id.location_one);
@@ -93,7 +93,7 @@ public class AreaLocality extends AppCompatActivity implements View.OnClickListe
                 getStateName();
                 break;
             case R.id.city_input:
-                getLocationName();
+                getCityName();
                 break;
             case R.id.location_five:
                 locationFive.setVisibility(View.INVISIBLE);
@@ -142,6 +142,19 @@ public class AreaLocality extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    private void getCityName(){
+        try {
+            AutocompleteFilter filter = new AutocompleteFilter.Builder().setCountry("IN").build();
+            Intent locationIntent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                    .setFilter(filter)
+                    .build(this);
+            startActivityForResult(locationIntent, CITY_REQUEST);
+        } catch (GooglePlayServicesNotAvailableException e) {
+            Toast.makeText(this, "Google Play Services missing", Toast.LENGTH_SHORT).show();
+        } catch (GooglePlayServicesRepairableException e) {
+            Toast.makeText(this, "Google Play Services error", Toast.LENGTH_SHORT).show();
+        }
+    }
     private void getLocationName() {
         try {
             AutocompleteFilter filter = new AutocompleteFilter.Builder().setCountry("IN").build();
@@ -165,6 +178,9 @@ public class AreaLocality extends AppCompatActivity implements View.OnClickListe
         }else if(requestCode == STATE_REQUEST && resultCode == RESULT_OK){
             Place places = PlaceAutocomplete.getPlace(this,data);
             stateInput.setText(places.getName().toString());
+        }else if(requestCode == CITY_REQUEST && resultCode == RESULT_OK){
+            Place places = PlaceAutocomplete.getPlace(this,data);
+            cityInput.setText(places.getName().toString());
         }
     }
 

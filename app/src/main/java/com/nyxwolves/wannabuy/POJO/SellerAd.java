@@ -18,6 +18,9 @@ public class SellerAd {
     public String budgetNegotiable;
     public String cornerPlot;
     public String furnished  ="NOT_NEEDED";
+    public String covCarParkingNum = "NOT SET";
+    public String unCovCarParkingNum = "NOT SET";
+    public String areaUnit = "SQFT";
 
     private static SellerAd instance = null;
 

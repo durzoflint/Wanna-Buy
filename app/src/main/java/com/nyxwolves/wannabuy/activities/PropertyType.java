@@ -3,7 +3,9 @@ package com.nyxwolves.wannabuy.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -25,6 +27,7 @@ public class PropertyType extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_property_type);
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //propertType = findViewById(R.id.radioGroup);
 
         modeHeader  = findViewById(R.id.mode_header);
@@ -35,7 +38,7 @@ public class PropertyType extends AppCompatActivity implements View.OnClickListe
 
         pgRent = findViewById(R.id.pg_rent);
         farmLand = findViewById(R.id.farm_land);
-        rentalIncome = findViewById(R.id.rental_income);
+        rentalIncome = findViewById(R.id.rental_income_btn);
 
         selectedProperty = findViewById(R.id.residential);
 
@@ -65,8 +68,9 @@ public class PropertyType extends AppCompatActivity implements View.OnClickListe
             case R.id.pg_rent:
                 property_type = getString(R.string.pg_rent);
                 break;
-            case R.id.rental_income:
+            case R.id.rental_income_btn:
                 property_type = getString(R.string.rental_income);
+                break;
             case R.id.farm_land:
                 property_type = getString(R.string.farm_land);
                 break;
@@ -78,12 +82,18 @@ public class PropertyType extends AppCompatActivity implements View.OnClickListe
             case R.id.next_btn:
                 if(property_type != null) {
                     Requirements.getInstance().type = property_type;
+
                     if(property_type.equals(getString(R.string.farm_land))){
                         Requirements.getInstance().subType =  property_type;
                         startActivity(new Intent(PropertyType.this,Building.class));
+
                     }else if(property_type.equals(getString(R.string.pg_rent))){
                         Requirements.getInstance().type = property_type;
                         startActivity(new Intent(PropertyType.this,PgRentOptions.class));
+
+                    }else if(property_type.equals(getString(R.string.rental_income))){
+                        Requirements.getInstance().isRentalIncome = property_type;
+                       startActivity(new Intent(PropertyType.this,Building.class));
                     }else {
                         startActivity(new Intent(PropertyType.this, PropertySubType.class));
                     }
@@ -91,6 +101,15 @@ public class PropertyType extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(PropertyType.this,"Select anyone",Toast.LENGTH_SHORT).show();
                 }
                break;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Requirements.getInstance().type = getString(R.string.not_set_text);
+        if(property_type.equals(getString(R.string.farm_land))){
+            Requirements.getInstance().subType = getString(R.string.not_set_text);
         }
     }
 }

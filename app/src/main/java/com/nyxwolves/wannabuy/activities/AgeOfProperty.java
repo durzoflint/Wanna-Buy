@@ -32,11 +32,18 @@ public class AgeOfProperty extends AppCompatActivity {
         maxSelectedAge = findViewById(R.id.max_selected_age);
 
         minAgeBar =  findViewById(R.id.min_age_bar);
+        minAgeBar.setMax(101);
         minAgeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 minAge = progress;
-                minSelectedAge.setText(String.valueOf(progress));
+                if(progress == seekBar.getMax()){
+                    String displayText = String.valueOf(progress-1)+" +";
+                    minSelectedAge.setText(displayText);
+                }else{
+                    minSelectedAge.setText(String.valueOf(progress));
+                }
+
             }
 
             @Override
@@ -51,11 +58,17 @@ public class AgeOfProperty extends AppCompatActivity {
         });
 
         maxAgeBar = findViewById(R.id.max_age_bar);
+        maxAgeBar.setMax(101);
         maxAgeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 maxAge = progress;
-                maxSelectedAge.setText(String.valueOf(progress));
+                if(progress == seekBar.getMax()){
+                    String displayText  = String.valueOf(progress-1)+" +";
+                    maxSelectedAge.setText(displayText);
+                }else{
+                    maxSelectedAge.setText(String.valueOf(progress));
+                }
             }
 
             @Override

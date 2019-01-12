@@ -14,7 +14,6 @@ import com.nyxwolves.wannabuy.R;
 public class FlooringActivity extends AppCompatActivity {
 
     Button nextBtn;
-    RadioGroup firstRow,secondRow,thirdRow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +22,26 @@ public class FlooringActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        firstRow = findViewById(R.id.radio_group_one);
-        secondRow = findViewById(R.id.radio_group_two);
-        thirdRow = findViewById(R.id.radio_group_third);
 
-        firstRow.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+        nextBtn = findViewById(R.id.flooring_next_btn);
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(FlooringActivity.this,FurnishedOrNot.class));
+            }
+        });
+    }
+
+    public void onCheckBoxClicked(View v){
+
+    }
+}
+
+
+
+/*firstRow.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 //secondRow.clearCheck();
@@ -118,15 +132,4 @@ public class FlooringActivity extends AppCompatActivity {
                         break;
                 }
             }
-        });
-
-        nextBtn = findViewById(R.id.flooring_next_btn);
-        nextBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivity(new Intent(FlooringActivity.this,FurnishedOrNot.class));
-            }
-        });
-    }
-}
+        });*/

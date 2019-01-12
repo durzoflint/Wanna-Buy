@@ -295,15 +295,26 @@
 
 
     <string name="default_text">DEFAULT</string>
-    <string name="not_set_text">NOT_SET_TEXT</string>
+    <string name="not_set_text">NOT_SET</string>
     <string name="price_in">Price In</string>
 
-    <string-array name="price_unit">
+    <string-array name="price_unit_rent">
         <item>Thousands</item>
+        <item>Lakhs</item>
+    </string-array>
+
+    <string-array name="price_unit_buy">
         <item>Lakhs</item>
         <item>Crores</item>
     </string-array>
 
-    <string name="pg_rent_service_aparments">PG Rent/Service Apartment</string>
+    <string name="pg_rent_service_aparments">PG/Service Apartment</string>
     <string name="wannabuy_tag_line">AN EXCLUSIVE BUYER\'S PORTAL</string>
+    <string name="rental_incremental_text">Rental Incremental (%)</string>
+
+    <string name="min_rest_room">Minimum No.of Rest Rooms</string>
+    <string name="min_roi_hint">Minimum Roi in %</string>
+    <string name="max_roi_hint">Maximum Roi in %</string>
+
+    <string name="greater_than_10_crores">Greater than 10 Crores?</string>
 </resources>

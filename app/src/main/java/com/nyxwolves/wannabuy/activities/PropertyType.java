@@ -14,10 +14,10 @@ import android.widget.Toast;
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
 
-public class PropertyType extends AppCompatActivity implements View.OnClickListener{
+public class PropertyType extends AppCompatActivity implements View.OnClickListener {
 
     Button continueBtn;
-    RadioButton selectedProperty,pgRent,farmLand,rentalIncome;
+    RadioButton selectedProperty, pgRent, farmLand, rentalIncome;
     TextView modeHeader;
 
     String property_type;
@@ -27,10 +27,10 @@ public class PropertyType extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_property_type);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //propertType = findViewById(R.id.radioGroup);
 
-        modeHeader  = findViewById(R.id.mode_header);
+        modeHeader = findViewById(R.id.mode_header);
         modeHeader.setText(Requirements.getInstance().buyorRent);
 
         continueBtn = findViewById(R.id.next_btn);
@@ -42,17 +42,19 @@ public class PropertyType extends AppCompatActivity implements View.OnClickListe
 
         selectedProperty = findViewById(R.id.residential);
 
-        if(Requirements.getInstance().buyorRent.equals(getString(R.string.BUY))){
+        if (Requirements.getInstance().buyorRent.equals(getString(R.string.BUY))) {
             farmLand.setVisibility(View.VISIBLE);
             rentalIncome.setVisibility(View.VISIBLE);
-        }else{
+            pgRent.setVisibility(View.VISIBLE);
+        } else {
+            farmLand.setVisibility(View.VISIBLE);
             pgRent.setVisibility(View.VISIBLE);
             rentalIncome.setVisibility(View.GONE);
         }
     }
 
-    public void radioButtonClicked(View v){
-        switch (v.getId()){
+    public void radioButtonClicked(View v) {
+        switch (v.getId()) {
             case R.id.residential:
                 property_type = getString(R.string.residential);
                 break;
@@ -76,31 +78,32 @@ public class PropertyType extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.next_btn:
-                if(property_type != null) {
+                if (property_type != null) {
                     Requirements.getInstance().type = property_type;
 
-                    if(property_type.equals(getString(R.string.farm_land))){
-                        Requirements.getInstance().subType =  property_type;
-                        startActivity(new Intent(PropertyType.this,Building.class));
+                    if (property_type.equals(getString(R.string.farm_land))) {
+                        Requirements.getInstance().subType = property_type;
+                        startActivity(new Intent(PropertyType.this, Building.class));
 
-                    }else if(property_type.equals(getString(R.string.pg_rent))){
+                    } else if (property_type.equals(getString(R.string.pg_rent))) {
                         Requirements.getInstance().type = property_type;
-                        startActivity(new Intent(PropertyType.this,PgRentOptions.class));
+                        startActivity(new Intent(PropertyType.this, PgRentOptions.class));
 
-                    }else if(property_type.equals(getString(R.string.rental_income))){
-                        Requirements.getInstance().isRentalIncome = property_type;
-                       startActivity(new Intent(PropertyType.this,Building.class));
-                    }else {
+                    } else if (property_type.equals(getString(R.string.rental_income))) {
+                        Requirements.getInstance().isRentalIncome = getString(R.string.yes);
+                        startActivity(new Intent(PropertyType.this, Building.class));
+                    } else {
                         startActivity(new Intent(PropertyType.this, PropertySubType.class));
                     }
-                }else{
-                    Toast.makeText(PropertyType.this,"Select anyone",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(PropertyType.this, "Select anyone", Toast.LENGTH_SHORT).show();
                 }
-               break;
+                break;
         }
     }
 
@@ -108,8 +111,10 @@ public class PropertyType extends AppCompatActivity implements View.OnClickListe
     public void onBackPressed() {
         super.onBackPressed();
         Requirements.getInstance().type = getString(R.string.not_set_text);
-        if(property_type.equals(getString(R.string.farm_land))){
-            Requirements.getInstance().subType = getString(R.string.not_set_text);
+        if (property_type != null) {
+            if (property_type.equals(getString(R.string.farm_land))) {
+                Requirements.getInstance().subType = getString(R.string.not_set_text);
+            }
         }
     }
 }

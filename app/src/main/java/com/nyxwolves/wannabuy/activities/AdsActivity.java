@@ -39,7 +39,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
 
 
     TextInputEditText cityInput,doorNumberInput,addressInput;
-    EditText landArea,builtUpArea;
+    EditText landArea,builtUpArea,budgetInput,rentalIncrementalInput,roiInput,leaseStartInput,leaseEndInput,advanceInput;
     Button picUploadBtn,paymentBtn;
     Button sellBtn,rentBtn;
     CircleImageView propertyPic;
@@ -51,10 +51,10 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     RadioGroup rentalResiBuild,rentalCommBuild,rentalIndusBuild;
     RadioGroup indusIndependentGroup,rentalIndusIndependentGroup;
     ConstraintLayout rentalStart,rentalEnd,advanceDeposit,bhkLayout,carParkingLayout,ammenitiesLayout,furnishedLayout;
-    ConstraintLayout builtUpAreaLayout,landAreaLayout;
+    ConstraintLayout builtUpAreaLayout,landAreaLayout,leaseOrRent;
     FrameLayout pgRentLayout,rentalIncomeType;
     RadioButton farmLand,pgRentButton,rentalIncomeButton;
-    LinearLayout roiLayout,petsLayout;
+    LinearLayout roiLayout,petsLayout,rentalIncrementalLayout;
     Spinner areaUnitSpinner;
 
     final int IMAGE_REQ=1002;
@@ -79,8 +79,23 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         builtUpAreaLayout = findViewById(R.id.built_up_area_layout);
         landAreaLayout = findViewById(R.id.land_area_layout);
 
-        //roiLayout
+        //rental income data layout
         roiLayout = findViewById(R.id.roi_layout);
+        roiInput = findViewById(R.id.ads_roi_input);
+
+        rentalStart = findViewById(R.id.lease_start_layout);
+        leaseStartInput = findViewById(R.id.start_date);
+
+        rentalEnd = findViewById(R.id.lease_end_layout);
+        leaseEndInput = findViewById(R.id.end_date);
+
+        advanceDeposit = findViewById(R.id.advance_layout);
+        advanceInput = findViewById(R.id.advance_input);
+
+        leaseOrRent = findViewById(R.id.lease_rent_layout);
+
+        rentalIncrementalLayout = findViewById(R.id.rental_incremental_layout);
+        rentalIncrementalInput = findViewById(R.id.rental_incremental_input);
 
         //petsLayout
         petsLayout = findViewById(R.id.pets_allowed_layout);
@@ -115,10 +130,6 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 SellerAd.getInstance().unCovCarParkingNum = String.valueOf(newVal);
             }
         });
-
-        rentalStart = findViewById(R.id.lease_start_layout);
-        rentalEnd = findViewById(R.id.lease_end_layout);
-        advanceDeposit = findViewById(R.id.advance_layout);
 
         bhkLayout = findViewById(R.id.bhk_layout);
         carParkingLayout = findViewById(R.id.car_parking_layout);
@@ -246,15 +257,19 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 farmLand.setVisibility(View.VISIBLE);
                 rentalIncomeButton.setVisibility(View.VISIBLE);
                 pgRentButton.setVisibility(View.GONE);
+
                 roiLayout.setVisibility(View.GONE);
+                rentalIncrementalLayout.setVisibility(View.GONE);
+                leaseStartInput.setVisibility(View.GONE);
+                leaseEndInput.setVisibility(View.GONE);
+                advanceDeposit.setVisibility(View.GONE);
                 petsLayout.setVisibility(View.GONE);
                 break;
             case R.id.rent_btn:
                 SellerAd.getInstance().sellOrRent = getString(R.string.RENT);
-                farmLand.setVisibility(View.GONE);
+                farmLand.setVisibility(View.VISIBLE);
                 rentalIncomeButton.setVisibility(View.GONE);
                 pgRentButton.setVisibility(View.VISIBLE);
-                roiLayout.setVisibility(View.GONE);
                 break;
             case R.id.resi_radio_btn:
                 resiSub.setVisibility(View.VISIBLE);
@@ -263,6 +278,10 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 indusSub.setVisibility(View.GONE);
                 pgRentLayout.setVisibility(View.GONE);
                 roiLayout.setVisibility(View.GONE);
+                rentalIncrementalLayout.setVisibility(View.GONE);
+                leaseStartInput.setVisibility(View.GONE);
+                leaseEndInput.setVisibility(View.GONE);
+                advanceDeposit.setVisibility(View.GONE);
                 rentalIncomeType.setVisibility(View.GONE);
                 indusIndependentGroup.setVisibility(View.GONE);
                 break;
@@ -273,6 +292,11 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 indusSub.setVisibility(View.GONE);
                 pgRentLayout.setVisibility(View.GONE);
                 roiLayout.setVisibility(View.GONE);
+                rentalIncrementalLayout.setVisibility(View.GONE);
+                leaseStartInput.setVisibility(View.GONE);
+                leaseEndInput.setVisibility(View.GONE);
+                advanceDeposit.setVisibility(View.GONE);
+                rentalIncomeType.setVisibility(View.GONE);
                 rentalIncomeType.setVisibility(View.GONE);
                 indusIndependentGroup.setVisibility(View.GONE);
                 break;
@@ -283,6 +307,11 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 indusSub.setVisibility(View.VISIBLE);
                 pgRentLayout.setVisibility(View.GONE);
                 roiLayout.setVisibility(View.GONE);
+                rentalIncrementalLayout.setVisibility(View.GONE);
+                leaseStartInput.setVisibility(View.GONE);
+                leaseEndInput.setVisibility(View.GONE);
+                advanceDeposit.setVisibility(View.GONE);
+                rentalIncomeType.setVisibility(View.GONE);
                 rentalIncomeType.setVisibility(View.GONE);
                 indusIndependentGroup.setVisibility(View.GONE);
                 break;
@@ -311,6 +340,11 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 indusSub.setVisibility(View.GONE);
                 pgRentLayout.setVisibility(View.GONE);
                 roiLayout.setVisibility(View.GONE);
+                rentalIncrementalLayout.setVisibility(View.GONE);
+                leaseStartInput.setVisibility(View.GONE);
+                leaseEndInput.setVisibility(View.GONE);
+                advanceDeposit.setVisibility(View.GONE);
+                rentalIncomeType.setVisibility(View.GONE);
                 rentalIncomeType.setVisibility(View.GONE);
                 builtUpAreaLayout.setVisibility(View.VISIBLE);
                 landAreaLayout.setVisibility(View.VISIBLE);
@@ -330,6 +364,11 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 bhkLayout.setVisibility(View.VISIBLE);
                 furnishedLayout.setVisibility(View.VISIBLE);
                 roiLayout.setVisibility(View.GONE);
+                rentalIncrementalLayout.setVisibility(View.GONE);
+                leaseStartInput.setVisibility(View.GONE);
+                leaseEndInput.setVisibility(View.GONE);
+                advanceDeposit.setVisibility(View.GONE);
+                rentalIncomeType.setVisibility(View.GONE);
                 rentalIncomeType.setVisibility(View.GONE);
                 break;
             case R.id.resi_building:
@@ -461,6 +500,11 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
             case R.id.ads_rental_income:
                 roiLayout.setVisibility(View.VISIBLE);
                 rentalIncomeType.setVisibility(View.VISIBLE);
+                roiLayout.setVisibility(View.VISIBLE);
+                rentalIncrementalLayout.setVisibility(View.VISIBLE);
+                leaseStartInput.setVisibility(View.VISIBLE);
+                leaseEndInput.setVisibility(View.VISIBLE);
+                advanceDeposit.setVisibility(View.VISIBLE);
                 break;
             case R.id.rental_resi_radio_btn:
                 rentalResiSub.setVisibility(View.VISIBLE);

@@ -36,7 +36,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
     <!-- radio group for residential and commercial-->
-    <RadioGroup
+    <LinearLayout
         android:id="@+id/furnished_radio_group"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -44,48 +44,46 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:visibility="visible"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.196"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2">
 
-        <RadioButton
+        <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/furnished"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:button="@drawable/custom_radio_button"
             android:checked="false"
             android:fontFamily="@font/montserrat_regular"
-            android:onClick="radioButtonClicked"
+            android:onClick="onCheckBoxClicked"
             android:padding="5dp"
             android:text="@string/furnished" />
 
-        <RadioButton
+        <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/un_furnished"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:button="@drawable/custom_radio_button"
             android:checked="false"
             android:fontFamily="@font/montserrat_regular"
-            android:onClick="radioButtonClicked"
+            android:onClick="onCheckBoxClicked"
             android:padding="5dp"
             android:text="@string/un_furnished" />
 
-        <RadioButton
+        <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/semi_furnished"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:button="@drawable/custom_radio_button"
             android:checked="false"
             android:fontFamily="@font/montserrat_regular"
-            android:onClick="radioButtonClicked"
+            android:onClick="onCheckBoxClicked"
             android:padding="5dp"
             android:text="@string/semi_furnished" />
 
-    </RadioGroup>
+    </LinearLayout>
 
     <android.support.v7.widget.AppCompatCheckBox
         android:id="@+id/furnished_do_not_deviate"

@@ -159,7 +159,38 @@
             android:text="@string/land"
             android:padding="5dp"
             android:textSize="15sp"/>
-
+            <LinearLayout
+                android:id="@+id/indus_land_sub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_marginStart="40dp">
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:id="@+id/indus_land_factory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/factory"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:padding="5dp"
+                    android:layout_margin="5dp"/>
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:id="@+id/indus_land_cold_storage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cold_storage"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:padding="5dp"
+                    android:layout_margin="5dp"/>
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:id="@+id/indus_land_ware_house"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/warehouse"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:padding="5dp"
+                    android:layout_margin="5dp"/>
+            </LinearLayout>
         <RadioButton
             android:id="@+id/indus_building"
             android:layout_width="wrap_content"

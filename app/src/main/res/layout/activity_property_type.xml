@@ -130,6 +130,7 @@
             android:layout_margin="5dp"
             android:padding="5dp"
             android:visibility="gone"
+            android:textSize="15sp"
             android:button="@drawable/custom_radio_button"
             android:onClick="radioButtonClicked"
             android:text="@string/farm_land"

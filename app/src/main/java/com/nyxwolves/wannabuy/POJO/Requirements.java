@@ -11,6 +11,12 @@ public class Requirements {
     public String locationFour = "NOT_SET";
     public String locationFive = "NOT_SET";
     public String type = "NOT_SET";
+    public String rentalResi = "NOT_SET";
+    public String rentalComm = "NOT_SET";
+    public String rentalIndus = "NOT_SET";
+    public String rentalIns = "NOT_SET";
+    public String rentalFarmLand = "NOT_SET";
+    public String rentalPgApartments = "NOT_SET";
     public String area = "NOT_SET";
     public String minAge = "NOT_SET";
     public String maxAge = "NOT_SET";
@@ -31,6 +37,7 @@ public class Requirements {
     public String industrialApproved = "NOT_SET";
     public String reraApproved = "NOT_SET";
     public String bhk = "NOT_SET";
+
     public String isNew = "NOT_SET";
     public String isResale = "NOT_SET";
     public String minBudget = "NOT_SET";
@@ -52,13 +59,15 @@ public class Requirements {
     public String playArea = "NO";
     public String metroWater ="NO";
     public String drainageConnection = "NO";
-    public String roadWidth = "NOT_SET";
+    public String minRoadWidth = "NOT_SET";
+    public String maxRoadWidth = "NOT_SET";
     public String isCovparking = "NO";
     public String isUnCovParking = "NO";
     public String noOfCovParking = "0";
     public String noOfUnCovParking = "0";
     public String isRentalIncome = "No";
-    public String roi = "DEFAULT";
+    public String minRoi = "DEFAULT";
+    public String maxRoi = "DEFAULT";
     public String petsAllowed = "NOT_SET";
     private static Requirements instance;
 
@@ -166,12 +175,14 @@ public class Requirements {
          playArea = "NO";
          metroWater ="NO";
          drainageConnection = "NO";
-         roadWidth = "NOT_SET";
+         minRoadWidth = "NOT_SET";
+         maxRoadWidth = "NOT_SET";
          isCovparking = "NO";
          isUnCovParking = "NO";
          noOfCovParking = "0";
          noOfUnCovParking = "0";
          isRentalIncome = "No";
-         roi = "NO_SET";
+         minRoi = "NO_SET";
+         maxRoi = "NO_SET";
     }
 }

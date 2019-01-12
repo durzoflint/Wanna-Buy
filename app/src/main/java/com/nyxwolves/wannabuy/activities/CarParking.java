@@ -31,7 +31,7 @@ public class CarParking extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         covPicker = findViewById(R.id.cov_picker);
-        covPicker.setMaxValue(50);
+        covPicker.setMaxValue(5);
         covPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
@@ -40,7 +40,7 @@ public class CarParking extends AppCompatActivity {
         });
 
         unCovPicker = findViewById(R.id.uncov_picker);
-        unCovPicker.setMaxValue(50);
+        unCovPicker.setMaxValue(5);
         unCovPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {

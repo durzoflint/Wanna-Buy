@@ -30,6 +30,17 @@ public class FurnishedOrNot extends AppCompatActivity{
                         Requirements.getInstance().subType.equals(getString(R.string.pg_rent_independent))){
                     startActivity(new Intent(FurnishedOrNot.this,Bhk.class));
 
+                }else if( Requirements.getInstance().rentalResi.equals(getString(R.string.yes)) ||
+                        Requirements.getInstance().rentalComm.equals(getString(R.string.yes)) ||
+                        Requirements.getInstance().rentalIndus.equals(getString(R.string.yes)) ||
+                        Requirements.getInstance().rentalIns.equals(getString(R.string.yes)) ||
+                        Requirements.getInstance().rentalPgApartments.equals(getString(R.string.yes))){
+                    startActivity(new Intent(FurnishedOrNot.this,FacingActivity.class));
+
+                }else if(Requirements.getInstance().type.equals(getString(R.string.industrial)) ||
+                        Requirements.getInstance().type.equals(getString(R.string.institutional)) ||
+                        Requirements.getInstance().subType.equals(getString(R.string.farm_land))){
+                    startActivity(new Intent(FurnishedOrNot.this,FacingActivity.class));
                 }else{
                     startActivity(new Intent(FurnishedOrNot.this,CarParking.class));
 
@@ -40,7 +51,7 @@ public class FurnishedOrNot extends AppCompatActivity{
 
     }
 
-    public void radioButtonClicked(View v){
+    public void onCheckBoxClicked(View v){
 
     }
 }

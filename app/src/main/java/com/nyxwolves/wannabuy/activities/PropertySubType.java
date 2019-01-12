@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ public class PropertySubType extends AppCompatActivity implements View.OnClickLi
     Button continueBtn;
     TextView subtypeHeader, modeHeader;
     String subPropertyType;
+    LinearLayout indusLandSub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class PropertySubType extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_property_sub_type);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        indusLandSub =  findViewById(R.id.indus_land_sub);
 
         modeHeader = findViewById(R.id.sub_type_mode_header);
         modeHeader.setText(Requirements.getInstance().buyorRent);
@@ -128,9 +131,11 @@ public class PropertySubType extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.indus_land:
                 subPropertyType = getString(R.string.industrial_land);
+                indusLandSub.setVisibility(View.VISIBLE);
                 break;
             case R.id.indus_building:
                 subPropertyType = getString(R.string.industrial_building);
+                indusLandSub.setVisibility(View.GONE);
                 break;
             case R.id.ins_land:
                 subPropertyType = getString(R.string.institutional_land);

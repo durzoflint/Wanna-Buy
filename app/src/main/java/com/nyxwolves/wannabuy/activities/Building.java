@@ -7,8 +7,11 @@ import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
@@ -16,9 +19,11 @@ import com.nyxwolves.wannabuy.R;
 public class Building extends Activity {
 
     Button nextBtn;
-    RadioButton factoryBtn,wareHouseBtn,coldStorageBtn;
+    CheckBox factoryBtn,wareHouseBtn,coldStorageBtn;
     RadioButton schoolBtn,collegeBtn,hospitalBtn;
-    RadioGroup resiGroup,commGroup,indusGroup,instiGroup,indusIndependentSub,rentalGroup;
+    RadioGroup resiGroup,commGroup,indusGroup,instiGroup,indusIndependentSub;
+    LinearLayout rentalGroup;
+    LinearLayout rentalResiSub,rentalCommSub,rentalIndusSub,rentalInsSub,rentalPgSub;
     ConstraintLayout farmLandLayout;
 
     @Override
@@ -33,6 +38,12 @@ public class Building extends Activity {
         indusGroup = findViewById(R.id.indus_building_group);
         instiGroup = findViewById(R.id.ins_building_group);
         rentalGroup = findViewById(R.id.rental_income_group);
+
+        rentalResiSub = findViewById(R.id.rental_resi_sub_layout);
+        rentalCommSub = findViewById(R.id.rental_comm_sub_layout);
+        rentalInsSub = findViewById(R.id.rental_ins_sub_layout);
+        rentalIndusSub = findViewById(R.id.rental_indus_sub_layout);
+        rentalPgSub = findViewById(R.id.rental_pg_apartments_layout);
 
         indusIndependentSub = findViewById(R.id.indus_independent_sub);
 
@@ -72,17 +83,8 @@ public class Building extends Activity {
                         Requirements.getInstance().subType.equals(getString(R.string.warehouse))){
                     startActivity(new Intent(Building.this,PropertySize.class));
 
-                }else if(Requirements.getInstance().type.equals(getString(R.string.farm_land)) &&
-                        Requirements.getInstance().isRentalIncome.equals(getString(R.string.yes))){
-                    startActivity(new Intent(Building.this,Budget.class));
-
-                }else if(Requirements.getInstance().type.equals(getString(R.string.pg_rent)) &&
-                        Requirements.getInstance().isRentalIncome.equals(getString(R.string.yes))){
-                    startActivity(new Intent(Building.this,PgRentOptions.class));
-
                 }else if(Requirements.getInstance().isRentalIncome.equals(getString(R.string.yes))){
-                    startActivity(new Intent(Building.this,PropertySubType.class));
-
+                    startActivity(new Intent(Building.this,Budget.class));
                 }
             }
         });
@@ -180,31 +182,56 @@ public class Building extends Activity {
             case R.id.ins_hospital:
                 Requirements.getInstance().subType =  getString(R.string.hospital);
                 break;
+        }
+    }
+
+    private String setData(CheckBox checkBox,LinearLayout layout){
+        if(checkBox.isChecked()){
+            layout.setVisibility(View.VISIBLE);
+            return getString(R.string.yes);
+        }else{
+            layout.setVisibility(View.GONE);
+            return getString(R.string.no);
+        }
+    }
+
+    public void onCheckBoxClicked(View v){
+        switch(v.getId()){
             case R.id.rental_resi:
-                Requirements.getInstance().type = getString(R.string.residential);
-                Requirements.getInstance().isRentalIncome = getString(R.string.yes);
+                Requirements.getInstance().rentalResi = setData(((CheckBox)v),rentalResiSub);
                 break;
             case R.id.rental_comm:
-                Requirements.getInstance().type = getString(R.string.commercial);
-                Requirements.getInstance().isRentalIncome = getString(R.string.yes);
+                Requirements.getInstance().rentalComm = setData(((CheckBox)v),rentalCommSub);
                 break;
             case R.id.rental_ins:
-                Requirements.getInstance().type = getString(R.string.institutional);
-                Requirements.getInstance().isRentalIncome = getString(R.string.yes);
+                Requirements.getInstance().rentalIns = setData(((CheckBox)v),rentalInsSub);
                 break;
             case R.id.rental_indus:
-                Requirements.getInstance().type = getString(R.string.industrial);
-                Requirements.getInstance().isRentalIncome = getString(R.string.yes);
+                Requirements.getInstance().rentalIndus = setData(((CheckBox)v),rentalIndusSub);
                 break;
             case R.id.rental_farm_land:
-                Requirements.getInstance().type = getString(R.string.farm_land);
-                Requirements.getInstance().isRentalIncome = getString(R.string.yes);
+                if(((CheckBox)v).isChecked()){
+                    Requirements.getInstance().rentalFarmLand = getString(R.string.yes);
+                }else{
+                    Requirements.getInstance().rentalFarmLand = getString(R.string.no);
+                }
                 break;
             case R.id.rental_pg_rent_service_apartment:
-                Requirements.getInstance().type = getString(R.string.pg_rent);
-                Requirements.getInstance().isRentalIncome = getString(R.string.yes);
+                Requirements.getInstance().rentalPgApartments = setData(((CheckBox)v),rentalPgSub);
                 break;
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Requirements.getInstance().subType = getString(R.string.not_set_text);
+        Requirements.getInstance().rentalResi = getString(R.string.not_set_text);
+        Requirements.getInstance().rentalComm = getString(R.string.not_set_text);
+        Requirements.getInstance().rentalIndus = getString(R.string.not_set_text);
+        Requirements.getInstance().rentalIns = getString(R.string.not_set_text);
+        Requirements.getInstance().rentalFarmLand = getString(R.string.not_set_text);
+        Requirements.getInstance().rentalPgApartments = getString(R.string.not_set_text);
+    }
 }

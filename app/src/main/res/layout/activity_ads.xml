@@ -1463,6 +1463,59 @@
         </LinearLayout>
 
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/lease_rent_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/lease_rent_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lease_or_rent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioGroup
+                android:id="@+id/lease_rent_group"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/lease_rent_header"
+                app:layout_constraintTop_toBottomOf="@+id/lease_rent_header">
+
+                <RadioButton
+                    android:id="@+id/lease_radio_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:button="@drawable/custom_radio_button"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:onClick="onRadioButtonClicked"
+                    android:padding="5dp"
+                    android:text="@string/lease_text" />
+
+                <RadioButton
+                    android:id="@+id/rent_radio_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:button="@drawable/custom_radio_button"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:onClick="onRadioButtonClicked"
+                    android:padding="5dp"
+                    android:text="@string/rent_text" />
+            </RadioGroup>
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
             android:id="@+id/lease_start_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -1585,59 +1638,6 @@
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/lease_rent_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="20dp"
-            android:visibility="gone">
-
-            <TextView
-                android:id="@+id/lease_rent_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lease_or_rent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <RadioGroup
-                android:id="@+id/lease_rent_group"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/lease_rent_header"
-                app:layout_constraintTop_toBottomOf="@+id/lease_rent_header">
-
-                <RadioButton
-                    android:id="@+id/lease_radio_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:button="@drawable/custom_radio_button"
-                    android:fontFamily="@font/montserrat_regular"
-                    android:onClick="onRadioButtonClicked"
-                    android:padding="5dp"
-                    android:text="@string/lease_text" />
-
-                <RadioButton
-                    android:id="@+id/rent_radio_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:button="@drawable/custom_radio_button"
-                    android:fontFamily="@font/montserrat_regular"
-                    android:onClick="onRadioButtonClicked"
-                    android:padding="5dp"
-                    android:text="@string/rent_text" />
-            </RadioGroup>
-        </android.support.constraint.ConstraintLayout>
-
-        <android.support.constraint.ConstraintLayout
             android:id="@+id/tenant_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -1669,38 +1669,6 @@
                 app:layout_constraintStart_toStartOf="@+id/tenant_name_header"
                 app:layout_constraintTop_toBottomOf="@+id/tenant_name_header" />
 
-
-        </android.support.constraint.ConstraintLayout>
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/rental_roi_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="20dp"
-            android:visibility="gone">
-
-            <TextView
-                android:id="@+id/roi_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/montserrat_regular"
-                android:text="@string/roi_text"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <EditText
-                android:id="@+id/roi_input"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/roi_header"
-                app:layout_constraintTop_toBottomOf="@+id/roi_header" />
 
         </android.support.constraint.ConstraintLayout>
 
@@ -1738,10 +1706,34 @@
         </android.support.constraint.ConstraintLayout>
 
         <LinearLayout
+            android:id="@+id/rental_incremental_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+            <TextView
+                android:id="@+id/rental_incremental_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rental_incremental_text"
+                android:fontFamily="@font/montserrat_regular"/>
+            <EditText
+                android:id="@+id/rental_incremental_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/rental_incremental_text"
+                android:fontFamily="@font/montserrat_regular"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+        </LinearLayout>
+        <LinearLayout
             android:id="@+id/roi_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_marginTop="20dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp">
             <TextView
@@ -1775,53 +1767,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <SeekBar
-                android:id="@+id/ads_budget_seek_bar"
+            <EditText
+                android:id="@+id/ads_budget_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:progressBackgroundTint="@android:color/darker_gray"
-                android:scrollbarSize="10dp"
+                android:layout_marginBottom="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ads_budget_header" />
-
-            <TextView
-                android:id="@+id/ads_min_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/montserrat_regular"
-                android:text="0 Lakh"
-                app:layout_constraintStart_toStartOf="@+id/ads_budget_seek_bar"
-                app:layout_constraintTop_toBottomOf="@+id/ads_budget_seek_bar" />
-
-            <TextView
-                android:id="@+id/ads_max_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/montserrat_regular"
-                android:text="10 Crore"
-                app:layout_constraintEnd_toEndOf="@+id/ads_budget_seek_bar"
-                app:layout_constraintTop_toBottomOf="@+id/ads_budget_seek_bar" />
-
-            <TextView
-                android:id="@+id/ads_selected_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:fontFamily="@font/montserrat_regular"
-                app:layout_constraintBottom_toBottomOf="@+id/ads_max_price"
-                app:layout_constraintEnd_toStartOf="@+id/ads_max_price"
-                app:layout_constraintStart_toEndOf="@+id/ads_min_price"
-                app:layout_constraintTop_toTopOf="@+id/ads_min_price" />
-
+                app:layout_constraintTop_toBottomOf="@+id/ads_budget_header"
+                app:layout_constraintBottom_toBottomOf="parent"/>
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout

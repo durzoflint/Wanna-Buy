@@ -70,7 +70,7 @@
             android:button="@drawable/custom_radio_button"
             android:fontFamily="@font/montserrat_regular"
             android:padding="5dp"
-            android:text="@string/pets_allowed" />
+            android:text="@string/yes" />
 
         <RadioButton
             android:id="@+id/pets_not_allowed"
@@ -80,7 +80,7 @@
             android:button="@drawable/custom_radio_button"
             android:fontFamily="@font/montserrat_regular"
             android:padding="5dp"
-            android:text="@string/pets_not_allowed" />
+            android:text="@string/no" />
     </RadioGroup>
 
     <Button

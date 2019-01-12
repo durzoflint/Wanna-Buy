@@ -34,260 +34,263 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline25" />
 
-    <RadioGroup
-        android:id="@+id/radio_group_one"
-        android:layout_width="match_parent"
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flooring_header">
+        app:layout_constraintTop_toBottomOf="@+id/flooring_header" />
 
-        <RadioButton
-            android:id="@+id/floor_one"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="1" />
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="2"
+        app:layout_constraintBottom_toBottomOf="@+id/check_1"
+        app:layout_constraintStart_toEndOf="@+id/check_1"
+        app:layout_constraintTop_toTopOf="@+id/check_1" />
 
-        <RadioButton
-            android:id="@+id/floor_two"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="2" />
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="3"
+        app:layout_constraintBottom_toBottomOf="@+id/check_2"
+        app:layout_constraintStart_toEndOf="@+id/check_2"
+        app:layout_constraintTop_toTopOf="@+id/check_2" />
 
-        <RadioButton
-            android:id="@+id/floor_three"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="3" />
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="4"
+        app:layout_constraintBottom_toBottomOf="@+id/check_3"
+        app:layout_constraintStart_toEndOf="@+id/check_3"
+        app:layout_constraintTop_toTopOf="@+id/check_3" />
 
-        <RadioButton
-            android:id="@+id/floor_four"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:layout_margin="2dp"
-            android:text="4" />
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="5"
+        app:layout_constraintBottom_toBottomOf="@+id/check_4"
+        app:layout_constraintStart_toEndOf="@+id/check_4"
+        app:layout_constraintTop_toTopOf="@+id/check_4" />
 
-        <RadioButton
-            android:id="@+id/floor_five"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="5" />
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="6"
+        app:layout_constraintBottom_toBottomOf="@+id/check_5"
+        app:layout_constraintStart_toEndOf="@+id/check_5"
+        app:layout_constraintTop_toTopOf="@+id/check_5" />
 
-        <RadioButton
-            android:id="@+id/floor_six"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="6" />
-
-        <RadioButton
-            android:id="@+id/floor_seven"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="7" />
-    </RadioGroup>
-
-
-    <!--second row-->
-
-    <RadioGroup
-        android:id="@+id/radio_group_two"
-        android:layout_width="match_parent"
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_7"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="15dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radio_group_one">
-
-        <RadioButton
-            android:id="@+id/floor_eight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="8" />
-
-        <RadioButton
-            android:id="@+id/floor_nine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="9" />
-
-        <RadioButton
-            android:id="@+id/floor_ten"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="10" />
-
-        <RadioButton
-            android:id="@+id/floor_eleven"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="11" />
-
-        <RadioButton
-            android:id="@+id/floor_12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="12" />
-
-        <RadioButton
-            android:id="@+id/floor_13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="13" />
-
-        <RadioButton
-            android:id="@+id/floor_14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="14" />
-    </RadioGroup>
-
-    <!--third row-->
-
-    <RadioGroup
-        android:id="@+id/radio_group_third"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="15dp"
-        android:orientation="horizontal"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="7"
+        app:layout_constraintBottom_toBottomOf="@+id/check_6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radio_group_two">
+        app:layout_constraintStart_toEndOf="@+id/check_6"
+        app:layout_constraintTop_toTopOf="@+id/check_6" />
 
-        <RadioButton
-            android:id="@+id/floor_15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="15" />
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="8"
+        app:layout_constraintStart_toStartOf="@+id/check_1"
+        app:layout_constraintTop_toBottomOf="@+id/check_1" />
 
-        <RadioButton
-            android:id="@+id/floor_16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="16" />
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="9"
+        app:layout_constraintBottom_toBottomOf="@+id/check_8"
+        app:layout_constraintStart_toEndOf="@+id/check_8"
+        app:layout_constraintTop_toTopOf="@+id/check_8" />
 
-        <RadioButton
-            android:id="@+id/floor_17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="17" />
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="10"
+        app:layout_constraintBottom_toBottomOf="@+id/check_9"
+        app:layout_constraintStart_toEndOf="@+id/check_9"
+        app:layout_constraintTop_toTopOf="@+id/check_9" />
 
-        <RadioButton
-            android:id="@+id/floor_18"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="18" />
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="11"
+        app:layout_constraintBottom_toBottomOf="@+id/check_10"
+        app:layout_constraintStart_toEndOf="@+id/check_10"
+        app:layout_constraintTop_toTopOf="@+id/check_10" />
 
-        <RadioButton
-            android:id="@+id/floor_19"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="19" />
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="12"
+        app:layout_constraintBottom_toBottomOf="@+id/check_11"
+        app:layout_constraintStart_toEndOf="@+id/check_11"
+        app:layout_constraintTop_toTopOf="@+id/check_11" />
 
-        <RadioButton
-            android:id="@+id/floor_20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="20" />
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="13"
+        app:layout_constraintBottom_toBottomOf="@+id/check_12"
+        app:layout_constraintStart_toEndOf="@+id/check_12"
+        app:layout_constraintTop_toTopOf="@+id/check_12" />
 
-        <RadioButton
-            android:id="@+id/floor_20_plus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="20+"
-            android:layout_margin="2dp"
-            android:padding="5dp"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"/>
-    </RadioGroup>
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="14"
+        app:layout_constraintBottom_toBottomOf="@+id/check_13"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/check_13"
+        app:layout_constraintTop_toTopOf="@+id/check_13" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="15"
+        app:layout_constraintStart_toStartOf="@+id/check_8"
+        app:layout_constraintTop_toBottomOf="@+id/check_8" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="16"
+        app:layout_constraintBottom_toBottomOf="@+id/check_15"
+        app:layout_constraintStart_toEndOf="@+id/check_15"
+        app:layout_constraintTop_toTopOf="@+id/check_15" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="17"
+        app:layout_constraintBottom_toBottomOf="@+id/check_16"
+        app:layout_constraintStart_toEndOf="@+id/check_16"
+        app:layout_constraintTop_toTopOf="@+id/check_16" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="18"
+        app:layout_constraintBottom_toBottomOf="@+id/check_17"
+        app:layout_constraintStart_toEndOf="@+id/check_17"
+        app:layout_constraintTop_toTopOf="@+id/check_17" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="19"
+        app:layout_constraintBottom_toBottomOf="@+id/check_18"
+        app:layout_constraintStart_toEndOf="@+id/check_18"
+        app:layout_constraintTop_toTopOf="@+id/check_18" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="20"
+        app:layout_constraintBottom_toBottomOf="@+id/check_19"
+        app:layout_constraintStart_toEndOf="@+id/check_19"
+        app:layout_constraintTop_toTopOf="@+id/check_19" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_20_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="20+"
+        app:layout_constraintBottom_toBottomOf="@+id/check_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/check_20"
+        app:layout_constraintTop_toTopOf="@+id/check_20" />
+
 
     <android.support.v7.widget.AppCompatCheckBox
         android:id="@+id/no_top_floor"
@@ -309,12 +312,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginStart="8dp"
         android:fontFamily="@font/montserrat_regular"
         android:padding="5dp"
         android:text="@string/do_not_deviate"
-        app:layout_constraintBottom_toTopOf="@+id/flooring_next_btn"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/no_top_floor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
     <Button
         android:id="@+id/flooring_next_btn"
         android:layout_width="wrap_content"
@@ -331,3 +337,5 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
+
+

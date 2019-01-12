@@ -124,7 +124,8 @@ public class RequirementHelper {
             params.put("UN_COV_PARKING_NUM",  Requirements.getInstance().noOfUnCovParking.toUpperCase());
             params.put("PG_RENT_TYPE",  Requirements.getInstance().pgRentType.toUpperCase());
             params.put("PETS_ALLOWED",  Requirements.getInstance().petsAllowed.toUpperCase());
-            params.put("ROAD_WIDTH",Requirements.getInstance().roadWidth.toUpperCase());
+            params.put("ROAD_WIDTH_MIN",Requirements.getInstance().minRoadWidth.toUpperCase());
+            params.put("ROAD_WIDTH_MAX",Requirements.getInstance().maxRoadWidth.toUpperCase());
         } catch (Exception e) {
             e.printStackTrace();
         }

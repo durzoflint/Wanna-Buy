@@ -14,23 +14,26 @@ import com.nyxwolves.wannabuy.R;
 public class RoadWidth extends AppCompatActivity {
 
     Button nextBtn;
-    SeekBar roadWidth;
-    TextView selectedWidth;
+    SeekBar minRoadWidth,maxRoadWidth;
+    TextView minSelectedWidth,maxSelectedWidth;
 
-    int width = 0;
+    int minWidth = 0;
+    int maxWidth = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_road_width);
 
-        selectedWidth = findViewById(R.id.selected_width);
+        minSelectedWidth = findViewById(R.id.selected_width);
+        maxSelectedWidth = findViewById(R.id.max_selected_width);
 
         nextBtn = findViewById(R.id.road_next_btn);
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(width  != 0){
-                    Requirements.getInstance().roadWidth = String.valueOf(width);
+                if(minWidth  != 0&& maxWidth != 0){
+                    Requirements.getInstance().minRoadWidth = String.valueOf(minWidth);
+                    Requirements.getInstance().maxRoadWidth = String.valueOf(maxWidth);
                     if(Requirements.getInstance().isRentalIncome.equals(getString(R.string.yes))){
                         startActivity(new Intent(RoadWidth.this,ROIRentalActivity.class));
                     }else {
@@ -41,17 +44,42 @@ public class RoadWidth extends AppCompatActivity {
             }
         });
 
-        roadWidth = findViewById(R.id.road_width_seekbar);
-        roadWidth.setMax(201);
-        roadWidth.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        minRoadWidth = findViewById(R.id.road_width_seekbar);
+        minRoadWidth.setMax(201);
+        minRoadWidth.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                width = progress;
+                minWidth = progress;
                 if(progress  == seekBar.getMax()){
                     String displayText = String.valueOf(progress-1)+" +";
-                    selectedWidth.setText(displayText);
+                    minSelectedWidth.setText(displayText);
                 }else{
-                    selectedWidth.setText(String.valueOf(progress));
+                    minSelectedWidth.setText(String.valueOf(progress));
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        maxRoadWidth = findViewById(R.id.max_road_seekbar);
+        maxRoadWidth.setMax(201);
+        maxRoadWidth.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                maxWidth = progress;
+                if(progress  == seekBar.getMax()){
+                    String displayText = String.valueOf(progress-1)+" +";
+                    maxSelectedWidth.setText(displayText);
+                }else{
+                    maxSelectedWidth.setText(String.valueOf(progress));
                 }
             }
 

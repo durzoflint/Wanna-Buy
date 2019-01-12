@@ -60,53 +60,152 @@
         android:fontFamily="@font/montserrat_regular"
         android:padding="5dp"
         android:text="@string/one_bhk_text"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintStart_toStartOf="@+id/bhk_header"
         app:layout_constraintTop_toBottomOf="@+id/bhk_header" />
+
+    <EditText
+        android:id="@+id/min_rest_room_one"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:hint="@string/min_rest_room"
+        android:paddingBottom="3dp"
+        android:inputType="number"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/bhk_one"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bhk_one"
+        app:layout_constraintTop_toTopOf="@+id/bhk_one" />
 
     <android.support.v7.widget.AppCompatCheckBox
         android:id="@+id/bhk_two"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/montserrat_regular"
         android:padding="5dp"
         android:text="@string/two_bhk_text"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintStart_toStartOf="@+id/bhk_one"
         app:layout_constraintTop_toBottomOf="@+id/bhk_one" />
+
+    <EditText
+        android:id="@+id/min_rest_room_two"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:hint="@string/min_rest_room"
+        android:paddingBottom="3dp"
+        android:inputType="number"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/bhk_two"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bhk_two"
+        app:layout_constraintTop_toTopOf="@+id/bhk_two" />
 
     <android.support.v7.widget.AppCompatCheckBox
         android:id="@+id/bhk_three"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/montserrat_regular"
         android:padding="5dp"
         android:text="@string/three_bhk_text"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintStart_toStartOf="@+id/bhk_two"
         app:layout_constraintTop_toBottomOf="@+id/bhk_two" />
+
+    <EditText
+        android:id="@+id/min_rest_room_three"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:hint="@string/min_rest_room"
+        android:paddingBottom="3dp"
+        android:inputType="number"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/bhk_three"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bhk_three"
+        app:layout_constraintTop_toTopOf="@+id/bhk_three" />
 
     <android.support.v7.widget.AppCompatCheckBox
         android:id="@+id/bhk_four"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/montserrat_regular"
         android:padding="5dp"
         android:text="@string/four_bhk_text"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintStart_toStartOf="@+id/bhk_three"
         app:layout_constraintTop_toBottomOf="@+id/bhk_three" />
+
+    <EditText
+        android:id="@+id/min_rest_room_four"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:hint="@string/min_rest_room"
+        android:paddingBottom="3dp"
+        android:inputType="number"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/bhk_four"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bhk_four"
+        app:layout_constraintTop_toTopOf="@+id/bhk_four" />
 
     <android.support.v7.widget.AppCompatCheckBox
         android:id="@+id/bhk_five"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/montserrat_regular"
         android:padding="5dp"
         android:text="@string/five_bhk_text"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintStart_toStartOf="@+id/bhk_four"
         app:layout_constraintTop_toBottomOf="@+id/bhk_four" />
 
+    <EditText
+        android:id="@+id/min_rest_room_five"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:hint="@string/min_rest_room"
+        android:paddingBottom="3dp"
+        android:inputType="number"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/bhk_five"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bhk_five"
+        app:layout_constraintTop_toTopOf="@+id/bhk_five" />
 
     <android.support.v7.widget.AppCompatCheckBox
         android:id="@+id/bhk_do_not_deviate"
@@ -117,6 +216,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:padding="5dp"
         android:text="@string/do_not_deviate"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintBottom_toTopOf="@+id/guideline11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -127,7 +227,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.87" />
+        app:layout_constraintGuide_percent="0.9" />
 
     <Button
         android:id="@+id/bhk_next_btn"

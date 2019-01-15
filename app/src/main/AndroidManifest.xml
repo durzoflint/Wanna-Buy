@@ -197,8 +197,15 @@
         <activity
             android:name=".activities.PgRentOptions"
             android:theme="@style/noActionbar" />
-        <activity android:name=".activities.RequirementName"
-            android:theme="@style/noActionbar"/>
+        <activity
+            android:name=".activities.RequirementName"
+            android:theme="@style/noActionbar" />
+
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_live_hNa2wldM9gPB9l" />
+
+        <activity android:name=".PaymentActivity" />
     </application>
 
 </manifest>

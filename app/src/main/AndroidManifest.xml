@@ -205,7 +205,7 @@
             android:name="com.razorpay.ApiKey"
             android:value="rzp_live_hNa2wldM9gPB9l" />
 
-        <activity android:name=".PaymentActivity" />
+        <activity android:name=".activities.PaymentActivity" />
     </application>
 
 </manifest>

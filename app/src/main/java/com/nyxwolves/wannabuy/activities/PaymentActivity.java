@@ -1,4 +1,4 @@
-package com.nyxwolves.wannabuy;
+package com.nyxwolves.wannabuy.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.nyxwolves.wannabuy.R;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
 

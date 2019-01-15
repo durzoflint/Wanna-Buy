@@ -67,35 +67,61 @@
     <string name="land">Land</string>
 
     <string name="residential_land">Residential_Land</string>
+    <string name="rental_residential_land">Rental_Residential_Land</string>
     <string name="residential_building">Residential_Building</string>
     <string name="residential_independent">Residential_Independent</string>
+    <string name="residential_apartments">Residential_Apartments</string>
+    <string name="rental_residential_independent">Rental_Residential_Independent</string>
+    <string name="rental_residential_apartments">Rental_Residential_Apartments</string>
+
     <string name="pg_rent_independent">PG_Rent_Independent</string>
+
     <string name="commercial_land">Commercial_Land</string>
+    <string name="rental_commercial_land">Rental_Commercial_Land</string>
     <string name="commercial_building">Commercial_Building</string>
     <string name="commercial_independent">Commercial_Independent</string>
+    <string name="rental_commercial_independent">Rental_Commercial_Independent</string>
     <string name="commercial_floorspace">Commercial_Floorspace</string>
+    <string name="rental_commercial_floorspace">Rental_Commercial_Floorspace</string>
 
     <string name="institutional_land">Institutional_Land</string>
+    <string name="rental_institutional_land">Rental_Institutional_Land</string>
     <string name="institutional_building">Institutional_Building</string>
     <string name="institutional_independent">Institutional_Independent</string>
 
     <string name="industrial_land">Industrial_Land</string>
+    <string name="rental_industrial_land">Rental_Industrial_Land</string>
     <string name="industrial_building">Industrial_Building</string>
     <string name="industrial_independent">Industrial_Independent</string>
+    <string name="rental_industrial_independent">Rental_Industrial_Independent</string>
     <string name="industrial_floorspace">Industrial_Floorspace</string>
+    <string name="rental_industrial_floorspace">Rental_Industrial_Floorspace</string>
+
+    <string name="rental_pg_independent">Rental_PG_Rent_Independent</string>
+    <string name="rental_pg_apartments">Rental_PG_Apartment</string>
+
+    <string name="rental_farm_building">Rental_Farm_Building</string>
+    <string name="rental_farm_land">Rental_Farm_Land</string>
 
     <string name="floorspace">FloorSpace</string>
     <string name="independent">Independent</string>
     <string name="office_space">  Office Space</string>
     <string name="showroom"> Showroom</string>
+    <string name="rental_showroom">Rental_Showroom</string>
 
     <string name="factory"> Factory</string>
+    <string name="rental_factory">Rental_Factory</string>
     <string name="warehouse"> Warehouse</string>
+    <string name="rental_warehouse">Rental_Warehouse</string>
     <string name="cold_storage">  Cold Storage</string>
+    <string name="rental_cold_storage">Rental_Cold_Storage</string>
 
     <string name="hospital">Hospital</string>
+    <string name="rental_hospital">Rental_Hospital</string>
     <string name="school">School</string>
+    <string name="rental_school">Rental_School</string>
     <string name="college">College</string>
+    <string name="rental_college">Rental_College</string>
 
     <string name="bhk_header">How many Rooms?</string>
     <string name="one_bhk_text"> 1 BHK</string>
@@ -162,7 +188,7 @@
     <string name="rent_property_type_header">Lease/Rent Property</string>
     <string name="rent_advance_header">Advance/Deposit</string>
     <string name="tenant_name">Name of the tenant(optional)</string>
-    <string name="roi_text">ROI:</string>
+    <string name="roi_text">ROI in (%)</string>
     <string name="investment_text">Investment  Price:</string>
     <string name="pets_allowed">Allowed</string>
     <string name="pets_not_allowed">Not Allowed</string>
@@ -246,7 +272,7 @@
 
     <string-array name="unit_spinner">
         <item name="sq.ft">Sq. Ft</item>
-        <item name="ground">Ground</item>
+        <item name="ground">Grounds</item>
         <item name="cents">Cents</item>
         <item name="acres">Acre</item>
     </string-array>
@@ -259,7 +285,7 @@
     <string name="no_preference">No Preference</string>
 
     <string name="zero_years">0 Years</string>
-    <string name="hundred_years">100 Years</string>
+    <string name="fifty_years">50+ Years</string>
 
     <string name="building">Building</string>
     <string name="title_activity_building">Building</string>
@@ -317,4 +343,19 @@
     <string name="max_roi_hint">Maximum Roi in %</string>
 
     <string name="greater_than_10_crores">Greater than 10 Crores?</string>
+
+    <string name="floor">Select the Floor</string>
+
+    <string name="floor_number">Floor Number</string>
+    <string name="is_negotiable">Is Negotiable?</string>
+    <string name="rental_incremental_period">Rental Incremental Period</string>
+    <string name="no_increment">No Increment</string>
+    <string name="yearly_once">Yearly once</string>
+    <string name="two_years">2 Years once</string>
+    <string name="three_years">3 Years once</string>
+    <string name="custom">Custom</string>
+    <string name="custom_hint">Enter Incremental Period</string>
+    <string name="bhk_hint">Bhk.</string>
+
+    <string name="age_of_property">Age Of Property</string>
 </resources>

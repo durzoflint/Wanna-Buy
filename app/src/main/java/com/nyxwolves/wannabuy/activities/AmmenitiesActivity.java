@@ -39,10 +39,10 @@ public class AmmenitiesActivity extends AppCompatActivity {
     private String setData(CheckBox checkBox){
         if(checkBox.isChecked()){
             Log.d("AMMMENITIES","YES");
-            return "YES";
+            return getString(R.string.yes);
         }else{
             Log.d("AMMMENITIES","NO");
-            return "NO";
+            return getString(R.string.no);
         }
     }
     public void oncheckBoxClicked(View v){

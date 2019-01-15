@@ -38,7 +38,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline8" />
 
-    <RadioGroup
+    <LinearLayout
         android:id="@+id/pg_rent_options"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -46,56 +46,52 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:onClick="onRadioButtonClicked"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/pg_rent_next_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pg_rent_header">
 
-        <RadioButton
+        <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/girls_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:button="@drawable/custom_radio_button"
             android:fontFamily="@font/montserrat_regular"
-            android:onClick="onRadioButtonClicked"
+            android:onClick="onCheckBoxClicked"
             android:padding="5dp"
             android:text="@string/girls" />
 
-        <RadioButton
+        <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/boys_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:button="@drawable/custom_radio_button"
             android:fontFamily="@font/montserrat_regular"
-            android:onClick="onRadioButtonClicked"
+            android:onClick="onCheckBoxClicked"
             android:padding="5dp"
             android:text="@string/boys" />
 
-        <RadioButton
+        <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/family"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:button="@drawable/custom_radio_button"
             android:fontFamily="@font/montserrat_regular"
-            android:onClick="onRadioButtonClicked"
+            android:onClick="onCheckBoxClicked"
             android:padding="5dp"
             android:text="@string/family" />
 
-        <RadioButton
+        <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/short_stay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:button="@drawable/custom_radio_button"
             android:fontFamily="@font/montserrat_regular"
-            android:onClick="onRadioButtonClicked"
+            android:onClick="onCheckBoxClicked"
             android:padding="5dp"
             android:text="@string/short_stay" />
-    </RadioGroup>
+    </LinearLayout>
 
     <Button
         android:id="@+id/pg_rent_next_btn"

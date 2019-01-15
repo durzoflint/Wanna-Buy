@@ -21,17 +21,14 @@ import com.nyxwolves.wannabuy.R;
 
 public class PropertySize extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
-    TextView minMinSize, minMaxSize, maxMinSize, maxMaxSize, modeHeader, minSelectedSize, maxSelectedSize;
-    //SeekBar minSizeSeekBar,maxSizeSeekBar;
-    //SeekBar minSizeSeekBarBuiltArea,maxSizeSeekBarBuiltArea;
+    TextView modeHeader;
     EditText minLandArea, maxLandArea, minBuiltUpArea, maxBuiltUpArea;
-    TextView minMinSizeBuilt, minMaxSizeBuilt, maxMinSizeBuilt, maxMaxSizeBuilt, minSelectedSizeBuilt, maxSelectedSizeBuilt;
     Button nextButton;
     Spinner unitSpinner;
     ConstraintLayout builtUpAreaLayout, landAreaLayout;
-    int minSizeLand, maxSizeLand;
-    int minSizeBuiltUp, maxSizeBuiltUp;
-    boolean isBuiltUpVisible = false;
+    boolean onlyBuiltUpVisible = false;
+    boolean onlyLandVisible = false;
+    boolean bothVisible = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,124 +39,6 @@ public class PropertySize extends AppCompatActivity implements View.OnClickListe
 
         modeHeader = findViewById(R.id.mode_header);
         modeHeader.setText(Requirements.getInstance().buyorRent);
-
-        //for  land area
-        /*minMinSize = findViewById(R.id.min_size);
-        minMaxSize = findViewById(R.id.max_size);
-        minSelectedSize = findViewById(R.id.selected_size);
-
-        maxMinSize = findViewById(R.id.max_min_size);
-        maxMaxSize = findViewById(R.id.max_max_size);
-        maxSelectedSize = findViewById(R.id.max_selected_size);
-
-        minSizeSeekBar = findViewById(R.id.min_area_seekbar);
-        minSizeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                minSizeLand = progress;
-                if(progress == seekBar.getMax()){
-                    String displayText = String.valueOf(progress-1)+" +";
-                    minSelectedSize.setText(displayText);
-                }else{
-                    minSelectedSize.setText(String.valueOf(progress));
-                }
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-
-        maxSizeSeekBar = findViewById(R.id.max_area_seekbar);
-        maxSizeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                maxSizeLand = progress;
-                if(progress == seekBar.getMax()){
-                    String displayText = String.valueOf(progress-1)+" +";
-                    maxSelectedSize.setText(displayText);
-                }else{
-                    maxSelectedSize.setText(String.valueOf(progress));
-                }
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });*/
-
-        //for built_up area
-        /*minMinSizeBuilt = findViewById(R.id.min_size_built_up);
-        minMaxSizeBuilt = findViewById(R.id.max_size_built_up);
-        minSelectedSizeBuilt = findViewById(R.id.selected_size_built_up);
-
-        maxMinSizeBuilt = findViewById(R.id.max_min_size_built_up);
-        maxMaxSizeBuilt = findViewById(R.id.max_max_size_built_up);
-        maxSelectedSizeBuilt = findViewById(R.id.max_selected_size_built_up);
-
-        minSizeSeekBarBuiltArea = findViewById(R.id.min_area_seekbar_built_up);
-        minSizeSeekBarBuiltArea.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                minSizeBuiltUp = progress;
-                if(progress == seekBar.getMax()){
-                    String displayText = String.valueOf(progress-1)+" +";
-                    minSelectedSizeBuilt.setText(displayText);
-                }else{
-                    minSelectedSizeBuilt.setText(String.valueOf(progress));
-                }
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-
-        maxSizeSeekBarBuiltArea = findViewById(R.id.max_area_seekbar_built_up);
-        maxSizeSeekBarBuiltArea.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                maxSizeBuiltUp = progress;
-                if(progress == seekBar.getMax()){
-                    String displayText = String.valueOf(progress-1)+" +";
-                    maxSelectedSizeBuilt.setText(displayText);
-                }else{
-                    maxSelectedSizeBuilt.setText(String.valueOf(progress));
-                }
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });*/
 
         //editexts
         minLandArea = findViewById(R.id.min_area_input);
@@ -190,17 +69,20 @@ public class PropertySize extends AppCompatActivity implements View.OnClickListe
                 Requirements.getInstance().subType.equals(getString(R.string.institutional_building))) {
             landAreaLayout.setVisibility(View.VISIBLE);
             builtUpAreaLayout.setVisibility(View.VISIBLE);
+            bothVisible = true;
 
         } else if (Requirements.getInstance().subType.equals(getString(R.string.apartments)) ||
                 Requirements.getInstance().subType.equals(getString(R.string.commercial_floorspace)) ||
                 Requirements.getInstance().subType.equals(getString(R.string.industrial_floorspace))) {
             landAreaLayout.setVisibility(View.GONE);
             builtUpAreaLayout.setVisibility(View.VISIBLE);
+            onlyBuiltUpVisible = true;
             //setLimits(100);
 
         } else {
             landAreaLayout.setVisibility(View.VISIBLE);
             builtUpAreaLayout.setVisibility(View.GONE);
+            onlyLandVisible = true;
         }
     }
 
@@ -211,8 +93,8 @@ public class PropertySize extends AppCompatActivity implements View.OnClickListe
             minLandArea.setHint("in Sq.Ft");
             maxLandArea.setHint("in Sq.Ft");
         }else if(position == 1){
-            minLandArea.setHint("in Ground");
-            maxLandArea.setHint("in Ground");
+            minLandArea.setHint("in Grounds");
+            maxLandArea.setHint("in Grounds");
         }else if(position == 2){
             minLandArea.setHint("in Cents");
             maxLandArea.setHint("in Cents");
@@ -231,39 +113,63 @@ public class PropertySize extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.size_next_btn:
-                if (checkData(minLandArea,maxLandArea) || checkData(minBuiltUpArea,maxBuiltUpArea)) {
-
-                    Requirements.getInstance().minSizeLand = minLandArea.getText().toString().trim();
-                    Requirements.getInstance().maxSizeLand = maxLandArea.getText().toString().trim();
-                    Requirements.getInstance().minSizeBuilding = minBuiltUpArea.getText().toString().trim();
-                    Requirements.getInstance().maxSizeBuilding = maxBuiltUpArea.getText().toString().trim();
-
-                    if (Requirements.getInstance().subType.equals(getString(R.string.residential_land)) ||
-                            Requirements.getInstance().subType.equals(getString(R.string.commercial_land)) ||
-                            Requirements.getInstance().subType.equals(getString(R.string.institutional_land)) ||
-                            Requirements.getInstance().subType.equals(getString(R.string.industrial_land)) ||
-                            Requirements.getInstance().subType.equals(getString(R.string.farm_land))) {
-                        startActivity(new Intent(PropertySize.this, FacingActivity.class));
-                    } else {
-                        startActivity(new Intent(PropertySize.this, Budget.class));
+                if(onlyBuiltUpVisible){
+                    if(checkData(minBuiltUpArea,maxBuiltUpArea)){
+                        Requirements.getInstance().minSizeBuilding = minBuiltUpArea.getText().toString().trim();
+                        Requirements.getInstance().maxSizeBuilding = maxBuiltUpArea.getText().toString().trim();
+                        startIntent();
+                    }else{
+                        Toast.makeText(PropertySize.this,"Enter the  property size",Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    Toast.makeText(PropertySize.this, "Choose the size of property", Toast.LENGTH_SHORT).show();
+                }else if(onlyLandVisible){
+                    if(checkData(minLandArea,maxLandArea)){
+                        Requirements.getInstance().minSizeLand = minLandArea.getText().toString().trim();
+                        Requirements.getInstance().maxSizeLand = maxLandArea.getText().toString().trim();
+                        startIntent();
+                    }else{
+                        Toast.makeText(PropertySize.this,"Enter the  property size",Toast.LENGTH_SHORT).show();
+                    }
+                }else if(bothVisible){
+                    if(checkData(minLandArea,maxLandArea) && checkData(minBuiltUpArea,maxBuiltUpArea)){
+                        Requirements.getInstance().minSizeBuilding = minBuiltUpArea.getText().toString().trim();
+                        Requirements.getInstance().maxSizeBuilding = maxBuiltUpArea.getText().toString().trim();
+                        Requirements.getInstance().minSizeLand = minLandArea.getText().toString().trim();
+                        Requirements.getInstance().maxSizeLand = maxLandArea.getText().toString().trim();
+                        startIntent();
+                    }else{
+                        Toast.makeText(PropertySize.this,"Invalid Size.Please check your inputs",Toast.LENGTH_SHORT).show();
+                    }
                 }
         }
     }
 
-    private boolean checkData(EditText inputMin,EditText inputMax){
+    private void startIntent(){
 
-       if(Integer.valueOf(inputMin.getText().toString().trim()) > 0 && Integer.valueOf(inputMax.getText().toString()) > 0 ){
-           if(Integer.valueOf(inputMax.getText().toString().trim()) > Integer.valueOf(inputMin.getText().toString().trim())){
-               return true;
-           }else{
-               return false;
-           }
-       }else{
-           return false;
-       }
+        if (Requirements.getInstance().subType.equals(getString(R.string.residential_land)) ||
+                Requirements.getInstance().subType.equals(getString(R.string.commercial_land)) ||
+                Requirements.getInstance().subType.equals(getString(R.string.institutional_land)) ||
+                Requirements.getInstance().subType.equals(getString(R.string.industrial_land)) ||
+                Requirements.getInstance().subType.equals(getString(R.string.farm_land))) {
+            startActivity(new Intent(PropertySize.this, FacingActivity.class));
+        } else {
+            startActivity(new Intent(PropertySize.this, Budget.class));
+        }
+    }
+
+    private boolean checkData(EditText inputMin,EditText inputMax){
+        try{
+            if(Integer.valueOf(inputMin.getText().toString()) > 0 && Integer.valueOf(inputMax.getText().toString()) > 0 ){
+                if(Integer.valueOf(inputMax.getText().toString()) > Integer.valueOf(inputMin.getText().toString())){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }catch(NumberFormatException e){
+            return false;
+        }
     }
 
     @Override

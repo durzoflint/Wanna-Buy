@@ -50,34 +50,6 @@ public class Budget extends AppCompatActivity {
             minAdapter = ArrayAdapter.createFromResource(this, R.array.price_unit_buy, android.R.layout.simple_spinner_item);
         }
 
-        minAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        minPriceUnitSpinner.setAdapter(minAdapter);
-        minPriceUnitSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                minUnit = parent.getSelectedItem().toString();
-                String minDisplayText = "0 " + parent.getSelectedItem();
-                minMinPrice.setText(minDisplayText);
-                if (minUnit.equals("Crores")) {
-                    minGreaterThanTenCrores.setVisibility(View.VISIBLE);
-                } else {
-                    minGreaterThanTenCrores.setVisibility(View.GONE);
-                }
-                try {
-                    minNextUnit = parent.getItemAtPosition(position + 1).toString();
-                    minMaxPrice.setText("1+ " + minNextUnit);
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    minNextUnit = parent.getItemAtPosition(position).toString();
-                    minMaxPrice.setText("100+ " + minNextUnit);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
         //max price unit spinner
         maxPriceUnitSpinner = findViewById(R.id.max_price_unit_spinner);
         ArrayAdapter maxAdapter;
@@ -87,35 +59,6 @@ public class Budget extends AppCompatActivity {
         } else {
             maxAdapter = ArrayAdapter.createFromResource(this, R.array.price_unit_buy, android.R.layout.simple_spinner_item);
         }
-
-        maxAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        maxPriceUnitSpinner.setAdapter(maxAdapter);
-        maxPriceUnitSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                maxUnit = parent.getSelectedItem().toString();
-                String minDisplayText = "0 " + parent.getSelectedItem();
-                maxMinPrice.setText(minDisplayText);
-                if (maxUnit.equals("Crores")) {
-                    maxGreaterThanTenCrores.setVisibility(View.VISIBLE);
-                } else {
-                    maxGreaterThanTenCrores.setVisibility(View.GONE);
-                }
-                try {
-                    maxNextUnit = parent.getItemAtPosition(position + 1).toString();
-                    maxMaxPrice.setText("1+ " + maxNextUnit);
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    maxNextUnit = parent.getItemAtPosition(position).toString();
-                    maxMaxPrice.setText("100+ " + maxNextUnit);
-                }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         modeHeader = findViewById(R.id.budget_mode);
         modeHeader.setText(Requirements.getInstance().buyorRent);
@@ -174,6 +117,38 @@ public class Budget extends AppCompatActivity {
         });
         minBudgetSeekBar.setMax(101);
 
+        minAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        minPriceUnitSpinner.setAdapter(minAdapter);
+        minPriceUnitSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                minBudgetSeekBar.setProgress(0);
+                minUnit = parent.getSelectedItem().toString();
+                if(minUnit.equals("Lakhs")){
+                    minBudgetSeekBar.setMax(101);
+                }
+                String minDisplayText = "0 " + parent.getSelectedItem();
+                minMinPrice.setText(minDisplayText);
+                if (minUnit.equals("Crores")) {
+                    minGreaterThanTenCrores.setVisibility(View.VISIBLE);
+                } else {
+                    minGreaterThanTenCrores.setVisibility(View.GONE);
+                }
+                try {
+                    minNextUnit = parent.getItemAtPosition(position + 1).toString();
+                    minMaxPrice.setText("1+ " + minNextUnit);
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    minNextUnit = parent.getItemAtPosition(position).toString();
+                    minMaxPrice.setText("100+ " + minNextUnit);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         maxBudgetSeekBar = findViewById(R.id.max_budget_seekbar);
         maxBudgetSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -192,10 +167,10 @@ public class Budget extends AppCompatActivity {
                     if (maxUnit.equals(maxNextUnit)) {
                         maxSelectedPrice.setText(String.valueOf(progress - 1) + "+ " + maxNextUnit);
                     } else {
-                        maxSelectedPrice.setText(String.valueOf(progress / 100) + "+ " + maxNextUnit);
+                        maxSelectedPrice.setText(String.valueOf(progress/100) + "+ " + maxNextUnit);
                     }
                 } else {
-                    if (minUnit != null) {
+                    if (maxUnit != null) {
                         maxSelectedPrice.setText(String.valueOf(progress) + maxUnit);
                     }
                 }
@@ -214,20 +189,51 @@ public class Budget extends AppCompatActivity {
         });
         maxBudgetSeekBar.setMax(101);
 
+        maxAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        maxPriceUnitSpinner.setAdapter(maxAdapter);
+        maxPriceUnitSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                maxBudgetSeekBar.setProgress(0);
+                maxUnit = parent.getSelectedItem().toString();
+                if(maxUnit.equals("Lakhs")){
+                    maxBudgetSeekBar.setMax(101);
+                }
+                String minDisplayText = "0 " + parent.getSelectedItem();
+                maxMinPrice.setText(minDisplayText);
+                if (maxUnit.equals("Crores")) {
+                    maxGreaterThanTenCrores.setVisibility(View.VISIBLE);
+                } else {
+                    maxGreaterThanTenCrores.setVisibility(View.GONE);
+                }
+                try {
+                    maxNextUnit = parent.getItemAtPosition(position + 1).toString();
+                    maxMaxPrice.setText("1+ " + maxNextUnit);
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    maxNextUnit = parent.getItemAtPosition(position).toString();
+                    maxMaxPrice.setText("100+ " + maxNextUnit);
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         nextButton = findViewById(R.id.budget_next_btn);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (minBudget != 0 && maxBudget != 0) {
+                if (maxBudget != 0) {
                     if (checkPrice()) {
                         Requirements.getInstance().minBudget = String.valueOf(minBudget);
                         Requirements.getInstance().maxBudget = String.valueOf(maxBudget);
 
                         if (Requirements.getInstance().subType.equals(getString(R.string.residential_independent)) ||
                                 Requirements.getInstance().subType.equals(getString(R.string.commercial_independent)) ||
-                                Requirements.getInstance().subType.equals(getString(R.string.commercial_floorspace)) ||
-                                Requirements.getInstance().subType.equals(getString(R.string.industrial_floorspace)) ||
                                 Requirements.getInstance().subType.equals(getString(R.string.factory)) ||
                                 Requirements.getInstance().subType.equals(getString(R.string.cold_storage)) ||
                                 Requirements.getInstance().subType.equals(getString(R.string.warehouse)) ||
@@ -244,6 +250,10 @@ public class Budget extends AppCompatActivity {
                                 Requirements.getInstance().subType.equals(getString(R.string.pg_rent_apartment))) {
                             startActivity(new Intent(Budget.this, Bhk.class));
 
+                        }else if(Requirements.getInstance().subType.equals(getString(R.string.commercial_floorspace)) ||
+                                Requirements.getInstance().subType.equals(getString(R.string.industrial_floorspace))){
+                            startActivity(new Intent(Budget.this,FlooringActivity.class));
+
                         } else if (Requirements.getInstance().subType.equals(getString(R.string.residential_land)) ||
                                 Requirements.getInstance().subType.equals(getString(R.string.commercial_land)) ||
                                 Requirements.getInstance().subType.equals(getString(R.string.industrial_land)) ||
@@ -253,34 +263,59 @@ public class Budget extends AppCompatActivity {
                         }
                     }
                 } else {
-                    Toast.makeText(Budget.this, "Max Budget should be more than Min Budget", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Budget.this, "Invalid Price.Please Check.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
     private boolean checkPrice(){
-        if(minUnit.equals("Crores") && maxUnit.equals("Crores")){
-            if(minBudget <= maxBudget){
-                return true;
-            }else{
-                return false;
-            }
-        }else if(minUnit.equals("Lakhs") && maxUnit.equals("Crores")){
-            if(maxBudget > 0){
-                return true;
-            }else{
-                return false;
-            }
-        }else if(minUnit.equals("Lakhs") && maxUnit.equals("Lakhs")){
-            if(maxBudget >0){
-                return true;
+        if(Requirements.getInstance().buyorRent.equals(getString(R.string.BUY))){
+            if(minUnit.equals("Crores") && maxUnit.equals("Crores")){
+                if(minBudget <= maxBudget){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else if(minUnit.equals("Lakhs") && maxUnit.equals("Crores")){
+                if(maxBudget > 0){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else if(minUnit.equals("Lakhs") && maxUnit.equals("Lakhs")){
+                if(maxBudget >0){
+                    return true;
+                }else{
+                    return false;
+                }
             }else{
                 return false;
             }
         }else{
-            return false;
+            if(minUnit.equals("Lakhs") && maxUnit.equals("Lakhs")){
+                if(minBudget <= maxBudget){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else if(minUnit.equals("Thousand") && maxUnit.equals("Lakhs")){
+                if(maxBudget > 0){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else if(minUnit.equals("Lakhs") && maxUnit.equals("Lakhs")){
+                if(maxBudget >0){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
         }
+
     }
     public void onRadioButtonClicked(View v) {
         switch (v.getId()) {

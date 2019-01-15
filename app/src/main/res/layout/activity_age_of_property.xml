@@ -109,7 +109,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/hundred_years"
+        android:text="@string/fifty_years"
         android:fontFamily="@font/montserrat_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/min_age_bar" />
@@ -154,7 +154,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/hundred_years"
+        android:text="@string/fifty_years"
         android:fontFamily="@font/montserrat_regular"
         app:layout_constraintEnd_toEndOf="@+id/max_age_bar"
         app:layout_constraintTop_toBottomOf="@+id/max_age_bar" />

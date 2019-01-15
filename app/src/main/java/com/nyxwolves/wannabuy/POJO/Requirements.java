@@ -37,7 +37,6 @@ public class Requirements {
     public String industrialApproved = "NOT_SET";
     public String reraApproved = "NOT_SET";
     public String bhk = "NOT_SET";
-
     public String isNew = "NOT_SET";
     public String isResale = "NOT_SET";
     public String minBudget = "NOT_SET";

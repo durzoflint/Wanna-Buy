@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
@@ -30,19 +31,35 @@ public class PgRentOptions extends AppCompatActivity {
         });
     }
 
-    public void onRadioButtonClicked(View v){
+    public void onCheckBoxClicked(View v){
         switch (v.getId()){
             case R.id.girls_btn:
-                Requirements.getInstance().pgRentType = getString(R.string.girls);
+                if(((CheckBox)v).isChecked()){
+                    Requirements.getInstance().pgRentType = getString(R.string.girls);
+                }else{
+                    Requirements.getInstance().pgRentType = getString(R.string.not_set_text);
+                }
                 break;
             case R.id.boys_btn:
-                Requirements.getInstance().pgRentType = getString(R.string.boys);
+                if(((CheckBox)v).isChecked()){
+                    Requirements.getInstance().pgRentType = getString(R.string.boys);
+                }else{
+                    Requirements.getInstance().pgRentType = getString(R.string.not_set_text);
+                }
                 break;
             case R.id.family:
-                Requirements.getInstance().pgRentType = getString(R.string.family);
+                if(((CheckBox)v).isChecked()){
+                    Requirements.getInstance().pgRentType = getString(R.string.family);
+                }else{
+                    Requirements.getInstance().pgRentType = getString(R.string.not_set_text);
+                }
                 break;
             case R.id.short_stay:
-                Requirements.getInstance().pgRentType = getString(R.string.short_stay);
+                if(((CheckBox)v).isChecked()){
+                    Requirements.getInstance().pgRentType = getString(R.string.short_stay);
+                }else{
+                    Requirements.getInstance().pgRentType = getString(R.string.not_set_text);
+                }
                 break;
         }
     }

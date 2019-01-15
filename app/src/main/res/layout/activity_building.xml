@@ -100,7 +100,7 @@
         android:layout_marginTop="8dp"
         android:orientation="vertical"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/building_next_btn"
+        app:layout_constraintBottom_toTopOf="@+id/show_room_do_not_deviate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -129,6 +129,15 @@
             android:padding="5dp"
             android:text="@string/floorspace"
             android:textSize="15sp" />
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/comm_show_room"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            android:text="@string/showroom"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="15sp"/>
     </RadioGroup>
 
     <!--indus building group-->
@@ -207,6 +216,7 @@
             android:id="@+id/indus_floorspace"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:button="@drawable/custom_radio_button"
             android:layout_margin="5dp"
             android:fontFamily="@font/montserrat_regular"
             android:onClick="onRadioButtonClicked"
@@ -549,7 +559,7 @@
                     android:fontFamily="@font/montserrat_regular"
                     android:onClick="onCheckBoxClicked"
                     android:padding="5dp"
-                    android:text="@string/pg_rent" />
+                    android:text="@string/pg_rent_service_aparments" />
 
                 <LinearLayout
                     android:id="@+id/rental_pg_apartments_layout"
@@ -581,7 +591,22 @@
         </ScrollView>
     </LinearLayout>
 
-
+    <!-- visible only for commercial -->
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/show_room_do_not_deviate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="5dp"
+        android:text="@string/do_not_deviate"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/building_next_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/comm_building_group" />
     <Button
         android:id="@+id/building_next_btn"
         android:layout_width="wrap_content"

@@ -136,6 +136,7 @@
                 android:id="@+id/ads_door_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:fontFamily="@font/montserrat_regular" />
         </LinearLayout>
 
@@ -352,6 +353,17 @@
                             android:onClick="onRadioButtonClicked"
                             android:padding="5dp"
                             android:text="@string/floorspace" />
+                        <RadioButton
+                            android:id="@+id/comm_showroom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="80dp"
+                            android:layout_marginTop="5dp"
+                            android:button="@drawable/custom_radio_button"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:onClick="onRadioButtonClicked"
+                            android:padding="5dp"
+                            android:text="@string/showroom" />
                     </RadioGroup>
                 </RadioGroup><!--comm sub group button-->
 
@@ -364,6 +376,7 @@
                     android:layout_marginBottom="8dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginStart="8dp"
+                    android:fontFamily="@font/montserrat_regular"
                     android:button="@drawable/custom_radio_button"
                     android:onClick="onRadioButtonClicked"
                     android:padding="5dp"
@@ -486,6 +499,7 @@
                     android:button="@drawable/custom_radio_button"
                     android:onClick="onRadioButtonClicked"
                     android:padding="5dp"
+                    android:fontFamily="@font/montserrat_regular"
                     android:text="@string/institutional"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/resi_radio_btn"
@@ -545,17 +559,6 @@
                         android:padding="5dp"
                         android:text="@string/land" />
 
-                    <RadioButton
-                        android:id="@+id/ins_building"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="5dp"
-                        android:button="@drawable/custom_radio_button"
-                        android:fontFamily="@font/montserrat_regular"
-                        android:onClick="onRadioButtonClicked"
-                        android:padding="5dp"
-                        android:text="@string/building" />
                 </RadioGroup>
 
                 <RadioButton
@@ -614,7 +617,7 @@
                     android:fontFamily="@font/montserrat_regular"
                     android:onClick="onRadioButtonClicked"
                     android:padding="5dp"
-                    android:text="@string/pg_rent"
+                    android:text="@string/pg_rent_service_aparments"
                     android:visibility="gone" />
 
                 <RadioButton
@@ -721,6 +724,7 @@
                     android:layout_marginBottom="8dp"
                     android:fontFamily="@font/montserrat_regular"
                     android:hint="@string/land_area"
+                    android:inputType="numberDecimal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -754,7 +758,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:fontFamily="@font/montserrat_regular"
-                    android:hint="@string/built_up_area"
+                    android:hint="in Sq.Ft"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -774,82 +778,57 @@
 
             <TextView
                 android:id="@+id/ads_bhk_header"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/how_many_rooms"
+                android:text="@string/bhk_hint"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <RadioGroup
-                android:id="@+id/bhk_group"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/bhk_input"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="8dp"
-                android:orientation="vertical"
+                android:hint="@string/bhk_hint"
+                android:fontFamily="@font/montserrat_regular"
+                android:inputType="number"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ads_bhk_header">
-
-                <RadioButton
-                    android:id="@+id/one_bhk"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_marginTop="20dp"
-                    android:button="@drawable/custom_radio_button"
-                    android:checked="false"
-                    android:onClick="onRadioButtonClicked"
-                    android:padding="5dp"
-                    android:text="@string/one_bhk_text" />
-
-                <RadioButton
-                    android:id="@+id/two_bhk"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:button="@drawable/custom_radio_button"
-                    android:checked="false"
-                    android:onClick="onRadioButtonClicked"
-                    android:padding="5dp"
-                    android:text="@string/two_bhk_text" />
-
-                <RadioButton
-                    android:id="@+id/three_bhk"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:button="@drawable/custom_radio_button"
-                    android:checked="false"
-                    android:onClick="onRadioButtonClicked"
-                    android:padding="5dp"
-                    android:text="@string/three_bhk_text" />
-
-                <RadioButton
-                    android:id="@+id/four_bhk"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:button="@drawable/custom_radio_button"
-                    android:checked="false"
-                    android:onClick="onRadioButtonClicked"
-                    android:padding="5dp"
-                    android:text="@string/four_bhk_text" />
-
-                <RadioButton
-                    android:id="@+id/five_bhk"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:button="@drawable/custom_radio_button"
-                    android:checked="false"
-                    android:onClick="onRadioButtonClicked"
-                    android:padding="5dp"
-                    android:text="@string/five_bhk_text" />
-            </RadioGroup>
-
+                app:layout_constraintTop_toBottomOf="@+id/ads_bhk_header"/>
 
         </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/flooring_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+
+            <TextView
+                android:id="@+id/ads_flooring_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/floor"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/floor_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:hint="@string/floor_number"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ads_flooring_header" />
+        </android.support.constraint.ConstraintLayout>
+
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/facing_layout"
@@ -978,6 +957,27 @@
             </RadioGroup>
         </android.support.constraint.ConstraintLayout>
 
+        <LinearLayout
+            android:id="@+id/ads_age_of_property"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/age_of_property"
+                android:fontFamily="@font/montserrat_regular"/>
+            <EditText
+                android:id="@+id/ads_age_of_property_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/age_of_property"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"/>
+        </LinearLayout>
         <android.support.constraint.ConstraintLayout
             android:id="@+id/facilities_layout"
             android:layout_width="match_parent"
@@ -1325,6 +1325,61 @@
                 app:layout_constraintTop_toBottomOf="@+id/water_check" />
         </android.support.constraint.ConstraintLayout>
 
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/ads_road_width_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/road_width"
+                android:fontFamily="@font/montserrat_regular"/>
+            <SeekBar
+                android:id="@+id/ads_road_width_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:progressBackgroundTint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ads_road_width_header" />
+
+            <TextView
+                android:id="@+id/min_width"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/min_road_width"
+                app:layout_constraintStart_toStartOf="@+id/ads_road_width_seekbar"
+                app:layout_constraintTop_toBottomOf="@+id/ads_road_width_seekbar" />
+
+            <TextView
+                android:id="@+id/max_width"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="200+ Ft"
+                app:layout_constraintEnd_toEndOf="@+id/ads_road_width_seekbar"
+                app:layout_constraintTop_toTopOf="@+id/min_width" />
+
+            <TextView
+                android:id="@+id/selected_width"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/max_width"
+                app:layout_constraintStart_toEndOf="@+id/min_width"
+                app:layout_constraintTop_toTopOf="@+id/min_width" />
+
+        </android.support.constraint.ConstraintLayout>
         <LinearLayout
             android:id="@+id/pets_allowed_layout"
             android:layout_width="match_parent"
@@ -1544,6 +1599,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginTop="10dp"
+                android:inputType="number"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/icon_date_start"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -1588,6 +1644,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginTop="10dp"
+                android:inputType="number"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/icon_date"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -1632,6 +1689,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginTop="10dp"
+                android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/rental_advance_header"
                 app:layout_constraintTop_toBottomOf="@+id/rental_advance_header" />
@@ -1697,6 +1755,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginTop="10dp"
+                android:inputType="number"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/rental_invest_header"
@@ -1709,46 +1768,123 @@
             android:id="@+id/rental_incremental_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp">
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
             <TextView
                 android:id="@+id/rental_incremental_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/rental_incremental_text"
-                android:fontFamily="@font/montserrat_regular"/>
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/rental_incremental_period" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/no_increment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:button="@drawable/custom_radio_button"
+                    android:onClick="onRadioButtonClicked"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:padding="5dp"
+                    android:text="@string/no_increment" />
+
+                <RadioButton
+                    android:id="@+id/yearly_once"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:button="@drawable/custom_radio_button"
+                    android:onClick="onRadioButtonClicked"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:padding="5dp"
+                    android:text="@string/yearly_once" />
+
+                <RadioButton
+                    android:id="@+id/two_years_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:button="@drawable/custom_radio_button"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:onClick="onRadioButtonClicked"
+                    android:padding="5dp"
+                    android:text="@string/two_years" />
+
+                <RadioButton
+                    android:id="@+id/three_years_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:button="@drawable/custom_radio_button"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:onClick="onRadioButtonClicked"
+                    android:padding="5dp"
+                    android:text="@string/three_years" />
+
+                <RadioButton
+                    android:id="@+id/increment_custom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:button="@drawable/custom_radio_button"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:onClick="onRadioButtonClicked"
+                    android:padding="5dp"
+                    android:text="@string/custom" />
+
+                <EditText
+                    android:id="@+id/increment_custom_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:hint="@string/custom_hint"
+                    android:visibility="gone" />
+            </RadioGroup>
+
             <EditText
                 android:id="@+id/rental_incremental_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/rental_incremental_text"
-                android:fontFamily="@font/montserrat_regular"
+                android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"/>
+                android:fontFamily="@font/montserrat_regular"
+                android:hint="@string/rental_incremental_text"
+                android:inputType="number" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/roi_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp">
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/roi_text"
-                android:fontFamily="@font/montserrat_regular"/>
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/roi_text" />
+
             <EditText
                 android:id="@+id/ads_roi_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/roi_text"
-                android:fontFamily="@font/montserrat_regular"
+                android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"/>
+                android:fontFamily="@font/montserrat_regular"
+                android:hint="@string/roi_text"
+                android:inputType="number" />
         </LinearLayout>
         <android.support.constraint.ConstraintLayout
             android:id="@+id/budget_layout"
@@ -1763,7 +1899,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_regular"
-                android:text="@string/budget_header"
+                android:text="@string/ads_price_header"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -1771,10 +1907,11 @@
                 android:id="@+id/ads_budget_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
+                android:hint="@string/ads_price_header"
+                android:fontFamily="@font/montserrat_regular"
+                android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ads_budget_header"
@@ -1794,7 +1931,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_regular"
-                android:text="@string/ads_price_header" />
+                android:text="@string/is_negotiable" />
 
             <RadioGroup
                 android:id="@+id/negotiable_group"

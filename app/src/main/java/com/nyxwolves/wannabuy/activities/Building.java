@@ -19,7 +19,7 @@ import com.nyxwolves.wannabuy.R;
 public class Building extends Activity {
 
     Button nextBtn;
-    CheckBox factoryBtn,wareHouseBtn,coldStorageBtn;
+    CheckBox factoryBtn,wareHouseBtn,coldStorageBtn,doNotDeviateShowRoom;
     RadioButton schoolBtn,collegeBtn,hospitalBtn;
     RadioGroup resiGroup,commGroup,indusGroup,instiGroup,indusIndependentSub;
     LinearLayout rentalGroup;
@@ -57,6 +57,8 @@ public class Building extends Activity {
         collegeBtn = findViewById(R.id.ins_college);
         hospitalBtn = findViewById(R.id.ins_hospital);
 
+        doNotDeviateShowRoom = findViewById(R.id.show_room_do_not_deviate);
+
         showGroup();
 
         nextBtn = findViewById(R.id.building_next_btn);
@@ -65,7 +67,8 @@ public class Building extends Activity {
             public void onClick(View v) {
                 if(Requirements.getInstance().subType.equals(getString(R.string.residential_independent))||
                         Requirements.getInstance().subType.equals(getString(R.string.apartments)) ||
-                        Requirements.getInstance().subType.equals(getString(R.string.pg_rent_independent))){
+                        Requirements.getInstance().subType.equals(getString(R.string.pg_rent_independent)) ||
+                        Requirements.getInstance().subType.equals(getString(R.string.pg_rent_apartment))){
                     startActivity(new Intent(Building.this,PropertySize.class));
 
                 }else if(Requirements.getInstance().subType.equals(getString(R.string.commercial_floorspace))||
@@ -97,30 +100,35 @@ public class Building extends Activity {
             instiGroup.setVisibility(View.GONE);
             indusGroup.setVisibility(View.GONE);
             farmLandLayout.setVisibility(View.GONE);
+            doNotDeviateShowRoom.setVisibility(View.VISIBLE);
         }else if(propertyType.equals(getString(R.string.residential)) || propertyType.equals(getString(R.string.pg_rent))){
             commGroup.setVisibility(View.GONE);
             resiGroup.setVisibility(View.VISIBLE);
             instiGroup.setVisibility(View.GONE);
             indusGroup.setVisibility(View.GONE);
             farmLandLayout.setVisibility(View.GONE);
+            doNotDeviateShowRoom.setVisibility(View.GONE);
         }else if(propertyType.equals(getString(R.string.institutional))){
             commGroup.setVisibility(View.GONE);
             resiGroup.setVisibility(View.GONE);
             instiGroup.setVisibility(View.VISIBLE);
             indusGroup.setVisibility(View.GONE);
             farmLandLayout.setVisibility(View.GONE);
+            doNotDeviateShowRoom.setVisibility(View.GONE);
         }else if(propertyType.equals(getString(R.string.industrial))){
             commGroup.setVisibility(View.GONE);
             resiGroup.setVisibility(View.GONE);
             instiGroup.setVisibility(View.GONE);
             indusGroup.setVisibility(View.VISIBLE);
             farmLandLayout.setVisibility(View.GONE);
+            doNotDeviateShowRoom.setVisibility(View.GONE);
         }else if(propertyType.equals(getString(R.string.farm_land))){
             commGroup.setVisibility(View.GONE);
             resiGroup.setVisibility(View.GONE);
             instiGroup.setVisibility(View.GONE);
             indusGroup.setVisibility(View.GONE);
             farmLandLayout.setVisibility(View.VISIBLE);
+            doNotDeviateShowRoom.setVisibility(View.GONE);
         }else if(propertyType.equals(getString(R.string.rental_income))){
             commGroup.setVisibility(View.GONE);
             resiGroup.setVisibility(View.GONE);
@@ -128,8 +136,10 @@ public class Building extends Activity {
             indusGroup.setVisibility(View.GONE);
             farmLandLayout.setVisibility(View.GONE);
             rentalGroup.setVisibility(View.VISIBLE);
+            doNotDeviateShowRoom.setVisibility(View.GONE);
         }
     }
+
     public void onRadioButtonClicked(View v){
         switch (v.getId()){
             case R.id.resi_independent:

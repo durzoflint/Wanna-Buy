@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="2"
+        app:layout_constraintBottom_toBottomOf="@+id/check_1"
+        app:layout_constraintStart_toEndOf="@+id/check_1"
+        app:layout_constraintTop_toTopOf="@+id/check_1" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="3"
+        app:layout_constraintBottom_toBottomOf="@+id/check_2"
+        app:layout_constraintStart_toEndOf="@+id/check_2"
+        app:layout_constraintTop_toTopOf="@+id/check_2" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="4"
+        app:layout_constraintBottom_toBottomOf="@+id/check_3"
+        app:layout_constraintStart_toEndOf="@+id/check_3"
+        app:layout_constraintTop_toTopOf="@+id/check_3" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="5"
+        app:layout_constraintBottom_toBottomOf="@+id/check_4"
+        app:layout_constraintStart_toEndOf="@+id/check_4"
+        app:layout_constraintTop_toTopOf="@+id/check_4" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="6"
+        app:layout_constraintBottom_toBottomOf="@+id/check_5"
+        app:layout_constraintStart_toEndOf="@+id/check_5"
+        app:layout_constraintTop_toTopOf="@+id/check_5" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="7"
+        app:layout_constraintBottom_toBottomOf="@+id/check_6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/check_6"
+        app:layout_constraintTop_toTopOf="@+id/check_6" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="8"
+        app:layout_constraintStart_toStartOf="@+id/check_1"
+        app:layout_constraintTop_toBottomOf="@+id/check_1" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="9"
+        app:layout_constraintBottom_toBottomOf="@+id/check_8"
+        app:layout_constraintStart_toEndOf="@+id/check_8"
+        app:layout_constraintTop_toTopOf="@+id/check_8" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="10"
+        app:layout_constraintBottom_toBottomOf="@+id/check_9"
+        app:layout_constraintStart_toEndOf="@+id/check_9"
+        app:layout_constraintTop_toTopOf="@+id/check_9" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="11"
+        app:layout_constraintBottom_toBottomOf="@+id/check_10"
+        app:layout_constraintStart_toEndOf="@+id/check_10"
+        app:layout_constraintTop_toTopOf="@+id/check_10" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="12"
+        app:layout_constraintBottom_toBottomOf="@+id/check_11"
+        app:layout_constraintStart_toEndOf="@+id/check_11"
+        app:layout_constraintTop_toTopOf="@+id/check_11" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="13"
+        app:layout_constraintBottom_toBottomOf="@+id/check_12"
+        app:layout_constraintStart_toEndOf="@+id/check_12"
+        app:layout_constraintTop_toTopOf="@+id/check_12" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="14"
+        app:layout_constraintBottom_toBottomOf="@+id/check_13"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/check_13"
+        app:layout_constraintTop_toTopOf="@+id/check_13" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="15"
+        app:layout_constraintStart_toStartOf="@+id/check_8"
+        app:layout_constraintTop_toBottomOf="@+id/check_8" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="16"
+        app:layout_constraintBottom_toBottomOf="@+id/check_15"
+        app:layout_constraintStart_toEndOf="@+id/check_15"
+        app:layout_constraintTop_toTopOf="@+id/check_15" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="17"
+        app:layout_constraintBottom_toBottomOf="@+id/check_16"
+        app:layout_constraintStart_toEndOf="@+id/check_16"
+        app:layout_constraintTop_toTopOf="@+id/check_16" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="18"
+        app:layout_constraintBottom_toBottomOf="@+id/check_17"
+        app:layout_constraintStart_toEndOf="@+id/check_17"
+        app:layout_constraintTop_toTopOf="@+id/check_17" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="19"
+        app:layout_constraintBottom_toBottomOf="@+id/check_18"
+        app:layout_constraintStart_toEndOf="@+id/check_18"
+        app:layout_constraintTop_toTopOf="@+id/check_18" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="20"
+        app:layout_constraintBottom_toBottomOf="@+id/check_19"
+        app:layout_constraintStart_toEndOf="@+id/check_19"
+        app:layout_constraintTop_toTopOf="@+id/check_19" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/check_20_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:padding="2dp"
+        android:text="20+"
+        app:layout_constraintBottom_toBottomOf="@+id/check_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/check_20"
+        app:layout_constraintTop_toTopOf="@+id/check_20" />
+
+
+</android.support.constraint.ConstraintLayout>

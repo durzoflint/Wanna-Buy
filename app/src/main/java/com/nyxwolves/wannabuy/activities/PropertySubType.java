@@ -15,9 +15,9 @@ import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
 
 
-public class PropertySubType extends AppCompatActivity implements View.OnClickListener{
+public class PropertySubType extends AppCompatActivity implements View.OnClickListener {
 
-    RadioGroup residentialGroup,commercialGroup,industrialGroup,institutionalGroup;
+    RadioGroup residentialGroup, commercialGroup, industrialGroup, institutionalGroup;
     Button continueBtn;
     TextView subtypeHeader, modeHeader;
     String subPropertyType;
@@ -27,14 +27,14 @@ public class PropertySubType extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_property_sub_type);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        indusLandSub =  findViewById(R.id.indus_land_sub);
+        indusLandSub = findViewById(R.id.indus_land_sub);
 
         modeHeader = findViewById(R.id.sub_type_mode_header);
         modeHeader.setText(Requirements.getInstance().buyorRent);
 
-        subtypeHeader =  findViewById(R.id.subtype_header);
+        subtypeHeader = findViewById(R.id.subtype_header);
 
         residentialGroup = findViewById(R.id.radioGroup_residential);
         commercialGroup = findViewById(R.id.radioGroup_commercial);
@@ -49,62 +49,60 @@ public class PropertySubType extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.sub_type_next_btn:
-                if(subPropertyType != null) {
+                if (subPropertyType != null) {
                     Requirements.getInstance().subType = subPropertyType;
 
-                    if(subPropertyType.equals(getString(R.string.residential_land)) ||
+                    if (subPropertyType.equals(getString(R.string.residential_land)) ||
                             subPropertyType.equals(getString(R.string.commercial_land)) ||
-                            subPropertyType.equals(getString(R.string.industrial_land))){
-                        startActivity(new Intent(PropertySubType.this,Budget.class));
+                            subPropertyType.equals(getString(R.string.industrial_land))) {
+                        startActivity(new Intent(PropertySubType.this, Budget.class));
 
-                    }else if(subPropertyType.equals(getString(R.string.residential_building))){
-                        startActivity(new Intent(PropertySubType.this,NewOrResale.class));
+                    } else if (subPropertyType.equals(getString(R.string.residential_building))) {
+                        startActivity(new Intent(PropertySubType.this, NewOrResale.class));
 
-                    }else if(subPropertyType.equals(getString(R.string.commercial_building))){
-                        startActivity(new Intent(PropertySubType.this,Building.class));
+                    } else if (subPropertyType.equals(getString(R.string.commercial_building))) {
+                        startActivity(new Intent(PropertySubType.this, Building.class));
 
-                    }else if(subPropertyType.equals(getString(R.string.industrial_building))){
-                        startActivity(new Intent(PropertySubType.this,Building.class));
+                    } else if (subPropertyType.equals(getString(R.string.industrial_building))) {
+                        startActivity(new Intent(PropertySubType.this, Building.class));
 
-                    }else if(subPropertyType.equals(getString(R.string.institutional_land))){
-                        startActivity(new Intent(PropertySubType.this,PropertySize.class));
+                    } else if (subPropertyType.equals(getString(R.string.institutional_land)) ||
+                            subPropertyType.equals(getString(R.string.institutional_building))) {
+                        startActivity(new Intent(PropertySubType.this, SchoolCollegeHospital.class));
 
-                    }else if(subPropertyType.equals(getString(R.string.institutional_building))){
-                        startActivity(new Intent(PropertySubType.this,SchoolCollegeHospital.class));
-
-                    }else if(subPropertyType.equals(getString(R.string.farm_land))){
-                        startActivity(new Intent(PropertySubType.this,Building.class));
+                    }else if (subPropertyType.equals(getString(R.string.farm_land))) {
+                        startActivity(new Intent(PropertySubType.this, Building.class));
                     }
                 }
                 break;
         }
     }
 
-    private void showRadioGroup(){
+    private void showRadioGroup() {
         String property_type = Requirements.getInstance().type;
-        if(property_type.equals(getString(R.string.residential))){
-            subtypeHeader.setText("What type of "+property_type+" Property");
+        if (property_type.equals(getString(R.string.residential))) {
+            subtypeHeader.setText("What type of " + property_type + " Property");
             residentialGroup.setVisibility(View.VISIBLE);
             commercialGroup.setVisibility(View.GONE);
             industrialGroup.setVisibility(View.GONE);
             institutionalGroup.setVisibility(View.GONE);
 
-        }else if(property_type.equals(getString(R.string.commercial))){
-            subtypeHeader.setText("What type of "+property_type+" Property");
+        } else if (property_type.equals(getString(R.string.commercial))) {
+            subtypeHeader.setText("What type of " + property_type + " Property");
             residentialGroup.setVisibility(View.GONE);
             commercialGroup.setVisibility(View.VISIBLE);
             industrialGroup.setVisibility(View.GONE);
             institutionalGroup.setVisibility(View.GONE);
-        }else if(property_type.equals(getString(R.string.industrial))){
-            subtypeHeader.setText("What type of "+property_type+" Property");
+        } else if (property_type.equals(getString(R.string.industrial))) {
+            subtypeHeader.setText("What type of " + property_type + " Property");
             residentialGroup.setVisibility(View.GONE);
             commercialGroup.setVisibility(View.GONE);
             industrialGroup.setVisibility(View.VISIBLE);
             institutionalGroup.setVisibility(View.GONE);
-        }else if(property_type.equals(getString(R.string.institutional))){
-            subtypeHeader.setText("What type of "+property_type+" Property");
+        } else if (property_type.equals(getString(R.string.institutional))) {
+            subtypeHeader.setText("What type of " + property_type + " Property");
             residentialGroup.setVisibility(View.GONE);
             commercialGroup.setVisibility(View.GONE);
             industrialGroup.setVisibility(View.GONE);
@@ -112,8 +110,8 @@ public class PropertySubType extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    public void radioButtonClicked(View v){
-        switch (v.getId()){
+    public void radioButtonClicked(View v) {
+        switch (v.getId()) {
 
             case R.id.resi_land:
                 subPropertyType = getString(R.string.residential_land);
@@ -127,7 +125,7 @@ public class PropertySubType extends AppCompatActivity implements View.OnClickLi
                 Requirements.getInstance().subType = subPropertyType;
                 break;
             case R.id.comm_building:
-                subPropertyType=  getString(R.string.commercial_building);
+                subPropertyType = getString(R.string.commercial_building);
                 break;
             case R.id.indus_land:
                 subPropertyType = getString(R.string.industrial_land);
@@ -141,7 +139,7 @@ public class PropertySubType extends AppCompatActivity implements View.OnClickLi
                 subPropertyType = getString(R.string.institutional_land);
                 break;
             case R.id.ins_building:
-                subPropertyType  = getString(R.string.institutional_building);
+                subPropertyType = getString(R.string.institutional_building);
                 break;
         }
     }

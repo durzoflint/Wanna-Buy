@@ -58,19 +58,37 @@ public class AdHelper {
     private void getJson(){
 
         try{
-            createParams.put("user_id",""+FirebaseAuth.getInstance().getCurrentUser().getEmail());
-            createParams.put("PROPERTY_LOCATION",""+SellerAd.getInstance().area.toUpperCase());
-            createParams.put("PROPERTY_TYPE",""+SellerAd.getInstance().subType.toUpperCase());
-            createParams.put("PROPERTY_SIZE",""+SellerAd.getInstance().size.toUpperCase());
-            createParams.put("PROPERTY_ADDRESS",""+SellerAd.getInstance().propertyAddress.toUpperCase());
-            createParams.put("BHK",""+SellerAd.getInstance().bhk.toUpperCase());
-            createParams.put("FACING",""+SellerAd.getInstance().facing.toUpperCase());
-            createParams.put("NEW",""+SellerAd.getInstance().isNew.toUpperCase());
-            createParams.put("MODE",""+SellerAd.getInstance().sellOrRent.toUpperCase());
-            createParams.put("FURNISHED",""+SellerAd.getInstance().furnished.toUpperCase());
-            //createParams.put("BUDGET",);
-            createParams.put("FLOOR","2");
-            createParams.put("NEGOTIABLE",""+SellerAd.getInstance().budgetNegotiable.toUpperCase());
+            createParams.put("user_id",FirebaseAuth.getInstance().getCurrentUser().getEmail());
+            createParams.put("PROPERTY_LOCATION",SellerAd.getInstance().adsLocation.toUpperCase());
+            createParams.put("PROPERTY_TYPE",SellerAd.getInstance().adsSubType.toUpperCase());
+            createParams.put("PROPERTY_ADDRESS",SellerAd.getInstance().adsPropertyAddress.toUpperCase());
+            createParams.put("BHK",SellerAd.getInstance().adsBhk.toUpperCase());
+            createParams.put("FACING",SellerAd.getInstance().adsFacing.toUpperCase());
+            createParams.put("NEW",SellerAd.getInstance().adsIsNew.toUpperCase());
+            createParams.put("MODE",SellerAd.getInstance().adsSellOrRent.toUpperCase());
+            createParams.put("FURNISHED",SellerAd.getInstance().adsFurnished.toUpperCase());
+            createParams.put("BUDGET",SellerAd.getInstance().adsBudget);
+            createParams.put("FLOOR",SellerAd.getInstance().adsFloor.toUpperCase());
+            createParams.put("NEGOTIABLE",SellerAd.getInstance().adsBudgetNegotiable.toUpperCase());
+            createParams.put("GYM",  Requirements.getInstance().gym.toUpperCase());
+            createParams.put("POWER_BACKUP",  Requirements.getInstance().powerBackup.toUpperCase());
+            createParams.put("SECURITY_GUARD",  Requirements.getInstance().securityGuard.toUpperCase());
+            createParams.put("LIFT",  Requirements.getInstance().lift.toUpperCase());
+            createParams.put("SWIMMING_POOL",  Requirements.getInstance().swimmingPool.toUpperCase());
+            createParams.put("CAFETRIA",  Requirements.getInstance().cafetria.toUpperCase());
+            createParams.put("GARDEN",  Requirements.getInstance().garden.toUpperCase());
+            createParams.put("WATER",  Requirements.getInstance().water.toUpperCase());
+            createParams.put("PLAY_AREA",  Requirements.getInstance().playArea.toUpperCase());
+            createParams.put("METRO_WATER",  Requirements.getInstance().metroWater.toUpperCase());
+            createParams.put("DRAINAGE_CONNECTION",  Requirements.getInstance().drainageConnection.toUpperCase());
+            createParams.put("COV_CAR_PARKING",  Requirements.getInstance().isCovparking.toUpperCase());
+            createParams.put("UN_COV_CAR_PARKING",  Requirements.getInstance().isUnCovParking.toUpperCase());
+            createParams.put("COV_PARKING_NUM",  Requirements.getInstance().noOfCovParking.toUpperCase());
+            createParams.put("UN_COV_PARKING_NUM",  Requirements.getInstance().noOfUnCovParking.toUpperCase());
+            createParams.put("PG_RENT_TYPE",  Requirements.getInstance().pgRentType.toUpperCase());
+            createParams.put("PETS_ALLOWED",  Requirements.getInstance().petsAllowed.toUpperCase());
+            createParams.put("ROAD_WIDTH_MIN",Requirements.getInstance().minRoadWidth.toUpperCase());
+            createParams.put("ROAD_WIDTH_MAX",Requirements.getInstance().maxRoadWidth.toUpperCase());
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -109,7 +127,7 @@ public class AdHelper {
                 JSONObject object = responseArray.getJSONObject(i);
 
                 SellerAd tempData = new SellerAd();
-                tempData.area = object.getString("PROPERTY_LOCATION");
+                /*tempData.area = object.getString("PROPERTY_LOCATION");
                 tempData.size = object.getString("PROPERTY_SIZE");
                 tempData.type = object.getString("PROPERTY_TYPE");
                 tempData.bhk = object.getString("BHK");
@@ -118,7 +136,7 @@ public class AdHelper {
                 tempData.isNew = object.getString("NEW");
                 tempData.furnished = object.getString("ADDITIONAL");
                 tempData.budget = object.getString("BUDGET");
-                tempData.buyOrRent = object.getString("MODE");
+                tempData.buyOrRent = object.getString("MODE");*/
 
                 tempList.add(tempData);
             }

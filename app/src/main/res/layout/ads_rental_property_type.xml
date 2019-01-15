@@ -8,7 +8,7 @@
         android:id="@+id/rental_type_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
         android:orientation="vertical">
 
@@ -158,6 +158,17 @@
                 android:onClick="onRadioButtonClicked"
                 android:padding="5dp"
                 android:text="@string/floorspace" />
+            <RadioButton
+                android:id="@+id/rental_comm_showroom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="5dp"
+                android:button="@drawable/custom_radio_button"
+                android:fontFamily="@font/montserrat_regular"
+                android:onClick="onRadioButtonClicked"
+                android:padding="5dp"
+                android:text="@string/showroom" />
         </RadioGroup>
     </RadioGroup><!--comm sub group button-->
 
@@ -341,18 +352,6 @@
             android:onClick="onRadioButtonClicked"
             android:padding="5dp"
             android:text="@string/land" />
-
-        <RadioButton
-            android:id="@+id/rental_ins_building"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="5dp"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:onClick="onRadioButtonClicked"
-            android:padding="5dp"
-            android:text="@string/building" />
     </RadioGroup>
 
     <RadioButton
@@ -366,8 +365,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:onClick="onRadioButtonClicked"
         android:padding="5dp"
-        android:text="@string/farm_land"
-        android:visibility="gone" />
+        android:text="@string/farm_land"/>
 
     <RadioGroup
         android:id="@+id/rental_farm_land_group"
@@ -376,7 +374,7 @@
         android:visibility="gone">
 
         <RadioButton
-            android:id="@+id/farm_land_land"
+            android:id="@+id/rental_farm_land_land"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -388,7 +386,7 @@
             android:text="@string/land" />
 
         <RadioButton
-            android:id="@+id/rental_farm_land_building"
+            android:id="@+id/rental_farm_building"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -401,7 +399,7 @@
     </RadioGroup>
 
     <RadioButton
-        android:id="@+id/rental_ads_pg_rent"
+        android:id="@+id/rental_pg_rent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
@@ -411,8 +409,35 @@
         android:fontFamily="@font/montserrat_regular"
         android:onClick="onRadioButtonClicked"
         android:padding="5dp"
-        android:text="@string/pg_rent"
-        android:visibility="gone" />
+        android:text="@string/pg_rent_service_aparments" />
+
+        <RadioGroup
+            android:id="@+id/rental_ads_pg_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginStart="40dp">
+            <RadioButton
+                android:id="@+id/rental_pg_independent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/independent"
+                android:button="@drawable/custom_radio_button"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:onClick="onRadioButtonClicked"/>
+            <RadioButton
+                android:id="@+id/rental_pg_apartments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/apartments"
+                android:button="@drawable/custom_radio_button"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:onClick="onRadioButtonClicked"/>
+        </RadioGroup>
 
     </RadioGroup>
 </LinearLayout>

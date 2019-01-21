@@ -19,6 +19,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class AdHelper {
@@ -27,83 +28,107 @@ public class AdHelper {
     private JSONObject createParams = new JSONObject();
     public static List<SellerAd> adDataList = new ArrayList<>();
 
-    public AdHelper(Context ctx){
+    public AdHelper(Context ctx) {
         this.ctx = ctx;
     }
 
-    public void createAd(){
+    public void createAd() {
         String URL = "http://www.wannabuy.in/api/Ads/create_ad.php";
         getJson();
+        //Log.d("ADS_JSON",new JSONObject(createParams).toString());
         Log.d("ADS_JSON",createParams.toString());
         JsonObjectRequest createAdRequest = new JsonObjectRequest(Request.Method.POST, URL, createParams, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("ADS_RESPONSE_CREATED",response.toString());
+                Log.d("ADS_RESPONSE_CREATED", response.toString());
 
-                SharedPreferences sharedPreferences = ctx.getSharedPreferences(ctx.getString(R.string.shared_pref),Context.MODE_PRIVATE);
+                Toast.makeText(ctx, "Ad Posted", Toast.LENGTH_SHORT).show();
+
+                SharedPreferences sharedPreferences = ctx.getSharedPreferences(ctx.getString(R.string.shared_pref), Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean(ctx.getString(R.string.shared_first_ad),false);
+                editor.putBoolean(ctx.getString(R.string.shared_first_ad), false);
                 editor.apply();
-
-                Toast.makeText(ctx,"Ad Posted",Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("ADS_ERROR_CREATED",error.toString());
+                Log.d("ADS_ERROR_CREATED", error.toString());
             }
         });
         CustomRequestQueue.getInstance(ctx).addRequest(createAdRequest);
     }
-    private void getJson(){
 
-        try{
-            createParams.put("user_id",FirebaseAuth.getInstance().getCurrentUser().getEmail());
-            createParams.put("PROPERTY_LOCATION",SellerAd.getInstance().adsLocation.toUpperCase());
-            createParams.put("PROPERTY_TYPE",SellerAd.getInstance().adsSubType.toUpperCase());
-            createParams.put("PROPERTY_ADDRESS",SellerAd.getInstance().adsPropertyAddress.toUpperCase());
-            createParams.put("BHK",SellerAd.getInstance().adsBhk.toUpperCase());
-            createParams.put("FACING",SellerAd.getInstance().adsFacing.toUpperCase());
-            createParams.put("NEW",SellerAd.getInstance().adsIsNew.toUpperCase());
-            createParams.put("MODE",SellerAd.getInstance().adsSellOrRent.toUpperCase());
-            createParams.put("FURNISHED",SellerAd.getInstance().adsFurnished.toUpperCase());
-            createParams.put("BUDGET",SellerAd.getInstance().adsBudget);
-            createParams.put("FLOOR",SellerAd.getInstance().adsFloor.toUpperCase());
-            createParams.put("NEGOTIABLE",SellerAd.getInstance().adsBudgetNegotiable.toUpperCase());
-            createParams.put("GYM",  Requirements.getInstance().gym.toUpperCase());
-            createParams.put("POWER_BACKUP",  Requirements.getInstance().powerBackup.toUpperCase());
-            createParams.put("SECURITY_GUARD",  Requirements.getInstance().securityGuard.toUpperCase());
-            createParams.put("LIFT",  Requirements.getInstance().lift.toUpperCase());
-            createParams.put("SWIMMING_POOL",  Requirements.getInstance().swimmingPool.toUpperCase());
-            createParams.put("CAFETRIA",  Requirements.getInstance().cafetria.toUpperCase());
-            createParams.put("GARDEN",  Requirements.getInstance().garden.toUpperCase());
-            createParams.put("WATER",  Requirements.getInstance().water.toUpperCase());
-            createParams.put("PLAY_AREA",  Requirements.getInstance().playArea.toUpperCase());
-            createParams.put("METRO_WATER",  Requirements.getInstance().metroWater.toUpperCase());
-            createParams.put("DRAINAGE_CONNECTION",  Requirements.getInstance().drainageConnection.toUpperCase());
-            createParams.put("COV_CAR_PARKING",  Requirements.getInstance().isCovparking.toUpperCase());
-            createParams.put("UN_COV_CAR_PARKING",  Requirements.getInstance().isUnCovParking.toUpperCase());
-            createParams.put("COV_PARKING_NUM",  Requirements.getInstance().noOfCovParking.toUpperCase());
-            createParams.put("UN_COV_PARKING_NUM",  Requirements.getInstance().noOfUnCovParking.toUpperCase());
-            createParams.put("PG_RENT_TYPE",  Requirements.getInstance().pgRentType.toUpperCase());
-            createParams.put("PETS_ALLOWED",  Requirements.getInstance().petsAllowed.toUpperCase());
-            createParams.put("ROAD_WIDTH_MIN",Requirements.getInstance().minRoadWidth.toUpperCase());
-            createParams.put("ROAD_WIDTH_MAX",Requirements.getInstance().maxRoadWidth.toUpperCase());
-        }catch (Exception e){
+    private void getJson() {
+
+        try {
+            createParams.put("USER_ID", FirebaseAuth.getInstance().getCurrentUser().getEmail());
+            createParams.put("DOOR_NO", SellerAd.getInstance().adsDoorNo.toUpperCase());
+            createParams.put("PROPERTY_LOCATION", SellerAd.getInstance().adsLocation.toUpperCase());
+            createParams.put("PROPERTY_TYPE", SellerAd.getInstance().adsPropertyType.toUpperCase());
+            createParams.put("PROPERTY_ADDRESS", SellerAd.getInstance().adsPropertyAddress.toUpperCase());
+            createParams.put("LAND_AREA", SellerAd.getInstance().adsLandArea.toUpperCase());
+            createParams.put("BUILT_UP_AREA", SellerAd.getInstance().adsBuiltUpArea.toUpperCase());
+            createParams.put("AGE", SellerAd.getInstance().adsAge.toUpperCase());
+            createParams.put("BHK", SellerAd.getInstance().adsBhk.toUpperCase());
+            createParams.put("NO_OF_APARTMENTS", SellerAd.getInstance().adsNoOfApartments.toUpperCase());
+            createParams.put("TOTAL_FLOORS", SellerAd.getInstance().adsTotalFloors.toUpperCase());
+            createParams.put("FLOOR", SellerAd.getInstance().adsFloor.toUpperCase());
+            createParams.put("BUDGET", SellerAd.getInstance().adsBudget);
+            createParams.put("NEW", SellerAd.getInstance().adsIsNew.toUpperCase());
+            createParams.put("MODE", SellerAd.getInstance().adsSellOrRent.toUpperCase());
+            createParams.put("FURNISHED", SellerAd.getInstance().adsFurnished.toUpperCase());
+            createParams.put("FACING", SellerAd.getInstance().adsFacing.toUpperCase());
+            createParams.put("CDMA_APPROVED", SellerAd.getInstance().adsCdmaApproved.toUpperCase());
+            createParams.put("DTCP_APPROVED", SellerAd.getInstance().adsDtcpApproved.toUpperCase());
+            createParams.put("CORP_APPROVED", SellerAd.getInstance().adsCorpApproved.toUpperCase());
+            createParams.put("PANCH_APPROVED", SellerAd.getInstance().adsPanchApproved.toUpperCase());
+            createParams.put("COMM_APPROVED", SellerAd.getInstance().adsCommApproved.toUpperCase());
+            createParams.put("INDUS_APPROVED", SellerAd.getInstance().adsIndusApproved.toUpperCase());
+            createParams.put("RERA_APPROVED", SellerAd.getInstance().adsReraApproved.toUpperCase());
+            createParams.put("GYM", SellerAd.getInstance().adsGym.toUpperCase());
+            createParams.put("POWER_BACKUP", SellerAd.getInstance().adsPowerBackup.toUpperCase());
+            createParams.put("SECURITY_GUARD", SellerAd.getInstance().adsSecurityGuard.toUpperCase());
+            createParams.put("LIFT", SellerAd.getInstance().adsLift.toUpperCase());
+            createParams.put("SWIMMING_POOL", SellerAd.getInstance().adsSwimmingPool.toUpperCase());
+            createParams.put("CAFETRIA", SellerAd.getInstance().adsCafetria.toUpperCase());
+            createParams.put("GARDEN", SellerAd.getInstance().adsGarden.toUpperCase());
+            createParams.put("WATER", SellerAd.getInstance().adsWater.toUpperCase());
+            createParams.put("PLAY_AREA", SellerAd.getInstance().adsPlayArea.toUpperCase());
+            createParams.put("METRO_WATER", SellerAd.getInstance().adsMetroWater.toUpperCase());
+            createParams.put("DRAINAGE_CONNECTION", SellerAd.getInstance().adsDrainageConnection.toUpperCase());
+            createParams.put("MAINTENANCE", SellerAd.getInstance().adsMaintance.toUpperCase());
+            createParams.put("COV_CAR_PARKING", SellerAd.getInstance().adsCovCarParking.toUpperCase());
+            createParams.put("UN_COV_CAR_PARKING", SellerAd.getInstance().adsUnCovParking.toUpperCase());
+            createParams.put("COV_PARKING_NUM", SellerAd.getInstance().adsCovCarParkingNum.toUpperCase());
+            createParams.put("UN_COV_PARKING_NUM", SellerAd.getInstance().adsUnCovCarParkingNum.toUpperCase());
+            createParams.put("ROAD_WIDTH", SellerAd.getInstance().adsRoadWidth.toUpperCase());
+            createParams.put("ADVANCE_DEPOSIT",SellerAd.getInstance().adsAdvanceDeposit.toUpperCase());
+            createParams.put("PETS_ALLOWED", SellerAd.getInstance().adsPetsAllowed.toUpperCase());
+            createParams.put("NEGOTIABLE", SellerAd.getInstance().adsBudgetNegotiable.toUpperCase());
+            createParams.put("PG_ROOMS", SellerAd.getInstance().noOfRooms.toUpperCase());
+            createParams.put("PG_PERSON_PER_ROOM", SellerAd.getInstance().personPerRoom.toUpperCase());
+            createParams.put("PG_WITH_FOOD", SellerAd.getInstance().withFood.toUpperCase());
+            createParams.put("PG_RENT_MONTH", SellerAd.getInstance().pgRentPerMonth.toUpperCase());
+            createParams.put("GUEST_PRICE", SellerAd.getInstance().guestHousePrice.toUpperCase());
+            createParams.put("BOYS_HOSTEL_PRICE", SellerAd.getInstance().boysHostelPrice.toUpperCase());
+            createParams.put("GIRLS_HOSTEL_PRICE", SellerAd.getInstance().girlsHostelPrice.toUpperCase());
+            createParams.put("WORKING_MEN_HOSTEL_PRICE", SellerAd.getInstance().workingMenHostelPrice.toUpperCase());
+            createParams.put("WORKING_WOMEN_HOSTEL_PRICE", SellerAd.getInstance().workingWomenHostelPrice.toUpperCase());
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-
-    public void readAd(){
-        String URL = "http://www.wannabuy.in/api/Ads/read_ads.php?id="+FirebaseAuth.getInstance().getCurrentUser().getEmail();
+    public void readAd() {
+        String URL = "http://www.wannabuy.in/api/Ads/read_ads.php?id=" + FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
         StringRequest getRequirementRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("READ_RESPONSE", response.toString());
                 adDataList = getAdData(response);
-                Log.d("TEST_SIZE",""+adDataList.size());
+                Log.d("TEST_SIZE", "" + adDataList.size());
             }
         }, new Response.ErrorListener() {
             @Override

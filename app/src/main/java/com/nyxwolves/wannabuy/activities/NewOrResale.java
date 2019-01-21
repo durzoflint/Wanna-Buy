@@ -17,7 +17,7 @@ public class NewOrResale extends AppCompatActivity {
     Button nextButton;
     TextView modeHeader;
 
-    String newOrResale = null;//new =1 resale = 2
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class NewOrResale extends AppCompatActivity {
                 Requirements.getInstance().isNew = getString(R.string.new_text);
                 break;
             case R.id.resale_check:
-                Requirements.getInstance().isResale = getString(R.string.resale_text);
+                Requirements.getInstance().isNew = getString(R.string.resale_text);
                 break;
         }
     }

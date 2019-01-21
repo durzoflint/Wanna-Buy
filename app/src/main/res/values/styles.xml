@@ -23,14 +23,14 @@
     </style>
 
     <style name="checkTextStyle" parent="android:Widget.CompoundButton.CheckBox">
-        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
     </style>
     <style name="textStyle" parent="android:Widget.TextView">
-        <item name="fontFamily">@font/montserrat_regular</item>
+        <item name="fontFamily">@font/montserrat_medium</item>
     </style>
 
     <style name="buttonTextStyle">
-        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
     </style>
     <style name="hintAppearance" parent="TextAppearance.Design.Hint">
         <item name="android:textSize">20sp</item>

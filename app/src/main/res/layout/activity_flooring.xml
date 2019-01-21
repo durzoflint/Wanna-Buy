@@ -44,6 +44,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:padding="2dp"
         android:text="1"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flooring_header" />
 
@@ -55,6 +56,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:padding="2dp"
         android:text="2"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintBottom_toBottomOf="@+id/check_1"
         app:layout_constraintStart_toEndOf="@+id/check_1"
         app:layout_constraintTop_toTopOf="@+id/check_1" />
@@ -67,6 +69,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:padding="2dp"
         android:text="3"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintBottom_toBottomOf="@+id/check_2"
         app:layout_constraintStart_toEndOf="@+id/check_2"
         app:layout_constraintTop_toTopOf="@+id/check_2" />
@@ -79,6 +82,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:padding="2dp"
         android:text="4"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintBottom_toBottomOf="@+id/check_3"
         app:layout_constraintStart_toEndOf="@+id/check_3"
         app:layout_constraintTop_toTopOf="@+id/check_3" />
@@ -91,6 +95,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:padding="2dp"
         android:text="5"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintBottom_toBottomOf="@+id/check_4"
         app:layout_constraintStart_toEndOf="@+id/check_4"
         app:layout_constraintTop_toTopOf="@+id/check_4" />
@@ -103,6 +108,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:padding="2dp"
         android:text="6"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintBottom_toBottomOf="@+id/check_5"
         app:layout_constraintStart_toEndOf="@+id/check_5"
         app:layout_constraintTop_toTopOf="@+id/check_5" />
@@ -116,6 +122,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:padding="2dp"
         android:text="7"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintBottom_toBottomOf="@+id/check_6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -130,6 +137,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:padding="2dp"
         android:text="8"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintStart_toStartOf="@+id/check_1"
         app:layout_constraintTop_toBottomOf="@+id/check_1" />
 
@@ -137,10 +145,11 @@
         android:id="@+id/check_9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="2dp"
         android:fontFamily="@font/montserrat_regular"
         android:padding="2dp"
         android:text="9"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintBottom_toBottomOf="@+id/check_8"
         app:layout_constraintStart_toEndOf="@+id/check_8"
         app:layout_constraintTop_toTopOf="@+id/check_8" />
@@ -149,10 +158,11 @@
         android:id="@+id/check_10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="2dp"
         android:fontFamily="@font/montserrat_regular"
         android:padding="2dp"
         android:text="10"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintBottom_toBottomOf="@+id/check_9"
         app:layout_constraintStart_toEndOf="@+id/check_9"
         app:layout_constraintTop_toTopOf="@+id/check_9" />
@@ -161,10 +171,11 @@
         android:id="@+id/check_11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="2dp"
         android:fontFamily="@font/montserrat_regular"
         android:padding="2dp"
         android:text="11"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintBottom_toBottomOf="@+id/check_10"
         app:layout_constraintStart_toEndOf="@+id/check_10"
         app:layout_constraintTop_toTopOf="@+id/check_10" />
@@ -173,10 +184,11 @@
         android:id="@+id/check_12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="2dp"
         android:fontFamily="@font/montserrat_regular"
         android:padding="2dp"
         android:text="12"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintBottom_toBottomOf="@+id/check_11"
         app:layout_constraintStart_toEndOf="@+id/check_11"
         app:layout_constraintTop_toTopOf="@+id/check_11" />
@@ -185,10 +197,11 @@
         android:id="@+id/check_13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="2dp"
         android:fontFamily="@font/montserrat_regular"
         android:padding="2dp"
         android:text="13"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintBottom_toBottomOf="@+id/check_12"
         app:layout_constraintStart_toEndOf="@+id/check_12"
         app:layout_constraintTop_toTopOf="@+id/check_12" />
@@ -197,10 +210,11 @@
         android:id="@+id/check_14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="2dp"
         android:fontFamily="@font/montserrat_regular"
         android:padding="2dp"
         android:text="14"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintBottom_toBottomOf="@+id/check_13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -215,6 +229,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:padding="2dp"
         android:text="15"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintStart_toStartOf="@+id/check_8"
         app:layout_constraintTop_toBottomOf="@+id/check_8" />
 
@@ -226,6 +241,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:padding="2dp"
         android:text="16"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintBottom_toBottomOf="@+id/check_15"
         app:layout_constraintStart_toEndOf="@+id/check_15"
         app:layout_constraintTop_toTopOf="@+id/check_15" />
@@ -238,6 +254,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:padding="2dp"
         android:text="17"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintBottom_toBottomOf="@+id/check_16"
         app:layout_constraintStart_toEndOf="@+id/check_16"
         app:layout_constraintTop_toTopOf="@+id/check_16" />
@@ -250,6 +267,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:padding="2dp"
         android:text="18"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintBottom_toBottomOf="@+id/check_17"
         app:layout_constraintStart_toEndOf="@+id/check_17"
         app:layout_constraintTop_toTopOf="@+id/check_17" />
@@ -262,6 +280,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:padding="2dp"
         android:text="19"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintBottom_toBottomOf="@+id/check_18"
         app:layout_constraintStart_toEndOf="@+id/check_18"
         app:layout_constraintTop_toTopOf="@+id/check_18" />
@@ -274,6 +293,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:padding="2dp"
         android:text="20"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintBottom_toBottomOf="@+id/check_19"
         app:layout_constraintStart_toEndOf="@+id/check_19"
         app:layout_constraintTop_toTopOf="@+id/check_19" />
@@ -283,13 +303,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat_regular"
         android:padding="2dp"
         android:text="20+"
-        app:layout_constraintBottom_toBottomOf="@+id/check_20"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/check_20"
-        app:layout_constraintTop_toTopOf="@+id/check_20" />
+        android:onClick="onCheckBoxClicked"
+        app:layout_constraintStart_toStartOf="@+id/check_15"
+        app:layout_constraintTop_toBottomOf="@+id/check_15" />
 
 
     <android.support.v7.widget.AppCompatCheckBox
@@ -302,6 +322,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:padding="5dp"
         android:text="@string/no_top_floor"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintBottom_toTopOf="@+id/flooring_next_btn"
         app:layout_constraintEnd_toStartOf="@+id/flooring_do_not_deviate"
         app:layout_constraintHorizontal_bias="0.0"
@@ -317,6 +338,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:padding="5dp"
         android:text="@string/do_not_deviate"
+        android:onClick="onCheckBoxClicked"
         app:layout_constraintBottom_toTopOf="@+id/no_top_floor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

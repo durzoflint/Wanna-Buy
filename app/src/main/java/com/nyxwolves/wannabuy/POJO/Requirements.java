@@ -1,5 +1,7 @@
 package com.nyxwolves.wannabuy.POJO;
 
+import java.util.ArrayList;
+
 public class Requirements {
 
     public String reqName = "NOT_SET";
@@ -36,14 +38,15 @@ public class Requirements {
     public String commercialApproved = "NOT_SET";
     public String industrialApproved = "NOT_SET";
     public String reraApproved = "NOT_SET";
-    public String bhk = "NOT_SET";
     public String isNew = "NOT_SET";
-    public String isResale = "NOT_SET";
     public String minBudget = "NOT_SET";
     public String maxBudget = "NOT_SET";
     public String minBudgetUnit = "NOT_SET";
     public String maxBudgetUnit = "NOT_SET";
-    public String pgRentType = "NOT_SET";
+    public String pgRentBoys = "NOT_SET";
+    public String pgRentGirls = "NOT_SET";
+    public String pgRentShortStay = "NOT_SET";
+    public String pgRentFamily = "NOT_SET";
     public String gym = "NO";
     public String powerBackup = "NO";
     public String securityGuard = "NO";
@@ -52,7 +55,8 @@ public class Requirements {
     public String cafetria = "NO";
     public String garden = "NO";
     public String subType = "NOT_SET";
-    public String floor = "NOT_SET";
+    public ArrayList<String>floorList = new ArrayList<>();
+    public ArrayList<String>bhkList = new ArrayList<>();
     public String furnished  ="NOT_SET";
     public String water = "NO";
     public String playArea = "NO";
@@ -68,6 +72,8 @@ public class Requirements {
     public String minRoi = "DEFAULT";
     public String maxRoi = "DEFAULT";
     public String petsAllowed = "NOT_SET";
+    public String maintenanceFee = "NOT_SET";
+
     private static Requirements instance;
 
     public static Requirements getInstance(){
@@ -102,7 +108,7 @@ public class Requirements {
     }
 
     public boolean checkNewOrResale(){
-        if(!isNew.equals("DEFAULT") || !isResale.equals("DEFAULT")){
+        if(!isNew.equals("DEFAULT")){
             return true;
         }else{
             return false;
@@ -154,11 +160,13 @@ public class Requirements {
          commercialApproved = "NOT_SET";
          industrialApproved = "NOT_SET";
          reraApproved = "NOT_SET";
-         bhk = "NOT_SET";
+         bhkList.clear();
          isNew = "NOT_SET";
-         isResale = "NOT_SET";
          minBudget = "NOT_SET";
-         pgRentType = "NOT_SET";
+         pgRentBoys = "NOT_SET";
+         pgRentGirls = "NOT_SET";
+         pgRentFamily = "NOT_SET";
+         pgRentShortStay = "NOT_SET";
          gym = "NO";
          powerBackup = "NO";
          securityGuard = "NO";
@@ -168,7 +176,7 @@ public class Requirements {
          garden = "NO";
          maxBudget = "NOT_SET";
          subType = "NOT_SET";
-         floor = "NOT_SET";
+         floorList.clear();
          furnished  ="NOT_SET";
          water = "NO";
          playArea = "NO";

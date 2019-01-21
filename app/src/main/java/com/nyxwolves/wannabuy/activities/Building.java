@@ -66,7 +66,7 @@ public class Building extends Activity {
             @Override
             public void onClick(View v) {
                 if(Requirements.getInstance().subType.equals(getString(R.string.residential_independent))||
-                        Requirements.getInstance().subType.equals(getString(R.string.apartments)) ||
+                        Requirements.getInstance().subType.equals(getString(R.string.residential_apartments)) ||
                         Requirements.getInstance().subType.equals(getString(R.string.pg_rent_independent)) ||
                         Requirements.getInstance().subType.equals(getString(R.string.pg_rent_apartment))){
                     startActivity(new Intent(Building.this,PropertySize.class));
@@ -153,7 +153,7 @@ public class Building extends Activity {
                 if(Requirements.getInstance().type.equals(getString(R.string.pg_rent))){
                     Requirements.getInstance().subType = getString(R.string.pg_rent_apartment);
                 }else {
-                    Requirements.getInstance().subType = getString(R.string.apartments);
+                    Requirements.getInstance().subType = getString(R.string.residential_apartments);
                 }
                 break;
             case R.id.comm_independent:

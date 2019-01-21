@@ -40,7 +40,7 @@ public class RequirementSearchAdapter extends RecyclerView.Adapter<RequirementSe
     public void onBindViewHolder(@NonNull RequirementSearchHolder requirementSearchHolder, int i) {
         Requirements obj = dataList.get(i);
         requirementSearchHolder.cityName.setText("Chennai");
-        requirementSearchHolder.propertyBhk.setText(obj.bhk+" Bhk");
+        //requirementSearchHolder.propertyBhk.setText(obj.bhk+" Bhk");
         requirementSearchHolder.propertyType.setText(obj.type);
         requirementSearchHolder.propertyLccation.setText(obj.area);
         //requirementSearchHolder.propertySize.setText(obj.minSize);

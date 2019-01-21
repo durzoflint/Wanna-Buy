@@ -36,7 +36,7 @@ public class MyRequirementsAdapter extends RecyclerView.Adapter<MyRequirementsHo
         Requirements obj = dataList.get(i);
         myRequirementsHolder.locationName.setText(obj.locationOne);
         myRequirementsHolder.price.setText(obj.maxBudget);
-        myRequirementsHolder.bhkOrLand.setText(obj.bhk);
+        //myRequirementsHolder.bhkOrLand.setText(obj.bhk);
     }
 
     @Override

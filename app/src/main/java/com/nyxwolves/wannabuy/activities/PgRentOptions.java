@@ -35,30 +35,30 @@ public class PgRentOptions extends AppCompatActivity {
         switch (v.getId()){
             case R.id.girls_btn:
                 if(((CheckBox)v).isChecked()){
-                    Requirements.getInstance().pgRentType = getString(R.string.girls);
+                    Requirements.getInstance().pgRentGirls = getString(R.string.girls);
                 }else{
-                    Requirements.getInstance().pgRentType = getString(R.string.not_set_text);
+                    Requirements.getInstance().pgRentGirls = getString(R.string.not_set_text);
                 }
                 break;
             case R.id.boys_btn:
                 if(((CheckBox)v).isChecked()){
-                    Requirements.getInstance().pgRentType = getString(R.string.boys);
+                    Requirements.getInstance().pgRentBoys = getString(R.string.boys);
                 }else{
-                    Requirements.getInstance().pgRentType = getString(R.string.not_set_text);
+                    Requirements.getInstance().pgRentBoys = getString(R.string.not_set_text);
                 }
                 break;
             case R.id.family:
                 if(((CheckBox)v).isChecked()){
-                    Requirements.getInstance().pgRentType = getString(R.string.family);
+                    Requirements.getInstance().pgRentFamily = getString(R.string.family);
                 }else{
-                    Requirements.getInstance().pgRentType = getString(R.string.not_set_text);
+                    Requirements.getInstance().pgRentFamily = getString(R.string.not_set_text);
                 }
                 break;
             case R.id.short_stay:
                 if(((CheckBox)v).isChecked()){
-                    Requirements.getInstance().pgRentType = getString(R.string.short_stay);
+                    Requirements.getInstance().pgRentShortStay = getString(R.string.short_stay);
                 }else{
-                    Requirements.getInstance().pgRentType = getString(R.string.not_set_text);
+                    Requirements.getInstance().pgRentShortStay = getString(R.string.not_set_text);
                 }
                 break;
         }

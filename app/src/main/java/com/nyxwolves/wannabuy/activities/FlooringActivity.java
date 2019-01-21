@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.RadioGroup;
 
 import com.nyxwolves.wannabuy.POJO.Requirements;
@@ -34,102 +35,78 @@ public class FlooringActivity extends AppCompatActivity {
         });
     }
 
+    private void setData(CheckBox checkBox,String data){
+        if(checkBox.isChecked()){
+            Requirements.getInstance().floorList.add(data);
+        }else{
+            Requirements.getInstance().floorList.remove(data);
+        }
+    }
     public void onCheckBoxClicked(View v){
-
+        switch(v.getId()){
+            case R.id.check_1:
+                setData((CheckBox)v,"1");
+                break;
+            case R.id.check_2:
+                setData((CheckBox)v,"2");
+                break;
+            case R.id.check_3:
+                setData((CheckBox)v,"3");
+                break;
+            case R.id.check_4:
+                setData((CheckBox)v,"4");
+                break;
+            case R.id.check_5:
+                setData((CheckBox)v,"5");
+                break;
+            case R.id.check_6:
+                setData((CheckBox)v,"6");
+                break;
+            case R.id.check_7:
+                setData((CheckBox)v,"7");
+                break;
+            case R.id.check_8:
+                setData((CheckBox)v,"8");
+                break;
+            case R.id.check_9:
+                setData((CheckBox)v,"9");
+                break;
+            case R.id.check_10:
+                setData((CheckBox)v,"10");
+                break;
+            case R.id.check_11:
+                setData((CheckBox)v,"11");
+                break;
+            case R.id.check_12:
+                setData((CheckBox)v,"12");
+                break;
+            case R.id.check_13:
+                setData((CheckBox)v,"13");
+                break;
+            case R.id.check_14:
+                setData((CheckBox)v,"14");
+                break;
+            case R.id.check_15:
+                setData((CheckBox)v,"15");
+                break;
+            case R.id.check_16:
+                setData((CheckBox)v,"16");
+                break;
+            case R.id.check_17:
+                setData((CheckBox)v,"17");
+                break;
+            case R.id.check_18:
+                setData((CheckBox)v,"18");
+                break;
+            case R.id.check_19:
+                setData((CheckBox)v,"19");
+                break;
+            case R.id.check_20:
+                setData((CheckBox)v,"20");
+                break;
+            case R.id.check_20_plus:
+                setData((CheckBox)v,"21");
+                break;
+        }
     }
 }
-
-
-
-/*firstRow.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                //secondRow.clearCheck();
-                //thirdRow.clearCheck();
-                switch(checkedId){
-                    case R.id.floor_one:
-                        Requirements.getInstance().floor = "1";
-                        break;
-                    case R.id.floor_two:
-                        Requirements.getInstance().floor = "2";
-                        break;
-                    case R.id.floor_three:
-                        Requirements.getInstance().floor = "3";
-                        break;
-                    case R.id.floor_four:
-                        Requirements.getInstance().floor = "4";
-                        break;
-                    case R.id.floor_five:
-                        Requirements.getInstance().floor = "5";
-                        break;
-                    case R.id.floor_six:
-                        Requirements.getInstance().floor = "6";
-                        break;
-                    case R.id.floor_seven:
-                        Requirements.getInstance().floor = "7";
-                        break;
-                }
-            }
-        });
-
-        secondRow.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                //firstRow.clearCheck();
-                //thirdRow.clearCheck();
-                switch(checkedId){
-                    case R.id.floor_eight:
-                        Requirements.getInstance().floor = "8";
-                        break;
-                    case R.id.floor_nine:
-                        Requirements.getInstance().floor = "9";
-                        break;
-                    case R.id.floor_ten:
-                        Requirements.getInstance().floor = "10";
-                        break;
-                    case R.id.floor_eleven:
-                        Requirements.getInstance().floor = "11";
-                        break;
-                    case R.id.floor_12:
-                        Requirements.getInstance().floor = "12";
-                        break;
-                    case R.id.floor_13:
-                        Requirements.getInstance().floor = "13";
-                        break;
-                    case R.id.floor_14:
-                        Requirements.getInstance().floor = "14";
-                        break;
-            }
-            }
-        });
-
-        thirdRow.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                //firstRow.clearCheck();
-                //secondRow.clearCheck();
-                switch(checkedId){
-                    case R.id.floor_15:
-                        Requirements.getInstance().floor = "15";
-                        break;
-                    case R.id.floor_16:
-                        Requirements.getInstance().floor = "16";
-                        break;
-                    case R.id.floor_17:
-                        Requirements.getInstance().floor = "17";
-                        break;
-                    case R.id.floor_18:
-                        Requirements.getInstance().floor = "18";
-                        break;
-                    case R.id.floor_19:
-                        Requirements.getInstance().floor = "19";
-                        break;
-                    case R.id.floor_20:
-                        Requirements.getInstance().floor = "20";
-                        break;
-                    case R.id.floor_20_plus:
-                        Requirements.getInstance().floor = "21";
-                        break;
-                }
-            }
-        });*/

@@ -39,13 +39,13 @@ public class MyAdsAdapter extends RecyclerView.Adapter<MyAdsViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyAdsViewHolder myAdsViewHolder, int i) {
-        SellerAd obj = adDataList.get(i);
+        /*SellerAd obj = adDataList.get(i);
         myAdsViewHolder.areaName.setText(obj.area);
         myAdsViewHolder.cityName.setText("Chennai");
         myAdsViewHolder.priceText.setText("1000000");
         myAdsViewHolder.sizeText.setText(obj.size);
         myAdsViewHolder.bhkText.setText(obj.bhk+" BHK");
-        Log.d("RECYCLE",""+i);
+        Log.d("RECYCLE",""+i);*/
 
     }
 

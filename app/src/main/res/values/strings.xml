@@ -44,7 +44,7 @@
     <string name="RENT">Rent</string>
     <string name="SELL">Sell</string>
 
-    <string name="what_do_you_want_to_do">What do you want to do Today?</string>
+    <string name="what_do_you_want_to_do">Wanna: Buy/Rent</string>
 
     <string name="property_location">Property Location</string>
     <string name="property_type_header">What type of property needed?</string>
@@ -136,9 +136,9 @@
     <string name="south_text">South</string>
     <string name="north_text">North</string>
 
-    <string name="furnished"> Fully Furnished</string>
-    <string name="un_furnished">Warmshell</string>
-    <string name="semi_furnished"> Semi-Furnished</string>
+    <string name="furnished"> Fully_Furnished</string>
+    <string name="un_furnished">Warm_shell</string>
+    <string name="semi_furnished"> Semi_Furnished</string>
 
     <string name="with_setup"> With Setup</string>
     <string name="without_setup"> Without Setup</string>
@@ -194,7 +194,7 @@
     <string name="pets_not_allowed">Not Allowed</string>
 
     <string name="post_ad">Post Ad</string>
-    <string name="ad_header">What your Ad is About?</string>
+    <string name="ad_header">Wanna: Sell/Rent</string>
     <string name="ad_area_header">Your Area / Locality / City?</string>
     <string name="door_number">Door number</string>
     <string name="address_header_text">Address</string>
@@ -207,7 +207,7 @@
     <string name="sell_type_text">New or Resale?</string>
     <string name="ads_furnised_header">What type of property?</string>
     <string name="ads_price_header">Price</string>
-    <string name="non_negotiable">Non-Negotiable</string>
+    <string name="non_negotiable">Non_Negotiable</string>
     <string name="negotiable">Negotiable</string>
     <string name="upload_property_photo">Upload\nProperty\nPhoto</string>
     <string name="make_payment">Make Payment</string>
@@ -316,7 +316,7 @@
     <string name="area_text">Area Name</string>
 
     <string name="land_area">Land Area</string>
-    <string name="built_up_area">Built Up Area</string>
+    <string name="built_up_area">Built Up Area(in Sq.Ft)</string>
     <string name="pg_rent_apartment">PG_Rent_Apartments</string>
 
 
@@ -358,4 +358,27 @@
     <string name="bhk_hint">Bhk.</string>
 
     <string name="age_of_property">Age Of Property</string>
+    <string name="no_of_apartments">No.of Apartments</string>
+    <string name="no_of_apartments_each_floor">No.of Apartments in each floor</string>
+    <string name="no_of_floors">No.of Floors</string>
+    <string name="total_floors">Total No.of Floors</string>
+    <string name="rent">Rent</string>
+    <string name="tenant_preference">Tenant Preference</string>
+
+    <string name="single_men">Single Men</string>
+    <string name="single_women">Single Women</string>
+    <string name="family_text">Family</string>
+    <string name="corporate">Corporate</string>
+    <string name="veg">Veg</string>
+    <string name="non_veg">Non Veg</string>
+    <string name="veg_non_veg">Veg/Non-Veg</string>
+
+    <string name="farm_land_land">Farm_Land_Land</string>
+    <string name="farm_land_building">Farm_Land_Building</string>
+
+    <string name="start_date_text">Start Date</string>
+    <string name="end_data_text">End Date</string>
+    <string name="in_rupees">In Rupees</string>
+
+    <string name="preferred_tenant">Preferred Tenant</string>
 </resources>

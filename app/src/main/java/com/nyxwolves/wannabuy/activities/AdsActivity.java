@@ -40,13 +40,13 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
 
 
     TextInputEditText cityInput,doorNumberInput,addressInput;
-    EditText flooringInput,bhkInput;
-    EditText landArea,builtUpArea,budgetInput,rentalIncrementalInput,roiInput,leaseStartInput,leaseEndInput,advanceInput,incrementCustomInput;
+    EditText flooringInput,bhkInput,noOfHouseInput,totalFloorsInput;
+    EditText landAreaInput,builtUpArea,budgetInput,rentalIncrementalInput,roiInput,leaseStartInput,leaseEndInput,advanceInput,incrementCustomInput;
     Button picUploadBtn,paymentBtn;
     CircleImageView propertyPic;
     CheckBox covCarParking,unCovParking;
     NumberPicker covPicker,unCovPicker;
-    RadioGroup resiSub,commSub,insSub,indusSub;
+    RadioGroup resiSub,commSub,insSub,indusSub,pgRentSub,farmLandGroup;
     RadioGroup rentalResiSub,rentalCommSub,rentalInsSub,rentalIndusSub;
     RadioGroup resiBuild,commBuild,indusBuild;
     RadioGroup rentalResiBuild,rentalCommBuild,rentalIndusBuild,rentalFarmLandSub,rentalPgServiceSub;
@@ -55,11 +55,16 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     ConstraintLayout builtUpAreaLayout,landAreaLayout,leaseOrRent;
     FrameLayout pgRentLayout,rentalIncomeType;
     RadioButton farmLand,pgRentButton,rentalIncomeButton;
-    LinearLayout roiLayout,petsLayout,rentalIncrementalLayout;
+    LinearLayout roiLayout,petsLayout,rentalIncrementalLayout,noOfHouse,tenantPreferances,totalFloors;
     Spinner areaUnitSpinner;
+    SeekBar roadWidth;
+    TextView roadSelectedWidth,adsBudgetHeader;
 
     final int IMAGE_REQ=1002;
     final int LOCATION_REQUEST = 1003;
+    int roadWidthInt;
+    boolean isBuiltUpVisible = false;
+    boolean isLandAreaVisible = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +79,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 SellerAd.getInstance().adsLandAreaUnit = parent.getSelectedItem().toString();
-                landArea.setHint(parent.getSelectedItem().toString());
+                landAreaInput.setHint(parent.getSelectedItem().toString());
             }
 
             @Override
@@ -83,9 +88,45 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
             }
         });
 
+        roadSelectedWidth = findViewById(R.id.selected_width);
+        roadWidth = findViewById(R.id.ads_road_width_seekbar);
+        roadWidth.setMax(201);
+        roadWidth.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                roadWidthInt = progress;
+                if(progress > 200){
+                    String text = Integer.valueOf(progress-1)+"+ Ft";
+                    roadSelectedWidth.setText(text);
+                }else{
+                    String text = Integer.valueOf(progress)+" Ft";
+                    roadSelectedWidth.setText(text);
+                }
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        //tenant preference
+        tenantPreferances = findViewById(R.id.tenant_preference_layout);
+
         //flooring and bhk input
         flooringInput = findViewById(R.id.floor_input);
         bhkInput = findViewById(R.id.bhk_input);
+        noOfHouse = findViewById(R.id.no_of_house);
+        noOfHouseInput = findViewById(R.id.no_of_house_input);
+
+        totalFloors = findViewById(R.id.total_no_of_floor);
+        totalFloorsInput = findViewById(R.id.total_floors_input);
 
         rentalIncomeType = findViewById(R.id.rental_income_prop_type);
 
@@ -113,9 +154,12 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
 
         //budget
         budgetInput =  findViewById(R.id.ads_budget_input);
+        adsBudgetHeader = findViewById(R.id.ads_budget_header);
 
         //petsLayout
         petsLayout = findViewById(R.id.pets_allowed_layout);
+
+        farmLandGroup = findViewById(R.id.farm_land_group);
 
         //radioButtons
         farmLand = findViewById(R.id.ads_farm_land);
@@ -123,7 +167,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         rentalIncomeButton = findViewById(R.id.ads_rental_income);
 
         //property size input
-        landArea = findViewById(R.id.land_size_input);
+        landAreaInput = findViewById(R.id.land_size_input);
         builtUpArea = findViewById(R.id.built_area_input);
 
         //CAR PARKING COVERED
@@ -180,6 +224,8 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         rentalIndusSub = findViewById(R.id.rental_indus_sub);
         rentalIndusBuild = findViewById(R.id.rental_indus_building_group);
 
+        pgRentSub = findViewById(R.id.pg_rent_sub);
+
         pgRentLayout =findViewById(R.id.pg_rent_layout);
 
         cityInput = findViewById(R.id.ads_area_input);
@@ -207,11 +253,25 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 chooseImage();
                 break;
             case R.id.payment_btn:
-                if(checkAddress() && checkArea() && checkDoor() && checkBhk() && checkFloor()){
-                    Intent i = new Intent(AdsActivity.this,HomeActivity.class);
-                    i.setAction(getString(R.string.POST_AD));
-                    startActivity(i);
-                }
+                startIntent();
+                /*if(checkAddress() && checkLocation() && checkDoor()){
+                    if(isBuiltUpVisible){
+                        if(checkBuiltUpArea()){
+                            startIntent();
+                        }
+                    }else if(isLandAreaVisible){
+                        if(checkLandArea()){
+                            startIntent();
+                        }
+                    }else if(isBuiltUpVisible && isLandAreaVisible){
+                        if(checkLandArea() && checkBuiltUpArea()){
+                            startIntent();
+                        }
+                    }else{
+                        Toast.makeText(AdsActivity.this,"Please Check the inputs",Toast.LENGTH_SHORT).show();
+                    }
+                  startIntent();
+                }*/
                 break;
             case R.id.ads_area_input:
                 getLocation();
@@ -219,6 +279,11 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         }
     }
 
+    private void startIntent(){
+        Intent i = new Intent(AdsActivity.this,HomeActivity.class);
+        i.setAction(getString(R.string.POST_AD));
+        startActivity(i);
+    }
     private void getLocation(){
         try {
             AutocompleteFilter filter = new AutocompleteFilter.Builder().setCountry("IN").build();
@@ -233,6 +298,23 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         }
     }
 
+    private  boolean checkLandArea(){
+        if(landAreaInput.getText().toString().trim().length() > 0){
+            SellerAd.getInstance().adsLandArea = landAreaInput.getText().toString().trim();
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    private boolean checkBuiltUpArea(){
+        if(builtUpArea.getText().toString().trim().length() > 0){
+            SellerAd.getInstance().adsBuiltUpArea = builtUpArea.getText().toString().trim();
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     private boolean checkBhk(){
         if(bhkInput.getText().toString().trim().length() > 0){
@@ -261,7 +343,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         }
     }
 
-    private boolean checkArea(){
+    private boolean checkLocation(){
         if(cityInput.getText().toString().length() > 0){
             SellerAd.getInstance().adsLocation = cityInput.getText().toString().trim();
             return true;
@@ -307,10 +389,9 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 pgRentButton.setVisibility(View.VISIBLE);
                 roiLayout.setVisibility(View.GONE);
                 rentalIncrementalLayout.setVisibility(View.GONE);
-                leaseStartInput.setVisibility(View.GONE);
-                leaseEndInput.setVisibility(View.GONE);
                 advanceDeposit.setVisibility(View.GONE);
                 petsLayout.setVisibility(View.GONE);
+                budgetInput.setHint(getString(R.string.ads_price_header));
                 break;
             case R.id.rent_btn:
                 SellerAd.getInstance().adsSellOrRent = getString(R.string.RENT);
@@ -319,10 +400,10 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 pgRentButton.setVisibility(View.VISIBLE);
                 roiLayout.setVisibility(View.GONE);
                 rentalIncrementalLayout.setVisibility(View.GONE);
-                leaseStartInput.setVisibility(View.GONE);
-                leaseEndInput.setVisibility(View.GONE);
                 advanceDeposit.setVisibility(View.GONE);
                 petsLayout.setVisibility(View.GONE);
+                budgetInput.setHint(getString(R.string.rent));
+                adsBudgetHeader.setText(getString(R.string.rent));
                 break;
             case R.id.resi_radio_btn:
                 resiSub.setVisibility(View.VISIBLE);
@@ -332,11 +413,12 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 pgRentLayout.setVisibility(View.GONE);
                 roiLayout.setVisibility(View.GONE);
                 rentalIncrementalLayout.setVisibility(View.GONE);
-                leaseStartInput.setVisibility(View.GONE);
-                leaseEndInput.setVisibility(View.GONE);
+                rentalStart.setVisibility(View.GONE);
+                rentalEnd.setVisibility(View.GONE);
                 advanceDeposit.setVisibility(View.GONE);
                 rentalIncomeType.setVisibility(View.GONE);
                 indusIndependentGroup.setVisibility(View.GONE);
+                tenantPreferances.setVisibility(View.GONE);
                 break;
             case R.id.comm_radio_btn:
                 resiSub.setVisibility(View.GONE);
@@ -346,12 +428,15 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 pgRentLayout.setVisibility(View.GONE);
                 roiLayout.setVisibility(View.GONE);
                 rentalIncrementalLayout.setVisibility(View.GONE);
-                leaseStartInput.setVisibility(View.GONE);
-                leaseEndInput.setVisibility(View.GONE);
+                rentalStart.setVisibility(View.GONE);
+                rentalEnd.setVisibility(View.GONE);
                 advanceDeposit.setVisibility(View.GONE);
                 rentalIncomeType.setVisibility(View.GONE);
                 rentalIncomeType.setVisibility(View.GONE);
                 indusIndependentGroup.setVisibility(View.GONE);
+                tenantPreferances.setVisibility(View.GONE);
+                noOfHouse.setVisibility(View.GONE);
+                totalFloors.setVisibility(View.GONE);
                 break;
             case R.id.indus_radio_btn:
                 resiSub.setVisibility(View.GONE);
@@ -361,36 +446,47 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 pgRentLayout.setVisibility(View.GONE);
                 roiLayout.setVisibility(View.GONE);
                 rentalIncrementalLayout.setVisibility(View.GONE);
-                leaseStartInput.setVisibility(View.GONE);
-                leaseEndInput.setVisibility(View.GONE);
+                rentalStart.setVisibility(View.GONE);
+                rentalEnd.setVisibility(View.GONE);
                 advanceDeposit.setVisibility(View.GONE);
                 rentalIncomeType.setVisibility(View.GONE);
                 rentalIncomeType.setVisibility(View.GONE);
                 indusIndependentGroup.setVisibility(View.GONE);
+                tenantPreferances.setVisibility(View.GONE);
+                noOfHouse.setVisibility(View.GONE);
+                totalFloors.setVisibility(View.GONE);
                 break;
             case R.id.indus_floorspace:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.industrial_floorspace);
                 builtUpAreaLayout.setVisibility(View.VISIBLE);
                 landAreaLayout.setVisibility(View.GONE);
                 flooringLayout.setVisibility(View.VISIBLE);
+                isBuiltUpVisible = true;
+                isLandAreaVisible = false;
                 break;
             case R.id.rental_indus_floorspace:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.rental_industrial_floorspace);
                 builtUpAreaLayout.setVisibility(View.VISIBLE);
                 landAreaLayout.setVisibility(View.GONE);
                 flooringLayout.setVisibility(View.VISIBLE);
+                isBuiltUpVisible = true;
+                isLandAreaVisible = false;
                 break;
             case R.id.indus_independent:
                 builtUpAreaLayout.setVisibility(View.VISIBLE);
                 landAreaLayout.setVisibility(View.VISIBLE);
                 indusIndependentGroup.setVisibility(View.VISIBLE);
                 flooringLayout.setVisibility(View.GONE);
+                isBuiltUpVisible = true;
+                isLandAreaVisible = true;
                 break;
             case R.id.rental_indus_independent:
                 builtUpAreaLayout.setVisibility(View.VISIBLE);
                 landAreaLayout.setVisibility(View.VISIBLE);
                 rentalIndusIndependentGroup.setVisibility(View.VISIBLE);
                 flooringLayout.setVisibility(View.GONE);
+                isBuiltUpVisible = true;
+                isLandAreaVisible = true;
                 break;
             case R.id.ins_radio_btn:
                 resiSub.setVisibility(View.GONE);
@@ -400,16 +496,18 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 pgRentLayout.setVisibility(View.GONE);
                 roiLayout.setVisibility(View.GONE);
                 rentalIncrementalLayout.setVisibility(View.GONE);
-                leaseStartInput.setVisibility(View.GONE);
-                leaseEndInput.setVisibility(View.GONE);
+                rentalStart.setVisibility(View.GONE);
+                rentalEnd.setVisibility(View.GONE);
                 advanceDeposit.setVisibility(View.GONE);
                 rentalIncomeType.setVisibility(View.GONE);
                 rentalIncomeType.setVisibility(View.GONE);
                 builtUpAreaLayout.setVisibility(View.VISIBLE);
                 landAreaLayout.setVisibility(View.VISIBLE);
-                break;
-            case R.id.ins_land:
-                builtUpAreaLayout.setVisibility(View.GONE);
+                tenantPreferances.setVisibility(View.GONE);
+                noOfHouse.setVisibility(View.GONE);
+                totalFloors.setVisibility(View.GONE);
+                isBuiltUpVisible = true;
+                isLandAreaVisible = true;
                 break;
             case R.id.ins_building:
                 builtUpAreaLayout.setVisibility(View.VISIBLE);
@@ -424,11 +522,12 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 furnishedLayout.setVisibility(View.VISIBLE);
                 roiLayout.setVisibility(View.GONE);
                 rentalIncrementalLayout.setVisibility(View.GONE);
-                leaseStartInput.setVisibility(View.GONE);
-                leaseEndInput.setVisibility(View.GONE);
+                rentalStart.setVisibility(View.GONE);
+                rentalEnd.setVisibility(View.GONE);
                 advanceDeposit.setVisibility(View.GONE);
                 rentalIncomeType.setVisibility(View.GONE);
                 rentalIncomeType.setVisibility(View.GONE);
+                pgRentSub.setVisibility(View.VISIBLE);
                 break;
             case R.id.resi_building:
                 resiBuild.setVisibility(View.VISIBLE);
@@ -444,6 +543,10 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 builtUpAreaLayout.setVisibility(View.GONE);
                 landAreaLayout.setVisibility(View.VISIBLE);
                 flooringLayout.setVisibility(View.GONE);
+                noOfHouse.setVisibility(View.GONE);
+                totalFloors.setVisibility(View.GONE);
+                isBuiltUpVisible = false;
+                isLandAreaVisible = true;
                 break;
             case R.id.resi_independent:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.residential_independent);
@@ -451,6 +554,10 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 landAreaLayout.setVisibility(View.VISIBLE);
                 flooringLayout.setVisibility(View.GONE);
                 bhkLayout.setVisibility(View.VISIBLE);
+                noOfHouse.setVisibility(View.GONE);
+                totalFloors.setVisibility(View.GONE);
+                isBuiltUpVisible = true;
+                isLandAreaVisible = true;
                 break;
             case R.id.rental_resi_independent:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.rental_residential_independent);
@@ -458,6 +565,8 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 landAreaLayout.setVisibility(View.VISIBLE);
                 flooringLayout.setVisibility(View.GONE);
                 bhkLayout.setVisibility(View.VISIBLE);
+                isBuiltUpVisible = true;
+                isLandAreaVisible = true;
                 break;
             case R.id.resi_apartments:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.residential_apartments);
@@ -465,9 +574,11 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 landAreaLayout.setVisibility(View.GONE);
                 flooringLayout.setVisibility(View.VISIBLE);
                 bhkLayout.setVisibility(View.VISIBLE);
-                if(SellerAd.getInstance().adsSellOrRent.equals(getString(R.string.rent_text))){
-                    petsLayout.setVisibility(View.VISIBLE);
-                }
+                petsLayout.setVisibility(View.VISIBLE);
+                noOfHouse.setVisibility(View.VISIBLE);
+                totalFloors.setVisibility(View.VISIBLE);
+                isBuiltUpVisible = true;
+                isLandAreaVisible = false;
                 break;
             case R.id.rental_resi_apartments:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.rental_residential_apartments);
@@ -476,6 +587,10 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 flooringLayout.setVisibility(View.VISIBLE);
                 petsLayout.setVisibility(View.VISIBLE);
                 bhkLayout.setVisibility(View.VISIBLE);
+                noOfHouse.setVisibility(View.VISIBLE);
+                totalFloors.setVisibility(View.VISIBLE);
+                isBuiltUpVisible = true;
+                isLandAreaVisible = false;
                 break;
             case R.id.comm_building:
                 resiBuild.setVisibility(View.GONE);
@@ -492,6 +607,8 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 builtUpAreaLayout.setVisibility(View.GONE);
                 landAreaLayout.setVisibility(View.VISIBLE);
                 flooringLayout.setVisibility(View.GONE);
+                isBuiltUpVisible = false;
+                isLandAreaVisible = true;
                 break;
             case R.id.comm_independent:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.commercial_independent);
@@ -499,6 +616,8 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 landAreaLayout.setVisibility(View.VISIBLE);
                 flooringLayout.setVisibility(View.GONE);
                 bhkLayout.setVisibility(View.GONE);
+                isBuiltUpVisible = true;
+                isLandAreaVisible = true;
                 break;
             case R.id.rental_comm_independent:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.rental_commercial_independent);
@@ -506,6 +625,8 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 landAreaLayout.setVisibility(View.VISIBLE);
                 flooringLayout.setVisibility(View.GONE);
                 bhkLayout.setVisibility(View.GONE);
+                isBuiltUpVisible = true;
+                isLandAreaVisible = true;
                 break;
             case R.id.comm_floorspace:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.commercial_floorspace);
@@ -513,6 +634,8 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 landAreaLayout.setVisibility(View.GONE);
                 flooringLayout.setVisibility(View.VISIBLE);
                 bhkLayout.setVisibility(View.GONE);
+                isBuiltUpVisible = true;
+                isLandAreaVisible = false;
                 break;
             case R.id.rental_comm_floorspace:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.rental_commercial_floorspace);
@@ -520,6 +643,8 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 landAreaLayout.setVisibility(View.GONE);
                 flooringLayout.setVisibility(View.VISIBLE);
                 bhkLayout.setVisibility(View.GONE);
+                isBuiltUpVisible = true;
+                isLandAreaVisible = false;
                 break;
             case R.id.indus_land:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.industrial_land);
@@ -528,6 +653,8 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 builtUpAreaLayout.setVisibility(View.GONE);
                 landAreaLayout.setVisibility(View.VISIBLE);
                 flooringLayout.setVisibility(View.GONE);
+                isBuiltUpVisible = false;
+                isLandAreaVisible = true;
                 break;
             case R.id.indus_building:
                 resiBuild.setVisibility(View.GONE);
@@ -577,13 +704,17 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 Log.d("TEST","REACH00ED");
                 break;
             case R.id.ads_rental_income:
+                bhkLayout.setVisibility(View.GONE);
+                builtUpAreaLayout.setVisibility(View.GONE);
+                landAreaLayout.setVisibility(View.GONE);
                 roiLayout.setVisibility(View.VISIBLE);
                 rentalIncomeType.setVisibility(View.VISIBLE);
                 roiLayout.setVisibility(View.VISIBLE);
                 rentalIncrementalLayout.setVisibility(View.VISIBLE);
-                leaseStartInput.setVisibility(View.VISIBLE);
-                leaseEndInput.setVisibility(View.VISIBLE);
+                rentalStart.setVisibility(View.VISIBLE);
+                rentalEnd.setVisibility(View.VISIBLE);
                 advanceDeposit.setVisibility(View.VISIBLE);
+                budgetInput.setHint(getString(R.string.rent));
                 break;
             case R.id.rental_resi_radio_btn:
                 rentalResiSub.setVisibility(View.VISIBLE);
@@ -598,6 +729,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 rentalInsSub.setVisibility(View.GONE);
                 rentalIndusSub.setVisibility(View.GONE);
                 pgRentLayout.setVisibility(View.GONE);
+                tenantPreferances.setVisibility(View.GONE);
                 break;
             case R.id.rental_indus_radio_btn:
                 rentalResiSub.setVisibility(View.GONE);
@@ -606,6 +738,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 rentalIndusSub.setVisibility(View.VISIBLE);
                 pgRentLayout.setVisibility(View.GONE);
                 bhkLayout.setVisibility(View.GONE);
+                tenantPreferances.setVisibility(View.GONE);
                 break;
             case R.id.rental_ins_radio_btn:
                 rentalResiSub.setVisibility(View.GONE);
@@ -614,18 +747,22 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 rentalIndusSub.setVisibility(View.GONE);
                 pgRentLayout.setVisibility(View.GONE);
                 bhkLayout.setVisibility(View.GONE);
+                tenantPreferances.setVisibility(View.GONE);
                 break;
             case R.id.rental_resi_building:
                 rentalResiBuild.setVisibility(View.VISIBLE);
                 rentalCommBuild.setVisibility(View.GONE);
                 rentalIndusBuild.setVisibility(View.GONE);
-                bhkLayout.setVisibility(View.VISIBLE);
+                bhkLayout.setVisibility(View.GONE);
                 furnishedLayout.setVisibility(View.VISIBLE);
+                //tenantPreferances.setVisibility(View.VISIBLE);
                 break;
             case R.id.rental_resi_land:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.rental_residential_land);
                 bhkLayout.setVisibility(View.GONE);
                 furnishedLayout.setVisibility(View.GONE);
+                isBuiltUpVisible = false;
+                isLandAreaVisible = true;
                 break;
             case R.id.rental_comm_building:
                 rentalResiBuild.setVisibility(View.GONE);
@@ -633,16 +770,21 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 rentalIndusBuild.setVisibility(View.GONE);
                 bhkLayout.setVisibility(View.GONE);
                 furnishedLayout.setVisibility(View.VISIBLE);
+                tenantPreferances.setVisibility(View.GONE);
                 break;
             case R.id.rental_comm_land:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.rental_commercial_land);
                 bhkLayout.setVisibility(View.GONE);
                 furnishedLayout.setVisibility(View.GONE);
+                isBuiltUpVisible = false;
+                isLandAreaVisible = true;
                 break;
             case R.id.rental_indus_land:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.rental_industrial_land);
                 bhkLayout.setVisibility(View.GONE);
                 furnishedLayout.setVisibility(View.GONE);
+                isBuiltUpVisible = false;
+                isLandAreaVisible = true;
                 break;
             case R.id.rental_indus_building:
                 rentalResiBuild.setVisibility(View.GONE);
@@ -651,12 +793,24 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 bhkLayout.setVisibility(View.GONE);
                 furnishedLayout.setVisibility(View.VISIBLE);
                 break;
+            case R.id.ads_farm_land:
+                bhkLayout.setVisibility(View.GONE);
+                furnishedLayout.setVisibility(View.GONE);
+                rentalFarmLandSub.setVisibility(View.GONE);
+                rentalPgServiceSub.setVisibility(View.GONE);
+                farmLandGroup.setVisibility(View.VISIBLE);
+                break;
+            case R.id.farm_land_land:
+                SellerAd.getInstance().adsPropertyType = getString(R.string.farm_land_land);
+                break;
+            case R.id.farm_land_building:
+                SellerAd.getInstance().adsPropertyType = getString(R.string.farm_land_building);
+                break;
             case R.id.rental_ads_farm_land:
                 rentalResiBuild.setVisibility(View.GONE);
                 rentalCommBuild.setVisibility(View.GONE);
-                rentalIndusBuild.setVisibility(View.VISIBLE);
                 bhkLayout.setVisibility(View.GONE);
-                furnishedLayout.setVisibility(View.VISIBLE);
+                furnishedLayout.setVisibility(View.GONE);
                 rentalFarmLandSub.setVisibility(View.VISIBLE);
                 rentalPgServiceSub.setVisibility(View.GONE);
                 break;
@@ -672,15 +826,33 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.rental_pg_independent:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.rental_pg_independent);
+                isBuiltUpVisible = true;
+                isLandAreaVisible = true;
                 break;
             case R.id.rental_pg_apartments:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.rental_pg_apartments);
+                isBuiltUpVisible = true;
+                isLandAreaVisible = false;
                 break;
             case R.id.rental_farm_land:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.rental_farm_land);
                 break;
             case R.id.rental_farm_building:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.rental_farm_building);
+                break;
+            case R.id.ins_school:
+                SellerAd.getInstance().adsPropertyType = getString(R.string.school);
+                break;
+            case R.id.ins_hospital:
+                SellerAd.getInstance().adsPropertyType = getString(R.string.hospital);
+                break;
+            case R.id.ins_college:
+                SellerAd.getInstance().adsPropertyType = getString(R.string.college);
+                break;
+            case R.id.ins_land:
+                builtUpAreaLayout.setVisibility(View.GONE);
+                isBuiltUpVisible = false;
+                isLandAreaVisible = true;
                 break;
             case R.id.rental_ins_college:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.rental_college);
@@ -692,6 +864,8 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 SellerAd.getInstance().adsPropertyType = getString(R.string.rental_college);
                 break;
             case R.id.rental_ins_land:
+                isBuiltUpVisible = false;
+                isLandAreaVisible = true;
                 SellerAd.getInstance().adsPropertyType = getString(R.string.rental_institutional_land);
                 break;
             case R.id.rental_ads_indus_ware_house:
@@ -722,7 +896,6 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 SellerAd.getInstance().adsRoiIncrementPeriod = "3";
                 incrementCustomInput.setVisibility(View.GONE);
                 break;
-
         }
     }
 
@@ -746,9 +919,19 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         switch(v.getId()){
             case R.id.covered_parking_check:
                 SellerAd.getInstance().adsCovCarParking = setData((CheckBox)v);
+                if(((CheckBox)v).isChecked()){
+                    covPicker.setVisibility(View.VISIBLE);
+                }else{
+                    covPicker.setVisibility(View.GONE);
+                }
                 break;
             case R.id.un_cov_car_park:
                SellerAd.getInstance().adsUnCovParking = setData((CheckBox)v);
+                if(((CheckBox)v).isChecked()){
+                    unCovPicker.setVisibility(View.VISIBLE);
+                }else{
+                    unCovPicker.setVisibility(View.GONE);
+                }
                 break;
             case R.id.metro_check:
                 SellerAd.getInstance().adsMetroWater =  setData((CheckBox)v);
@@ -782,6 +965,27 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.play_area:
                 SellerAd.getInstance().adsPlayArea = setData((CheckBox)v);
+                break;
+            case R.id.ads_cmda_btn:
+                SellerAd.getInstance().adsCdmaApproved = setData((CheckBox)v);
+                break;
+            case R.id.ads_dtcp_btn:
+                SellerAd.getInstance().adsDtcpApproved = setData((CheckBox)v);
+                break;
+            case R.id.ads_corp:
+                SellerAd.getInstance().adsCorpApproved = setData((CheckBox)v);
+                break;
+            case R.id.ads_panchayat:
+                SellerAd.getInstance().adsPanchApproved = setData((CheckBox)v);
+                break;
+            case R.id.ads_commercial:
+                SellerAd.getInstance().adsCommApproved = setData((CheckBox)v);
+                break;
+            case R.id.ads_industrial:
+                SellerAd.getInstance().adsIndusApproved = setData((CheckBox)v);
+                break;
+            case R.id.ads_rera_btn:
+                SellerAd.getInstance().adsReraApproved = setData((CheckBox)v);
                 break;
         }
     }

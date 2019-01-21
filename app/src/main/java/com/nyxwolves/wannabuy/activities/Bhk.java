@@ -18,18 +18,22 @@ public class Bhk extends AppCompatActivity {
 
     Button nextBtn;
     TextView modeHeader;
-    EditText restOne,restTwo,restThree,restFour,restFive;
+    EditText restOne, restTwo, restThree, restFour, restFive;
 
-    String BHK = "0";
+    boolean oneSelected = false;
+    boolean twoSelected = false;
+    boolean threeSelected = false;
+    boolean fourSelected = false;
+    boolean fiveSelected = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bhk);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        modeHeader =  findViewById(R.id.bhk_mode);
+        modeHeader = findViewById(R.id.bhk_mode);
         modeHeader.setText(Requirements.getInstance().buyorRent);
 
         restOne = findViewById(R.id.min_rest_room_one);
@@ -42,66 +46,58 @@ public class Bhk extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //if(!BHK.equals("0")){
-                    Requirements.getInstance().bhk = BHK;
-                    if(Requirements.getInstance().subType.equals(getString(R.string.residential_independent)) ||
-                            Requirements.getInstance().subType.equals(getString(R.string.pg_rent_independent))){
-                        startActivity(new Intent(Bhk.this,CarParking.class));
+                //if(oneSelected || twoSelected || threeSelected || fourSelected || fiveSelected){
 
-                    }else if(Requirements.getInstance().subType.equals(getString(R.string.apartments)) ||
-                            Requirements.getInstance().subType.equals(getString(R.string.pg_rent_apartment)) ||
-                            Requirements.getInstance().subType.equals(getString(R.string.commercial_floorspace)) ||
-                            Requirements.getInstance().subType.equals(getString(R.string.industrial_floorspace))){
-                        startActivity(new Intent(Bhk.this,FlooringActivity.class));
+                if (Requirements.getInstance().subType.equals(getString(R.string.residential_independent)) ||
+                        Requirements.getInstance().subType.equals(getString(R.string.pg_rent_independent))) {
+                    startActivity(new Intent(Bhk.this, CarParking.class));
 
-                    }else{
-                        startActivity(new Intent(Bhk.this,FacingActivity.class));
+                } else if (Requirements.getInstance().subType.equals(getString(R.string.apartments)) ||
+                        Requirements.getInstance().subType.equals(getString(R.string.pg_rent_apartment)) ||
+                        Requirements.getInstance().subType.equals(getString(R.string.commercial_floorspace)) ||
+                        Requirements.getInstance().subType.equals(getString(R.string.industrial_floorspace))) {
+                    startActivity(new Intent(Bhk.this, FlooringActivity.class));
 
-                    }
+                } else {
+                    startActivity(new Intent(Bhk.this, FacingActivity.class));
+
+                }
 
                 //}else{
-                    //Toast.makeText(Bhk.this,"Choose number of rooms",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Bhk.this,"Choose number of rooms",Toast.LENGTH_SHORT).show();
                 //}
             }
         });
     }
 
-    public void onCheckBoxClicked(View v){
-        switch (v.getId()){
+    private boolean setData(CheckBox checkBox, String data, EditText editText) {
+        if (checkBox.isChecked()) {
+            Requirements.getInstance().bhkList.add(data);
+            editText.setVisibility(View.VISIBLE);
+            return true;
+        } else {
+            Requirements.getInstance().bhkList.remove(data);
+            editText.setVisibility(View.GONE);
+            return false;
+        }
+    }
+
+    public void onCheckBoxClicked(View v) {
+        switch (v.getId()) {
             case R.id.bhk_one:
-                if(((CheckBox)v).isChecked()){
-                    restOne.setVisibility(View.VISIBLE);
-                }else{
-                    restOne.setVisibility(View.GONE);
-                }
+                oneSelected = setData((CheckBox) v, "1", restOne);
                 break;
             case R.id.bhk_two:
-                if(((CheckBox)v).isChecked()){
-                    restTwo.setVisibility(View.VISIBLE);
-                }else{
-                    restTwo.setVisibility(View.GONE);
-                }
+                twoSelected = setData((CheckBox) v, "2", restTwo);
                 break;
             case R.id.bhk_three:
-                if(((CheckBox)v).isChecked()){
-                    restThree.setVisibility(View.VISIBLE);
-                }else{
-                    restThree.setVisibility(View.GONE);
-                }
+                threeSelected = setData((CheckBox) v, "3", restThree);
                 break;
             case R.id.bhk_four:
-                if(((CheckBox)v).isChecked()){
-                    restFour.setVisibility(View.VISIBLE);
-                }else{
-                    restFour.setVisibility(View.GONE);
-                }
+                threeSelected = setData((CheckBox) v, "4", restFour);
                 break;
             case R.id.bhk_five:
-                if(((CheckBox)v).isChecked()){
-                    restFive.setVisibility(View.VISIBLE);
-                }else{
-                    restFive.setVisibility(View.GONE);
-                }
+                fiveSelected = setData((CheckBox) v, "5", restFive);
                 break;
         }
     }

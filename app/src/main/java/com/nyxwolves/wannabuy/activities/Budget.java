@@ -246,7 +246,7 @@ public class Budget extends AppCompatActivity {
                                 Requirements.getInstance().rentalPgApartments.equals(getString(R.string.yes))) {
                             startActivity(new Intent(Budget.this, FurnishedOrNot.class));
 
-                        } else if (Requirements.getInstance().subType.equals(getString(R.string.apartments)) ||
+                        } else if (Requirements.getInstance().subType.equals(getString(R.string.residential_apartments)) ||
                                 Requirements.getInstance().subType.equals(getString(R.string.pg_rent_apartment))) {
                             startActivity(new Intent(Budget.this, Bhk.class));
 

@@ -27,7 +27,7 @@ import java.util.Map;
 
 public class RequirementHelper {
     private Context ctx;
-    private HashMap<String,String> params = new HashMap<String,String>();
+    private JSONObject params = new JSONObject();
     public static List<Requirements> reqDataList = new ArrayList<>();
 
 
@@ -39,8 +39,8 @@ public class RequirementHelper {
         String URL = "http://www.wannabuy.in/api/Requirements/create_requirement.php";
         getJson();
 
-        Log.d("REQ_JSON", new JSONObject(params).toString());
-        JsonObjectRequest createRequest = new JsonObjectRequest(Request.Method.POST, URL, new JSONObject(params), new Response.Listener<JSONObject>() {
+        Log.d("REQ_JSON", params.toString());
+        JsonObjectRequest createRequest = new JsonObjectRequest(Request.Method.POST, URL, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("REQ_RESPONSE_CREATED", response.toString());
@@ -78,23 +78,21 @@ public class RequirementHelper {
             params.put("PROPERTY_LOCATION_THREE",  Requirements.getInstance().locationThree.toUpperCase());
             params.put("PROPERTY_LOCATION_FOUR",  Requirements.getInstance().locationFour.toUpperCase());
             params.put("PROPERTY_LOCATION_FIVE",  Requirements.getInstance().locationFive.toUpperCase());
-            params.put("PROPERTY_TYPE",  Requirements.getInstance().type.toUpperCase());
-            params.put("PROPERTY_SUB_TYPE",  Requirements.getInstance().subType.toUpperCase());
+            params.put("PROPERTY_TYPE",  Requirements.getInstance().subType.toUpperCase());
             params.put("PROPERTY_SIZE_LAND_MIN",  Requirements.getInstance().minSizeLand.toUpperCase());
             params.put("PROPERTY_SIZE_LAND_MAX",  Requirements.getInstance().maxSizeLand.toUpperCase());
             params.put("PROPERTY_SIZE_BUILT_UP_MIN",  Requirements.getInstance().minSizeBuilding.toUpperCase());
             params.put("PROPERTY_SIZE_BUILT_UP_MAX",  Requirements.getInstance().maxSizeBuilding.toUpperCase());
-            params.put("BHK",  Requirements.getInstance().bhk);
-            params.put("FLOOR",  Requirements.getInstance().floor.toUpperCase());
+            params.put("BHK",getBhkList());
+            params.put("FLOOR",getFloorJson());
             params.put("BUDGET_MIN",  Requirements.getInstance().minBudget.toUpperCase());
             params.put("BUDGET_MAX",  Requirements.getInstance().maxBudget.toUpperCase());
             params.put("BUDGET_MAX_UNIT",  Requirements.getInstance().maxBudgetUnit.toUpperCase());
             params.put("BUDGET_MIN_UNIT",  Requirements.getInstance().minBudgetUnit.toUpperCase());
             params.put("AGE_MIN",  Requirements.getInstance().minAge.toUpperCase());
             params.put("AGE_MAX",  Requirements.getInstance().maxAge.toUpperCase());
-            params.put("NEW",  Requirements.getInstance().isNew.toUpperCase());
-            params.put("RESALE",  Requirements.getInstance().isResale.toUpperCase());
-            params.put("MODE",  Requirements.getInstance().buyorRent.toUpperCase());
+            params.put("NEW_RESALE",  Requirements.getInstance().isNew.toUpperCase());
+            params.put("BUY_OR_RENT",  Requirements.getInstance().buyorRent.toUpperCase());
             params.put("FURNISHED",  Requirements.getInstance().furnished.toUpperCase());
             params.put("FACING_EAST",  Requirements.getInstance().facingEast.toUpperCase());
             params.put("FACING_WEST",  Requirements.getInstance().facingWest.toUpperCase());
@@ -112,7 +110,7 @@ public class RequirementHelper {
             params.put("SECURITY_GUARD",  Requirements.getInstance().securityGuard.toUpperCase());
             params.put("LIFT",  Requirements.getInstance().lift.toUpperCase());
             params.put("SWIMMING_POOL",  Requirements.getInstance().swimmingPool.toUpperCase());
-            params.put("CAFETRIA",  Requirements.getInstance().cafetria.toUpperCase());
+            params.put("CAFETERIA",  Requirements.getInstance().cafetria.toUpperCase());
             params.put("GARDEN",  Requirements.getInstance().garden.toUpperCase());
             params.put("WATER",  Requirements.getInstance().water.toUpperCase());
             params.put("PLAY_AREA",  Requirements.getInstance().playArea.toUpperCase());
@@ -122,13 +120,33 @@ public class RequirementHelper {
             params.put("UN_COV_CAR_PARKING",  Requirements.getInstance().isUnCovParking.toUpperCase());
             params.put("COV_PARKING_NUM",  Requirements.getInstance().noOfCovParking.toUpperCase());
             params.put("UN_COV_PARKING_NUM",  Requirements.getInstance().noOfUnCovParking.toUpperCase());
-            params.put("PG_RENT_TYPE",  Requirements.getInstance().pgRentType.toUpperCase());
+            params.put("PG_RENT_BOYS",  Requirements.getInstance().pgRentBoys.toUpperCase());
+            params.put("PG_RENT_GIRLS",  Requirements.getInstance().pgRentGirls.toUpperCase());
+            params.put("PG_RENT_SHORT_STAY",  Requirements.getInstance().pgRentShortStay.toUpperCase());
+            params.put("PG_RENT_FAMILY",  Requirements.getInstance().pgRentFamily.toUpperCase());
             params.put("PETS_ALLOWED",  Requirements.getInstance().petsAllowed.toUpperCase());
             params.put("ROAD_WIDTH_MIN",Requirements.getInstance().minRoadWidth.toUpperCase());
             params.put("ROAD_WIDTH_MAX",Requirements.getInstance().maxRoadWidth.toUpperCase());
+            params.put("MAINTENANCE_FEE",Requirements.getInstance().maintenanceFee.toUpperCase());
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private JSONArray getFloorJson(){
+        JSONArray floorArray = new JSONArray();
+        for(String floorNum : Requirements.getInstance().floorList){
+            floorArray.put(floorNum);
+        }
+        return floorArray;
+    }
+
+    private JSONArray getBhkList(){
+        JSONArray bhkArray = new JSONArray();
+        for(String bhk : Requirements.getInstance().bhkList){
+            bhkArray.put(bhk);
+        }
+        return bhkArray;
     }
 
     public void getRequirement(String option, String query) {
@@ -179,8 +197,8 @@ public class RequirementHelper {
                 tempData.locationOne = object.getString("PROPERTY_LOCATION_ONE");
                 tempData.minSizeLand = object.getString("PROPERTY_SIZE");
                 tempData.type = object.getString("PROPERTY_SUB_TYPE");
-                tempData.bhk = object.getString("BHK");
-                tempData.floor = object.getString("FLOOR");
+                //tempData.bhk = object.getString("BHK");
+                //tempData.floor = object.getString("FLOOR");
                 //tempData.facing = object.getString("FACING");
                 tempData.isNew = object.getString("NEW");
                 tempData.furnished = object.getString("ADDITIONAL");

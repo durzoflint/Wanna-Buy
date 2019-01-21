@@ -71,7 +71,7 @@ public class PropertySize extends AppCompatActivity implements View.OnClickListe
             builtUpAreaLayout.setVisibility(View.VISIBLE);
             bothVisible = true;
 
-        } else if (Requirements.getInstance().subType.equals(getString(R.string.apartments)) ||
+        } else if (Requirements.getInstance().subType.equals(getString(R.string.residential_apartments)) ||
                 Requirements.getInstance().subType.equals(getString(R.string.commercial_floorspace)) ||
                 Requirements.getInstance().subType.equals(getString(R.string.industrial_floorspace))) {
             landAreaLayout.setVisibility(View.GONE);

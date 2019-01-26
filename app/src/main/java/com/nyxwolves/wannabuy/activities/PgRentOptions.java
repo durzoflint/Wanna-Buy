@@ -30,36 +30,26 @@ public class PgRentOptions extends AppCompatActivity {
             }
         });
     }
-
+    private void setData(CheckBox v, String data){
+        if(v.isChecked()){
+            Requirements.getInstance().pgTypeList.add(data);
+        }else{
+            Requirements.getInstance().pgTypeList.remove(data);
+        }
+    }
     public void onCheckBoxClicked(View v){
         switch (v.getId()){
             case R.id.girls_btn:
-                if(((CheckBox)v).isChecked()){
-                    Requirements.getInstance().pgRentGirls = getString(R.string.girls);
-                }else{
-                    Requirements.getInstance().pgRentGirls = getString(R.string.not_set_text);
-                }
+                setData((CheckBox)v, getString(R.string.girls));
                 break;
             case R.id.boys_btn:
-                if(((CheckBox)v).isChecked()){
-                    Requirements.getInstance().pgRentBoys = getString(R.string.boys);
-                }else{
-                    Requirements.getInstance().pgRentBoys = getString(R.string.not_set_text);
-                }
-                break;
+               setData((CheckBox)v, getString(R.string.boys));
+               break;
             case R.id.family:
-                if(((CheckBox)v).isChecked()){
-                    Requirements.getInstance().pgRentFamily = getString(R.string.family);
-                }else{
-                    Requirements.getInstance().pgRentFamily = getString(R.string.not_set_text);
-                }
+                setData((CheckBox)v, getString(R.string.family));
                 break;
             case R.id.short_stay:
-                if(((CheckBox)v).isChecked()){
-                    Requirements.getInstance().pgRentShortStay = getString(R.string.short_stay);
-                }else{
-                    Requirements.getInstance().pgRentShortStay = getString(R.string.not_set_text);
-                }
+                setData((CheckBox)v, getString(R.string.short_stay));
                 break;
         }
     }

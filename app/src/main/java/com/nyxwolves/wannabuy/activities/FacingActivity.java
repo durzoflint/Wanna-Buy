@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,31 +49,26 @@ public class FacingActivity extends AppCompatActivity {
         });
     }
 
+    private void setData(CheckBox v, String data){
+        if(v.isChecked()){
+            Requirements.getInstance().facingList.add(data);
+        }else{
+            Requirements.getInstance().facingList.remove(data);
+        }
+    }
     public void onCheckBoxClicked(View v){
         switch (v.getId()){
             case R.id.north_check_box:
-                Requirements.getInstance().facingNorth = getString(R.string.yes);
-                Requirements.getInstance().facingSouth = getString(R.string.no);
-                Requirements.getInstance().facingEast = getString(R.string.no);
-                Requirements.getInstance().facingWest = getString(R.string.no);
+               setData((CheckBox)v,getString(R.string.north_text));
                 break;
             case R.id.south_check_box:
-                Requirements.getInstance().facingNorth = getString(R.string.no);
-                Requirements.getInstance().facingSouth = getString(R.string.yes);
-                Requirements.getInstance().facingEast = getString(R.string.no);
-                Requirements.getInstance().facingWest = getString(R.string.no);
+                setData((CheckBox)v,getString(R.string.south_text));
                 break;
             case R.id.west_check_box:
-                Requirements.getInstance().facingNorth = getString(R.string.no);
-                Requirements.getInstance().facingSouth = getString(R.string.no);
-                Requirements.getInstance().facingEast = getString(R.string.no);
-                Requirements.getInstance().facingWest = getString(R.string.yes);
+                setData((CheckBox)v,getString(R.string.west_text));
                 break;
             case R.id.east_check_box:
-                Requirements.getInstance().facingNorth = getString(R.string.no);
-                Requirements.getInstance().facingSouth = getString(R.string.no);
-                Requirements.getInstance().facingEast = getString(R.string.yes);
-                Requirements.getInstance().facingWest = getString(R.string.no);
+                setData((CheckBox)v,getString(R.string.east_text));
                 break;
         }
     }

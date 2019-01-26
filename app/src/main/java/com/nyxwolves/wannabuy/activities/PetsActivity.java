@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.nyxwolves.wannabuy.POJO.Requirements;
@@ -34,6 +35,17 @@ public class PetsActivity extends AppCompatActivity {
                 startActivity(new Intent(PetsActivity.this,ApprovalActivity.class));
             }
         });
+    }
+
+    public void onCheckBoxClicked(View v){
+        switch (v.getId()){
+            case R.id.pets_yes:
+                if(((CheckBox)v).isChecked()){
+                    Requirements.getInstance().facilitiesList.add(getString(R.string.pets_allowed));
+                }else{
+                    Requirements.getInstance().facilitiesList.remove(getString(R.string.pets_allowed));
+                }
+        }
     }
 
 }

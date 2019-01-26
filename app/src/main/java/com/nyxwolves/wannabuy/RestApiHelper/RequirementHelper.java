@@ -94,41 +94,20 @@ public class RequirementHelper {
             params.put("NEW_RESALE",  Requirements.getInstance().isNew.toUpperCase());
             params.put("BUY_OR_RENT",  Requirements.getInstance().buyorRent.toUpperCase());
             params.put("FURNISHED",  Requirements.getInstance().furnished.toUpperCase());
-            params.put("FACING_EAST",  Requirements.getInstance().facingEast.toUpperCase());
-            params.put("FACING_WEST",  Requirements.getInstance().facingWest.toUpperCase());
-            params.put("FACING_SOUTH",  Requirements.getInstance().facingSouth.toUpperCase());
-            params.put("FACING_NORTH",  Requirements.getInstance().facingNorth.toUpperCase());
-            params.put("CDMA_APPROVED",  Requirements.getInstance().cdmaApproved.toUpperCase());
-            params.put("DTCP_APPROVED",  Requirements.getInstance().dtcpApproved.toUpperCase());
-            params.put("CORP_APPROVED",  Requirements.getInstance().corporationApproved.toUpperCase());
-            params.put("PANCH_APPROVED",  Requirements.getInstance().panchayatApproved.toUpperCase());
-            params.put("COMM_APPROVED",  Requirements.getInstance().commercialApproved.toUpperCase());
-            params.put("INDUS_APPROVED",  Requirements.getInstance().industrialApproved.toUpperCase());
-            params.put("RERA_APPROVED",  Requirements.getInstance().reraApproved.toUpperCase());
-            params.put("GYM",  Requirements.getInstance().gym.toUpperCase());
-            params.put("POWER_BACKUP",  Requirements.getInstance().powerBackup.toUpperCase());
-            params.put("SECURITY_GUARD",  Requirements.getInstance().securityGuard.toUpperCase());
-            params.put("LIFT",  Requirements.getInstance().lift.toUpperCase());
-            params.put("SWIMMING_POOL",  Requirements.getInstance().swimmingPool.toUpperCase());
-            params.put("CAFETERIA",  Requirements.getInstance().cafetria.toUpperCase());
-            params.put("GARDEN",  Requirements.getInstance().garden.toUpperCase());
-            params.put("WATER",  Requirements.getInstance().water.toUpperCase());
-            params.put("PLAY_AREA",  Requirements.getInstance().playArea.toUpperCase());
-            params.put("GROUND_WATER",  Requirements.getInstance().groundWater.toUpperCase());
-            params.put("CORP_WATER",  Requirements.getInstance().corporationWater.toUpperCase());
-            params.put("DRAINAGE_CONNECTION",  Requirements.getInstance().drainageConnection.toUpperCase());
+            params.put("FACING",getFacingList());
+            params.put("APPROVAL",getApprovalList());
+            params.put("FACILITIES",getFacilitiesList());
             params.put("COV_CAR_PARKING",  Requirements.getInstance().isCovparking.toUpperCase());
             params.put("UN_COV_CAR_PARKING",  Requirements.getInstance().isUnCovParking.toUpperCase());
             params.put("COV_PARKING_NUM",  Requirements.getInstance().noOfCovParking.toUpperCase());
             params.put("UN_COV_PARKING_NUM",  Requirements.getInstance().noOfUnCovParking.toUpperCase());
-            params.put("PG_RENT_BOYS",  Requirements.getInstance().pgRentBoys.toUpperCase());
-            params.put("PG_RENT_GIRLS",  Requirements.getInstance().pgRentGirls.toUpperCase());
-            params.put("PG_RENT_SHORT_STAY",  Requirements.getInstance().pgRentShortStay.toUpperCase());
-            params.put("PG_RENT_FAMILY",  Requirements.getInstance().pgRentFamily.toUpperCase());
+            params.put("PG_TYPE",getPGList());
             params.put("PETS_ALLOWED",  Requirements.getInstance().petsAllowed.toUpperCase());
             params.put("ROAD_WIDTH_MIN",Requirements.getInstance().minRoadWidth.toUpperCase());
             params.put("ROAD_WIDTH_MAX",Requirements.getInstance().maxRoadWidth.toUpperCase());
             params.put("MAINTENANCE_FEE",Requirements.getInstance().maintenanceFee.toUpperCase());
+            params.put("VEG",Requirements.getInstance().isVeg.toUpperCase());
+            params.put("NON_VEG",Requirements.getInstance().isNonVeg.toUpperCase());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -148,6 +127,38 @@ public class RequirementHelper {
             bhkArray.put(bhk);
         }
         return bhkArray;
+    }
+
+    private JSONArray getFacilitiesList(){
+        JSONArray facilitiesArray = new JSONArray();
+        for(String facility : Requirements.getInstance().facilitiesList){
+            facilitiesArray.put(facility);
+        }
+        return facilitiesArray;
+    }
+
+    private JSONArray getApprovalList(){
+        JSONArray approvalArray = new JSONArray();
+        for(String approval : Requirements.getInstance().approvalList){
+            approvalArray.put(approval);
+        }
+        return approvalArray;
+    }
+
+    private JSONArray getFacingList(){
+        JSONArray facingarray = new JSONArray();
+        for(String direction : Requirements.getInstance().facingList){
+            facingarray.put(direction);
+        }
+        return facingarray;
+    }
+
+    private JSONArray getPGList(){
+        JSONArray pgList = new JSONArray();
+        for(String type : Requirements.getInstance().pgTypeList){
+            pgList.put(type);
+        }
+        return pgList;
     }
 
     public void getRequirement(String option, String query) {

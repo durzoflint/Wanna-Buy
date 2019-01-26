@@ -59,37 +59,36 @@ public class ApprovalActivity extends AppCompatActivity {
         }
     }
 
-    private String setData(CheckBox checkBox){
+    private void setData(CheckBox checkBox,String data){
         if(checkBox.isChecked()){
-            Log.d("APPROVAL","YES");
-            return getString(R.string.yes);
+            Requirements.getInstance().approvalList.add(data);
+
         }else{
-            Log.d("APPROVAL","NO");
-            return getString(R.string.no);
+            Requirements.getInstance().approvalList.remove(data);
         }
     }
     public void onCheckBoxClicked(View v){
         switch (v.getId()){
             case R.id.dtcp_btn:
-                Requirements.getInstance().dtcpApproved = setData((CheckBox)v);
+                setData((CheckBox)v,getString(R.string.dtcp_text));
                 break;
             case R.id.cmda_btn:
-                Requirements.getInstance().cdmaApproved = setData((CheckBox)v);
+                setData((CheckBox)v,getString(R.string.cdma_text));
                 break;
             case R.id.panchayat:
-                Requirements.getInstance().panchayatApproved = setData((CheckBox)v);
+                setData((CheckBox)v,getString(R.string.panchayat));
                 break;
             case R.id.corp:
-                Requirements.getInstance().corporationApproved = setData((CheckBox)v);
+                setData((CheckBox)v,getString(R.string.corporation));
                 break;
             case R.id.commercial:
-                Requirements.getInstance().commercialApproved = setData((CheckBox)v);
+                setData((CheckBox)v,getString(R.string.commercial));
                 break;
             case  R.id.industrial:
-                Requirements.getInstance().industrialApproved = setData((CheckBox)v);
+                setData((CheckBox)v,getString(R.string.industrial));
                 break;
             case R.id.rera:
-                Requirements.getInstance().reraApproved = setData((CheckBox)v);
+                setData((CheckBox)v,getString(R.string.rera_text));
                 break;
         }
     }
@@ -97,11 +96,6 @@ public class ApprovalActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Requirements.getInstance().cdmaApproved = getString(R.string.not_set_text);
-        Requirements.getInstance().dtcpApproved = getString(R.string.not_set_text);
-        Requirements.getInstance().corporationApproved = getString(R.string.not_set_text);
-        Requirements.getInstance().industrialApproved = getString(R.string.not_set_text);
-        Requirements.getInstance().panchayatApproved = getString(R.string.not_set_text);
-        Requirements.getInstance().reraApproved = getString(R.string.not_set_text);
+        Requirements.getInstance().approvalList.clear();
     }
 }

@@ -52,7 +52,7 @@ public class AdHelper {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("ADS_ERROR_CREATED", error.toString());
+                Toast.makeText(ctx, "Error Occurred", Toast.LENGTH_SHORT).show();
             }
         });
         CustomRequestQueue.getInstance(ctx).addRequest(createAdRequest);
@@ -114,6 +114,10 @@ public class AdHelper {
             createParams.put("GIRLS_HOSTEL_PRICE", SellerAd.getInstance().girlsHostelPrice.toUpperCase());
             createParams.put("WORKING_MEN_HOSTEL_PRICE", SellerAd.getInstance().workingMenHostelPrice.toUpperCase());
             createParams.put("WORKING_WOMEN_HOSTEL_PRICE", SellerAd.getInstance().workingWomenHostelPrice.toUpperCase());
+            createParams.put("VEG", SellerAd.getInstance().isVeg.toUpperCase());
+            createParams.put("NON_VEG", SellerAd.getInstance().isNonVeg.toUpperCase());
+            createParams.put("ROI_VALUE", SellerAd.getInstance().adsRoi.toUpperCase());
+            createParams.put("ROI_INCREMENT_PERIOD", SellerAd.getInstance().adsRoiIncrementPeriod.toUpperCase());
 
         } catch (Exception e) {
             e.printStackTrace();

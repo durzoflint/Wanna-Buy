@@ -260,8 +260,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 chooseImage();
                 break;
             case R.id.payment_btn:
-                startIntent();
-                /*if(checkAddress() && checkLocation() && checkDoor()){
+                if(checkAddress() && checkLocation() && checkDoor()){
                     if(isBuiltUpVisible){
                         if(checkBuiltUpArea()){
                             startIntent();
@@ -278,7 +277,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                         Toast.makeText(AdsActivity.this,"Please Check the inputs",Toast.LENGTH_SHORT).show();
                     }
                   startIntent();
-                }*/
+                }
                 break;
             case R.id.ads_area_input:
                 getLocation();
@@ -286,6 +285,9 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         }
     }
 
+    private void checkData(){
+
+    }
     private void startIntent(){
         Intent i = new Intent(AdsActivity.this,HomeActivity.class);
         i.setAction(getString(R.string.POST_AD));
@@ -1044,6 +1046,12 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.ads_rera_btn:
                 SellerAd.getInstance().adsReraApproved = setData((CheckBox)v);
+                break;
+            case R.id.veg_check:
+                SellerAd.getInstance().isVeg = setData((CheckBox)v);
+                break;
+            case R.id.non_veg_check:
+                SellerAd.getInstance().isVeg = setData((CheckBox)v);
                 break;
         }
     }

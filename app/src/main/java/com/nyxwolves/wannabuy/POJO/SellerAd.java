@@ -58,6 +58,8 @@ public class SellerAd {
     public String girlsHostelPrice = "no";
     public String workingMenHostelPrice = "no";
     public String workingWomenHostelPrice = "no";
+    public String isVeg = "NO";
+    public String isNonVeg = "NO";
 
     private static SellerAd instance = null;
 

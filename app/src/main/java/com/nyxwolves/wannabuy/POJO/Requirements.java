@@ -43,10 +43,6 @@ public class Requirements {
     public String maxBudget = "NOT_SET";
     public String minBudgetUnit = "NOT_SET";
     public String maxBudgetUnit = "NOT_SET";
-    public String pgRentBoys = "NOT_SET";
-    public String pgRentGirls = "NOT_SET";
-    public String pgRentShortStay = "NOT_SET";
-    public String pgRentFamily = "NOT_SET";
     public String gym = "NO";
     public String powerBackup = "NO";
     public String securityGuard = "NO";
@@ -57,6 +53,10 @@ public class Requirements {
     public String subType = "NOT_SET";
     public ArrayList<String>floorList = new ArrayList<>();
     public ArrayList<String>bhkList = new ArrayList<>();
+    public  ArrayList<String>facilitiesList = new ArrayList<>();
+    public ArrayList<String>approvalList = new ArrayList<>();
+    public ArrayList<String>facingList = new ArrayList<>();
+    public ArrayList<String> pgTypeList = new ArrayList<>();
     public String furnished  ="NOT_SET";
     public String water = "NO";
     public String playArea = "NO";
@@ -166,10 +166,7 @@ public class Requirements {
          bhkList.clear();
          isNew = "NOT_SET";
          minBudget = "NOT_SET";
-         pgRentBoys = "NOT_SET";
-         pgRentGirls = "NOT_SET";
-         pgRentFamily = "NOT_SET";
-         pgRentShortStay = "NOT_SET";
+         pgTypeList.clear();
          gym = "NO";
          powerBackup = "NO";
          securityGuard = "NO";
@@ -180,6 +177,7 @@ public class Requirements {
          maxBudget = "NOT_SET";
          subType = "NOT_SET";
          floorList.clear();
+         facilitiesList.clear();
          furnished  ="NOT_SET";
          water = "NO";
          playArea = "NO";

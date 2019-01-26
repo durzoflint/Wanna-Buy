@@ -36,44 +36,57 @@ public class AmmenitiesActivity extends AppCompatActivity {
         });
     }
 
-    private String setData(CheckBox checkBox){
+    private String setData(CheckBox checkBox, String data){
         if(checkBox.isChecked()){
-            Log.d("AMMMENITIES","YES");
+            Requirements.getInstance().facilitiesList.add(data);
             return getString(R.string.yes);
         }else{
-            Log.d("AMMMENITIES","NO");
+            Requirements.getInstance().facilitiesList.remove(data);
             return getString(R.string.no);
         }
     }
     public void oncheckBoxClicked(View v){
         switch (v.getId()){
             case R.id.gym_check:
-                Requirements.getInstance().gym = setData((CheckBox)v);
+                setData((CheckBox)v, getString(R.string.gym));
                 break;
             case R.id.power_check:
-                Requirements.getInstance().powerBackup = setData((CheckBox)v);
+                setData((CheckBox)v, getString(R.string.power_backup));
                 break;
             case R.id.security_check:
-                Requirements.getInstance().securityGuard = setData((CheckBox)v);
+                setData((CheckBox)v, getString(R.string.security_guard));
                 break;
             case R.id.lift_check:
-                Requirements.getInstance().lift = setData((CheckBox)v);
+                setData((CheckBox)v, getString(R.string.lift));
                 break;
             case R.id.swimming_check:
-                Requirements.getInstance().swimmingPool = setData((CheckBox)v);
+                setData((CheckBox)v, getString(R.string.swimming_pool));
                 break;
             case R.id.cafetria_check:
-                Requirements.getInstance().cafetria = setData((CheckBox)v);
+                setData((CheckBox)v, getString(R.string.water));
                 break;
             case R.id.garden_check:
-                Requirements.getInstance().garden = setData((CheckBox)v);
+                setData((CheckBox)v, getString(R.string.garden));
                 break;
             case R.id.water_check:
-                Requirements.getInstance().water = setData((CheckBox)v);
+                setData((CheckBox)v, getString(R.string.water));
                 break;
             case R.id.play_area:
-                Requirements.getInstance().playArea = setData((CheckBox)v);
+                setData((CheckBox)v, getString(R.string.play_area));
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Requirements.getInstance().facilitiesList.remove(getString(R.string.gym));
+        Requirements.getInstance().facilitiesList.remove(getString(R.string.security_guard));
+        Requirements.getInstance().facilitiesList.remove(getString(R.string.power_backup));
+        Requirements.getInstance().facilitiesList.remove(getString(R.string.play_area));
+        Requirements.getInstance().facilitiesList.remove(getString(R.string.water));
+        Requirements.getInstance().facilitiesList.remove(getString(R.string.swimming_pool));
+        Requirements.getInstance().facilitiesList.remove(getString(R.string.garden));
+        Requirements.getInstance().facilitiesList.remove(getString(R.string.lift));
     }
 }

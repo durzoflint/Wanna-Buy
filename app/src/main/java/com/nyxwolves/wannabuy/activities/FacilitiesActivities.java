@@ -31,24 +31,24 @@ public class FacilitiesActivities extends AppCompatActivity {
         });
     }
 
-    private String setData(CheckBox v){
+    private void setData(CheckBox v,  String data){
         if(v.isChecked()){
-            return getString(R.string.yes);
+            Requirements.getInstance().facilitiesList.add(data);
         }else{
-            return getString(R.string.no);
+            Requirements.getInstance().facilitiesList.remove(data);
         }
     }
 
     public void onCheckBoxClicked(View v){
         switch(v.getId()){
             case R.id.ground_water_check:
-                Requirements.getInstance().groundWater= setData((CheckBox)v);
+                setData((CheckBox)v, getString(R.string.ground_water));
                 break;
             case R.id.corp_water_check:
-                Requirements.getInstance().corporationWater= setData((CheckBox)v);
+                setData((CheckBox)v, getString(R.string.corp_water));
                 break;
             case R.id.drainage_check:
-                Requirements.getInstance().drainageConnection = setData((CheckBox)v);
+                setData((CheckBox)v, getString(R.string.drainage_connection));
                 break;
         }
     }
@@ -56,8 +56,8 @@ public class FacilitiesActivities extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Requirements.getInstance().groundWater = getString(R.string.no);
-        Requirements.getInstance().corporationWater = getString(R.string.no);
-        Requirements.getInstance().drainageConnection = getString(R.string.no);
+        Requirements.getInstance().facilitiesList.remove(getString(R.string.drainage_connection));
+        Requirements.getInstance().facilitiesList.remove(getString(R.string.corp_water));
+        Requirements.getInstance().facilitiesList.remove(getString(R.string.ground_water));
     }
 }

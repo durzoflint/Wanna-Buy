@@ -230,7 +230,8 @@ public class Budget extends AppCompatActivity {
                     if (checkPrice()) {
                         Requirements.getInstance().minBudget = String.valueOf(minBudget);
                         Requirements.getInstance().maxBudget = String.valueOf(maxBudget);
-
+                        Requirements.getInstance().minBudgetUnit = minUnit;
+                        Requirements.getInstance().maxBudgetUnit = maxUnit;
                         if (Requirements.getInstance().subType.equals(getString(R.string.residential_independent)) ||
                                 Requirements.getInstance().subType.equals(getString(R.string.commercial_independent)) ||
                                 Requirements.getInstance().subType.equals(getString(R.string.factory)) ||

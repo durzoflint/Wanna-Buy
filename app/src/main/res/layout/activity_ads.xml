@@ -1552,7 +1552,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/preferred_tenant"/>
             <android.support.v7.widget.AppCompatCheckBox
-                android:id="@+id/veg_btn"
+                android:id="@+id/veg_check"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/veg"
@@ -1561,7 +1561,7 @@
                 android:layout_margin="5dp"
                 android:padding="5dp"/>
             <android.support.v7.widget.AppCompatCheckBox
-                android:id="@+id/non_veg_btn"
+                android:id="@+id/non_veg_check"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/non_veg"
@@ -1570,7 +1570,7 @@
                 android:layout_margin="5dp"
                 android:padding="5dp"/>
             <android.support.v7.widget.AppCompatCheckBox
-                android:id="@+id/do_not_deviate_veg"
+                android:id="@+id/do_not_deviate_veg_check"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/do_not_deviate"

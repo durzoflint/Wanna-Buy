@@ -37,7 +37,7 @@ public class MyAdsAdapter extends RecyclerView.Adapter<MyAdsViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyAdsViewHolder myAdsViewHolder, int i) {
-        
+
     }
 
     @Override

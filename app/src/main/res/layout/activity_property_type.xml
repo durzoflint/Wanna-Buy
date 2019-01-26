@@ -60,7 +60,7 @@
             android:layout_marginStart="0dp"
             android:button="@drawable/custom_radio_button"
             android:checked="false"
-            android:fontFamily="@font/montserrat_regular"
+            android:fontFamily="@font/montserrat_medium"
             android:onClick="radioButtonClicked"
             android:padding="5dp"
             android:text="@string/residential"
@@ -73,7 +73,7 @@
             android:layout_margin="5dp"
             android:layout_marginStart="0dp"
             android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
+            android:fontFamily="@font/montserrat_medium"
             android:checked="false"
             android:onClick="radioButtonClicked"
             android:padding="5dp"
@@ -86,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
+            android:fontFamily="@font/montserrat_medium"
             android:checked="false"
             android:onClick="radioButtonClicked"
             android:padding="5dp"
@@ -101,7 +101,7 @@
             android:layout_margin="5dp"
             android:layout_marginStart="0dp"
             android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
+            android:fontFamily="@font/montserrat_medium"
             android:checked="false"
             android:onClick="radioButtonClicked"
             android:padding="5dp"
@@ -115,7 +115,7 @@
             android:layout_margin="5dp"
             android:layout_marginStart="0dp"
             android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
+            android:fontFamily="@font/montserrat_medium"
             android:checked="false"
             android:onClick="radioButtonClicked"
             android:padding="5dp"
@@ -134,7 +134,7 @@
             android:button="@drawable/custom_radio_button"
             android:onClick="radioButtonClicked"
             android:text="@string/farm_land"
-            android:fontFamily="@font/montserrat_regular"/>
+            android:fontFamily="@font/montserrat_medium"/>
 
 
         <RadioButton
@@ -144,7 +144,7 @@
             android:layout_margin="5dp"
             android:layout_marginStart="0dp"
             android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
+            android:fontFamily="@font/montserrat_medium"
             android:checked="false"
             android:onClick="radioButtonClicked"
             android:padding="5dp"

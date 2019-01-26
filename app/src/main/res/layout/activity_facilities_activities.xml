@@ -39,7 +39,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline15" />
 
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/approval_header">
 
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/ground_water_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:onClick="onCheckBoxClicked"
+            android:padding="5dp"
+            android:text="@string/ground_water" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/corp_water_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:onClick="onCheckBoxClicked"
+            android:padding="5dp"
+            android:text="@string/corp_water" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/drainage_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:onClick="onCheckBoxClicked"
+            android:padding="5dp"
+            android:text="@string/drainage_connection" />
+    </LinearLayout>
     <Button
         android:id="@+id/facilities_next_btn"
         android:layout_width="wrap_content"
@@ -52,97 +92,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/metro_header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/metro_water"
-        android:fontFamily="@font/montserrat_regular"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/approval_header" />
-
-    <RadioGroup
-        android:id="@+id/metro_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/metro_header">
-
-        <RadioButton
-            android:id="@+id/metro_yes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:onClick="onRadioButtonClicked"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="@string/yes" />
-
-        <RadioButton
-            android:id="@+id/metro_no"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:onClick="onRadioButtonClicked"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="@string/no" />
-    </RadioGroup>
-
-    <TextView
-        android:id="@+id/drainage_header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/drainage_connection"
-        android:fontFamily="@font/montserrat_regular"
-        app:layout_constraintStart_toStartOf="@+id/metro_group"
-        app:layout_constraintTop_toBottomOf="@+id/metro_group" />
-
-    <RadioGroup
-        android:id="@+id/drainage_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/drainage_header">
-
-        <RadioButton
-            android:id="@+id/drainage_yes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:onClick="onRadioButtonClicked"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="@string/yes" />
-
-        <RadioButton
-            android:id="@+id/drainage_no"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:onClick="onRadioButtonClicked"
-            android:button="@drawable/custom_radio_button"
-            android:fontFamily="@font/montserrat_regular"
-            android:padding="5dp"
-            android:text="@string/no" />
-    </RadioGroup>
 
 </android.support.constraint.ConstraintLayout>

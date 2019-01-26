@@ -136,9 +136,9 @@
     <string name="south_text">South</string>
     <string name="north_text">North</string>
 
-    <string name="furnished"> Fully_Furnished</string>
-    <string name="un_furnished">Warm_shell</string>
-    <string name="semi_furnished"> Semi_Furnished</string>
+    <string name="furnished"> Fully Furnished</string>
+    <string name="un_furnished">Warm shell</string>
+    <string name="semi_furnished"> Semi Furnished</string>
 
     <string name="with_setup"> With Setup</string>
     <string name="without_setup"> Without Setup</string>
@@ -188,7 +188,7 @@
     <string name="rent_property_type_header">Lease/Rent Property</string>
     <string name="rent_advance_header">Advance/Deposit</string>
     <string name="tenant_name">Name of the tenant(optional)</string>
-    <string name="roi_text">ROI in (%)</string>
+    <string name="roi_text">ROI in (%) Per Year</string>
     <string name="investment_text">Investment  Price:</string>
     <string name="pets_allowed">Allowed</string>
     <string name="pets_not_allowed">Not Allowed</string>
@@ -381,4 +381,9 @@
     <string name="in_rupees">In Rupees</string>
 
     <string name="preferred_tenant">Preferred Tenant</string>
+    <string name="showroom_floor">Showroom Floor</string>
+    <string name="ground_floor">Ground Floor</string>
+
+    <string name="ground_water">Ground Water</string>
+    <string name="corp_water">Corporation Water</string>
 </resources>

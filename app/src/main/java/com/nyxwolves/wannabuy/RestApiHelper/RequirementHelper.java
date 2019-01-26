@@ -114,7 +114,8 @@ public class RequirementHelper {
             params.put("GARDEN",  Requirements.getInstance().garden.toUpperCase());
             params.put("WATER",  Requirements.getInstance().water.toUpperCase());
             params.put("PLAY_AREA",  Requirements.getInstance().playArea.toUpperCase());
-            params.put("METRO_WATER",  Requirements.getInstance().metroWater.toUpperCase());
+            params.put("GROUND_WATER",  Requirements.getInstance().groundWater.toUpperCase());
+            params.put("CORP_WATER",  Requirements.getInstance().corporationWater.toUpperCase());
             params.put("DRAINAGE_CONNECTION",  Requirements.getInstance().drainageConnection.toUpperCase());
             params.put("COV_CAR_PARKING",  Requirements.getInstance().isCovparking.toUpperCase());
             params.put("UN_COV_CAR_PARKING",  Requirements.getInstance().isUnCovParking.toUpperCase());

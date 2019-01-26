@@ -4,97 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.PgRentOptions">
+    tools:context=".activities.VegNonVeg">
 
     <ImageView
-        android:id="@+id/subtype_image_view"
+        android:id="@+id/non_veg_image_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:src="@drawable/sub_type_property"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        android:src="@drawable/new_resale"
+        app:layout_constraintBottom_toTopOf="@+id/guideline13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline8"
+        android:id="@+id/guideline13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.30" />
 
     <TextView
-        android:id="@+id/pg_rent_header"
+        android:id="@+id/veg_no_veg_mode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat_medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline8" />
+        app:layout_constraintTop_toTopOf="@+id/guideline13" />
 
     <LinearLayout
-        android:id="@+id/pg_rent_options"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/pg_rent_next_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pg_rent_header">
+        app:layout_constraintStart_toStartOf="@+id/veg_no_veg_mode"
+        app:layout_constraintTop_toBottomOf="@+id/veg_no_veg_mode">
 
         <android.support.v7.widget.AppCompatCheckBox
-            android:id="@+id/girls_btn"
+            android:id="@+id/veg_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:fontFamily="@font/montserrat_medium"
             android:onClick="onCheckBoxClicked"
             android:padding="5dp"
-            android:text="@string/girls" />
+            android:text="@string/veg" />
 
         <android.support.v7.widget.AppCompatCheckBox
-            android:id="@+id/boys_btn"
+            android:id="@+id/non_veg_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:fontFamily="@font/montserrat_medium"
             android:onClick="onCheckBoxClicked"
             android:padding="5dp"
-            android:text="@string/boys" />
-
-        <android.support.v7.widget.AppCompatCheckBox
-            android:id="@+id/family"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/montserrat_medium"
-            android:onClick="onCheckBoxClicked"
-            android:padding="5dp"
-            android:text="@string/family" />
-
-        <android.support.v7.widget.AppCompatCheckBox
-            android:id="@+id/short_stay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/montserrat_medium"
-            android:onClick="onCheckBoxClicked"
-            android:padding="5dp"
-            android:text="@string/short_stay" />
+            android:text="@string/non_veg" />
     </LinearLayout>
 
     <Button
-        android:id="@+id/pg_rent_next_btn"
+        android:id="@+id/veg_next_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -107,4 +83,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

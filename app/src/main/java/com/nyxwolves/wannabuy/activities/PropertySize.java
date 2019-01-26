@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -92,15 +93,21 @@ public class PropertySize extends AppCompatActivity implements View.OnClickListe
         if (position == 0) {
             minLandArea.setHint("in Sq.Ft");
             maxLandArea.setHint("in Sq.Ft");
+            minLandArea.setInputType(InputType.TYPE_CLASS_NUMBER);
+            maxLandArea.setInputType(InputType.TYPE_CLASS_NUMBER);
         }else if(position == 1){
             minLandArea.setHint("in Grounds");
             maxLandArea.setHint("in Grounds");
+            minLandArea.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
+            maxLandArea.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
         }else if(position == 2){
             minLandArea.setHint("in Cents");
             maxLandArea.setHint("in Cents");
         }else if(position == 3){
             minLandArea.setHint("in Acres");
             maxLandArea.setHint("in Acres");
+            minLandArea.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
+            maxLandArea.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
         }
     }
 

@@ -176,7 +176,6 @@ public class Budget extends AppCompatActivity {
                 }
 
             }
-
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
 
@@ -299,8 +298,14 @@ public class Budget extends AppCompatActivity {
                 }else{
                     return false;
                 }
-            }else if(minUnit.equals("Thousand") && maxUnit.equals("Lakhs")){
+            }else if(minUnit.equals("Thousands") && maxUnit.equals("Lakhs")){
                 if(maxBudget > 0){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else if(minUnit.equals("Thousands") && maxUnit.equals("Thousands")){
+                if(maxBudget >0){
                     return true;
                 }else{
                     return false;

@@ -60,7 +60,6 @@ public class Requirements {
     public String furnished  ="NOT_SET";
     public String water = "NO";
     public String playArea = "NO";
-    public String metroWater ="NO";
     public String drainageConnection = "NO";
     public String minRoadWidth = "NOT_SET";
     public String maxRoadWidth = "NOT_SET";
@@ -73,6 +72,10 @@ public class Requirements {
     public String maxRoi = "DEFAULT";
     public String petsAllowed = "NOT_SET";
     public String maintenanceFee = "NOT_SET";
+    public String groundWater = "NO";
+    public String corporationWater = "NO";
+    public String isVeg = "NOT_SET";
+    public String isNonVeg = "NOT_SET";
 
     private static Requirements instance;
 
@@ -180,7 +183,8 @@ public class Requirements {
          furnished  ="NOT_SET";
          water = "NO";
          playArea = "NO";
-         metroWater ="NO";
+         groundWater = "NO";
+         corporationWater = "NO";
          drainageConnection = "NO";
          minRoadWidth = "NOT_SET";
          maxRoadWidth = "NOT_SET";

@@ -32,7 +32,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/maintance_fee"
-        android:fontFamily="@font/montserrat_regular"
+        android:fontFamily="@font/montserrat_medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
@@ -56,7 +56,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/orange_button"
-        android:fontFamily="@font/montserrat_regular"
+        android:fontFamily="@font/montserrat_medium"
         android:text="@string/next"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"

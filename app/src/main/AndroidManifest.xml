@@ -206,6 +206,8 @@
             android:value="rzp_live_hNa2wldM9gPB9l" />
 
         <activity android:name=".activities.PaymentActivity" />
+        <activity android:name=".activities.VegNonVeg"
+            android:theme="@style/noActionbar"/>
     </application>
 
 </manifest>

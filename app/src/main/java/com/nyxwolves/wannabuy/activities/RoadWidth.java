@@ -35,7 +35,12 @@ public class RoadWidth extends AppCompatActivity {
                     Requirements.getInstance().minRoadWidth = String.valueOf(minWidth);
                     Requirements.getInstance().maxRoadWidth = String.valueOf(maxWidth);
                     if(Requirements.getInstance().isRentalIncome.equals(getString(R.string.yes))){
+
                         startActivity(new Intent(RoadWidth.this,ROIRentalActivity.class));
+                    }else if(Requirements.getInstance().type.equals(getString(R.string.residential)) &&
+                            Requirements.getInstance().buyorRent.equals(getString(R.string.RENT))){
+
+                        startActivity(new Intent(RoadWidth.this,VegNonVeg.class));
                     }else {
                         startActivity(new Intent(RoadWidth.this, RequirementName.class));
                     }

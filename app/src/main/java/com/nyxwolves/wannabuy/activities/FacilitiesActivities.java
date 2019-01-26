@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
@@ -30,19 +31,24 @@ public class FacilitiesActivities extends AppCompatActivity {
         });
     }
 
-    public void onRadioButtonClicked(View v){
+    private String setData(CheckBox v){
+        if(v.isChecked()){
+            return getString(R.string.yes);
+        }else{
+            return getString(R.string.no);
+        }
+    }
+
+    public void onCheckBoxClicked(View v){
         switch(v.getId()){
-            case R.id.metro_yes:
-                Requirements.getInstance().metroWater= getString(R.string.yes);
+            case R.id.ground_water_check:
+                Requirements.getInstance().groundWater= setData((CheckBox)v);
                 break;
-            case R.id.metro_no:
-                Requirements.getInstance().metroWater= getString(R.string.no);
+            case R.id.corp_water_check:
+                Requirements.getInstance().corporationWater= setData((CheckBox)v);
                 break;
-            case R.id.drainage_yes:
-                Requirements.getInstance().drainageConnection = getString(R.string.yes);
-                break;
-            case R.id.drainage_no:
-                Requirements.getInstance().drainageConnection = getString(R.string.no);
+            case R.id.drainage_check:
+                Requirements.getInstance().drainageConnection = setData((CheckBox)v);
                 break;
         }
     }
@@ -50,7 +56,8 @@ public class FacilitiesActivities extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Requirements.getInstance().metroWater = getString(R.string.not_set_text);
-        Requirements.getInstance().drainageConnection = getString(R.string.not_set_text);
+        Requirements.getInstance().groundWater = getString(R.string.no);
+        Requirements.getInstance().corporationWater = getString(R.string.no);
+        Requirements.getInstance().drainageConnection = getString(R.string.no);
     }
 }

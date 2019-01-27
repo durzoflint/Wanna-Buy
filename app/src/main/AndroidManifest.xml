@@ -182,7 +182,7 @@
             android:name=".activities.SettingsActivity"
             android:theme="@style/noActionbar" />
         <activity
-            android:name=".activities.AdsDetailActivity"
+            android:name=".activities.RequirementDetailedActivity"
             android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.MaintanceActivity"
@@ -219,7 +219,7 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".activities.RequirementDetailedActivity" />
+        <activity android:name=".activities.AdsDetailActivity" />
     </application>
 
 </manifest>

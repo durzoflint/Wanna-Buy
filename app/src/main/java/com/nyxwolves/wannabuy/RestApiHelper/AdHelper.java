@@ -78,24 +78,8 @@ public class AdHelper {
             createParams.put("MODE", SellerAd.getInstance().adsSellOrRent.toUpperCase());
             createParams.put("FURNISHED", SellerAd.getInstance().adsFurnished.toUpperCase());
             createParams.put("FACING", SellerAd.getInstance().adsFacing.toUpperCase());
-            createParams.put("CDMA_APPROVED", SellerAd.getInstance().adsCdmaApproved.toUpperCase());
-            createParams.put("DTCP_APPROVED", SellerAd.getInstance().adsDtcpApproved.toUpperCase());
-            createParams.put("CORP_APPROVED", SellerAd.getInstance().adsCorpApproved.toUpperCase());
-            createParams.put("PANCH_APPROVED", SellerAd.getInstance().adsPanchApproved.toUpperCase());
-            createParams.put("COMM_APPROVED", SellerAd.getInstance().adsCommApproved.toUpperCase());
-            createParams.put("INDUS_APPROVED", SellerAd.getInstance().adsIndusApproved.toUpperCase());
-            createParams.put("RERA_APPROVED", SellerAd.getInstance().adsReraApproved.toUpperCase());
-            createParams.put("GYM", SellerAd.getInstance().adsGym.toUpperCase());
-            createParams.put("POWER_BACKUP", SellerAd.getInstance().adsPowerBackup.toUpperCase());
-            createParams.put("SECURITY_GUARD", SellerAd.getInstance().adsSecurityGuard.toUpperCase());
-            createParams.put("LIFT", SellerAd.getInstance().adsLift.toUpperCase());
-            createParams.put("SWIMMING_POOL", SellerAd.getInstance().adsSwimmingPool.toUpperCase());
-            createParams.put("CAFETRIA", SellerAd.getInstance().adsCafetria.toUpperCase());
-            createParams.put("GARDEN", SellerAd.getInstance().adsGarden.toUpperCase());
-            createParams.put("WATER", SellerAd.getInstance().adsWater.toUpperCase());
-            createParams.put("PLAY_AREA", SellerAd.getInstance().adsPlayArea.toUpperCase());
-            createParams.put("METRO_WATER", SellerAd.getInstance().adsMetroWater.toUpperCase());
-            createParams.put("DRAINAGE_CONNECTION", SellerAd.getInstance().adsDrainageConnection.toUpperCase());
+            createParams.put("APPROVAL",SellerAd.getInstance().approvalList);
+            createParams.put("FACILITIES",SellerAd.getInstance().facilitiesList);
             createParams.put("MAINTENANCE", SellerAd.getInstance().adsMaintance.toUpperCase());
             createParams.put("COV_CAR_PARKING", SellerAd.getInstance().adsCovCarParking.toUpperCase());
             createParams.put("UN_COV_CAR_PARKING", SellerAd.getInstance().adsUnCovParking.toUpperCase());
@@ -118,11 +102,32 @@ public class AdHelper {
             createParams.put("NON_VEG", SellerAd.getInstance().isNonVeg.toUpperCase());
             createParams.put("ROI_VALUE", SellerAd.getInstance().adsRoi.toUpperCase());
             createParams.put("ROI_INCREMENT_PERIOD", SellerAd.getInstance().adsRoiIncrementPeriod.toUpperCase());
+            createParams.put("ROI_INCREMENT_VALUE",SellerAd.getInstance().roiIncrementalValue);
+            createParams.put("RENT_START_DATE",SellerAd.getInstance().rentStartDate);
+            createParams.put("RENT_END_DATE",SellerAd.getInstance().rentEndDate);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    private JSONArray getFacilitiesList(){
+        JSONArray facilitiesList = new JSONArray();
+        for(String facilities : SellerAd.getInstance().facilitiesList){
+            facilitiesList.put(facilities);
+        }
+        return facilitiesList;
+    }
+
+    private JSONArray getApprovalList(){
+
+        JSONArray approvalList = new JSONArray();
+        for(String facilities : SellerAd.getInstance().approvalList){
+            approvalList.put(facilities);
+        }
+        return approvalList;
+    }
+
 
     public void readAd() {
         String URL = "http://www.wannabuy.in/api/Ads/read_ads.php?id=" + FirebaseAuth.getInstance().getCurrentUser().getEmail();

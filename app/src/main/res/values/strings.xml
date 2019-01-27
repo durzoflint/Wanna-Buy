@@ -378,6 +378,7 @@
 
     <string name="start_date_text">Start Date</string>
     <string name="end_data_text">End Date</string>
+    <string name="date_format">dd/mm/yyyy</string>
     <string name="in_rupees">In Rupees</string>
 
     <string name="preferred_tenant">Preferred Tenant</string>

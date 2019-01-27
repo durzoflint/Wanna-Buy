@@ -164,6 +164,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.wanna_buy:
                 startActivity(new Intent(HomeActivity.this,BuyOrRent.class));
+                RequirementHelper helper = new RequirementHelper(HomeActivity.this);
+                helper.getRequirementCompleteInfo("COMMERCIAL REQ");
                 break;
 
             case R.id.home_rent_btn:

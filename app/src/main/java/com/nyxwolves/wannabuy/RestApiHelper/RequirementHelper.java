@@ -161,28 +161,20 @@ public class RequirementHelper {
         return pgList;
     }
 
-    public void getRequirement(String option, String query) {
-        String URL = "http://www.wannabuy.in/api/Requirements/read_requirement.php";
-        //showDialog();
-        if (option.equals(ctx.getString(R.string.USER_ID_QUERY))) {
-            URL = URL + "?id=" + query;
-        } else if (option.equals(ctx.getString(R.string.LOCATION_QUERY))) {
-            URL = URL + "?location=" + query;
-        } else if (option.equals(ctx.getString(R.string.BHK_QUERY))) {
-            URL = URL + "?bhk=" + query;
-        } else if (option.equals(ctx.getString(R.string.TYPE_QUERY))) {
-            URL = URL + "?type=" + query;
-        } else if (option.equals(ctx.getString(R.string.BUDGET_QUERY))) {
-            URL = URL + "?budget=" + query;
-        } else if (option.equals(ctx.getString(R.string.ANY_QUERY))) {
-            URL = URL + "?query=" + query;
-        }
+
+    public void getUserRequirementShortInfo(String userId) {
+
+        //JSON STRUCTURE
+        //{"requirements":[{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"COMMERCIAL REQ","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"COMMERCIAL_INDEPENDENT","BUDGET_MIN":"42","BUDGET_MAX":"66","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 19:45:43"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"COMMERCIAL REQ2","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"COMMERCIAL_INDEPENDENT","BUDGET_MIN":"42","BUDGET_MAX":"66","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 19:47:15"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"COMMERCIAL REQ3","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"COMMERCIAL_INDEPENDENT","BUDGET_MIN":"42","BUDGET_MAX":"66","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 19:58:41"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"COMMERCIAL REQ4","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"COMMERCIAL_INDEPENDENT","BUDGET_MIN":"42","BUDGET_MAX":"66","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 20:01:12"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"GOOGLE","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"RESIDENTIAL_INDEPENDENT","BUDGET_MIN":"39","BUDGET_MAX":"80","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 20:04:39"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"facebook","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"RESIDENTIAL_INDEPENDENT","BUDGET_MIN":"39","BUDGET_MAX":"80","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 20:07:31"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"amazon","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"RESIDENTIAL_INDEPENDENT","BUDGET_MIN":"39","BUDGET_MAX":"80","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 20:08:46"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"something","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"RESIDENTIAL_INDEPENDENT","BUDGET_MIN":"39","BUDGET_MAX":"80","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 20:09:43"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"TEST","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"RESIDENTIAL_LAND","BUDGET_MIN":"32","BUDGET_MAX":"54","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 20:58:20"}]}
+
+        String URL = "http://www.wannabuy.in/api/Requirements/requirement_short_info.php?USER_ID="+userId.toUpperCase();
 
         StringRequest getRequirementRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("READ_RESPONSE", response.toString());
-                reqDataList = getReqData(response);
+
+                Log.d("JSON_RESPONSE",response);
+                //reqDataList = getReqData(response);
                 //closeDialog();
             }
         }, new Response.ErrorListener() {
@@ -196,7 +188,34 @@ public class RequirementHelper {
         CustomRequestQueue.getInstance(ctx).addRequest(getRequirementRequest);
     }
 
-    private List<Requirements> getReqData(String readResponse) {
+    public void getRequirementCompleteInfo(String reqName){
+
+        //JSON STRUCTURE
+        //{"REQ_NAME":"COMMERCIAL REQ","USER_ID":"SIBINEHRU99@GMAIL.COM","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_LOCATION_QUERY":null,"PROPERTY_LOCATION_ONE":"NOT_SET","PROPERTY_LOCATION_TWO":"NOT_SET","PROPERTY_LOCATION_THREE":"NOT_SET","PROPERTY_LOCATION_FOUR":"NOT_SET","PROPERTY_LOCATION_FIVE":"NOT_SET","PROPERTY_SIZE_MIN":null,"PROPERTY_SIZE_MAX":null,"AGE_MIN":null,"AGE_MAX":null,"PROPERTY_TYPE":"COMMERCIAL_INDEPENDENT","PROPERTY_SUB_TYPE":null,"FURNISHED":null,"BHK":[],"FLOOR":[],"REST_ROOM_NUM":null,"FACING":null,"NEW":null,"RESALE":null,"BUDGET_MIN":"42","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX":"66","BUDGET_MAX_UNIT":"NOT_SET","APPROVAL":[],"BUY_OR_RENT":null,"FACILITIES":[],"VEG":null,"NON_VEG":null,"DRAINAGE_CONNECTION":null,"COV_PARKING":null,"UN_COV_PARKING":null,"COV_PARKING_NUM":null,"UN_COV_PARKING_NUM":null,"PG_TYPE":[],"ROAD_WIDTH_MIN":null,"ROAD_WIDTH_MAX":null,"PETS_ALLOWED":null,"QUERY":null,"MAINTENANCE_FEE":null,"BUT_OR_RENT":"BUY","CREATED_AT":"2019-01-26 19:45:43","DIRECTIONS":[]}
+
+        String URL = "http://www.wannabuy.in/api/Requirements/requirement_complete_info.php?REQ_NAME="+reqName.toUpperCase();
+
+        StringRequest getRequirementRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                Log.d("JSON_RESPONSE",response);
+                //reqDataList = getReqData(response);
+                //closeDialog();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("READ_RESPONSE", error.toString());
+                //closeDialog();
+            }
+        });
+
+        CustomRequestQueue.getInstance(ctx).addRequest(getRequirementRequest);
+    }
+
+
+    /*private List<Requirements> getReqData(String readResponse) {
         Log.d("RESPONSE_CHECK", readResponse);
         try {
             JSONObject jsonObject = new JSONObject(readResponse);
@@ -225,7 +244,7 @@ public class RequirementHelper {
             return null;
         }
 
-    }
+    }*/
 }
     /*getJson();
         Log.d("REQ_JSON",params.toString());

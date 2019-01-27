@@ -1,5 +1,7 @@
 package com.nyxwolves.wannabuy.POJO;
 
+import java.util.ArrayList;
+
 public class SellerAd {
 
     public String adsLocation = "no";
@@ -26,24 +28,8 @@ public class SellerAd {
     public String adsLandAreaUnit = "Sq. Ft";
     public String adsBuiltUpArea = "no";
     public String adsMaintance = "no";
-    public String adsCdmaApproved = "no";
-    public String adsDtcpApproved = "no";
-    public String adsCorpApproved = "no";
-    public String adsPanchApproved = "no";
-    public String adsCommApproved = "no";
-    public String adsIndusApproved = "no";
-    public String adsReraApproved = "no";
-    public String adsGym = "NO";
-    public String adsPowerBackup = "NO";
-    public String adsSecurityGuard = "NO";
-    public String adsLift = "NO";
-    public String adsSwimmingPool = "NO";
-    public String adsCafetria = "NO";
-    public String adsGarden = "NO";
-    public String adsWater = "NO";
-    public String adsPlayArea = "NO";
-    public String adsMetroWater ="NO";
-    public String adsDrainageConnection = "NO";
+    public ArrayList<String>approvalList = new ArrayList<>();
+    public ArrayList<String>facilitiesList = new ArrayList<>();
     public String adsRoi = "no";
     public String adsRoiIncrementPeriod = "no";
     public String adsPetsAllowed = "no";
@@ -60,6 +46,9 @@ public class SellerAd {
     public String workingWomenHostelPrice = "no";
     public String isVeg = "NO";
     public String isNonVeg = "NO";
+    public String roiIncrementalValue = "NOT_SET";
+    public String rentStartDate = "NOT_SET";
+    public String rentEndDate = "NOT_SET";
 
     private static SellerAd instance = null;
 

@@ -54,7 +54,7 @@ public class MyRequirementsFragment extends Fragment {
 
         myRequirementsList = view.findViewById(R.id.my_requirements_list);
         RequirementHelper helper = new RequirementHelper(getActivity());
-        helper.getRequirement(getString(R.string.USER_ID_QUERY), FirebaseAuth.getInstance().getCurrentUser().getEmail().toUpperCase());
+        //helper.getRequirement(getString(R.string.USER_ID_QUERY), FirebaseAuth.getInstance().getCurrentUser().getEmail().toUpperCase());
         adapter = new MyRequirementsAdapter();
         myRequirementsList.setLayoutManager(new GridLayoutManager(getActivity(),2));
         myRequirementsList.addItemDecoration(new RecyclerView.ItemDecoration() {

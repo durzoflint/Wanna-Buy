@@ -63,10 +63,11 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     Spinner areaUnitSpinner;
     SeekBar roadWidth;
     TextView roadSelectedWidth, adsBudgetHeader;
-    ImageView startIcon,endIcon;
+    ImageView startIcon, endIcon;
 
     final int IMAGE_REQ = 1002;
     final int LOCATION_REQUEST = 1003;
+    final int PAYMENT_CODE = 1002;
     int roadWidthInt;
     boolean isBuiltUpVisible = false;
     boolean isLandAreaVisible = false;
@@ -152,17 +153,17 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View v) {
                 isStartDate = true;
-                DatePickerDialog datePickerDialog  = new DatePickerDialog(AdsActivity.this,AdsActivity.this,2019,1,1);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(AdsActivity.this, AdsActivity.this, 2019, 1, 1);
                 datePickerDialog.show();
             }
         });
 
         endIcon = findViewById(R.id.icon_date_end);
-        endIcon.setOnClickListener(new View.OnClickListener(){
+        endIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 isStartDate = false;
-                DatePickerDialog datePickerDialog  = new DatePickerDialog(AdsActivity.this,AdsActivity.this,2019,1,1);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(AdsActivity.this, AdsActivity.this, 2019, 1, 1);
                 datePickerDialog.show();
             }
         });
@@ -280,12 +281,12 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        if(isStartDate){
-            String startDate = (month+1)+"-"+dayOfMonth+"-"+year;
+        if (isStartDate) {
+            String startDate = (month + 1) + "-" + dayOfMonth + "-" + year;
             leaseStartInput.setText(startDate);
             SellerAd.getInstance().rentStartDate = startDate;
-        }else{
-            String endDate = (month+1)+"-"+dayOfMonth+"-"+year;
+        } else {
+            String endDate = (month + 1) + "-" + dayOfMonth + "-" + year;
             leaseEndInput.setText(endDate);
             SellerAd.getInstance().rentEndDate = endDate;
         }
@@ -300,11 +301,17 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 chooseImage();
                 break;
             case R.id.payment_btn:
-                if (true) {
-
-                    Intent i = new Intent(AdsActivity.this, HomeActivity.class);
-                    i.setAction(getString(R.string.POST_AD));
-                    startActivity(i);
+                if (checkData()) {
+                    checkBhk();
+                    checkFloor();
+                    Intent paymentIntent = new Intent(AdsActivity.this, PaymentActivity.class);
+                    if (SellerAd.getInstance().adsSellOrRent.equals(getString(R.string.SELL))) {
+                        paymentIntent.putExtra(PaymentActivity.DESCRIPTION, getString(R.string.pay_sell_ad));
+                    } else {
+                        paymentIntent.putExtra(PaymentActivity.DESCRIPTION, getString(R.string.pay_rent_ad));
+                    }
+                    paymentIntent.putExtra(PaymentActivity.AMOUNT, 999);
+                    startActivityForResult(paymentIntent, PAYMENT_CODE);
 
                 } else {
                     Toast.makeText(AdsActivity.this, "Please Check the inputs", Toast.LENGTH_SHORT).show();
@@ -316,27 +323,23 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         }
     }
 
-
-    /*private boolean checkData() {
-        if (checkAddress() && checkLocation() && checkDoor()) {
-            if (isBuiltUpVisible) {
-                if (checkBuiltUpArea()) {
-
-                }
-            } else if (isLandAreaVisible) {
-                if (checkLandArea()) {
-
-                }
-            } else if (isBuiltUpVisible && isLandAreaVisible) {
-                if (checkLandArea() && checkBuiltUpArea()) {
-
-                }
+    private boolean checkData() {
+        if (checkCommonField() && checkPropertySize()) {
+            if (isRentalIncome) {
+                return rentalIncomeFieldCheck();
+            }else{
+                return true;
             }
-        }else{
-            return false;
+        } else {
+            return true;
         }
-    }*/
+    }
 
+    private void startIntentToHome() {
+        Intent i = new Intent(AdsActivity.this, HomeActivity.class);
+        i.setAction(getString(R.string.POST_AD));
+        startActivity(i);
+    }
 
     private void getLocation() {
         try {
@@ -349,6 +352,34 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
             Toast.makeText(this, "Google Play Services missing", Toast.LENGTH_SHORT).show();
         } catch (GooglePlayServicesRepairableException e) {
             Toast.makeText(this, "Google Play Services error", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private boolean checkCommonField() {
+        if (addressInput.getText().toString().length() > 0 &&
+                cityInput.getText().toString().length() > 0 &&
+                doorNumberInput.getText().toString().length() > 0) {
+
+            SellerAd.getInstance().adsPropertyAddress = addressInput.getText().toString().trim();
+            SellerAd.getInstance().adsLocation = cityInput.getText().toString().trim();
+            SellerAd.getInstance().adsDoorNo = doorNumberInput.getText().toString().trim();
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    private boolean checkPropertySize() {
+        if (isLandAreaVisible && isBuiltUpVisible) {
+            return checkLandArea() && checkBuiltUpArea();
+        } else if (isLandAreaVisible) {
+            return checkLandArea();
+        } else if (isBuiltUpVisible) {
+            return checkBuiltUpArea();
+        } else {
+            return false;
         }
     }
 
@@ -388,59 +419,25 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         }
     }
 
-    private boolean checkAddress() {
-        if (addressInput.getText().toString().length() > 0) {
-            SellerAd.getInstance().adsPropertyAddress = addressInput.getText().toString().trim();
-            return true;
-        } else {
-            return false;
-        }
-    }
+    private boolean rentalIncomeFieldCheck() {
+        if (roiInput.getText().toString().trim().length() > 0 &&
+                incrementCustomInput.getText().toString().trim().length() > 0 &&
+                rentalIncrementalInput.getText().toString().trim().length() > 0 &&
+                leaseStartInput.getText().toString().trim().length() > 0 &&
+                leaseEndInput.getText().toString().trim().length() > 0) {
 
-    private boolean checkLocation() {
-        if (cityInput.getText().toString().length() > 0) {
-            SellerAd.getInstance().adsLocation = cityInput.getText().toString().trim();
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private boolean checkDoor() {
-        if (doorNumberInput.getText().toString().length() > 0) {
-            SellerAd.getInstance().adsDoorNo = doorNumberInput.getText().toString().trim();
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private boolean roi() {
-        if (roiInput.getText().toString().trim().length() > 0) {
             SellerAd.getInstance().adsRoi = roiInput.getText().toString();
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private boolean roiIncrement() {
-        if (incrementCustomInput.getText().toString().trim().length() > 0) {
             SellerAd.getInstance().adsRoiIncrementPeriod = incrementCustomInput.getText().toString();
+            SellerAd.getInstance().roiIncrementalValue = rentalIncrementalInput.getText().toString();
+            SellerAd.getInstance().rentStartDate = leaseStartInput.getText().toString();
+            SellerAd.getInstance().rentEndDate = leaseEndInput.getText().toString();
+
             return true;
         } else {
             return false;
         }
     }
 
-    private boolean roiIncrementalValue() {
-        if (rentalIncrementalInput.getText().toString().trim().length() > 0) {
-            SellerAd.getInstance().roiIncrementalValue = rentalIncrementalInput.getText().toString();
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public void onRadioButtonClicked(View v) {
         switch (v.getId()) {
@@ -1039,18 +1036,18 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         }
     }
 
-    private void setFacilityData(CheckBox v, String data){
-        if(v.isChecked()){
+    private void setFacilityData(CheckBox v, String data) {
+        if (v.isChecked()) {
             SellerAd.getInstance().facilitiesList.add(data);
-        }else{
+        } else {
             SellerAd.getInstance().facilitiesList.remove(data);
         }
     }
 
-    private void setApprovalData(CheckBox v,String data){
-        if(v.isChecked()){
+    private void setApprovalData(CheckBox v, String data) {
+        if (v.isChecked()) {
             SellerAd.getInstance().approvalList.add(data);
-        }else{
+        } else {
             SellerAd.getInstance().approvalList.remove(data);
         }
     }
@@ -1074,61 +1071,61 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 }
                 break;
             case R.id.ads_ground_water_check:
-                setFacilityData((CheckBox)v,getString(R.string.ground_water));
+                setFacilityData((CheckBox) v, getString(R.string.ground_water));
                 break;
             case R.id.ads_corp_water_check:
-                setFacilityData((CheckBox)v,getString(R.string.corp_water));
+                setFacilityData((CheckBox) v, getString(R.string.corp_water));
                 break;
             case R.id.drainage_check:
-                setFacilityData((CheckBox)v,getString(R.string.drainage_connection));
+                setFacilityData((CheckBox) v, getString(R.string.drainage_connection));
                 break;
             case R.id.gym_check:
-                setFacilityData((CheckBox)v,getString(R.string.gym));
+                setFacilityData((CheckBox) v, getString(R.string.gym));
                 break;
             case R.id.power_check:
-                setFacilityData((CheckBox)v,getString(R.string.power_backup));
+                setFacilityData((CheckBox) v, getString(R.string.power_backup));
                 break;
             case R.id.security_check:
-                setFacilityData((CheckBox)v,getString(R.string.security_guard));
+                setFacilityData((CheckBox) v, getString(R.string.security_guard));
                 break;
             case R.id.lift_check:
-                setFacilityData((CheckBox)v,getString(R.string.lift));
+                setFacilityData((CheckBox) v, getString(R.string.lift));
                 break;
             case R.id.swimming_check:
-                setFacilityData((CheckBox)v,getString(R.string.swimming_pool));
+                setFacilityData((CheckBox) v, getString(R.string.swimming_pool));
                 break;
             case R.id.cafetria_check:
-                setFacilityData((CheckBox)v,getString(R.string.cafeteria));
+                setFacilityData((CheckBox) v, getString(R.string.cafeteria));
                 break;
             case R.id.garden_check:
-                setFacilityData((CheckBox)v,getString(R.string.garden));
+                setFacilityData((CheckBox) v, getString(R.string.garden));
                 break;
             case R.id.water_check:
-                setFacilityData((CheckBox)v,getString(R.string.water));
+                setFacilityData((CheckBox) v, getString(R.string.water));
                 break;
             case R.id.play_area:
-                setFacilityData((CheckBox)v,getString(R.string.play_area));
+                setFacilityData((CheckBox) v, getString(R.string.play_area));
                 break;
             case R.id.ads_cmda_btn:
-                setApprovalData((CheckBox)v,getString(R.string.cdma_text));
+                setApprovalData((CheckBox) v, getString(R.string.cdma_text));
                 break;
             case R.id.ads_dtcp_btn:
-                setApprovalData((CheckBox)v,getString(R.string.dtcp_text));
+                setApprovalData((CheckBox) v, getString(R.string.dtcp_text));
                 break;
             case R.id.ads_corp:
-                setApprovalData((CheckBox)v,getString(R.string.corporation));
+                setApprovalData((CheckBox) v, getString(R.string.corporation));
                 break;
             case R.id.ads_panchayat:
-                setApprovalData((CheckBox)v,getString(R.string.panchayat));
+                setApprovalData((CheckBox) v, getString(R.string.panchayat));
                 break;
             case R.id.ads_commercial:
-                setApprovalData((CheckBox)v,getString(R.string.commercial));
+                setApprovalData((CheckBox) v, getString(R.string.commercial));
                 break;
             case R.id.ads_industrial:
-                setApprovalData((CheckBox)v,getString(R.string.industrial));
+                setApprovalData((CheckBox) v, getString(R.string.industrial));
                 break;
             case R.id.ads_rera_btn:
-                setApprovalData((CheckBox)v,getString(R.string.rera_text));
+                setApprovalData((CheckBox) v, getString(R.string.rera_text));
                 break;
             case R.id.veg_check:
                 SellerAd.getInstance().vegNonVeg = getString(R.string.veg);
@@ -1144,10 +1141,13 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == IMAGE_REQ && resultCode == RESULT_OK && data != null) {
             propertyPic.setImageURI(data.getData());
-        }
-        if (requestCode == LOCATION_REQUEST && resultCode == RESULT_OK) {
+        } else if (requestCode == LOCATION_REQUEST && resultCode == RESULT_OK) {
             Place place = PlaceAutocomplete.getPlace(AdsActivity.this, data);
             cityInput.setText(place.getName().toString());
+        } else if (requestCode == PAYMENT_CODE) {
+            //if(resultCode == RESULT_OK){
+            startIntentToHome();
+            //}
         }
     }
 

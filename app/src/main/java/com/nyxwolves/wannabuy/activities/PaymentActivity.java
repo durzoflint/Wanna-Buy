@@ -19,6 +19,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
     String description;
     int amount;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +62,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
     public void onPaymentSuccess(String s) {
         Toast.makeText(this, "Payment Success", Toast.LENGTH_SHORT).show();
         Checkout.clearUserData(this);
+        setResult(RESULT_OK);
         finish();
     }
 
@@ -68,6 +70,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
     public void onPaymentError(int i, String s) {
         Toast.makeText(this, "Payment Failed", Toast.LENGTH_SHORT).show();
         Checkout.clearUserData(this);
+        setResult(RESULT_CANCELED);
         finish();
     }
 }

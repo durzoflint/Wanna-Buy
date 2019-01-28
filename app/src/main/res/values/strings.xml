@@ -387,4 +387,10 @@
 
     <string name="ground_water">Ground Water</string>
     <string name="corp_water">Corporation Water</string>
+
+    <string name="pay_buy_requirement">POST BUY REQUIREMENT</string>
+    <string name="pay_rent_requirement">POST RENT REQUIREMENT</string>
+
+    <string name="pay_rent_ad">POST RENT AD</string>
+    <string name="pay_sell_ad">POST SELL AD</string>
 </resources>

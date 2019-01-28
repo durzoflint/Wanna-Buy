@@ -12,9 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCJyWOI91uaP3SaGzsuful39Iqi0_A5Wzc" />
+            android:value="AIzaSyCzj9Yr0R5UCDUBbTo2LQV4lzVpz2LXfOQ" />
 
         <service android:name=".notifications.MyFirebaseMessagingService">
             <intent-filter>
@@ -178,7 +183,7 @@
             android:name=".activities.SettingsActivity"
             android:theme="@style/noActionbar" />
         <activity
-            android:name=".activities.AdsDetailActivity"
+            android:name=".activities.RequirementDetailedActivity"
             android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.MaintanceActivity"
@@ -210,7 +215,12 @@
         <activity
             android:name=".activities.VegNonVeg"
             android:theme="@style/noActionbar" />
-        <activity android:name=".activities.RequirementDetailedActivity"></activity>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity android:name=".activities.AdsDetailActivity" />
     </application>
 
 </manifest>

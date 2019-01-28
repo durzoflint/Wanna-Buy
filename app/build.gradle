@@ -58,6 +58,9 @@ dependencies {
 
     //razorpay
     implementation 'com.razorpay:checkout:1.5.2'
+
+    //Google Maps
+    implementation 'com.google.android.gms:play-services-maps:16.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

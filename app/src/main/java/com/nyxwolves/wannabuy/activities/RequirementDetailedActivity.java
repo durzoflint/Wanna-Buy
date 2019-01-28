@@ -1,11 +1,10 @@
 package com.nyxwolves.wannabuy.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.nyxwolves.wannabuy.R;
 
-//Activity to display details about single requirement
 public class RequirementDetailedActivity extends AppCompatActivity {
 
     @Override

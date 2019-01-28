@@ -34,9 +34,7 @@ public class MyAdsFragment extends Fragment {
 
     MyAdsAdapter adsAdapter;
 
-    public MyAdsFragment() {
-
-    }
+    public MyAdsFragment() {}
 
     @Nullable
     @Override
@@ -62,16 +60,9 @@ public class MyAdsFragment extends Fragment {
         //recyclerview
         myAdList = view.findViewById(R.id.my_ads_list);
         myAdList.setVisibility(View.VISIBLE);
-
-        final AdHelper adhelper = new AdHelper(getActivity());
-        adhelper.readAd();
-
         myAdList.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         adsAdapter = new MyAdsAdapter(getActivity());
-        Log.d("DATA_SIZE_NEW",""+adhelper.adDataList.size());
         myAdList.setAdapter(adsAdapter);
-        adsAdapter.setData(adhelper.adDataList);
 
         return view;
     }

@@ -1087,7 +1087,7 @@
         <android.support.constraint.ConstraintLayout
             android:id="@+id/facilities_layout"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp">
@@ -1127,7 +1127,7 @@
                 android:text="@string/corp_water"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/facilities_header" />
+                app:layout_constraintTop_toBottomOf="@+id/ads_ground_water_check" />
 
             <android.support.v7.widget.AppCompatCheckBox
                 android:id="@+id/drainage_check"
@@ -1144,7 +1144,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/metro_check" />
+                app:layout_constraintTop_toBottomOf="@+id/ads_corp_water_check" />
 
         </android.support.constraint.ConstraintLayout>
 
@@ -1637,7 +1637,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:fontFamily="@font/montserrat_medium"
-                    android:onClick="onRadioButtonClicked"
+                    android:onClick="onCheckBoxClicked"
                     android:padding="5dp"
                     android:text="@string/cdma_text" />
 
@@ -1647,7 +1647,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:fontFamily="@font/montserrat_medium"
-                    android:onClick="onRadioButtonClicked"
+                    android:onClick="onCheckBoxClicked"
                     android:padding="5dp"
                     android:text="@string/corporation" />
 
@@ -1657,7 +1657,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:fontFamily="@font/montserrat_medium"
-                    android:onClick="onRadioButtonClicked"
+                    android:onClick="onCheckBoxClicked"
                     android:padding="5dp"
                     android:text="@string/panchayat" />
 
@@ -1667,7 +1667,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:fontFamily="@font/montserrat_medium"
-                    android:onClick="onRadioButtonClicked"
+                    android:onClick="onCheckBoxClicked"
                     android:padding="5dp"
                     android:text="@string/commercial" />
 
@@ -1677,7 +1677,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:fontFamily="@font/montserrat_medium"
-                    android:onClick="onRadioButtonClicked"
+                    android:onClick="onCheckBoxClicked"
                     android:padding="5dp"
                     android:text="@string/industrial" />
                 <android.support.v7.widget.AppCompatCheckBox
@@ -1685,7 +1685,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat_medium"
-                    android:onClick="onRadioButtonClicked"
+                    android:onClick="onCheckBoxClicked"
                     android:padding="5dp"
                     android:layout_margin="5dp"
                     android:text="@string/rera_text"/>

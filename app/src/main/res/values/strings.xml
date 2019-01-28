@@ -190,7 +190,7 @@
     <string name="tenant_name">Name of the tenant(optional)</string>
     <string name="roi_text">ROI in (%) Per Year</string>
     <string name="investment_text">Investment  Price:</string>
-    <string name="pets_allowed">Allowed</string>
+    <string name="pets_allowed"> Pets Allowed</string>
     <string name="pets_not_allowed">Not Allowed</string>
 
     <string name="post_ad">Post Ad</string>

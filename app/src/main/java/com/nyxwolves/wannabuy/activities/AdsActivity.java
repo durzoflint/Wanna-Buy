@@ -1131,10 +1131,10 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 setApprovalData((CheckBox)v,getString(R.string.rera_text));
                 break;
             case R.id.veg_check:
-                SellerAd.getInstance().isVeg = setData((CheckBox) v);
+                SellerAd.getInstance().vegNonVeg = getString(R.string.veg);
                 break;
             case R.id.non_veg_check:
-                SellerAd.getInstance().isVeg = setData((CheckBox) v);
+                SellerAd.getInstance().vegNonVeg = getString(R.string.non_veg);
                 break;
         }
     }

@@ -13,7 +13,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MyAdsViewHolder extends RecyclerView.ViewHolder {
 
     CircleImageView propertyImage;
-    TextView areaName,cityName,bhkText,priceText,sizeText;
+    TextView areaName,cityName,bhkText,priceText,landSize,builtUpSize;
     Button detailsBtn;
 
     public MyAdsViewHolder(@NonNull View itemView) {
@@ -24,6 +24,8 @@ public class MyAdsViewHolder extends RecyclerView.ViewHolder {
         cityName = itemView.findViewById(R.id.city_name);
         bhkText = itemView.findViewById(R.id.ads_bhk);
         priceText = itemView.findViewById(R.id.ads_price);
-        sizeText = itemView.findViewById(R.id.ads_size);
+        landSize = itemView.findViewById(R.id.land_area);
+        builtUpSize = itemView.findViewById(R.id.built_up_area);
+        detailsBtn = itemView.findViewById(R.id.ads_details_btn);
     }
 }

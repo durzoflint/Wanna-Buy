@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -20,6 +21,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.AutocompleteFilter;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.nyxwolves.wannabuy.Fragments.FragmentToActivity;
@@ -45,6 +51,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     NavigationView navigationView;
     Toolbar toolbar;
     SharedPreferences sharedPreferences;
+
+    final int AUTO_COMPLETION_CODE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,13 +144,38 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 drawerLayout.openDrawer(GravityCompat.START);
                 break;
             case R.id.search:
-                startActivity(new Intent(HomeActivity.this,RequirementsSearchActivity.class));
+                searchByLocation();
                 break;
             case R.id.notify_icon:
                 Toast.makeText(HomeActivity.this, "Notify", Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void searchByLocation() {
+        try {
+            AutocompleteFilter filter = new AutocompleteFilter.Builder().setCountry("IN").build();
+            Intent locationIntent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                    .setFilter(filter)
+                    .build(this);
+            startActivityForResult(locationIntent, AUTO_COMPLETION_CODE);
+        } catch (GooglePlayServicesNotAvailableException e) {
+            Toast.makeText(this, "Google Play Services missing", Toast.LENGTH_SHORT).show();
+        } catch (GooglePlayServicesRepairableException e) {
+            Toast.makeText(this, "Google Play Services error", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == AUTO_COMPLETION_CODE && resultCode == RESULT_OK) {
+            Place places = PlaceAutocomplete.getPlace(this, data);
+            Intent intent = new Intent(HomeActivity.this,RequirementsSearchActivity.class);
+            intent.putExtra("LOCATION",places.getName().toString());
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -164,8 +197,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.wanna_buy:
                 startActivity(new Intent(HomeActivity.this,BuyOrRent.class));
+                //for testing
                 RequirementHelper helper = new RequirementHelper(HomeActivity.this);
-                helper.getRequirementCompleteInfo("COMMERCIAL REQ");
+                helper.getUserRequirementShortInfo();
                 break;
 
             case R.id.home_rent_btn:

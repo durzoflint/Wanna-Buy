@@ -175,12 +175,16 @@ public class AreaLocality extends AppCompatActivity implements View.OnClickListe
         if (requestCode == LOCATION_REQUEST && resultCode == RESULT_OK) {
             Place places = PlaceAutocomplete.getPlace(this, data);
             showPlaces(places.getName().toString());
+
         }else if(requestCode == STATE_REQUEST && resultCode == RESULT_OK){
             Place places = PlaceAutocomplete.getPlace(this,data);
             stateInput.setText(places.getName().toString());
+            Requirements.getInstance().state = places.getName().toString();
+
         }else if(requestCode == CITY_REQUEST && resultCode == RESULT_OK){
             Place places = PlaceAutocomplete.getPlace(this,data);
             cityInput.setText(places.getName().toString());
+            Requirements.getInstance().city = places.getName().toString();
         }
     }
 

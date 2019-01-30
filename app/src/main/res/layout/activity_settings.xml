@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/root_layout"
     tools:context=".activities.SettingsActivity">
 
     <android.support.v7.widget.Toolbar
@@ -46,6 +47,7 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/change_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
@@ -53,7 +55,7 @@
                     android:paddingEnd="8dp"
                     android:text="Change Password" />
 
-                <LinearLayout
+                <!--<LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
@@ -108,10 +110,10 @@
                     <Switch
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
-                </LinearLayout>
+                </LinearLayout>-->
             </LinearLayout>
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -147,7 +149,7 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
                     android:text="Unlink Social Media Accounts" />
-            </LinearLayout>
+            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -217,6 +219,7 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/delete"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"

@@ -23,11 +23,13 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.nyxwolves.wannabuy.activities.HomeActivity;
 import com.nyxwolves.wannabuy.R;
+import com.nyxwolves.wannabuy.activities.HomeActivity;
 
 public class FirebaseHelper {
 
@@ -163,6 +165,37 @@ public class FirebaseHelper {
             public void onFailure(@NonNull Exception e) {
                 closeDialog();
                 showSnackBar("Error Occurred", view);
+            }
+        });
+    }
+
+
+    public void changePassword(String oldPass, final String newPass, final View view) {
+        showDialog("Authenticating");
+        final FirebaseUser user;
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(), oldPass);
+
+        user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    user.updatePassword(newPass).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            closeDialog();
+                            if (!task.isSuccessful()) {
+                                showSnackBar("Something went wrong. Please try again later", view);
+                            } else {
+                                showSnackBar("Password Successfully Modified", view);
+                                ctx.startActivity(new Intent(ctx, HomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+                            }
+                        }
+                    });
+                } else {
+                    closeDialog();
+                    showSnackBar("Authentication Failed", view);
+                }
             }
         });
     }

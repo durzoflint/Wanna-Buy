@@ -5,7 +5,7 @@
     <string name="shared_pref">SHARED_PREF</string>
     <string name="shared_first_req">FIRST_REQ</string>
     <string name="shared_first_ad">FIRST_AD</string>
-
+    <string name="shared_first_match">FIRST_MATCH</string>
     <string name="app_name">WannaBuy</string>
     <string name="please_enter">Please Enter</string>
     <string name="name_email">Name &amp; Email</string><!--amp; to escape character-->
@@ -66,42 +66,42 @@
 
     <string name="land">Land</string>
 
-    <string name="residential_land">Residential_Land</string>
-    <string name="rental_residential_land">Rental_Residential_Land</string>
-    <string name="residential_building">Residential_Building</string>
-    <string name="residential_independent">Residential_Independent</string>
-    <string name="residential_apartments">Residential_Apartments</string>
-    <string name="rental_residential_independent">Rental_Residential_Independent</string>
-    <string name="rental_residential_apartments">Rental_Residential_Apartments</string>
+    <string name="residential_land">Residential Land</string>
+    <string name="rental_residential_land">Rental Residential Land</string>
+    <string name="residential_building">Residential Building</string>
+    <string name="residential_independent">Residential Independent</string>
+    <string name="residential_apartments">Residential Apartments</string>
+    <string name="rental_residential_independent">Rental Residential Independent</string>
+    <string name="rental_residential_apartments">Rental Residential Apartments</string>
 
-    <string name="pg_rent_independent">PG_Rent_Independent</string>
+    <string name="pg_rent_independent">PG Rent Independent</string>
 
-    <string name="commercial_land">Commercial_Land</string>
-    <string name="rental_commercial_land">Rental_Commercial_Land</string>
-    <string name="commercial_building">Commercial_Building</string>
-    <string name="commercial_independent">Commercial_Independent</string>
-    <string name="rental_commercial_independent">Rental_Commercial_Independent</string>
-    <string name="commercial_floorspace">Commercial_Floorspace</string>
-    <string name="rental_commercial_floorspace">Rental_Commercial_Floorspace</string>
+    <string name="commercial_land">Commercial Land</string>
+    <string name="rental_commercial_land">Rental Commercial Land</string>
+    <string name="commercial_building">Commercial Building</string>
+    <string name="commercial_independent">Commercial Independent</string>
+    <string name="rental_commercial_independent">Rental Commercial Independent</string>
+    <string name="commercial_floorspace">Commercial Floorspace</string>
+    <string name="rental_commercial_floorspace">Rental Commercial Floorspace</string>
 
-    <string name="institutional_land">Institutional_Land</string>
-    <string name="rental_institutional_land">Rental_Institutional_Land</string>
-    <string name="institutional_building">Institutional_Building</string>
-    <string name="institutional_independent">Institutional_Independent</string>
+    <string name="institutional_land">Institutional Land</string>
+    <string name="rental_institutional_land">Rental Institutional Land</string>
+    <string name="institutional_building">Institutional Building</string>
+    <string name="institutional_independent">Institutional Independent</string>
 
-    <string name="industrial_land">Industrial_Land</string>
-    <string name="rental_industrial_land">Rental_Industrial_Land</string>
-    <string name="industrial_building">Industrial_Building</string>
-    <string name="industrial_independent">Industrial_Independent</string>
-    <string name="rental_industrial_independent">Rental_Industrial_Independent</string>
-    <string name="industrial_floorspace">Industrial_Floorspace</string>
-    <string name="rental_industrial_floorspace">Rental_Industrial_Floorspace</string>
+    <string name="industrial_land">Industrial Land</string>
+    <string name="rental_industrial_land">Rental Industrial Land</string>
+    <string name="industrial_building">Industrial Building</string>
+    <string name="industrial_independent">Industrial Independent</string>
+    <string name="rental_industrial_independent">Rental Industrial Independent</string>
+    <string name="industrial_floorspace">Industrial Floorspace</string>
+    <string name="rental_industrial_floorspace">Rental Industrial Floorspace</string>
 
-    <string name="rental_pg_independent">Rental_PG_Rent_Independent</string>
-    <string name="rental_pg_apartments">Rental_PG_Apartment</string>
+    <string name="rental_pg_independent">Rental PG Rent Independent</string>
+    <string name="rental_pg_apartments">Rental PG Apartment</string>
 
-    <string name="rental_farm_building">Rental_Farm_Building</string>
-    <string name="rental_farm_land">Rental_Farm_Land</string>
+    <string name="rental_farm_building">Rental Farm Building</string>
+    <string name="rental_farm_land">Rental Farm Land</string>
 
     <string name="floorspace">FloorSpace</string>
     <string name="independent">Independent</string>
@@ -110,18 +110,18 @@
     <string name="rental_showroom">Rental_Showroom</string>
 
     <string name="factory"> Factory</string>
-    <string name="rental_factory">Rental_Factory</string>
+    <string name="rental_factory">Renta Factory</string>
     <string name="warehouse"> Warehouse</string>
-    <string name="rental_warehouse">Rental_Warehouse</string>
+    <string name="rental_warehouse">Rental Warehouse</string>
     <string name="cold_storage">  Cold Storage</string>
-    <string name="rental_cold_storage">Rental_Cold_Storage</string>
+    <string name="rental_cold_storage">Rental Cold Storage</string>
 
     <string name="hospital">Hospital</string>
-    <string name="rental_hospital">Rental_Hospital</string>
+    <string name="rental_hospital">Rental Hospital</string>
     <string name="school">School</string>
-    <string name="rental_school">Rental_School</string>
+    <string name="rental_school">Rental School</string>
     <string name="college">College</string>
-    <string name="rental_college">Rental_College</string>
+    <string name="rental_college">Rental College</string>
 
     <string name="bhk_header">How many Rooms?</string>
     <string name="one_bhk_text"> 1 BHK</string>
@@ -213,7 +213,9 @@
     <string name="make_payment">Make Payment</string>
 
     <string name="recent_search_header">Your Recent Searches</string>
-    <string name="your_matches_header"><b>Your Matches</b></string>
+    <string name="my_matches"><b>My Matches</b></string>
+    <string name="my_requirements">My Requirements</string>
+    <string name="how_we_work">How We Work</string>
     <string name="looking_for_something_else">Looking for Something else?</string>
     <string name="post_your_property">Post Your Property</string>
     <string name="looking_for_rent">Looking For Rent?</string>
@@ -278,7 +280,6 @@
     </string-array>
 
     <string name="pets_header">Pets Allowed?</string>
-    <string name="how_we_work">How We Work</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="contact">Contact</string>
 
@@ -393,4 +394,16 @@
 
     <string name="pay_rent_ad">POST RENT AD</string>
     <string name="pay_sell_ad">POST SELL AD</string>
+
+    <string name="no_matches_found">No Matches Found</string>
+
+    <string name="wanna_buy_text">Wanna Buy</string>
+    <string name="wanna_rent_text">Wanna Rent</string>
+    <string name="support">Support</string>
+
+    <string name="show_req">SHOW_REQ</string>
+    <string name="show_match">SHOW_MATCH</string>
+    <string name="show_ad">SHOW_AD</string>
+
+    <string name="AD_ID">AD_ID</string>
 </resources>

@@ -48,6 +48,8 @@ public class SellerAd {
     public String roiIncrementalValue = "NOT_SET";
     public String rentStartDate = "NOT_SET";
     public String rentEndDate = "NOT_SET";
+    public String locationLatitude = "NOT_SET";
+    public String locationLongitude = "NOT_SET";
 
     private static SellerAd instance = null;
 

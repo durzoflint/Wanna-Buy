@@ -1143,6 +1143,9 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
             propertyPic.setImageURI(data.getData());
         } else if (requestCode == LOCATION_REQUEST && resultCode == RESULT_OK) {
             Place place = PlaceAutocomplete.getPlace(AdsActivity.this, data);
+            SellerAd.getInstance().locationLatitude = Double.toString(place.getLatLng().latitude);
+            SellerAd.getInstance().locationLongitude = Double.toString(place.getLatLng().longitude);
+
             cityInput.setText(place.getName().toString());
         } else if (requestCode == PAYMENT_CODE) {
             //if(resultCode == RESULT_OK){

@@ -11,11 +11,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.google.firebase.auth.FirebaseAuth;
-import com.nyxwolves.wannabuy.Interfaces.RecyclerInterface;
+import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -157,7 +158,7 @@ public class RequirementHelper {
     }
 
 
-    public void getUserRequirementShortInfo() {
+    public void getUserRequirementShortInfo(final CallbackInterface callBack) {
 
         //JSON STRUCTURE
         //{"requirements":[{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"COMMERCIAL REQ","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"COMMERCIAL_INDEPENDENT","BUDGET_MIN":"42","BUDGET_MAX":"66","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 19:45:43"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"COMMERCIAL REQ2","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"COMMERCIAL_INDEPENDENT","BUDGET_MIN":"42","BUDGET_MAX":"66","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 19:47:15"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"COMMERCIAL REQ3","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"COMMERCIAL_INDEPENDENT","BUDGET_MIN":"42","BUDGET_MAX":"66","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 19:58:41"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"COMMERCIAL REQ4","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"COMMERCIAL_INDEPENDENT","BUDGET_MIN":"42","BUDGET_MAX":"66","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 20:01:12"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"GOOGLE","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"RESIDENTIAL_INDEPENDENT","BUDGET_MIN":"39","BUDGET_MAX":"80","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 20:04:39"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"facebook","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"RESIDENTIAL_INDEPENDENT","BUDGET_MIN":"39","BUDGET_MAX":"80","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 20:07:31"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"amazon","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"RESIDENTIAL_INDEPENDENT","BUDGET_MIN":"39","BUDGET_MAX":"80","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 20:08:46"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"something","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"RESIDENTIAL_INDEPENDENT","BUDGET_MIN":"39","BUDGET_MAX":"80","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 20:09:43"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"TEST","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"RESIDENTIAL_LAND","BUDGET_MIN":"32","BUDGET_MAX":"54","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 20:58:20"}]}
@@ -169,14 +170,15 @@ public class RequirementHelper {
             public void onResponse(String response) {
 
                 Log.d("JSON_RESPONSE", response);
-                //reqDataList = getReqData(response);
-                //closeDialog();
+                try{
+                    callBack.setData(new JSONObject(response));
+                }catch(JSONException e){}
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("READ_RESPONSE", error.toString());
-                //closeDialog();
             }
         });
 
@@ -209,7 +211,7 @@ public class RequirementHelper {
         CustomRequestQueue.getInstance(ctx).addRequest(getRequirementRequest);
     }
 
-    public void getRequirementShortByLocation(String location, final RecyclerInterface recyclerInterface){
+    public void getRequirementShortByLocation(String location, final CallbackInterface callbackInterface){
         String URL = "http://www.wannabuy.in/api/Requirements/requirement_location.php?LOCATION=" + location.toUpperCase();
 
         StringRequest getRequirementRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
@@ -219,7 +221,7 @@ public class RequirementHelper {
                 Log.d("JSON_RESPONSE", response);
                 try{
                     JSONObject jsonResult = new JSONObject(response);
-                    recyclerInterface.setData(jsonResult);
+                    callbackInterface.setData(jsonResult);
 
                 }catch (Exception e){
                     Toast.makeText(ctx, "Please Try Again", Toast.LENGTH_SHORT).show();

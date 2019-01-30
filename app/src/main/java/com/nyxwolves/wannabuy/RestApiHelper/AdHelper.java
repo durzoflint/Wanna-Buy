@@ -11,16 +11,15 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.google.firebase.auth.FirebaseAuth;
-import com.nyxwolves.wannabuy.Interfaces.RecyclerInterface;
-import com.nyxwolves.wannabuy.POJO.Requirements;
+import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
 import com.nyxwolves.wannabuy.POJO.SellerAd;
 import com.nyxwolves.wannabuy.R;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class AdHelper{
@@ -105,6 +104,8 @@ public class AdHelper{
             createParams.put("ROI_INCREMENT_VALUE",SellerAd.getInstance().roiIncrementalValue);
             createParams.put("RENT_START_DATE",SellerAd.getInstance().rentStartDate);
             createParams.put("RENT_END_DATE",SellerAd.getInstance().rentEndDate);
+            createParams.put("LATITUDE",SellerAd.getInstance().locationLatitude);
+            createParams.put("LONGITUDE",SellerAd.getInstance().locationLongitude);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -128,12 +129,16 @@ public class AdHelper{
     }
 
 
-    public void readAd(String Ad_id) {
+    public void readAd(String Ad_id, final CallbackInterface callbackInterface) {
         String URL = "http://www.wannabuy.in/api/Ads/read_ad_complete_info.php?AD_ID=" + Ad_id;
 
         StringRequest getRequirementRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                try{
+                    Log.d("COMPLETE_AD",response);
+                    callbackInterface.setData(new JSONObject(response));
+                }catch (JSONException e){}
 
             }
         }, new Response.ErrorListener() {
@@ -147,7 +152,7 @@ public class AdHelper{
     }
 
 
-    public void getUserAds(final RecyclerInterface recyclerInterface){
+    public void getUserAds(final CallbackInterface callbackInterface){
         String URL = "http://www.wannabuy.in/api/Ads/read_ad_short_info.php?USER_ID="+FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
         StringRequest getRequirementRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
@@ -155,7 +160,7 @@ public class AdHelper{
             public void onResponse(String response) {
                 try{
                     Log.d("USER_AD_RESPONSE",response);
-                    recyclerInterface.setData(new JSONObject(response));
+                    callbackInterface.setData(new JSONObject(response));
                 }catch (Exception e){}
             }
         }, new Response.ErrorListener() {

@@ -118,6 +118,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }else{
             editor.putBoolean(getString(R.string.shared_first_ad),false);
         }
+
+        if(sharedPreferences.getBoolean(getString(R.string.shared_first_match),true)){
+            editor.putBoolean(getString(R.string.shared_first_match),true);
+        }else{
+            editor.putBoolean(getString(R.string.shared_first_match),false);
+        }
         editor.apply();
 
         SharedPreferences firebasePreferences = getSharedPreferences(MyFirebaseMessagingService
@@ -190,16 +196,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 Intent i = new Intent(HomeActivity.this,MyAdsActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(i);
-                //startActivity(new Intent(HomeActivity.this,AdsActivity.class));
                 break;
             case R.id.nav_account_btn:
                 startActivity(new Intent(this, AccountActivity.class));
                 break;
             case R.id.wanna_buy:
                 startActivity(new Intent(HomeActivity.this,BuyOrRent.class));
-                //for testing
-                RequirementHelper helper = new RequirementHelper(HomeActivity.this);
-                helper.getUserRequirementShortInfo();
                 break;
 
             case R.id.home_rent_btn:
@@ -244,19 +246,41 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
-            case R.id.log_out:
-                FirebaseAuth.getInstance().signOut();
-                Intent i = new Intent(this,LoginActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(i);
-                finish();
+
+            case R.id.menu_my_requirements:
+                Intent myReq = new Intent(HomeActivity.this,MyAdsActivity.class);
+                myReq.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                myReq.setAction(getString(R.string.show_req));
+                startActivity(myReq);
                 break;
 
-            case R.id.my_matches:
-                startActivity(new Intent(HomeActivity.this,MyAdsActivity.class));
+            case R.id.menu_my_matches:
+                Intent myMatches = new Intent(HomeActivity.this,MyAdsActivity.class);
+                myMatches.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                myMatches.setAction(getString(R.string.show_match));
+                startActivity(myMatches);
                 break;
-            case R.id.user_account:
-                startActivity(new Intent(HomeActivity.this,AccountActivity.class));
+
+            case R.id.menu_wanna_buy:
+                Requirements.getInstance().buyorRent = getString(R.string.BUY);
+                startActivity(new Intent(HomeActivity.this,AreaLocality.class));
+                break;
+
+            case R.id.menu_wanna_rent:
+                Requirements.getInstance().buyorRent = getString(R.string.RENT);
+                startActivity(new Intent(HomeActivity.this,AreaLocality.class));
+                break;
+
+            case R.id.menu_wanna_sell:
+                startActivity(new Intent(HomeActivity.this,AdsActivity.class));
+                break;
+
+            case R.id.log_out:
+                FirebaseAuth.getInstance().signOut();
+                Intent logOutIntent = new Intent(this,LoginActivity.class);
+                logOutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(logOutIntent);
+                finish();
                 break;
         }
         return false;

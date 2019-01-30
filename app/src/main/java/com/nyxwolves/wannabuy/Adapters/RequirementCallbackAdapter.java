@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.nyxwolves.wannabuy.Interfaces.RecyclerInterface;
+import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
 import com.nyxwolves.wannabuy.RestApiHelper.RequirementHelper;
 import com.nyxwolves.wannabuy.activities.AdsActivity;
 import com.nyxwolves.wannabuy.R;
@@ -16,15 +16,21 @@ import com.nyxwolves.wannabuy.R;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class RequirementRecyclerAdapter extends RecyclerView.Adapter<RequirementSearchHolder> implements RecyclerInterface {
+public class RequirementCallbackAdapter extends RecyclerView.Adapter<RequirementSearchHolder> implements CallbackInterface {
 
     private JSONArray data = new JSONArray();
     private Context ctx;
 
-    public RequirementRecyclerAdapter(Context ctx, String location){
+    public RequirementCallbackAdapter(Context ctx){
+        this.ctx = ctx;
+        CallbackInterface callBack = this;
+        RequirementHelper helper = new RequirementHelper(ctx);
+        helper.getUserRequirementShortInfo(callBack);
+    }
+    public RequirementCallbackAdapter(Context ctx, String location){
         this.ctx = ctx;
         RequirementHelper searchHelper = new RequirementHelper(ctx);
-        RecyclerInterface callBack = this;
+        CallbackInterface callBack = this;
         searchHelper.getRequirementShortByLocation(location,callBack);
     }
 

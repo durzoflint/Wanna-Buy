@@ -54,7 +54,7 @@ public class MyAdsFragment extends Fragment {
 
         sharedPreferences = getActivity().getSharedPreferences(getString(R.string.shared_pref), Context.MODE_PRIVATE);
         if (sharedPreferences.getBoolean(getString(R.string.shared_first_ad), true)) {
-            firstAdCard.setVisibility(View.GONE);
+            firstAdCard.setVisibility(View.VISIBLE);
         }
 
         //recyclerview

@@ -2,23 +2,33 @@ package com.nyxwolves.wannabuy.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.nyxwolves.wannabuy.Fragments.ViewPagerAdapter;
+import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
 
-public class MyAdsActivity extends AppCompatActivity implements View.OnClickListener{
+public class MyAdsActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener{
 
     TabLayout tabLayout;
     Toolbar toolBar;
     ViewPager viewPager;
     ImageView homeButton,profileButton,msgButton;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +41,18 @@ public class MyAdsActivity extends AppCompatActivity implements View.OnClickList
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
+        //drawer and navigation layout
+        drawerLayout = findViewById(R.id.ads_drawer);
+        navigationView = findViewById(R.id.ads_nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+
         //change icon color
         ImageView addBtn = findViewById(R.id.nav_ads_btn);
         addBtn.setImageDrawable(getDrawable(R.drawable.ads_orange));
 
         ViewPagerAdapter fragmentAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+
 
         viewPager = findViewById(R.id.ads_view_pager);
         tabLayout = findViewById(R.id.ads_tab_layout);
@@ -53,6 +70,16 @@ public class MyAdsActivity extends AppCompatActivity implements View.OnClickList
 
         ImageView wannaBuy = findViewById(R.id.wanna_buy);
         wannaBuy.setOnClickListener(this);
+
+        //show fragment according to intent
+        Intent intent = getIntent();
+        if(intent.getAction() != null){
+            if(intent.getAction().equals(getString(R.string.show_req))){
+                viewPager.setCurrentItem(2,true);
+            }else if(intent.getAction().equals(getString(R.string.show_match))){
+                viewPager.setCurrentItem(0,true);
+            }
+        }
     }
 
     @Override
@@ -77,5 +104,60 @@ public class MyAdsActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(new Intent(MyAdsActivity.this, BuyOrRent.class));
                 break;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch(item.getItemId()){
+            case android.R.id.home:
+                drawerLayout.openDrawer(GravityCompat.START);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch (menuItem.getItemId()){
+
+            case R.id.menu_my_requirements:
+                Intent myReq = new Intent(MyAdsActivity.this,MyAdsActivity.class);
+                myReq.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                myReq.setAction(getString(R.string.show_req));
+                startActivity(myReq);
+                break;
+
+            case R.id.menu_my_matches:
+                Intent myMatches = new Intent(MyAdsActivity.this,MyAdsActivity.class);
+                myMatches.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                myMatches.setAction(getString(R.string.show_match));
+                startActivity(myMatches);
+                break;
+
+            case R.id.menu_wanna_buy:
+                Requirements.getInstance().buyorRent = getString(R.string.BUY);
+                startActivity(new Intent(MyAdsActivity.this,AreaLocality.class));
+                break;
+
+            case R.id.menu_wanna_rent:
+                Requirements.getInstance().buyorRent = getString(R.string.RENT);
+                startActivity(new Intent(MyAdsActivity.this,AreaLocality.class));
+                break;
+
+            case R.id.menu_wanna_sell:
+                startActivity(new Intent(MyAdsActivity.this,AdsActivity.class));
+                break;
+
+            case R.id.log_out:
+                FirebaseAuth.getInstance().signOut();
+                Intent logOutIntent = new Intent(this,LoginActivity.class);
+                logOutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(logOutIntent);
+                finish();
+                break;
+        }
+        return false;
+
     }
 }

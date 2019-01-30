@@ -30,6 +30,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.nyxwolves.wannabuy.R;
 import com.nyxwolves.wannabuy.activities.HomeActivity;
+import com.nyxwolves.wannabuy.activities.SplashScreen;
 
 public class FirebaseHelper {
 
@@ -196,6 +197,21 @@ public class FirebaseHelper {
                     closeDialog();
                     showSnackBar("Authentication Failed", view);
                 }
+            }
+        });
+    }
+
+    public void deleteUser(final View view) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    showSnackBar("User Account Deleted", view);
+                    ctx.startActivity(new Intent(ctx, SplashScreen.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+                } else
+                    showSnackBar("Please logout and login once and try again", view);
             }
         });
     }

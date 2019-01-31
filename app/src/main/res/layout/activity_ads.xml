@@ -17,7 +17,7 @@
             android:id="@+id/post_ads_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/location_property" />
+            android:src="@drawable/location_property"/>
 
         <TextView
             android:id="@+id/post_ad_header"
@@ -42,7 +42,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/montserrat_medium"
-                android:text="@string/ad_header" />
+                android:text="@string/ad_header"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
 
             <RadioGroup
@@ -64,7 +66,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="60dp"
-                    android:layout_marginStart="60dp"
+                    android:layout_marginStart="40dp"
                     android:button="@drawable/custom_radio_button"
                     android:fontFamily="@font/montserrat_medium"
                     android:onClick="onRadioButtonClicked"
@@ -75,12 +77,12 @@
                     android:id="@+id/rent_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="50dp"
+                    android:layout_marginEnd="40dp"
                     android:button="@drawable/custom_radio_button"
                     android:fontFamily="@font/montserrat_medium"
                     android:onClick="onRadioButtonClicked"
                     android:padding="5dp"
-                    android:text="@string/RENT" />
+                    android:text="@string/wanna_rent_out" />
 
             </RadioGroup>
         </android.support.constraint.ConstraintLayout>
@@ -1467,7 +1469,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/road_width"
-                android:fontFamily="@font/montserrat_medium"/>
+                android:fontFamily="@font/montserrat_medium"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
             <SeekBar
                 android:id="@+id/ads_road_width_seekbar"
                 android:layout_width="match_parent"
@@ -2138,7 +2142,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_medium"
-                android:text="@string/is_negotiable" />
+                android:text="@string/is_negotiable"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <RadioGroup
                 android:id="@+id/negotiable_group"

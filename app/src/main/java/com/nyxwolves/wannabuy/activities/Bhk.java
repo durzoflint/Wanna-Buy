@@ -51,7 +51,6 @@ public class Bhk extends AppCompatActivity {
 
                         } else if (Requirements.getInstance().subType.equals(getString(R.string.residential_apartments)) ||
                                 Requirements.getInstance().subType.equals(getString(R.string.pg_rent_apartment)) ||
-                                Requirements.getInstance().subType.equals(getString(R.string.commercial_floorspace)) ||
                                 Requirements.getInstance().subType.equals(getString(R.string.industrial_floorspace))) {
                             startActivity(new Intent(Bhk.this, FlooringActivity.class));
 

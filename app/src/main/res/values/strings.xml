@@ -194,7 +194,7 @@
     <string name="pets_not_allowed">Not Allowed</string>
 
     <string name="post_ad">Post Ad</string>
-    <string name="ad_header">Wanna: Sell/Rent</string>
+    <string name="ad_header">Wanna: Sell/Rent Out</string>
     <string name="ad_area_header">Your Area / Locality / City?</string>
     <string name="door_number">Door number</string>
     <string name="address_header_text">Address</string>
@@ -213,7 +213,7 @@
     <string name="make_payment">Make Payment</string>
 
     <string name="recent_search_header">Your Recent Searches</string>
-    <string name="my_matches"><b>My Matches</b></string>
+    <string name="my_matches">My Matches</string>
     <string name="my_requirements">My Requirements</string>
     <string name="how_we_work">How We Work</string>
     <string name="looking_for_something_else">Looking for Something else?</string>
@@ -406,4 +406,18 @@
     <string name="show_ad">SHOW_AD</string>
 
     <string name="AD_ID">AD_ID</string>
+    <string name="terms_of_service">Terms Of Service</string>
+    <string name="about_us">About Us</string>
+
+    <string name="about_us_url">http://www.wannabuy.in/aboutus</string>
+    <string name="terms_of_service_url">http://www.wannabuy.in/termsofservice</string>
+    <string name="privacy_policy_url">http://www.wannabuy.in/privacypolicy</string>
+    <string name="how_we_work_url">http://www.wannabuy.in/howwework</string>
+
+    <string name="wanna_rent_out">Rent out</string>
+
+    <string name="phone_num">Phone Number</string>
+    <string name="owner_dealer_flag">OWNER_DEALER_FLAG</string>
+    <string name="SET">SET</string>
+    <string name="NOT_SET">NOT_SET</string>
 </resources>

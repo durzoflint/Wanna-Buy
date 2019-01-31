@@ -1,6 +1,7 @@
 package com.nyxwolves.wannabuy.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -17,6 +18,7 @@ import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.nyxwolves.wannabuy.Fragments.ViewPagerAdapter;
+import com.nyxwolves.wannabuy.Helpers.FirebaseHelper;
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
 
@@ -150,11 +152,29 @@ public class MyAdsActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.log_out:
-                FirebaseAuth.getInstance().signOut();
-                Intent logOutIntent = new Intent(this,LoginActivity.class);
-                logOutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(logOutIntent);
+                FirebaseHelper logoutHelper = new FirebaseHelper(this);
+                logoutHelper.logOutUser();
                 finish();
+                break;
+
+            case R.id.menu_about_us:
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.about_us_url))));
+                break;
+
+            case R.id.menu_privacy_policy:
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.privacy_policy_url))));
+                break;
+
+            case R.id.menu_terms_of_service:
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.terms_of_service_url))));
+                break;
+
+            case R.id.menu_wanna_rent_out:
+                startActivity(new Intent(MyAdsActivity.this,AdsActivity.class));
+                break;
+
+            case R.id.menu_how_we_work:
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.how_we_work_url))));
                 break;
         }
         return false;

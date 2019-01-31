@@ -121,7 +121,7 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
                 String unCovCar = "Uncovered Car Parking: "+data.getString("UN_COV_CAR_PARKING_NUM");
                 unCovParking.setText(unCovCar);
             }else if(data.getString("COV_CAR_PARKING").equals("YES")){
-                
+
                 String covCar = "Covered Car Parking: "+data.getString("COV_CAR_PARKING_NUM");
                 covParking.setText(covCar);
             }
@@ -130,6 +130,11 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
             Log.d("JSON EXCEPTION",e.toString());
         }
 
+
+    }
+
+    @Override
+    public void isSuccess(boolean isSuccess) {
 
     }
 }

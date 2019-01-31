@@ -1,6 +1,7 @@
 package com.nyxwolves.wannabuy.activities;
 
 import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,8 @@ import com.nyxwolves.wannabuy.R;
 public class FlooringActivity extends AppCompatActivity {
 
     Button nextBtn;
+    CheckBox showroomGroundFloor;
+    ConstraintLayout flooringLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +26,18 @@ public class FlooringActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        showroomGroundFloor = findViewById(R.id.ground_check_showroom);//show only for showroom
+        flooringLayout = findViewById(R.id.flooring_layout);
 
+        if(Requirements.getInstance().subType.equals(getString(R.string.showroom))){
+            showroomGroundFloor.setVisibility(View.VISIBLE);
+            flooringLayout.setVisibility(View.GONE);
+
+        }else{
+            showroomGroundFloor.setVisibility(View.GONE);
+            flooringLayout.setVisibility(View.VISIBLE);
+
+        }
 
         nextBtn = findViewById(R.id.flooring_next_btn);
         nextBtn.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +58,10 @@ public class FlooringActivity extends AppCompatActivity {
     }
     public void onCheckBoxClicked(View v){
         switch(v.getId()){
+
+            case R.id.check_ground:
+                setData((CheckBox)v,"Ground");
+                break;
             case R.id.check_1:
                 setData((CheckBox)v,"1");
                 break;

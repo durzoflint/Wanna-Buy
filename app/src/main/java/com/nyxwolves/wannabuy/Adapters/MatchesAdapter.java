@@ -38,6 +38,11 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesViewHolder> impl
 
     }
 
+    @Override
+    public void isSuccess(boolean isSuccess) {
+
+    }
+
     @NonNull
     @Override
     public MatchesViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {

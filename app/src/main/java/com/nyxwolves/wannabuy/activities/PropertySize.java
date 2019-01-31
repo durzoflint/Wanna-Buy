@@ -93,21 +93,18 @@ public class PropertySize extends AppCompatActivity implements View.OnClickListe
         if (position == 0) {
             minLandArea.setHint("in Sq.Ft");
             maxLandArea.setHint("in Sq.Ft");
-            minLandArea.setInputType(InputType.TYPE_CLASS_NUMBER);
-            maxLandArea.setInputType(InputType.TYPE_CLASS_NUMBER);
+
         }else if(position == 1){
             minLandArea.setHint("in Grounds");
             maxLandArea.setHint("in Grounds");
-            minLandArea.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
-            maxLandArea.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
         }else if(position == 2){
             minLandArea.setHint("in Cents");
             maxLandArea.setHint("in Cents");
         }else if(position == 3){
             minLandArea.setHint("in Acres");
             maxLandArea.setHint("in Acres");
-            minLandArea.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
-            maxLandArea.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
         }
     }
 
@@ -165,8 +162,8 @@ public class PropertySize extends AppCompatActivity implements View.OnClickListe
 
     private boolean checkData(EditText inputMin,EditText inputMax){
         try{
-            if(Integer.valueOf(inputMin.getText().toString()) > 0 && Integer.valueOf(inputMax.getText().toString()) > 0 ){
-                if(Integer.valueOf(inputMax.getText().toString()) > Integer.valueOf(inputMin.getText().toString())){
+            if(Double.valueOf(inputMin.getText().toString()) > 0 && Double.valueOf(inputMax.getText().toString()) > 0 ){
+                if(Double.valueOf(inputMax.getText().toString()) > Double.valueOf(inputMin.getText().toString())){
                     return true;
                 }else{
                     return false;

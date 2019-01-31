@@ -3,19 +3,31 @@ package com.nyxwolves.wannabuy.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
 import com.nyxwolves.wannabuy.R;
+import com.nyxwolves.wannabuy.RestApiHelper.UserHelper;
+
+import org.json.JSONObject;
 
 import java.security.acl.Owner;
 
-public class OwnerOrDealer extends AppCompatActivity {
+public class OwnerOrDealer extends AppCompatActivity implements CallbackInterface {
 
-    Button ownerBtn,dealerBtn;
+    Button ownerBtn,dealerBtn,nextBtn;
     SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+    TextInputEditText phoneInput;
+
+    String ownerOrDealer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +35,9 @@ public class OwnerOrDealer extends AppCompatActivity {
         setContentView(R.layout.activity_owner_or_dealer);
 
         sharedPreferences = getSharedPreferences(getString(R.string.shared_pref), Context.MODE_PRIVATE);
-        final SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        if(checkUserMode()){
+
+        if(sharedPreferences.getString(getString(R.string.owner_dealer_flag),getString(R.string.NOT_SET)).equals(getString(R.string.SET))){
             startActivity(new Intent(OwnerOrDealer.this,HomeActivity.class));
         }
 
@@ -33,8 +45,7 @@ public class OwnerOrDealer extends AppCompatActivity {
         ownerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editor.putString(getString(R.string.user_mode),getString(R.string.owner));
-                startActivity(new Intent(OwnerOrDealer.this,HomeActivity.class));
+               ownerOrDealer = getString(R.string.owner);
             }
         });
 
@@ -42,19 +53,51 @@ public class OwnerOrDealer extends AppCompatActivity {
         dealerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editor.putString(getString(R.string.user_mode),getString(R.string.dealer));
-                startActivity(new Intent(OwnerOrDealer.this,HomeActivity.class));
+                ownerOrDealer = getString(R.string.dealer);
             }
         });
+
+        phoneInput = findViewById(R.id.phone_input);
+
+        nextBtn = findViewById(R.id.next_btn);
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    Long.parseLong(phoneInput.getText().toString().trim());
+
+                    if(phoneInput.getText().toString().trim().length() == 10 ){
+                        UserHelper userHelper = new UserHelper(OwnerOrDealer.this);
+                        CallbackInterface callbackInterface = OwnerOrDealer.this;
+                        userHelper.createUser(callbackInterface,ownerOrDealer,phoneInput.getText().toString());
+                    }else{
+                        Toast.makeText(OwnerOrDealer.this,"Invalid Phone number",Toast.LENGTH_SHORT).show();
+                    }
+                }catch (Exception e){
+                    Log.d("NUM",""+e.toString());
+                    Toast.makeText(OwnerOrDealer.this,"Invalid Phone number",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
     }
 
-    private boolean checkUserMode(){
-        if(sharedPreferences.getString(getString(R.string.user_mode),"NONE").equals(getString(R.string.owner))
-                || sharedPreferences.getString(getString(R.string.user_mode),"NONE").equals(getString(R.string.dealer))){
-            return true;
+
+    @Override
+    public void isSuccess(boolean isSuccess) {
+        if(isSuccess){
+            editor = sharedPreferences.edit();
+            editor.putString(getString(R.string.owner_dealer_flag),getString(R.string.SET));
+            editor.apply();
+            startActivity(new Intent(OwnerOrDealer.this,HomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
         }else{
-            return false;
+            Toast.makeText(this,"Please Try Again",Toast.LENGTH_SHORT).show();
         }
     }
 
+    @Override
+    public void setData(JSONObject data) {
+
+    }
 }

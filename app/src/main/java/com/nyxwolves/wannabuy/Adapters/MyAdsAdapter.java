@@ -33,6 +33,11 @@ public class MyAdsAdapter extends RecyclerView.Adapter<MyAdsViewHolder> implemen
         }catch(Exception e){}
     }
 
+    @Override
+    public void isSuccess(boolean isSuccess) {
+
+    }
+
     @NonNull
     @Override
     public MyAdsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {

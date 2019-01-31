@@ -25,7 +25,7 @@ public class Building extends Activity {
     LinearLayout rentalGroup;
     LinearLayout rentalResiSub,rentalCommSub,rentalIndusSub,rentalInsSub,rentalPgSub;
     ConstraintLayout farmLandLayout;
-
+    CheckBox showRoom;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +56,8 @@ public class Building extends Activity {
         schoolBtn = findViewById(R.id.ins_school);
         collegeBtn = findViewById(R.id.ins_college);
         hospitalBtn = findViewById(R.id.ins_hospital);
+
+        showRoom = findViewById(R.id.comm_show_room);
 
         doNotDeviateShowRoom = findViewById(R.id.show_room_do_not_deviate);
 
@@ -158,9 +160,11 @@ public class Building extends Activity {
                 break;
             case R.id.comm_independent:
                 Requirements.getInstance().subType = getString(R.string.commercial_independent);
+                showRoom.setVisibility(View.VISIBLE);
                 break;
             case R.id.comm_floorspace:
                 Requirements.getInstance().subType = getString(R.string.commercial_floorspace);
+                showRoom.setVisibility(View.VISIBLE);
                 break;
             case R.id.indus_independent:
                 indusIndependentSub.setVisibility(View.VISIBLE);

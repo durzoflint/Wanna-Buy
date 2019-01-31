@@ -47,6 +47,12 @@ public class RequirementCallbackAdapter extends RecyclerView.Adapter<Requirement
             notifyDataSetChanged();
         }catch (Exception e){}
     }
+
+    @Override
+    public void isSuccess(boolean isSuccess) {
+
+    }
+
     @Override
     public void onBindViewHolder(@NonNull RequirementSearchHolder requirementSearchHolder, int i) {
 

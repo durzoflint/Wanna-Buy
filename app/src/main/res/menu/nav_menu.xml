@@ -19,8 +19,20 @@
     <item android:id="@+id/menu_wanna_sell"
         android:title="@string/wannasell"/>
 
+    <item android:id="@+id/menu_wanna_rent_out"
+        android:title="@string/wanna_rent_out"/>
+
     <item android:id="@+id/menu_how_we_work"
         android:title="@string/how_we_work"/>
+
+    <item android:id="@+id/menu_privacy_policy"
+        android:title="@string/privacy_policy"/>
+
+    <item android:id="@+id/menu_terms_of_service"
+        android:title="@string/terms_of_service"/>
+
+    <item android:id="@+id/menu_about_us"
+        android:title="@string/about_us"/>
 
     <item android:id="@+id/menu_support"
         android:title="@string/support"/>

@@ -3,6 +3,7 @@ package com.nyxwolves.wannabuy.Helpers;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
@@ -30,6 +31,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.nyxwolves.wannabuy.R;
 import com.nyxwolves.wannabuy.activities.HomeActivity;
+import com.nyxwolves.wannabuy.activities.LoginActivity;
+import com.nyxwolves.wannabuy.activities.OwnerOrDealer;
 import com.nyxwolves.wannabuy.activities.SplashScreen;
 
 public class FirebaseHelper {
@@ -38,10 +41,14 @@ public class FirebaseHelper {
     private Context ctx;
     private ProgressDialog dialog;
     private final String TAG = "FIREBASE_HELPER";
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     public FirebaseHelper(Context ctx) {
         this.ctx = ctx;
         mauth = FirebaseAuth.getInstance();
+        sharedPreferences = ctx.getSharedPreferences(ctx.getString(R.string.shared_pref),Context.MODE_PRIVATE);
+
     }
 
     private boolean checkInternet() {
@@ -84,15 +91,20 @@ public class FirebaseHelper {
 
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         Log.d("HELPER", "REACHED_USERAUTH");
-        mauth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mauth.signInWithCredential(credential).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
+            public void onSuccess(AuthResult authResult)  {
+                if(FirebaseAuth.getInstance().getCurrentUser() != null){
                     closeDialog();
-                    showSnackBar("Welcome", v);
-                    Intent i = new Intent(ctx, HomeActivity.class);
-                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    ctx.startActivity(i);
+                    if(sharedPreferences.getString(ctx.getString(R.string.owner_dealer_flag),"NOT_SET").equals("NOT_SET")){
+                        Intent i = new Intent(ctx, OwnerOrDealer.class);
+                        ctx.startActivity(i);
+                    }else{
+                        showSnackBar("Welcome", v);
+                        Intent i = new Intent(ctx, HomeActivity.class);
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        ctx.startActivity(i);
+                    }
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -113,8 +125,14 @@ public class FirebaseHelper {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     closeDialog();
-                    showSnackBar("Welcome", v);
-                    ctx.startActivity(new Intent(ctx, HomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+
+                    if(sharedPreferences.getString(ctx.getString(R.string.user_mode),"NOT_SET").equals("NOT_SET")){
+                        ctx.startActivity(new Intent(ctx, OwnerOrDealer.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+                    }else{
+                        showSnackBar("Welcome", v);
+                        ctx.startActivity(new Intent(ctx, HomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+                    }
+
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -135,7 +153,7 @@ public class FirebaseHelper {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 closeDialog();
-                ctx.startActivity(new Intent(ctx, HomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+                ctx.startActivity(new Intent(ctx, OwnerOrDealer.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -170,6 +188,15 @@ public class FirebaseHelper {
         });
     }
 
+    public  void logOutUser(){
+        editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+        FirebaseAuth.getInstance().signOut();
+        Intent logOutIntent = new Intent(ctx, LoginActivity.class);
+        logOutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        ctx.startActivity(logOutIntent);
+    }
 
     public void changePassword(String oldPass, final String newPass, final View view) {
         showDialog("Authenticating");

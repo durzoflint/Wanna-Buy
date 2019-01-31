@@ -1,6 +1,7 @@
 package com.nyxwolves.wannabuy.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.ActionBar;
@@ -40,6 +41,36 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 FirebaseHelper helper = new FirebaseHelper(SettingsActivity.this);
                 helper.deleteUser(rootLayout);
+            }
+        });
+
+        TextView terms = findViewById(R.id.terms);
+        terms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+                browserIntent.setData(Uri.parse("http://wannabuy.in/termsofservice"));
+                startActivity(browserIntent);
+            }
+        });
+
+        TextView privacy = findViewById(R.id.privacy);
+        privacy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+                browserIntent.setData(Uri.parse("http://wannabuy.in/privacypolicy"));
+                startActivity(browserIntent);
+            }
+        });
+
+        TextView about = findViewById(R.id.about);
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+                browserIntent.setData(Uri.parse("http://wannabuy.in/aboutus"));
+                startActivity(browserIntent);
             }
         });
     }

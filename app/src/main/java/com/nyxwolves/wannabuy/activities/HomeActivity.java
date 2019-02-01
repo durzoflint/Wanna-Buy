@@ -30,6 +30,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.nyxwolves.wannabuy.Fragments.FragmentToActivity;
 import com.nyxwolves.wannabuy.Helpers.FirebaseHelper;
+import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
 import com.nyxwolves.wannabuy.RestApiHelper.AdHelper;
@@ -37,13 +38,15 @@ import com.nyxwolves.wannabuy.RestApiHelper.RequirementHelper;
 import com.nyxwolves.wannabuy.contacts.ContactActivity;
 import com.nyxwolves.wannabuy.notifications.MyFirebaseMessagingService;
 
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener, FragmentToActivity, NavigationView.OnNavigationItemSelectedListener{
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener, FragmentToActivity, NavigationView.OnNavigationItemSelectedListener, CallbackInterface {
 
 
     ImageView homeButton,msgButton,adsButton,profileButton,postRequirement,wannaBuyTempBtn,howWeWorkBtn;
@@ -68,15 +71,18 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
         if(getIntent().getAction() != null) {
-            if (getIntent().getAction().equals(getString(R.string.POST_REQUIREMENT))) {
-                RequirementHelper createHelper = new RequirementHelper(HomeActivity.this);
-                createHelper.createRequirement();
+            if(getIntent().getStringExtra(getString(R.string.owner_dealer_flag)) != null){
+                if (getIntent().getAction().equals(getString(R.string.POST_REQUIREMENT))) {
+                    RequirementHelper createHelper = new RequirementHelper(HomeActivity.this);
+                    createHelper.createRequirement(getIntent().getStringExtra(getString(R.string.owner_dealer_flag)));
+                }
+
+                if(getIntent().getAction().equals(getString(R.string.POST_AD))){
+                    AdHelper adHelper = new AdHelper(HomeActivity.this);
+                    adHelper.createAd(getIntent().getStringExtra(getString(R.string.owner_dealer_flag)));
+                }
             }
 
-            if(getIntent().getAction().equals(getString(R.string.POST_AD))){
-                AdHelper adHelper = new AdHelper(HomeActivity.this);
-                adHelper.createAd();
-            }
         }
 
         wannaBuyTempBtn = findViewById(R.id.wanna_buy_temp_btn);
@@ -318,6 +324,16 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
         return false;
+    }
+
+    @Override
+    public void setData(JSONObject data) {
+
+    }
+
+    @Override
+    public void isSuccess(boolean isSuccess) {
+
     }
 
     private class AddToken extends AsyncTask<String, Void, Void> {

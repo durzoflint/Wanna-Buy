@@ -9,7 +9,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
 import com.nyxwolves.wannabuy.R;
+import com.nyxwolves.wannabuy.RestApiHelper.UserPaymentCheck;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
 
@@ -21,10 +23,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class PaymentActivity extends AppCompatActivity implements PaymentResultListener {
+public class PaymentActivity extends AppCompatActivity implements PaymentResultListener,CallbackInterface{
     public static final String DESCRIPTION = "description";
     public static final String AMOUNT = "amount";
-    String description, email;
+    public static final String USER_TYPE = "user_type";
+    String description, email,type;
     int amount;
 
 
@@ -38,9 +41,8 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
         Intent intent = getIntent();
         description = intent.getStringExtra(DESCRIPTION);
         amount = intent.getIntExtra(AMOUNT, 0);
-
+        type = intent.getStringExtra(USER_TYPE);
         email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-
         startPayment();
     }
 
@@ -73,8 +75,29 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
         new AddPayment().execute();
         Toast.makeText(this, "Payment Success", Toast.LENGTH_SHORT).show();
         Checkout.clearUserData(this);
-        setResult(RESULT_OK);
-        finish();
+
+        //only for dealer
+        if(type.equals(getString(R.string.dealer))){
+            UserPaymentCheck paymentCheck = new UserPaymentCheck(PaymentActivity.this);
+            paymentCheck.updateUserStatus(UserPaymentCheck.INCREASE_DEALER_CREDITS,PaymentActivity.this);
+        }
+    }
+
+    @Override
+    public void setData(JSONObject data) {
+        try{
+            if(data.getString("message").equals("success")){
+                setResult(RESULT_OK);
+                finish();
+            }
+        }catch (Exception  e){
+
+        }
+    }
+
+    @Override
+    public void isSuccess(boolean isSuccess) {
+
     }
 
     @Override

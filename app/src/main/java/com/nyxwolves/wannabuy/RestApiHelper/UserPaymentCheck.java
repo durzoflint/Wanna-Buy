@@ -16,7 +16,9 @@ import org.json.JSONObject;
 public class UserPaymentCheck {
     public static String UPDATE_REQ =  "UPDATE_REQ";
     public static String UPDATE_AD = "UPDATE_AD";
-    public static String UPDATE_DEALER_CREDITS = "UPDATE_CREDITS";
+    public static String INCREASE_DEALER_CREDITS = "INCREASE_DEALER_CREDITS";
+    public static String DECREASE_DEALER_REQ = "DECREASE_DEALER_REQ";
+    public static String DECREASE_DEALER_ADS = "DECREASE_DEALER_ADS";
 
     private Context ctx;
 
@@ -49,8 +51,7 @@ public class UserPaymentCheck {
 
     public void updateUserStatus(String type,final CallbackInterface callBack){
         String URL = "http://www.wannabuy.in/api/User/user_transaction.php?USER_ID="+ FirebaseAuth.getInstance().getCurrentUser().getEmail()+"&TYPE="+type;
-
-        StringRequest getRequirementRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+        StringRequest getRequirementRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 

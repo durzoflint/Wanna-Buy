@@ -33,13 +33,17 @@ import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.POJO.SellerAd;
 import com.nyxwolves.wannabuy.R;
+import com.nyxwolves.wannabuy.RestApiHelper.UserPaymentCheck;
+
+import org.json.JSONObject;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class AdsActivity extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
+public class AdsActivity extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener, CallbackInterface {
 
 
     TextInputEditText cityInput, doorNumberInput, addressInput;
@@ -73,6 +77,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     boolean isLandAreaVisible = false;
     boolean isRentalIncome = false;
     boolean isStartDate = true;
+    String userMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -302,16 +307,10 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.payment_btn:
                 if (checkData()) {
-                    checkBhk();
-                    checkFloor();
-                    Intent paymentIntent = new Intent(AdsActivity.this, PaymentActivity.class);
-                    if (SellerAd.getInstance().adsSellOrRent.equals(getString(R.string.SELL))) {
-                        paymentIntent.putExtra(PaymentActivity.DESCRIPTION, getString(R.string.pay_sell_ad));
-                    } else {
-                        paymentIntent.putExtra(PaymentActivity.DESCRIPTION, getString(R.string.pay_rent_ad));
-                    }
-                    paymentIntent.putExtra(PaymentActivity.AMOUNT, 999);
-                    startActivityForResult(paymentIntent, PAYMENT_CODE);
+
+                    UserPaymentCheck helper = new UserPaymentCheck(AdsActivity.this);
+                    CallbackInterface callbackInterface = AdsActivity.this;
+                    helper.getUserStatus(callbackInterface);
 
                 } else {
                     Toast.makeText(AdsActivity.this, "Please Check the inputs", Toast.LENGTH_SHORT).show();
@@ -338,6 +337,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     private void startIntentToHome() {
         Intent i = new Intent(AdsActivity.this, HomeActivity.class);
         i.setAction(getString(R.string.POST_AD));
+        i.putExtra(getString(R.string.owner_dealer_flag),userMode);
         startActivity(i);
     }
 
@@ -403,7 +403,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
 
     private boolean checkBhk() {
         if (bhkInput.getText().toString().trim().length() > 0) {
-            SellerAd.getInstance().adsFloor = bhkInput.getText().toString();
+            SellerAd.getInstance().adsBhk = bhkInput.getText().toString();
             return true;
         } else {
             return false;
@@ -481,7 +481,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 tenantPreferances.setVisibility(View.GONE);
                 vegNonVegLayout.setVisibility(View.VISIBLE);
                 propertySizeLayout.setVisibility(View.GONE);
-                isRentalIncome = true;
+                isRentalIncome = false;
                 break;
             case R.id.comm_radio_btn:
                 resiSub.setVisibility(View.GONE);
@@ -502,7 +502,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 totalFloors.setVisibility(View.GONE);
                 vegNonVegLayout.setVisibility(View.GONE);
                 propertySizeLayout.setVisibility(View.GONE);
-                isRentalIncome = true;
+                isRentalIncome = false;
                 break;
             case R.id.indus_radio_btn:
                 resiSub.setVisibility(View.GONE);
@@ -523,7 +523,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 totalFloors.setVisibility(View.GONE);
                 vegNonVegLayout.setVisibility(View.GONE);
                 propertySizeLayout.setVisibility(View.GONE);
-                isRentalIncome = true;
+                isRentalIncome = false;
                 break;
             case R.id.indus_floorspace:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.industrial_floorspace);
@@ -533,7 +533,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 flooringLayout.setVisibility(View.VISIBLE);
                 isBuiltUpVisible = true;
                 isLandAreaVisible = false;
-                isRentalIncome = true;
+                isRentalIncome = false;
                 break;
             case R.id.rental_indus_floorspace:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.rental_industrial_floorspace);
@@ -584,7 +584,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 vegNonVegLayout.setVisibility(View.GONE);
                 isBuiltUpVisible = true;
                 isLandAreaVisible = true;
-                isRentalIncome = true;
+                isRentalIncome = false;
                 break;
             case R.id.ins_building:
                 builtUpAreaLayout.setVisibility(View.VISIBLE);
@@ -607,7 +607,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 rentalIncomeType.setVisibility(View.GONE);
                 pgRentSub.setVisibility(View.VISIBLE);
                 vegNonVegLayout.setVisibility(View.GONE);
-                isRentalIncome = true;
+                isRentalIncome = false;
                 break;
             case R.id.resi_building:
                 resiBuild.setVisibility(View.VISIBLE);
@@ -918,7 +918,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 farmLandGroup.setVisibility(View.VISIBLE);
                 advanceDeposit.setVisibility(View.GONE);
                 roiLayout.setVisibility(View.GONE);
-                isRentalIncome = true;
+                isRentalIncome = false;
                 break;
             case R.id.farm_land_land:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.farm_land_land);
@@ -1148,10 +1148,58 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
 
             cityInput.setText(place.getName().toString());
         } else if (requestCode == PAYMENT_CODE) {
-            //if(resultCode == RESULT_OK){
-            startIntentToHome();
-            //}
+            if(resultCode == RESULT_OK){
+                startIntentToHome();
+            }
         }
     }
 
+    private void intiatePayment(int amount, String sellOrRent){
+        Intent paymentIntent = new Intent(AdsActivity.this,PaymentActivity.class);
+        paymentIntent.putExtra(PaymentActivity.AMOUNT,amount);
+        paymentIntent.putExtra(PaymentActivity.DESCRIPTION,sellOrRent);
+        paymentIntent.putExtra(PaymentActivity.USER_TYPE,userMode);
+        startActivityForResult(paymentIntent,PAYMENT_CODE);
+    }
+
+    @Override
+    public void setData(JSONObject data) {
+        try{
+            if(data.getString("TYPE").equals(getString(R.string.owner))){//if user is owner
+                userMode = getString(R.string.owner);
+                if(Integer.valueOf(data.getString("ADS_NUM")) > 0){
+                    //needs to pay
+                    if(SellerAd.getInstance().adsSellOrRent.equals(getString(R.string.SELL))){
+                        intiatePayment(2999,getString(R.string.pay_sell_ad));
+                    }else{
+                        intiatePayment(999,getString(R.string.pay_rent_ad));
+                    }
+
+                }else if(Integer.valueOf(data.getString("ADS_NUM")) == 0){
+                    //free
+                    startIntentToHome();
+                }
+            }else if(data.getString("TYPE").equals(getString(R.string.dealer))){//if user is dealer
+                userMode = getString(R.string.dealer);
+                if(Integer.valueOf(data.getString("ADS_NUM")) == 0){
+                    //needs to pay
+                    if(SellerAd.getInstance().adsSellOrRent.equals(getString(R.string.SELL))){
+                        intiatePayment(10000,getString(R.string.pay_sell_ad));
+                    }else{
+                        intiatePayment(10000,getString(R.string.pay_rent_ad));
+                    }
+                }else if(Integer.valueOf(data.getString("ADS_NUM")) != 0){
+                    //still has credits left
+                    startIntentToHome();
+
+                }
+            }
+
+        }catch(Exception e){}
+    }
+
+    @Override
+    public void isSuccess(boolean isSuccess) {
+
+    }
 }

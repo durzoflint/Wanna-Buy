@@ -22,7 +22,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RequirementHelper {
+public class RequirementHelper implements CallbackInterface{
     private Context ctx;
     private JSONObject params = new JSONObject();
     public static List<Requirements> reqDataList = new ArrayList<>();
@@ -31,7 +31,7 @@ public class RequirementHelper {
         this.ctx = ctx;
     }
 
-    public void createRequirement() {
+    public void createRequirement(final String type) {
         String URL = "http://www.wannabuy.in/api/Requirements/create_requirement.php";
         getJson();
 
@@ -46,7 +46,14 @@ public class RequirementHelper {
                 editor.putBoolean(ctx.getString(R.string.shared_first_req), false);
                 editor.apply();
 
-                Toast.makeText(ctx, "Requirement is Posted", Toast.LENGTH_SHORT).show();
+                UserPaymentCheck userPaymentCheck = new UserPaymentCheck(ctx);
+                if(type.equals(ctx.getString(R.string.dealer))){
+                    userPaymentCheck.updateUserStatus(UserPaymentCheck.DECREASE_DEALER_REQ,RequirementHelper.this);
+                }else{
+                    userPaymentCheck.updateUserStatus(UserPaymentCheck.UPDATE_REQ,RequirementHelper.this);
+                }
+
+
                 Requirements.getInstance().clearState();
             }
         }, new Response.ErrorListener() {
@@ -237,6 +244,25 @@ public class RequirementHelper {
         });
 
         CustomRequestQueue.getInstance(ctx).addRequest(getRequirementRequest);
+    }
+
+
+
+    //callback from updating user status
+    @Override
+    public void setData(JSONObject data) {
+        try{
+            if(data.getString("message").equals("success")){
+                Toast.makeText(ctx, "Requirement is Posted", Toast.LENGTH_SHORT).show();
+            }
+        }catch (Exception e){
+            Toast.makeText(ctx, "Update Failed", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void isSuccess(boolean isSuccess) {
+
     }
 }
 

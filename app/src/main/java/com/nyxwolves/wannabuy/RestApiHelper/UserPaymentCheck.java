@@ -14,6 +14,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class UserPaymentCheck {
+    public static String UPDATE_REQ =  "UPDATE_REQ";
+    public static String UPDATE_AD = "UPDATE_AD";
+    public static String UPDATE_DEALER_CREDITS = "UPDATE_CREDITS";
 
     private Context ctx;
 
@@ -23,6 +26,29 @@ public class UserPaymentCheck {
 
     public void getUserStatus(final CallbackInterface callBack){
         String URL = "http://www.wannabuy.in/api/User/user_status.php?USER_ID="+ FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
+        StringRequest getRequirementRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                Log.d("JSON_RESPONSE", response);
+                try{
+                    callBack.setData(new JSONObject(response));
+                }catch(JSONException e){}
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("READ_RESPONSE", error.toString());
+            }
+        });
+
+        CustomRequestQueue.getInstance(ctx).addRequest(getRequirementRequest);
+    }
+
+    public void updateUserStatus(String type,final CallbackInterface callBack){
+        String URL = "http://www.wannabuy.in/api/User/user_transaction.php?USER_ID="+ FirebaseAuth.getInstance().getCurrentUser().getEmail()+"&TYPE="+type;
 
         StringRequest getRequirementRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override

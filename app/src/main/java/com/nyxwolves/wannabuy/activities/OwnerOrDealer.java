@@ -3,13 +3,12 @@ package com.nyxwolves.wannabuy.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
@@ -17,8 +16,6 @@ import com.nyxwolves.wannabuy.R;
 import com.nyxwolves.wannabuy.RestApiHelper.UserHelper;
 
 import org.json.JSONObject;
-
-import java.security.acl.Owner;
 
 public class OwnerOrDealer extends AppCompatActivity implements CallbackInterface {
 
@@ -42,18 +39,23 @@ public class OwnerOrDealer extends AppCompatActivity implements CallbackInterfac
         }
 
         ownerBtn = findViewById(R.id.owner_btn);
+        dealerBtn = findViewById(R.id.dealer_btn);
+
         ownerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                ownerOrDealer = getString(R.string.owner);
+                dealerBtn.setBackground(getDrawable(R.drawable.blue_button));
+                ownerBtn.setBackground(getDrawable(R.drawable.orange_button));
             }
         });
 
-        dealerBtn = findViewById(R.id.dealer_btn);
         dealerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ownerOrDealer = getString(R.string.dealer);
+                dealerBtn.setBackground(getDrawable(R.drawable.orange_button));
+                ownerBtn.setBackground(getDrawable(R.drawable.blue_button));
             }
         });
 

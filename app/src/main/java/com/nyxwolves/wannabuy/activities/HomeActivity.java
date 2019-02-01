@@ -47,7 +47,7 @@ import java.net.URL;
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener, FragmentToActivity, NavigationView.OnNavigationItemSelectedListener{
 
 
-    ImageView homeButton,msgButton,adsButton,profileButton,postRequirement;
+    ImageView homeButton,msgButton,adsButton,profileButton,postRequirement,wannaBuyTempBtn,howWeWorkBtn;
     LinearLayout rentButton,postAdBtn;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -79,6 +79,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 adHelper.createAd();
             }
         }
+
+        wannaBuyTempBtn = findViewById(R.id.wanna_buy_temp_btn);
+        wannaBuyTempBtn.setOnClickListener(this);
+        howWeWorkBtn = findViewById(R.id.how_we_work_btn);
+        howWeWorkBtn.setOnClickListener(this);
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -213,6 +218,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.post_property_btn:
                 startActivity(new Intent(HomeActivity.this,AdsActivity.class));
+                break;
+            case R.id.how_we_work_btn:
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.how_we_work_url))));
+                break;
+            case R.id.wanna_buy_temp_btn:
+                startActivity(new Intent(HomeActivity.this,BuyOrRent.class));
                 break;
         }
     }

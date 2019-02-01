@@ -9,10 +9,14 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
+import com.nyxwolves.wannabuy.RestApiHelper.UserPaymentCheck;
 
-public class RequirementName extends AppCompatActivity {
+import org.json.JSONObject;
+
+public class RequirementName extends AppCompatActivity implements CallbackInterface {
 
     Button nextButton;
     EditText requirementInput;
@@ -33,17 +37,9 @@ public class RequirementName extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(checkInput()){
-
-                    Intent paymentIntent = new Intent(RequirementName.this,PaymentActivity.class);
-
-                    if(Requirements.getInstance().buyorRent.equals(getString(R.string.BUY))){
-                        paymentIntent.putExtra(PaymentActivity.AMOUNT,4999);
-                        paymentIntent.putExtra(PaymentActivity.DESCRIPTION,getString(R.string.pay_buy_requirement));
-                    }else{
-                        paymentIntent.putExtra(PaymentActivity.AMOUNT,2499);
-                        paymentIntent.putExtra(PaymentActivity.DESCRIPTION,getString(R.string.pay_rent_requirement));
-                    }
-                    startActivityForResult(paymentIntent,PAYMENT_CODE);
+                    UserPaymentCheck helper = new UserPaymentCheck(RequirementName.this);
+                    CallbackInterface callbackInterface = RequirementName.this;
+                    helper.getUserStatus(callbackInterface);
                 }
             }
         });
@@ -69,9 +65,39 @@ public class RequirementName extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == PAYMENT_CODE){
-            //if(resultCode == RESULT_OK){
+            if(resultCode == RESULT_OK){
                 startIntentToHome();
-            //}
+            }
         }
+    }
+
+    @Override
+    public void setData(JSONObject data) {
+        try{
+            if(Integer.valueOf(data.getString("REQUIREMENTS_NUM")) > 0){
+                //needs to pay
+                intiatePayment();
+            }else{
+                //free
+                startIntentToHome();
+            }
+        }catch(Exception e){}
+    }
+
+    private  void intiatePayment(){
+        Intent paymentIntent = new Intent(RequirementName.this,PaymentActivity.class);
+
+        if(Requirements.getInstance().buyorRent.equals(getString(R.string.BUY))){
+            paymentIntent.putExtra(PaymentActivity.AMOUNT,4999);
+            paymentIntent.putExtra(PaymentActivity.DESCRIPTION,getString(R.string.pay_buy_requirement));
+        }else{
+            paymentIntent.putExtra(PaymentActivity.AMOUNT,2499);
+            paymentIntent.putExtra(PaymentActivity.DESCRIPTION,getString(R.string.pay_rent_requirement));
+        }
+        startActivityForResult(paymentIntent,PAYMENT_CODE);
+    }
+    @Override
+    public void isSuccess(boolean isSuccess) {
+
     }
 }

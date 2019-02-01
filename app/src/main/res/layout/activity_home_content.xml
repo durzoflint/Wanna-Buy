@@ -57,6 +57,7 @@
         android:layout_marginTop="?attr/actionBarSize"
         android:fontFamily="@font/montserrat_regular"
         android:text="@string/recent_search_header"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -71,11 +72,12 @@
         android:id="@+id/your_matches_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/montserrat_medium"
         android:text="@string/my_matches"
         android:textSize="15sp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline20" />
@@ -92,6 +94,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/view_all_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -181,14 +184,43 @@
         android:id="@+id/view_all_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/orange_button"
         android:fontFamily="@font/montserrat_medium"
         android:text="@string/view_all"
         android:textColor="@android:color/white"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/guideline21"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/wanna_buy_temp_btn"
+        android:layout_width="0dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline21"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/how_we_work_btn"
+        app:srcCompat="@drawable/wann_buy_temp_btn" />
+
+    <ImageView
+        android:id="@+id/how_we_work_btn"
+        android:layout_width="0dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/your_matches_header"
+        app:srcCompat="@drawable/how_we_work_btn" />
 </android.support.constraint.ConstraintLayout>

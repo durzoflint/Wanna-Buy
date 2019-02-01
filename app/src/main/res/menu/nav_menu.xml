@@ -22,6 +22,10 @@
     <item android:id="@+id/menu_wanna_rent_out"
         android:title="@string/wanna_rent_out"/>
 
+    <item
+        android:id="@+id/payment_information"
+        android:title="Payments" />
+
     <item android:id="@+id/menu_how_we_work"
         android:title="@string/how_we_work"/>
 

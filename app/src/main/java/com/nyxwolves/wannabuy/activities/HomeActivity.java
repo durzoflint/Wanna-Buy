@@ -17,7 +17,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -259,6 +258,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
+
+            case R.id.payment_information:
+                startActivity(new Intent(this, PaymentInformationActivity.class));
+                break;
 
             case R.id.menu_my_requirements:
                 Intent myReq = new Intent(HomeActivity.this,MyAdsActivity.class);

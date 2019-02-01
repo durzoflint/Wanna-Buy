@@ -420,4 +420,6 @@
     <string name="owner_dealer_flag">OWNER_DEALER_FLAG</string>
     <string name="SET">SET</string>
     <string name="NOT_SET">NOT_SET</string>
+
+    <string name="max_of_five">(Maximum of 5 locations can be selected)</string>
 </resources>

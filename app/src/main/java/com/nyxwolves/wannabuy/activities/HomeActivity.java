@@ -143,7 +143,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         String token = firebasePreferences.getString(MyFirebaseMessagingService.TOKEN, "");
         if (!token.isEmpty()) {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            new AddToken().execute(token, user.getEmail(), user.getDisplayName());
+            new AddToken().execute(token, user.getEmail());
             firebasePreferences.edit().clear().apply();
         }
     }
@@ -345,8 +345,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             URL url;
             HttpURLConnection urlConnection = null;
             try {
-                String myURL = baseUrl + "addToken.php?firebase_token=" + strings[0] + "&email="
-                        + strings[1] + "&name=" + strings[2];
+                String myURL = baseUrl + "updateToken.php?firebase_token=" + strings[0] + "&email" +
+                        "=" + strings[1];
                 myURL = myURL.replaceAll(" ", "%20");
                 myURL = myURL.replaceAll("\'", "%27");
                 myURL = myURL.replaceAll("\'", "%22");

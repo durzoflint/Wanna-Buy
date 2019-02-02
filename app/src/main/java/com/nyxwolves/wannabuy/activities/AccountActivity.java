@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.nyxwolves.wannabuy.Helpers.FirebaseHelper;
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
+import com.nyxwolves.wannabuy.contacts.ContactActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -105,6 +106,14 @@ public class AccountActivity extends AppCompatActivity implements NavigationView
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(AccountActivity.this, BuyOrRent.class));
+            }
+        });
+
+        TextView contacted = findViewById(R.id.contacted);
+        contacted.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AccountActivity.this, ContactActivity.class));
             }
         });
     }

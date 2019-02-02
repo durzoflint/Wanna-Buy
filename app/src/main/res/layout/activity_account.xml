@@ -206,6 +206,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
+                                android:id="@+id/contacted"
                                 android:layout_width="0dp"
                                 android:layout_height="50dp"
                                 android:layout_margin="8dp"

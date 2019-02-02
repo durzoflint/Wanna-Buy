@@ -322,6 +322,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.menu_how_we_work:
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.how_we_work_url))));
                 break;
+
+            case R.id.menu_contact_us:
+                startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("http://wannabuy.in/contactus")));
+                break;
         }
         return false;
     }

@@ -35,7 +35,9 @@ public class OwnerOrDealer extends AppCompatActivity implements CallbackInterfac
 
 
         if(sharedPreferences.getString(getString(R.string.owner_dealer_flag),getString(R.string.NOT_SET)).equals(getString(R.string.SET))){
-            startActivity(new Intent(OwnerOrDealer.this,HomeActivity.class));
+            Intent homeIntent = new Intent(OwnerOrDealer.this,HomeActivity.class);
+            homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK  | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(homeIntent);
         }
 
         ownerBtn = findViewById(R.id.owner_btn);

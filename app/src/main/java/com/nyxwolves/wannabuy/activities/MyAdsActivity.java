@@ -176,6 +176,15 @@ public class MyAdsActivity extends AppCompatActivity implements View.OnClickList
             case R.id.menu_how_we_work:
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.how_we_work_url))));
                 break;
+
+            case R.id.payment_information:
+                startActivity(new Intent(this, PaymentInformationActivity.class));
+                break;
+
+            case R.id.menu_contact_us:
+                startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("http://wannabuy.in/contactus")));
+                break;
+
         }
         return false;
 

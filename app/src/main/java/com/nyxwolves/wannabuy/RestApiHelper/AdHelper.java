@@ -114,10 +114,19 @@ public class AdHelper implements CallbackInterface {
             createParams.put("RENT_END_DATE", SellerAd.getInstance().rentEndDate);
             createParams.put("LATITUDE", SellerAd.getInstance().locationLatitude);
             createParams.put("LONGITUDE", SellerAd.getInstance().locationLongitude);
+            createParams.put("IMAGES",getImages());
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private JSONArray getImages(){
+        JSONArray images = new JSONArray();
+        for(String image : SellerAd.getInstance().imageList){
+            images.put(image);
+        }
+        return images;
     }
 
     private JSONArray getFacilitiesList() {

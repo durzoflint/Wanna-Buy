@@ -50,6 +50,7 @@ public class SellerAd {
     public String rentEndDate = "NOT_SET";
     public String locationLatitude = "NOT_SET";
     public String locationLongitude = "NOT_SET";
+    public ArrayList<String> imageList = new ArrayList<>();
 
     private static SellerAd instance = null;
 

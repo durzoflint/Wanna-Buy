@@ -122,9 +122,11 @@ public class AreaLocality extends AppCompatActivity implements View.OnClickListe
                 isOneFull=false;
                 break;
             case R.id.area_next_btn:
-                //if (checkInput()) {
+                if (checkInput()) {
                     startActivity(new Intent(AreaLocality.this, PropertyType.class));
-                //}
+                }else{
+                    Toast.makeText(AreaLocality.this,"Check your inputs.",Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }

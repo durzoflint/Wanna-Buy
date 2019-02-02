@@ -1,12 +1,17 @@
 package com.nyxwolves.wannabuy.activities;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -41,6 +46,10 @@ import com.nyxwolves.wannabuy.RestApiHelper.UserPaymentCheck;
 
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AdsActivity extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener, CallbackInterface {
@@ -68,6 +77,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     SeekBar roadWidth;
     TextView roadSelectedWidth, adsBudgetHeader;
     ImageView startIcon, endIcon;
+    ProgressDialog progressDialog;
 
     final int IMAGE_REQ = 1002;
     final int LOCATION_REQUEST = 1003;
@@ -78,6 +88,8 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     boolean isRentalIncome = false;
     boolean isStartDate = true;
     String userMode;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -303,7 +315,8 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         switch (v.getId()) {
 
             case R.id.upload_btn:
-                chooseImage();
+                //chooseImage();
+                startActivity(new Intent(AdsActivity.this,UploadImageActivity.class));
                 break;
             case R.id.payment_btn:
                 if (checkData()) {
@@ -1140,7 +1153,14 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == IMAGE_REQ && resultCode == RESULT_OK && data != null) {
-            propertyPic.setImageURI(data.getData());
+            Uri uri = data.getData();
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                processImage(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         } else if (requestCode == LOCATION_REQUEST && resultCode == RESULT_OK) {
             Place place = PlaceAutocomplete.getPlace(AdsActivity.this, data);
             SellerAd.getInstance().locationLatitude = Double.toString(place.getLatLng().latitude);
@@ -1201,5 +1221,14 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     @Override
     public void isSuccess(boolean isSuccess) {
 
+    }
+
+    private void processImage(Bitmap bitmap){
+        ByteArrayOutputStream byteArrayOutputStreamObject;
+        byteArrayOutputStreamObject = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStreamObject);
+        byte[] byteArrayVar = byteArrayOutputStreamObject.toByteArray();
+        final String ConvertImage = Base64.encodeToString(byteArrayVar, Base64.DEFAULT);
+        SellerAd.getInstance().imageList.add(ConvertImage);
     }
 }

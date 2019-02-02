@@ -268,6 +268,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
 
+            case R.id.menu_user_account:
+                startActivity(new Intent(this, AccountActivity.class));
+                break;
+
             case R.id.payment_information:
                 startActivity(new Intent(this, PaymentInformationActivity.class));
                 break;

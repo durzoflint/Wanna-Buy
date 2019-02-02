@@ -5,14 +5,21 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TextInputEditText;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,7 +35,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,8 +42,8 @@ import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.Places;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import com.nyxwolves.wannabuy.Helpers.FirebaseHelper;
 import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.POJO.SellerAd;
@@ -48,11 +54,14 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class AdsActivity extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener, CallbackInterface {
+public class AdsActivity extends AppCompatActivity implements View.OnClickListener,
+        DatePickerDialog.OnDateSetListener, CallbackInterface,
+        NavigationView.OnNavigationItemSelectedListener {
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
 
 
     TextInputEditText cityInput, doorNumberInput, addressInput;
@@ -89,11 +98,20 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     boolean isStartDate = true;
     String userMode;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ads);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         areaUnitSpinner = findViewById(R.id.ads_unit_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.unit_spinner, android.R.layout.simple_spinner_item);
@@ -1225,5 +1243,94 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         byte[] byteArrayVar = byteArrayOutputStreamObject.toByteArray();
         final String ConvertImage = Base64.encodeToString(byteArrayVar, Base64.DEFAULT);
         SellerAd.getInstance().imageList.add(ConvertImage);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+
+            case R.id.menu_user_account:
+                startActivity(new Intent(this, AccountActivity.class));
+                break;
+
+            case R.id.payment_information:
+                startActivity(new Intent(this, PaymentInformationActivity.class));
+                break;
+
+            case R.id.menu_my_requirements:
+                Intent myReq = new Intent(AdsActivity.this, MyAdsActivity.class);
+                myReq.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                myReq.setAction(getString(R.string.show_req));
+                startActivity(myReq);
+                break;
+
+            case R.id.menu_my_matches:
+                Intent myMatches = new Intent(AdsActivity.this, MyAdsActivity.class);
+                myMatches.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                myMatches.setAction(getString(R.string.show_match));
+                startActivity(myMatches);
+                break;
+
+            case R.id.menu_wanna_buy:
+                Requirements.getInstance().buyorRent = getString(R.string.BUY);
+                startActivity(new Intent(AdsActivity.this, AreaLocality.class));
+                break;
+
+            case R.id.menu_wanna_rent:
+                Requirements.getInstance().buyorRent = getString(R.string.RENT);
+                startActivity(new Intent(AdsActivity.this, AreaLocality.class));
+                break;
+
+            case R.id.menu_wanna_sell:
+                startActivity(new Intent(AdsActivity.this, AdsActivity.class));
+                break;
+
+            case R.id.log_out:
+                FirebaseHelper logoutHelper = new FirebaseHelper(this);
+                logoutHelper.logOutUser();
+                finish();
+                break;
+
+            case R.id.menu_about_us:
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse(getString(R.string.about_us_url))));
+                break;
+
+            case R.id.menu_privacy_policy:
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse(getString(R.string.privacy_policy_url))));
+                break;
+
+            case R.id.menu_terms_of_service:
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse(getString(R.string.terms_of_service_url))));
+                break;
+
+            case R.id.menu_wanna_rent_out:
+                startActivity(new Intent(AdsActivity.this, AdsActivity.class));
+                break;
+
+            case R.id.menu_how_we_work:
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse(getString(R.string.how_we_work_url))));
+                break;
+
+            case R.id.menu_contact_us:
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://wannabuy" +
+                        ".in/contactus")));
+                break;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case android.R.id.home:
+                drawerLayout.openDrawer(GravityCompat.START);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

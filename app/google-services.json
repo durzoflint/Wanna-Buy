@@ -39,6 +39,14 @@
           }
         },
         {
+          "client_id": "657794665214-f42b4iu1cl21a3fdjuepfbd00ppqq6uj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nyxwolves.wannabuy",
+            "certificate_hash": "b35aafaacaed12797224156739c6bcbbc666c768"
+          }
+        },
+        {
           "client_id": "657794665214-edb6sg6e1j07rk0knunqvmr2pdprolic.apps.googleusercontent.com",
           "client_type": 3
         }

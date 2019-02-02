@@ -14,7 +14,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class UserPaymentCheck {
-    public static String UPDATE_REQ =  "UPDATE_REQ";
+    public static String UPDATE_BUY_REQ =  "UPDATE_BUY_REQ";
+    public static String UPDATE_RENT_REQ =  "UPDATE_RENT_REQ";
     public static String UPDATE_AD = "UPDATE_AD";
     public static String INCREASE_DEALER_CREDITS = "INCREASE_DEALER_CREDITS";
     public static String DECREASE_DEALER_REQ = "DECREASE_DEALER_REQ";

@@ -90,7 +90,6 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     String userMode;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -315,8 +314,8 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         switch (v.getId()) {
 
             case R.id.upload_btn:
-                //chooseImage();
-                startActivity(new Intent(AdsActivity.this,UploadImageActivity.class));
+                chooseImage();
+                //startActivity(new Intent(AdsActivity.this,UploadImageActivity.class));
                 break;
             case R.id.payment_btn:
                 if (checkData()) {
@@ -339,7 +338,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         if (checkCommonField() && checkPropertySize()) {
             if (isRentalIncome) {
                 return rentalIncomeFieldCheck();
-            }else{
+            } else {
                 return true;
             }
         } else {
@@ -350,7 +349,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     private void startIntentToHome() {
         Intent i = new Intent(AdsActivity.this, HomeActivity.class);
         i.setAction(getString(R.string.POST_AD));
-        i.putExtra(getString(R.string.owner_dealer_flag),userMode);
+        i.putExtra(getString(R.string.owner_dealer_flag), userMode);
         startActivity(i);
     }
 
@@ -1168,54 +1167,50 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
 
             cityInput.setText(place.getName().toString());
         } else if (requestCode == PAYMENT_CODE) {
-            if(resultCode == RESULT_OK){
+            if (resultCode == RESULT_OK) {
                 startIntentToHome();
             }
         }
     }
 
-    private void intiatePayment(int amount, String sellOrRent){
-        Intent paymentIntent = new Intent(AdsActivity.this,PaymentActivity.class);
-        paymentIntent.putExtra(PaymentActivity.AMOUNT,amount);
-        paymentIntent.putExtra(PaymentActivity.DESCRIPTION,sellOrRent);
-        paymentIntent.putExtra(PaymentActivity.USER_TYPE,userMode);
-        startActivityForResult(paymentIntent,PAYMENT_CODE);
+    private void intiatePayment(int amount, String sellOrRent) {
+        Intent paymentIntent = new Intent(AdsActivity.this, PaymentActivity.class);
+        paymentIntent.putExtra(PaymentActivity.AMOUNT, amount);
+        paymentIntent.putExtra(PaymentActivity.DESCRIPTION, sellOrRent);
+        paymentIntent.putExtra(PaymentActivity.USER_TYPE, userMode);
+        startActivityForResult(paymentIntent, PAYMENT_CODE);
     }
 
     @Override
     public void setData(JSONObject data) {
-        try{
-            if(data.getString("TYPE").equals(getString(R.string.owner))){//if user is owner
+        try {
+            if (data.getString("TYPE").equals(getString(R.string.owner))) {//if user is owner
                 userMode = getString(R.string.owner);
-                if(Integer.valueOf(data.getString("ADS_NUM")) > 0){
-                    //needs to pay
-                    if(SellerAd.getInstance().adsSellOrRent.equals(getString(R.string.SELL))){
-                        intiatePayment(2999,getString(R.string.pay_sell_ad));
-                    }else{
-                        intiatePayment(999,getString(R.string.pay_rent_ad));
-                    }
-
-                }else if(Integer.valueOf(data.getString("ADS_NUM")) == 0){
-                    //free
-                    startIntentToHome();
+                //needs to pay
+                if (SellerAd.getInstance().adsSellOrRent.equals(getString(R.string.SELL))) {
+                    intiatePayment(2999, getString(R.string.pay_sell_ad));
+                } else {
+                    intiatePayment(999, getString(R.string.pay_rent_ad));
                 }
-            }else if(data.getString("TYPE").equals(getString(R.string.dealer))){//if user is dealer
+
+            } else if (data.getString("TYPE").equals(getString(R.string.dealer))) {//if user is dealer
                 userMode = getString(R.string.dealer);
-                if(Integer.valueOf(data.getString("ADS_NUM")) == 0){
+                if (Integer.valueOf(data.getString("ADS_NUM")) == 0) {
                     //needs to pay
-                    if(SellerAd.getInstance().adsSellOrRent.equals(getString(R.string.SELL))){
-                        intiatePayment(10000,getString(R.string.pay_sell_ad));
-                    }else{
-                        intiatePayment(10000,getString(R.string.pay_rent_ad));
+                    if (SellerAd.getInstance().adsSellOrRent.equals(getString(R.string.SELL))) {
+                        intiatePayment(10000, getString(R.string.pay_sell_ad));
+                    } else {
+                        intiatePayment(10000, getString(R.string.pay_rent_ad));
                     }
-                }else if(Integer.valueOf(data.getString("ADS_NUM")) != 0){
+                } else if (Integer.valueOf(data.getString("ADS_NUM")) != 0) {
                     //still has credits left
                     startIntentToHome();
 
                 }
             }
 
-        }catch(Exception e){}
+        } catch (Exception e) {
+        }
     }
 
     @Override
@@ -1223,7 +1218,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
 
     }
 
-    private void processImage(Bitmap bitmap){
+    private void processImage(Bitmap bitmap) {
         ByteArrayOutputStream byteArrayOutputStreamObject;
         byteArrayOutputStreamObject = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStreamObject);

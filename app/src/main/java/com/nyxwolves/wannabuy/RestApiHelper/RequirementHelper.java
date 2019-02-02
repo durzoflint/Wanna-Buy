@@ -31,7 +31,7 @@ public class RequirementHelper implements CallbackInterface{
         this.ctx = ctx;
     }
 
-    public void createRequirement(final String type) {
+    public void createRequirement(final String type,final String buyOrRent) {
         String URL = "http://www.wannabuy.in/api/Requirements/create_requirement.php";
         getJson();
 
@@ -47,12 +47,20 @@ public class RequirementHelper implements CallbackInterface{
                 editor.apply();
 
                 UserPaymentCheck userPaymentCheck = new UserPaymentCheck(ctx);
-                if(type.equals(ctx.getString(R.string.dealer))){
-                    userPaymentCheck.updateUserStatus(UserPaymentCheck.DECREASE_DEALER_REQ,RequirementHelper.this);
-                }else{
-                    userPaymentCheck.updateUserStatus(UserPaymentCheck.UPDATE_REQ,RequirementHelper.this);
-                }
-
+                CallbackInterface callbackInterface = RequirementHelper.this;
+                    if(buyOrRent.equals(ctx.getString(R.string.pay_buy_requirement))){
+                        if(type.equals(ctx.getString(R.string.dealer))){
+                            userPaymentCheck.updateUserStatus(UserPaymentCheck.DECREASE_DEALER_REQ,callbackInterface);
+                        }else{
+                            userPaymentCheck.updateUserStatus(UserPaymentCheck.UPDATE_BUY_REQ,callbackInterface);
+                        }
+                    }else{
+                        if(type.equals(ctx.getString(R.string.dealer))){
+                            userPaymentCheck.updateUserStatus(UserPaymentCheck.DECREASE_DEALER_REQ,callbackInterface);
+                        }else{
+                            userPaymentCheck.updateUserStatus(UserPaymentCheck.UPDATE_RENT_REQ,callbackInterface);
+                        }
+                    }
 
                 Requirements.getInstance().clearState();
             }
@@ -254,6 +262,7 @@ public class RequirementHelper implements CallbackInterface{
         try{
             if(data.getString("message").equals("success")){
                 Toast.makeText(ctx, "Requirement is Posted", Toast.LENGTH_SHORT).show();
+                Log.d("REQ_TEST","SUCC");
             }
         }catch (Exception e){
             Toast.makeText(ctx, "Update Failed", Toast.LENGTH_SHORT).show();

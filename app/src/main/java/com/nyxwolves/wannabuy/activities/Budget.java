@@ -284,7 +284,7 @@ public class Budget extends AppCompatActivity {
                     return false;
                 }
             }else if(minUnit.equals("Lakhs") && maxUnit.equals("Lakhs")){
-                if(maxBudget >0){
+                if(maxBudget >0 && minBudget < maxBudget){
                     return true;
                 }else{
                     return false;

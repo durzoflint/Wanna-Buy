@@ -74,7 +74,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             if(getIntent().getStringExtra(getString(R.string.owner_dealer_flag)) != null){
                 if (getIntent().getAction().equals(getString(R.string.POST_REQUIREMENT))) {
                     RequirementHelper createHelper = new RequirementHelper(HomeActivity.this);
-                    createHelper.createRequirement(getIntent().getStringExtra(getString(R.string.owner_dealer_flag)));
+
+                    String ownerOrDealer = getIntent().getStringExtra(getString(R.string.owner_dealer_flag));
+                    String buyOrRent = getIntent().getStringExtra(getString(R.string.buy_rent_flag));
+                    createHelper.createRequirement(ownerOrDealer,buyOrRent);
                 }
 
                 if(getIntent().getAction().equals(getString(R.string.POST_AD))){

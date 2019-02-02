@@ -423,4 +423,6 @@
 
     <string name="max_of_five">(Maximum of 5 locations can be selected)</string>
     <string name="wanna_rent_out">Wanna Rent out</string>
+
+    <string name="buy_rent_flag">BUY_OR_RENT</string>
 </resources>

@@ -168,6 +168,7 @@
                 android:id="@+id/ads_address_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:focusableInTouchMode="false"
                 android:fontFamily="@font/montserrat_medium" />
         </LinearLayout>
 

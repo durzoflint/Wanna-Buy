@@ -20,9 +20,11 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
 
     Button nextButton;
     EditText requirementInput;
-    String userMode; //owner or dealer
+
 
     int PAYMENT_CODE = 1200;
+    String buyOrPostRequirement;
+    String userMode; //owner or dealer
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
         Intent i = new Intent(RequirementName.this,HomeActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK  | Intent.FLAG_ACTIVITY_NEW_TASK);
         i.setAction(getString(R.string.POST_REQUIREMENT));
+        i.putExtra(getString(R.string.buy_rent_flag),buyOrPostRequirement);
         i.putExtra(getString(R.string.owner_dealer_flag),userMode);
         startActivity(i);
         finish();
@@ -76,33 +79,54 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
     @Override
     public void setData(JSONObject data) {
         try{
-            if(data.getString("TYPE").equals(getString(R.string.owner))){//if user is owner
+            String ownerOrDealer = data.getString("TYPE");
+            int buyReqNum = data.getInt("BUY_REQ_NUM");
+            int rentReqNum = data.getInt("RENT_REQ_NUM");
+
+            if(ownerOrDealer.equals(getString(R.string.owner))){//if user is owner
                 userMode = getString(R.string.owner);
-                if(Integer.valueOf(data.getString("REQUIREMENTS_NUM")) > 0){
-                    //needs to pay
-                    if(Requirements.getInstance().buyorRent.equals(getString(R.string.BUY))){
+                if(Requirements.getInstance().buyorRent.equals(getString(R.string.BUY))){
+                    if(buyReqNum > 0){
+                        //needs to pay
+                        buyOrPostRequirement = getString(R.string.pay_buy_requirement);
                         intiatePayment(4999,getString(R.string.pay_buy_requirement));
                     }else{
-                        intiatePayment(1999,getString(R.string.pay_rent_requirement));
+                        //free
+                        buyOrPostRequirement = getString(R.string.pay_buy_requirement);
+                        startIntentToHome();
                     }
-
-                }else if(Integer.valueOf(data.getString("REQUIREMENTS_NUM")) == 0){
-                    //free
-                    startIntentToHome();
+                }else{
+                    if(rentReqNum > 0){
+                        //needs to pay
+                        buyOrPostRequirement = getString(R.string.pay_rent_requirement);
+                        intiatePayment(1999,getString(R.string.pay_rent_requirement));
+                    }else{
+                        //free
+                        buyOrPostRequirement = getString(R.string.pay_rent_requirement);
+                        startIntentToHome();
+                    }
                 }
-            }else if(data.getString("TYPE").equals(getString(R.string.dealer))){//if user is dealer
+            }else if(ownerOrDealer.equals(getString(R.string.dealer))){//if user is dealer
                 userMode = getString(R.string.dealer);
-                if(Integer.valueOf(data.getString("REQUIREMENTS_NUM")) == 0){
-                    //needs to pay
-                    if(Requirements.getInstance().buyorRent.equals(getString(R.string.BUY))){
+                if(Requirements.getInstance().buyorRent.equals(getString(R.string.BUY))){
+                    if(buyReqNum == 0){
+                        //needs to pay
+                        buyOrPostRequirement = getString(R.string.pay_buy_requirement);
                         intiatePayment(10000,getString(R.string.pay_buy_requirement));
                     }else{
-                        intiatePayment(10000,getString(R.string.pay_rent_requirement));
+                        //free
+                        buyOrPostRequirement = getString(R.string.pay_buy_requirement);
+                        startIntentToHome();
                     }
-                }else if(Integer.valueOf(data.getString("REQUIREMENTS_NUM")) != 0){
-                    //still has credits left
-                    startIntentToHome();
-
+                }else{
+                    if(rentReqNum == 0){
+                        //needs to pay
+                        intiatePayment(10000,getString(R.string.pay_rent_requirement));
+                    }else{
+                        //free
+                        intiatePayment(10000,getString(R.string.pay_rent_requirement));
+                        startIntentToHome();
+                    }
                 }
             }
 

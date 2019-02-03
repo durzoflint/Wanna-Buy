@@ -49,6 +49,7 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
     }
     private void startIntentToHome(){
         Requirements.getInstance().reqName = requirementInput.getText().toString().trim();
+
         Intent i = new Intent(RequirementName.this,HomeActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK  | Intent.FLAG_ACTIVITY_NEW_TASK);
         i.setAction(getString(R.string.POST_REQUIREMENT));

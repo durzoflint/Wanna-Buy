@@ -89,7 +89,7 @@ public class AccountActivity extends AppCompatActivity implements NavigationView
         msg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AccountActivity.this, AccountActivity.class));
+                startActivity(new Intent(AccountActivity.this, ContactActivity.class));
                 finish();
             }
         });
@@ -97,7 +97,7 @@ public class AccountActivity extends AppCompatActivity implements NavigationView
         ads.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AccountActivity.this, AdsActivity.class));
+                startActivity(new Intent(AccountActivity.this, MyAdsActivity.class));
                 finish();
             }
         });

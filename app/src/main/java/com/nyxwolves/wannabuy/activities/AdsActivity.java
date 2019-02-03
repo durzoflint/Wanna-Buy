@@ -7,19 +7,14 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.NavigationView;
 import android.support.design.widget.TextInputEditText;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -43,9 +38,7 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
-import com.nyxwolves.wannabuy.Helpers.FirebaseHelper;
 import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
-import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.POJO.SellerAd;
 import com.nyxwolves.wannabuy.R;
 import com.nyxwolves.wannabuy.RestApiHelper.UserPaymentCheck;
@@ -59,7 +52,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AdsActivity extends AppCompatActivity implements View.OnClickListener,
         DatePickerDialog.OnDateSetListener, CallbackInterface {
-
 
     TextInputEditText cityInput, doorNumberInput, addressInput;
     EditText flooringInput, bhkInput, noOfHouseInput, totalFloorsInput;
@@ -1232,6 +1224,4 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         final String ConvertImage = Base64.encodeToString(byteArrayVar, Base64.DEFAULT);
         SellerAd.getInstance().imageList.add(ConvertImage);
     }
-
-
 }

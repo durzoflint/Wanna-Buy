@@ -122,7 +122,7 @@ public class ContactActivity extends AppCompatActivity implements NavigationView
         ads.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ContactActivity.this, AdsActivity.class));
+                startActivity(new Intent(ContactActivity.this, MyAdsActivity.class));
                 finish();
             }
         });

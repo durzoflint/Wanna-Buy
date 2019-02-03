@@ -101,6 +101,11 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
     }
 
     @Override
+    public void doesUserExits(boolean isExists) {
+
+    }
+
+    @Override
     public void onPaymentError(int i, String s) {
         Toast.makeText(this, "Payment Failed", Toast.LENGTH_SHORT).show();
         Checkout.clearUserData(this);

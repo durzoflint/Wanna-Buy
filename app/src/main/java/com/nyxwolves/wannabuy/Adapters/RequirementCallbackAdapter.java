@@ -54,6 +54,11 @@ public class RequirementCallbackAdapter extends RecyclerView.Adapter<Requirement
     }
 
     @Override
+    public void doesUserExits(boolean isExists) {
+
+    }
+
+    @Override
     public void onBindViewHolder(@NonNull RequirementSearchHolder requirementSearchHolder, int i) {
 
         try{

@@ -51,6 +51,7 @@ public class SellerAd {
     public String locationLatitude = "NOT_SET";
     public String locationLongitude = "NOT_SET";
     public ArrayList<String> imageList = new ArrayList<>();
+    public String singleImage = "NOT_SET";
 
     private static SellerAd instance = null;
 

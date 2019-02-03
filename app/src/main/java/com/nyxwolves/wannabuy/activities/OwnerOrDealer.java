@@ -46,7 +46,7 @@ public class OwnerOrDealer extends AppCompatActivity implements CallbackInterfac
         ownerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               ownerOrDealer = getString(R.string.owner);
+               ownerOrDealer = getString(R.string.individual);
                 dealerBtn.setBackground(getDrawable(R.drawable.blue_button));
                 ownerBtn.setBackground(getDrawable(R.drawable.orange_button));
             }
@@ -94,7 +94,7 @@ public class OwnerOrDealer extends AppCompatActivity implements CallbackInterfac
             editor = sharedPreferences.edit();
             editor.putString(getString(R.string.owner_dealer_flag),getString(R.string.SET));
             editor.apply();
-            startActivity(new Intent(OwnerOrDealer.this,HomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+            startActivity(new Intent(OwnerOrDealer.this,WelcomeScreen.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
         }else{
             Toast.makeText(this,"Please Try Again",Toast.LENGTH_SHORT).show();
         }
@@ -102,6 +102,11 @@ public class OwnerOrDealer extends AppCompatActivity implements CallbackInterfac
 
     @Override
     public void setData(JSONObject data) {
+
+    }
+
+    @Override
+    public void doesUserExits(boolean isExists) {
 
     }
 }

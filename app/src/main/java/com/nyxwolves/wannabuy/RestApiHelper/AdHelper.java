@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -20,7 +21,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AdHelper implements CallbackInterface {
 
@@ -62,7 +65,14 @@ public class AdHelper implements CallbackInterface {
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(ctx, "Error Occurred", Toast.LENGTH_SHORT).show();
             }
-        });
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("IMAGE",SellerAd.getInstance().singleImage);
+                return params;
+            }
+        };
         CustomRequestQueue.getInstance(ctx).addRequest(createAdRequest);
     }
 
@@ -114,8 +124,6 @@ public class AdHelper implements CallbackInterface {
             createParams.put("RENT_END_DATE", SellerAd.getInstance().rentEndDate);
             createParams.put("LATITUDE", SellerAd.getInstance().locationLatitude);
             createParams.put("LONGITUDE", SellerAd.getInstance().locationLongitude);
-            createParams.put("IMAGES",getImages());
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -124,7 +132,8 @@ public class AdHelper implements CallbackInterface {
     private JSONArray getImages(){
         JSONArray images = new JSONArray();
         for(String image : SellerAd.getInstance().imageList){
-            images.put(image);
+            String stringWithoutSlashes = image.replace("\"", "\\\"");
+            images.put(stringWithoutSlashes);
         }
         return images;
     }
@@ -208,6 +217,11 @@ public class AdHelper implements CallbackInterface {
 
     @Override
     public void isSuccess(boolean isSuccess) {
+
+    }
+
+    @Override
+    public void doesUserExits(boolean isExists) {
 
     }
 }

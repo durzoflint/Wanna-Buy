@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.PaymentInformationActivity"></activity>
+        <activity android:name=".activities.WelcomeScreen"
+            android:noHistory="true"
+            android:theme="@style/noActionbar"/>
+        <activity android:name=".activities.PaymentInformationActivity" />
         <activity android:name=".activities.UploadImageActivity" />
         <activity android:name=".activities.ChangePasswordActivity" />
 

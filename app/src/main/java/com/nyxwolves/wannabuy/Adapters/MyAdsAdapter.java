@@ -38,6 +38,11 @@ public class MyAdsAdapter extends RecyclerView.Adapter<MyAdsViewHolder> implemen
 
     }
 
+    @Override
+    public void doesUserExits(boolean isExists) {
+
+    }
+
     @NonNull
     @Override
     public MyAdsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {

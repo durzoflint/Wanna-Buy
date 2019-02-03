@@ -2,6 +2,7 @@
     <string name="facebook_app_id">341529946626279</string>
     <string name="fb_login_protocol_scheme">fb341529946626279</string>
 
+    <string name="welcome_text">Welcomes You</string>
     <string name="shared_pref">SHARED_PREF</string>
     <string name="shared_first_req">FIRST_REQ</string>
     <string name="shared_first_ad">FIRST_AD</string>
@@ -161,8 +162,8 @@
     <string name="wannasell">Wanna Sell</string>
 
     <string name="approval">Approval</string>
-    <string name="ammenities_header_text">Ammenities(Select all applicable)</string>
-    <string name="ammenities_header">Ammenities</string>
+    <string name="amenities_header_text">Amenities(Select all applicable)</string>
+    <string name="amenities_header">Amenities</string>
     <string name="metro_water">  Metro Water Connection</string>
     <string name="gym">  Gym</string>
     <string name="drainage_connection">  Drainage Connection</string>
@@ -173,12 +174,12 @@
     <string name="cafeteria">  Cafeteria</string>
     <string name="garden">  Garden</string>
     <string name="water">  24hrs Water</string>
-    <string name="maintance_fee">  Maintance Fee</string>
+    <string name="maintenance_fee">  Maintenance Fee</string>
     <string name="play_area">Children Play Area</string>
 
     <string name="approval_header">Type of Approval?</string>
     <string name="dtcp_text">DTCP</string>
-    <string name="cdma_text">CDMA</string>
+    <string name="cmda_text">CMDA</string>
     <string name="rera_text">RERA</string>
     <string name="road_width">Road Width?</string>
     <string name="min_road_width">0Ft.</string>
@@ -261,13 +262,13 @@
     <string name="facilities_available">Facilities Available</string>
 
     <string name="do_not_deviate">Do Not Deviate</string>
-    <string name="maintance_text">Enter Maintance Amount</string>
+    <string name="maintenance_text">Enter Maintenance Amount</string>
 
-    <string name="owner">Owner</string>
+    <string name="individual">Individual</string>
     <string name="dealer">Dealer</string>
 
     <string name="user_mode">USER_MODE</string>
-    <string name="who_are_you">Who Are You?</string>
+    <string name="are_you_text">Are You?</string>
     <string name="iam_a">I am a</string>
 
     <string name="choose_unit">Choose Unit</string>

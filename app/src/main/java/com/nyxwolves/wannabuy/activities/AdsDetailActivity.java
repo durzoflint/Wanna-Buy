@@ -137,4 +137,9 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
     public void isSuccess(boolean isSuccess) {
 
     }
+
+    @Override
+    public void doesUserExits(boolean isExists) {
+
+    }
 }

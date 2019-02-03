@@ -10,9 +10,7 @@ import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TextInputEditText;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -1117,7 +1115,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 setFacilityData((CheckBox) v, getString(R.string.play_area));
                 break;
             case R.id.ads_cmda_btn:
-                setApprovalData((CheckBox) v, getString(R.string.cdma_text));
+                setApprovalData((CheckBox) v, getString(R.string.cmda_text));
                 break;
             case R.id.ads_dtcp_btn:
                 setApprovalData((CheckBox) v, getString(R.string.dtcp_text));
@@ -1150,13 +1148,28 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == IMAGE_REQ && resultCode == RESULT_OK && data != null) {
-            Uri uri = data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                processImage(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
+            if(data.getData() != null){//for single image
+                Uri uri = data.getData();
+                try {
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                    processImage(bitmap);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }else if(data.getClipData() != null){//for multiple images
+
+                int numOfImages = data.getClipData().getItemCount();
+                for(int i = 0; i < numOfImages; i++){
+                    Uri uri = data.getClipData().getItemAt(i).getUri();
+                    try {
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                        processImage(bitmap);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
+
 
         } else if (requestCode == LOCATION_REQUEST && resultCode == RESULT_OK) {
             Place place = PlaceAutocomplete.getPlace(AdsActivity.this, data);
@@ -1182,8 +1195,8 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     @Override
     public void setData(JSONObject data) {
         try {
-            if (data.getString("TYPE").equals(getString(R.string.owner))) {//if user is owner
-                userMode = getString(R.string.owner);
+            if (data.getString("TYPE").equals(getString(R.string.individual))) {//if user is owner
+                userMode = getString(R.string.individual);
                 //needs to pay
                 if (SellerAd.getInstance().adsSellOrRent.equals(getString(R.string.SELL))) {
                     intiatePayment(2999, getString(R.string.pay_sell_ad));
@@ -1216,12 +1229,18 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
 
     }
 
+    @Override
+    public void doesUserExits(boolean isExists) {
+
+    }
+
     private void processImage(Bitmap bitmap) {
         ByteArrayOutputStream byteArrayOutputStreamObject;
         byteArrayOutputStreamObject = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStreamObject);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 1, byteArrayOutputStreamObject);
         byte[] byteArrayVar = byteArrayOutputStreamObject.toByteArray();
-        final String ConvertImage = Base64.encodeToString(byteArrayVar, Base64.DEFAULT);
-        SellerAd.getInstance().imageList.add(ConvertImage);
+        final String convertedImage = Base64.encodeToString(byteArrayVar, Base64.DEFAULT);
+        //SellerAd.getInstance().imageList.add(ConvertImage);
+        SellerAd.getInstance().singleImage = convertedImage;
     }
 }

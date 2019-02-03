@@ -3,12 +3,10 @@ package com.nyxwolves.wannabuy.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.nyxwolves.wannabuy.POJO.Requirements;
@@ -73,7 +71,7 @@ public class ApprovalActivity extends AppCompatActivity {
                 setData((CheckBox)v,getString(R.string.dtcp_text));
                 break;
             case R.id.cmda_btn:
-                setData((CheckBox)v,getString(R.string.cdma_text));
+                setData((CheckBox)v,getString(R.string.cmda_text));
                 break;
             case R.id.panchayat:
                 setData((CheckBox)v,getString(R.string.panchayat));

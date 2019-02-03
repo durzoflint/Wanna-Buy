@@ -70,7 +70,7 @@
             android:fontFamily="@font/montserrat_medium"
             android:onClick="onCheckBoxClicked"
             android:padding="5dp"
-            android:text="@string/cdma_text" />
+            android:text="@string/cmda_text" />
 
         <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/corp"

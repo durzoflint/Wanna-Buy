@@ -347,6 +347,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    @Override
+    public void doesUserExits(boolean isExists) {
+
+    }
+
     private class AddToken extends AsyncTask<String, Void, Void> {
         String baseUrl = "http://www.wannabuy.in/api/notifications/";
         String webPage = "";

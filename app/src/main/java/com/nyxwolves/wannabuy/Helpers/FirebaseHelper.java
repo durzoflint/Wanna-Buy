@@ -29,13 +29,17 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
 import com.nyxwolves.wannabuy.R;
+import com.nyxwolves.wannabuy.RestApiHelper.UserHelper;
 import com.nyxwolves.wannabuy.activities.HomeActivity;
 import com.nyxwolves.wannabuy.activities.LoginActivity;
 import com.nyxwolves.wannabuy.activities.OwnerOrDealer;
 import com.nyxwolves.wannabuy.activities.SplashScreen;
 
-public class FirebaseHelper {
+import org.json.JSONObject;
+
+public class FirebaseHelper implements CallbackInterface {
 
     private FirebaseAuth mauth;
     private Context ctx;
@@ -43,6 +47,8 @@ public class FirebaseHelper {
     private final String TAG = "FIREBASE_HELPER";
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+
+    private boolean isUserExists;
 
     public FirebaseHelper(Context ctx) {
         this.ctx = ctx;
@@ -95,16 +101,10 @@ public class FirebaseHelper {
             @Override
             public void onSuccess(AuthResult authResult)  {
                 if(FirebaseAuth.getInstance().getCurrentUser() != null){
-                    closeDialog();
-                    if(sharedPreferences.getString(ctx.getString(R.string.owner_dealer_flag),"NOT_SET").equals("NOT_SET")){
-                        Intent i = new Intent(ctx, OwnerOrDealer.class);
-                        ctx.startActivity(i);
-                    }else{
-                        showSnackBar("Welcome", v);
-                        Intent i = new Intent(ctx, HomeActivity.class);
-                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        ctx.startActivity(i);
-                    }
+                    //to check whether user already exists or not
+                    UserHelper userHelper = new UserHelper(ctx);
+                    userHelper.isUserExists(FirebaseHelper.this);
+
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -124,15 +124,9 @@ public class FirebaseHelper {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                    UserHelper userHelper = new UserHelper(ctx);
+                    userHelper.isUserExists(FirebaseHelper.this);
                     closeDialog();
-
-                    if(sharedPreferences.getString(ctx.getString(R.string.user_mode),"NOT_SET").equals("NOT_SET")){
-                        ctx.startActivity(new Intent(ctx, OwnerOrDealer.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
-                    }else{
-                        showSnackBar("Welcome", v);
-                        ctx.startActivity(new Intent(ctx, HomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
-                    }
-
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -261,4 +255,28 @@ public class FirebaseHelper {
     }
 
 
+    @Override
+    public void doesUserExits(boolean isExists) {
+        //isUserExists = isExists;
+        closeDialog();
+        if(!isExists){
+            Intent i = new Intent(ctx, OwnerOrDealer.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            ctx.startActivity(i);
+        }else{
+            Intent i = new Intent(ctx, HomeActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            ctx.startActivity(i);
+        }
+    }
+
+    @Override
+    public void isSuccess(boolean isSuccess) {
+
+    }
+
+    @Override
+    public void setData(JSONObject data) {
+
+    }
 }

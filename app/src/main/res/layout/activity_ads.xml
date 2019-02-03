@@ -1307,7 +1307,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_medium"
-                android:text="@string/ammenities_header_text"
+                android:text="@string/amenities_header_text"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -1449,7 +1449,7 @@
                 android:layout_marginStart="16dp"
                 android:onClick="onCheckBoxClicked"
                 android:padding="5dp"
-                android:text="@string/maintance_fee"
+                android:text="@string/maintenance_fee"
                 android:fontFamily="@font/montserrat_medium"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -1643,7 +1643,7 @@
                     android:fontFamily="@font/montserrat_medium"
                     android:onClick="onCheckBoxClicked"
                     android:padding="5dp"
-                    android:text="@string/cdma_text" />
+                    android:text="@string/cmda_text" />
 
                 <android.support.v7.widget.AppCompatCheckBox
                     android:id="@+id/ads_corp"

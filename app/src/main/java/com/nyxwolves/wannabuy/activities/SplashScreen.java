@@ -40,7 +40,7 @@ public class SplashScreen extends AppCompatActivity {
                 if (FirebaseAuth.getInstance().getCurrentUser() != null) {
                     String userMode = sharedPreferences.getString(getString(R.string.user_mode),"NOT_SET");
 
-                    if(userMode.equals(getString(R.string.owner)) || userMode.equals(getString(R.string.dealer))){
+                    if(userMode.equals(getString(R.string.individual)) || userMode.equals(getString(R.string.dealer))){
                         startActivity(new Intent(SplashScreen.this, HomeActivity.class));
                     }else{
                         startActivity(new Intent(SplashScreen.this,OwnerOrDealer.class));

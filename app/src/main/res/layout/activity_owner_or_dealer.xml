@@ -19,7 +19,7 @@
         android:background="@drawable/blue_button"
         android:fontFamily="@font/montserrat_medium"
         android:padding="20dp"
-        android:text="@string/owner"
+        android:text="@string/individual"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/dealer_btn"
@@ -43,13 +43,13 @@
         app:layout_constraintTop_toTopOf="@+id/owner_btn" />
 
     <TextView
-        android:id="@+id/who_are_you"
+        android:id="@+id/are_you"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
         android:fontFamily="@font/cocogoose_regular"
-        android:text="@string/who_are_you"
+        android:text="@string/are_you_text"
         android:textColor="@android:color/white"
         android:textSize="22sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,8 +67,8 @@
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/who_are_you"
-        app:layout_constraintTop_toBottomOf="@+id/who_are_you" />
+        app:layout_constraintStart_toStartOf="@+id/are_you"
+        app:layout_constraintTop_toBottomOf="@+id/are_you" />
 
     <TextView
         android:id="@+id/phone_number_header"

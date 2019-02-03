@@ -273,5 +273,10 @@ public class RequirementHelper implements CallbackInterface{
     public void isSuccess(boolean isSuccess) {
 
     }
+
+    @Override
+    public void doesUserExits(boolean isExists) {
+
+    }
 }
 

@@ -22,7 +22,7 @@ public class PaymentInformationActivity extends AppCompatActivity {
         String userMode = sharedPreferences.getString(getString(R.string.user_mode), "NOT_SET");
         textView = findViewById(R.id.text);
 
-        if (userMode.equals(getString(R.string.owner))){
+        if (userMode.equals(getString(R.string.individual))){
             setTitle("Owner's Pay");
             setText(1);
         }else{

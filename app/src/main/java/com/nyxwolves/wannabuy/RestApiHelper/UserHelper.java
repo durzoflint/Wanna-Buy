@@ -9,12 +9,14 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.google.firebase.auth.FirebaseAuth;
 import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class UserHelper {
@@ -55,6 +57,36 @@ public class UserHelper {
         });
 
         CustomRequestQueue.getInstance(ctx).addRequest(createRequest);
+    }
+
+    public void isUserExists(final CallbackInterface callbackInterface){
+        String URL = "http://www.wannabuy.in/api/User/user_exists.php?USER_ID="+ FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
+        StringRequest getRequirementRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                Log.d("USER_JSON_RESPONSE", response);
+                try{
+                    JSONObject object = new JSONObject(response);
+                    if(object.getString("message").equals("user_found")){
+                        Log.d("TEST_USER","EXISTS");
+                        callbackInterface.doesUserExits(true);
+                    }else {
+                        Log.d("TEST_USER","NOT EXISTS");
+                        callbackInterface.doesUserExits(false);
+                    }
+                }catch(JSONException e){}
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("READ_RESPONSE", error.toString());
+            }
+        });
+
+        CustomRequestQueue.getInstance(ctx).addRequest(getRequirementRequest);
     }
 
 }

@@ -84,8 +84,8 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
             int buyReqNum = data.getInt("BUY_REQ_NUM");
             int rentReqNum = data.getInt("RENT_REQ_NUM");
 
-            if(ownerOrDealer.equals(getString(R.string.owner))){//if user is owner
-                userMode = getString(R.string.owner);
+            if(ownerOrDealer.equals(getString(R.string.individual))){//if user is owner
+                userMode = getString(R.string.individual);
                 if(Requirements.getInstance().buyorRent.equals(getString(R.string.BUY))){
                     if(buyReqNum > 0){
                         //needs to pay
@@ -144,6 +144,11 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
 
     @Override
     public void isSuccess(boolean isSuccess) {
+
+    }
+
+    @Override
+    public void doesUserExits(boolean isExists) {
 
     }
 }

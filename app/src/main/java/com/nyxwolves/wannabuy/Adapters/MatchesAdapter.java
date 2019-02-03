@@ -43,6 +43,11 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesViewHolder> impl
 
     }
 
+    @Override
+    public void doesUserExits(boolean isExists) {
+
+    }
+
     @NonNull
     @Override
     public MatchesViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {

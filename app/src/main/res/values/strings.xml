@@ -2,7 +2,6 @@
     <string name="facebook_app_id">341529946626279</string>
     <string name="fb_login_protocol_scheme">fb341529946626279</string>
 
-    <string name="welcome_text">Welcomes You</string>
     <string name="shared_pref">SHARED_PREF</string>
     <string name="shared_first_req">FIRST_REQ</string>
     <string name="shared_first_ad">FIRST_AD</string>
@@ -426,4 +425,10 @@
     <string name="wanna_rent_out">Wanna Rent out</string>
 
     <string name="buy_rent_flag">BUY_OR_RENT</string>
+    <string name="free">Free</string>
+
+    <string name="welcome_text">Hi ,welcome to the world\'s exclusive Buyer\'s portal- WannaBuy .This startup will end your constant search on property .  Thanks for choosing WannaBuy . We assure you that we will give our best match .</string>
+
+    <string name="ad_pay_title">Why Payment and Why we are special?</string>
+    <string name="ad_pay_dialog_text">Your Ad will not be shown to any one but only to the correct buyer directly who chose to buy in a particular area, budget and requirements. It\'s a personalized direct matching indicator . HAPPY SELLING!</string>
 </resources>

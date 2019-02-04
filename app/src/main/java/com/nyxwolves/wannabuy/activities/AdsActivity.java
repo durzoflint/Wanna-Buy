@@ -36,6 +36,7 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import com.nyxwolves.wannabuy.CustomDialog.MessageDialog;
 import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
 import com.nyxwolves.wannabuy.POJO.SellerAd;
 import com.nyxwolves.wannabuy.R;
@@ -314,6 +315,8 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 startActivity(new Intent(AdsActivity.this,UploadImageActivity.class));
                 break;
             case R.id.payment_btn:
+                MessageDialog msgDialog = new MessageDialog();
+                msgDialog.show(getSupportFragmentManager(),"MSG_DIALOG");
                 if (checkData()) {
 
                     UserPaymentCheck helper = new UserPaymentCheck(AdsActivity.this);

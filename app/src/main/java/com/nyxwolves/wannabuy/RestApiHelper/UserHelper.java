@@ -36,7 +36,7 @@ public class UserHelper {
         try{
             params.put("USER_ID",FirebaseAuth.getInstance().getCurrentUser().getEmail());
             params.put("PHONE_NUMBER",phone);
-            params.put("OWNER_OR_DEALER",ownerOrDealer);
+            params.put("OWNER_OR_DEALER",ownerOrDealer.toUpperCase());
         }catch(Exception e){}
 
         JsonObjectRequest createRequest = new JsonObjectRequest(Request.Method.POST, URL, params, new Response.Listener<JSONObject>() {

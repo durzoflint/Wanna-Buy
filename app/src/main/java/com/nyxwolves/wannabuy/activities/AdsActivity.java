@@ -310,8 +310,8 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         switch (v.getId()) {
 
             case R.id.upload_btn:
-                chooseImage();
-                //startActivity(new Intent(AdsActivity.this,UploadImageActivity.class));
+                //chooseImage();
+                startActivity(new Intent(AdsActivity.this,UploadImageActivity.class));
                 break;
             case R.id.payment_btn:
                 if (checkData()) {

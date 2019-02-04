@@ -16,7 +16,8 @@
             android:noHistory="true"
             android:theme="@style/noActionbar"/>
         <activity android:name=".activities.PaymentInformationActivity" />
-        <activity android:name=".activities.UploadImageActivity" />
+        <activity android:name=".activities.UploadImageActivity"
+            android:theme="@style/noActionbar" />
         <activity android:name=".activities.ChangePasswordActivity" />
 
         <uses-library

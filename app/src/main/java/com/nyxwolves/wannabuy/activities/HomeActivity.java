@@ -35,6 +35,7 @@ import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
 import com.nyxwolves.wannabuy.RestApiHelper.AdHelper;
 import com.nyxwolves.wannabuy.RestApiHelper.RequirementHelper;
+import com.nyxwolves.wannabuy.RestApiHelper.UserPaymentCheck;
 import com.nyxwolves.wannabuy.contacts.ContactActivity;
 import com.nyxwolves.wannabuy.notifications.MyFirebaseMessagingService;
 
@@ -82,7 +83,17 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
                 if(getIntent().getAction().equals(getString(R.string.POST_AD))){
                     AdHelper adHelper = new AdHelper(HomeActivity.this);
-                    adHelper.createAd(getIntent().getStringExtra(getString(R.string.owner_dealer_flag)));
+                    adHelper.makeAdVisible(getIntent().getStringExtra(getString(R.string.ad_id)));
+
+                    UserPaymentCheck userPaymentCheck = new UserPaymentCheck(HomeActivity.this);
+
+                    if (getIntent().getStringExtra(getString(R.string.owner_dealer_flag)).equals(getString(R.string.dealer))) {
+                        userPaymentCheck.updateUserStatus(UserPaymentCheck.DECREASE_DEALER_ADS, null);
+                    } else {
+                        userPaymentCheck.updateUserStatus(UserPaymentCheck.UPDATE_AD, null);
+                    }
+
+
                 }
             }
 

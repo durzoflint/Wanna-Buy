@@ -58,7 +58,10 @@ public class UserPaymentCheck {
 
                 Log.d("JSON_RESPONSE", response);
                 try{
-                    callBack.setData(new JSONObject(response));
+                    if(callBack != null){
+                        callBack.setData(new JSONObject(response));
+                    }
+
                 }catch(JSONException e){}
 
             }

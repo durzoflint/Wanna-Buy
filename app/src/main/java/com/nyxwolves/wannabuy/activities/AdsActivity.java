@@ -37,9 +37,11 @@ import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.nyxwolves.wannabuy.CustomDialog.MessageDialog;
+import com.nyxwolves.wannabuy.Interfaces.AdInterface;
 import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
 import com.nyxwolves.wannabuy.POJO.SellerAd;
 import com.nyxwolves.wannabuy.R;
+import com.nyxwolves.wannabuy.RestApiHelper.AdHelper;
 import com.nyxwolves.wannabuy.RestApiHelper.UserPaymentCheck;
 
 import org.json.JSONObject;
@@ -50,7 +52,7 @@ import java.io.IOException;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AdsActivity extends AppCompatActivity implements View.OnClickListener,
-        DatePickerDialog.OnDateSetListener, CallbackInterface {
+        DatePickerDialog.OnDateSetListener, CallbackInterface, AdInterface {
 
     TextInputEditText cityInput, doorNumberInput, addressInput;
     EditText flooringInput, bhkInput, noOfHouseInput, totalFloorsInput;
@@ -85,6 +87,8 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     boolean isRentalIncome = false;
     boolean isStartDate = true;
     String userMode;
+    String ownerOrDealer;
+    int adsNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -286,7 +290,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         picUploadBtn = findViewById(R.id.upload_btn);
         picUploadBtn.setOnClickListener(this);
 
-        paymentBtn = findViewById(R.id.payment_btn);
+        paymentBtn = findViewById(R.id.next_btn);
         paymentBtn.setOnClickListener(this);
 
 
@@ -310,15 +314,11 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
 
-            case R.id.upload_btn:
-                //chooseImage();
-                startActivity(new Intent(AdsActivity.this,UploadImageActivity.class));
-                break;
-            case R.id.payment_btn:
-                MessageDialog msgDialog = new MessageDialog();
-                msgDialog.show(getSupportFragmentManager(),"MSG_DIALOG");
+            case R.id.next_btn:
                 if (checkData()) {
-
+                    Log.d("REACHED", "TEST");
+                    MessageDialog msgDialog = new MessageDialog();
+                    msgDialog.show(getSupportFragmentManager(), "MSG_DIALOG");
                     UserPaymentCheck helper = new UserPaymentCheck(AdsActivity.this);
                     CallbackInterface callbackInterface = AdsActivity.this;
                     helper.getUserStatus(callbackInterface);
@@ -343,13 +343,6 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         } else {
             return true;
         }
-    }
-
-    private void startIntentToHome() {
-        Intent i = new Intent(AdsActivity.this, HomeActivity.class);
-        i.setAction(getString(R.string.POST_AD));
-        i.putExtra(getString(R.string.owner_dealer_flag), userMode);
-        startActivity(i);
     }
 
     private void getLocation() {
@@ -1151,7 +1144,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == IMAGE_REQ && resultCode == RESULT_OK && data != null) {
-            if(data.getData() != null){//for single image
+            if (data.getData() != null) {//for single image
                 Uri uri = data.getData();
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
@@ -1159,10 +1152,10 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }else if(data.getClipData() != null){//for multiple images
+            } else if (data.getClipData() != null) {//for multiple images
 
                 int numOfImages = data.getClipData().getItemCount();
-                for(int i = 0; i < numOfImages; i++){
+                for (int i = 0; i < numOfImages; i++) {
                     Uri uri = data.getClipData().getItemAt(i).getUri();
                     try {
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
@@ -1180,49 +1173,21 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
             SellerAd.getInstance().locationLongitude = Double.toString(place.getLatLng().longitude);
 
             cityInput.setText(place.getName().toString());
-        } else if (requestCode == PAYMENT_CODE) {
-            if (resultCode == RESULT_OK) {
-                startIntentToHome();
-            }
         }
     }
 
-    private void intiatePayment(int amount, String sellOrRent) {
-        Intent paymentIntent = new Intent(AdsActivity.this, PaymentActivity.class);
-        paymentIntent.putExtra(PaymentActivity.AMOUNT, amount);
-        paymentIntent.putExtra(PaymentActivity.DESCRIPTION, sellOrRent);
-        paymentIntent.putExtra(PaymentActivity.USER_TYPE, userMode);
-        startActivityForResult(paymentIntent, PAYMENT_CODE);
-    }
+
 
     @Override
     public void setData(JSONObject data) {
+        Log.d("SET_DATA", "REACHED");
         try {
-            if (data.getString("TYPE").equals(getString(R.string.individual))) {//if user is owner
-                userMode = getString(R.string.individual);
-                //needs to pay
-                if (SellerAd.getInstance().adsSellOrRent.equals(getString(R.string.SELL))) {
-                    intiatePayment(2999, getString(R.string.pay_sell_ad));
-                } else {
-                    intiatePayment(999, getString(R.string.pay_rent_ad));
-                }
+            ownerOrDealer = data.getString("TYPE");
+            adsNum = Integer.parseInt(data.getString("ADS_NUM"));
 
-            } else if (data.getString("TYPE").equals(getString(R.string.dealer))) {//if user is dealer
-                userMode = getString(R.string.dealer);
-                if (Integer.valueOf(data.getString("ADS_NUM")) == 0) {
-                    //needs to pay
-                    if (SellerAd.getInstance().adsSellOrRent.equals(getString(R.string.SELL))) {
-                        intiatePayment(10000, getString(R.string.pay_sell_ad));
-                    } else {
-                        intiatePayment(10000, getString(R.string.pay_rent_ad));
-                    }
-                } else if (Integer.valueOf(data.getString("ADS_NUM")) != 0) {
-                    //still has credits left
-                    startIntentToHome();
-
-                }
-            }
-
+            //upload ad to database
+            AdHelper uploadHelper = new AdHelper(AdsActivity.this);
+            uploadHelper.createAd(ownerOrDealer,AdsActivity.this);
         } catch (Exception e) {
         }
     }
@@ -1245,5 +1210,23 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         final String convertedImage = Base64.encodeToString(byteArrayVar, Base64.DEFAULT);
         //SellerAd.getInstance().imageList.add(ConvertImage);
         SellerAd.getInstance().singleImage = convertedImage;
+    }
+
+    //callback if ad is posted successfully
+    @Override
+    public void adCreated(boolean isSuccess, JSONObject data) {
+        //start intent to imageUpload activity
+        if(isSuccess){
+            try{
+                String adId = data.getString("AD_ID");
+
+                Intent i = new Intent(AdsActivity.this, ImageUpload.class);
+                i.putExtra(getString(R.string.owner_dealer_flag), ownerOrDealer);
+                i.putExtra(getString(R.string.ad_num), adsNum);
+                i.putExtra(getString(R.string.ad_id),adId);
+                startActivity(i);
+            }catch (Exception e){}
+
+        }
     }
 }

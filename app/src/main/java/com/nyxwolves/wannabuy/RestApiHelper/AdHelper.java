@@ -12,6 +12,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.google.firebase.auth.FirebaseAuth;
+import com.nyxwolves.wannabuy.Interfaces.AdInterface;
 import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
 import com.nyxwolves.wannabuy.POJO.SellerAd;
 import com.nyxwolves.wannabuy.R;
@@ -35,7 +36,7 @@ public class AdHelper implements CallbackInterface {
         this.ctx = ctx;
     }
 
-    public void createAd(final String type) {
+    public void createAd(final String type, final AdInterface callback) {
         String URL = "http://www.wannabuy.in/api/Ads/create_ad.php";
         getJson();
         //Log.d("ADS_JSON",new JSONObject(createParams).toString());
@@ -44,35 +45,21 @@ public class AdHelper implements CallbackInterface {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("ADS_RESPONSE_CREATED", response.toString());
+                callback.adCreated(true, response);
 
                 SharedPreferences sharedPreferences = ctx.getSharedPreferences(ctx.getString(R.string.shared_pref), Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean(ctx.getString(R.string.shared_first_ad), false);
                 editor.apply();
 
-                UserPaymentCheck userPaymentCheck = new UserPaymentCheck(ctx);
-
-                if (type.equals(ctx.getString(R.string.dealer))) {
-                    userPaymentCheck.updateUserStatus(UserPaymentCheck.DECREASE_DEALER_ADS, AdHelper.this);
-                } else {
-                    userPaymentCheck.updateUserStatus(UserPaymentCheck.UPDATE_AD, AdHelper.this);
-                }
-
-
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                callback.adCreated(false, null);
                 Toast.makeText(ctx, "Error Occurred", Toast.LENGTH_SHORT).show();
             }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params = new HashMap<>();
-                params.put("IMAGE",SellerAd.getInstance().singleImage);
-                return params;
-            }
-        };
+        });
         CustomRequestQueue.getInstance(ctx).addRequest(createAdRequest);
     }
 
@@ -127,15 +114,6 @@ public class AdHelper implements CallbackInterface {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private JSONArray getImages(){
-        JSONArray images = new JSONArray();
-        for(String image : SellerAd.getInstance().imageList){
-            String stringWithoutSlashes = image.replace("\"", "\\\"");
-            images.put(stringWithoutSlashes);
-        }
-        return images;
     }
 
     private JSONArray getFacilitiesList() {
@@ -201,12 +179,30 @@ public class AdHelper implements CallbackInterface {
         CustomRequestQueue.getInstance(ctx).addRequest(getRequirementRequest);
     }
 
+    public void makeAdVisible(String adId) {
+        String URL = "http://www.wannabuy.in/api/Ads/make_ad_visible.php?AD_ID=" + adId;
+
+        StringRequest getRequirementRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("VISIBLE", "SUCCESS");
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("READ_RESPONSE", error.toString());
+            }
+        });
+
+        CustomRequestQueue.getInstance(ctx).addRequest(getRequirementRequest);
+    }
 
     //callback from updating user ad status
     @Override
     public void setData(JSONObject data) {
         try {
-            Log.d("TEST_JSON",data.toString());
+            Log.d("TEST_JSON", data.toString());
             if (data.getString("message").equals("success")) {
                 Toast.makeText(ctx, "Ad is Posted", Toast.LENGTH_SHORT).show();
             }

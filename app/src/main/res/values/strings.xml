@@ -433,6 +433,5 @@
     <string name="ad_pay_dialog_text">Your Ad will not be shown to any one but only to the correct buyer directly who chose to buy in a particular area, budget and requirements. It\'s a personalized direct matching indicator . HAPPY SELLING!</string>
 
     <string name="ad_num">ADS_NUM</string>
-    <string name="ad_id">AD_ID</string>
     <string name="submit">Submit</string>
 </resources>

@@ -83,7 +83,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
                 if(getIntent().getAction().equals(getString(R.string.POST_AD))){
                     AdHelper adHelper = new AdHelper(HomeActivity.this);
-                    adHelper.makeAdVisible(getIntent().getStringExtra(getString(R.string.ad_id)));
+                    adHelper.makeAdVisible(getIntent().getStringExtra(getString(R.string.AD_ID)));
 
                     UserPaymentCheck userPaymentCheck = new UserPaymentCheck(HomeActivity.this);
 

@@ -94,7 +94,6 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ads);
 
-
         areaUnitSpinner = findViewById(R.id.ads_unit_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.unit_spinner, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -1180,8 +1179,6 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         }
     }
 
-
-
     @Override
     public void setData(JSONObject data) {
         Log.d("SET_DATA", "REACHED");
@@ -1228,7 +1225,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 Intent i = new Intent(AdsActivity.this, ImageUpload.class);
                 i.putExtra(getString(R.string.owner_dealer_flag), ownerOrDealer);
                 i.putExtra(getString(R.string.ad_num), adsNum);
-                i.putExtra(getString(R.string.ad_id),adId);
+                i.putExtra(getString(R.string.AD_ID), adId);
                 startActivity(i);
             }catch (Exception e){}
 

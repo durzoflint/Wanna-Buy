@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.ImageUpload"></activity>
+        <activity android:name=".activities.ImageUpload" />
         <activity
             android:name=".activities.WelcomeScreen"
             android:noHistory="true"

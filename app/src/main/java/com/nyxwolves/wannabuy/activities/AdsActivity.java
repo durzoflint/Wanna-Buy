@@ -87,8 +87,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     boolean isRentalIncome = false;
     boolean isStartDate = true;
     String userMode;
-    String ownerOrDealer;
-    int adsNum;
+    String ownerOrDealer, adsNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -316,6 +315,9 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
 
             case R.id.next_btn:
                 if (checkData()) {
+                    checkFloor();
+                    checkBhk();
+
                     Log.d("REACHED", "TEST");
                     MessageDialog msgDialog = new MessageDialog();
                     msgDialog.show(getSupportFragmentManager(), "MSG_DIALOG");
@@ -1169,6 +1171,8 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
 
         } else if (requestCode == LOCATION_REQUEST && resultCode == RESULT_OK) {
             Place place = PlaceAutocomplete.getPlace(AdsActivity.this, data);
+
+            SellerAd.getInstance().adsLocation = place.getName().toString();
             SellerAd.getInstance().locationLatitude = Double.toString(place.getLatLng().latitude);
             SellerAd.getInstance().locationLongitude = Double.toString(place.getLatLng().longitude);
 
@@ -1183,7 +1187,8 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         Log.d("SET_DATA", "REACHED");
         try {
             ownerOrDealer = data.getString("TYPE");
-            adsNum = Integer.parseInt(data.getString("ADS_NUM"));
+            adsNum = data.getString("ADS_NUM");
+
 
             //upload ad to database
             AdHelper uploadHelper = new AdHelper(AdsActivity.this);
@@ -1219,7 +1224,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         if(isSuccess){
             try{
                 String adId = data.getString("AD_ID");
-
+                Log.d("ADS_NUM_new",""+adsNum);
                 Intent i = new Intent(AdsActivity.this, ImageUpload.class);
                 i.putExtra(getString(R.string.owner_dealer_flag), ownerOrDealer);
                 i.putExtra(getString(R.string.ad_num), adsNum);

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,7 +15,7 @@ public class ImageUpload extends AppCompatActivity {
 
     Button submitButton;
 
-    String ownerOrDealer;
+    String individualOrDealer;
     int adsNum;
     int PAYMENT_CODE = 120;
     int adId;
@@ -24,12 +25,13 @@ public class ImageUpload extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_upload);
 
-        ownerOrDealer = getIntent().getStringExtra(getString(R.string.owner_dealer_flag));
+        individualOrDealer = getIntent().getStringExtra(getString(R.string.owner_dealer_flag));
         try{
-            adsNum = Integer.parseInt(getIntent().getStringExtra(getString(R.string.ad_num)));
+            Log.d("AD_ID",getIntent().getStringExtra(getString(R.string.ad_id)));
             adId = Integer.parseInt(getIntent().getStringExtra(getString(R.string.ad_id)));
+            adsNum = Integer.parseInt(getIntent().getStringExtra(getString(R.string.ad_num)));
         }catch (NumberFormatException e){
-            e.toString();
+            Log.d("EXCEC",e.toString());
         }
 
 
@@ -43,7 +45,7 @@ public class ImageUpload extends AppCompatActivity {
     }
 
     private void checkPayment(){
-        if (ownerOrDealer.equals(getString(R.string.individual))) {//if user is owner
+        if (individualOrDealer.equals(getString(R.string.individual))) {//if user is owner
 
             if (SellerAd.getInstance().adsSellOrRent.equals(getString(R.string.SELL))) {
                 intiatePayment(2999, getString(R.string.pay_sell_ad));
@@ -51,7 +53,7 @@ public class ImageUpload extends AppCompatActivity {
                 intiatePayment(999, getString(R.string.pay_rent_ad));
             }
 
-        } else if (ownerOrDealer.equals(getString(R.string.dealer))) {//if user is dealer
+        } else if (individualOrDealer.equals(getString(R.string.dealer))) {//if user is dealer
 
             if (adsNum == 0) {
                 //needs to pay
@@ -60,7 +62,7 @@ public class ImageUpload extends AppCompatActivity {
                 } else {
                     intiatePayment(10000, getString(R.string.pay_rent_ad));
                 }
-            } else if (adsNum != 0) {
+            } else if (adsNum > 0) {
                 //still has credits left
                 startIntentToHome();
 
@@ -72,6 +74,7 @@ public class ImageUpload extends AppCompatActivity {
         Intent i = new Intent(ImageUpload.this, HomeActivity.class);
         i.setAction(getString(R.string.POST_AD));
         i.putExtra(getString(R.string.ad_id),adId);
+        i.putExtra(getString(R.string.owner_dealer_flag),individualOrDealer);
         startActivity(i);
     }
 

@@ -31,7 +31,7 @@ public class RoadWidth extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(minWidth  != 0&& maxWidth != 0){
+                if(minWidth  != 0&& maxWidth != 0 && minWidth < maxWidth){
                     Requirements.getInstance().minRoadWidth = String.valueOf(minWidth);
                     Requirements.getInstance().maxRoadWidth = String.valueOf(maxWidth);
                     if(Requirements.getInstance().isRentalIncome.equals(getString(R.string.yes))){

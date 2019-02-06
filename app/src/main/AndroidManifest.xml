@@ -229,7 +229,8 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".activities.AdsDetailActivity" />
+        <activity android:name=".activities.AdsDetailActivity"
+            android:theme="@style/noActionbar"/>
     </application>
 
 </manifest>

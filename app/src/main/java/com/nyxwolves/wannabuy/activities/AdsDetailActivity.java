@@ -28,14 +28,12 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
     TextView propertyType,facilitesText,approvalText,floorText;
     TextView covParking,unCovParking;
 
+    int latitude,longitude;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ads_detail);
-
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
 
         //get the  ad id
         Intent intent = getIntent();
@@ -43,6 +41,7 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
 
         //api call to recieve complete info on the ad
         AdHelper helper = new AdHelper(this);
+
         //call back to get the result
         CallbackInterface callback = this;
         helper.readAd(adId,callback);
@@ -69,7 +68,7 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        LatLng sydney = new LatLng(-33.852, 151.211);
+        LatLng sydney = new LatLng(latitude, longitude);
         googleMap.addMarker(new MarkerOptions().position(sydney));
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 16f));
     }
@@ -77,13 +76,19 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
     //callback from the api
     @Override
     public void setData(JSONObject data) {
-
+        //display data from json
         try{
+
+            //map fragment setup
+            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+            mapFragment.getMapAsync(AdsDetailActivity.this);
+
+            //get data from JSON object
             addressText.setText(data.getString("PROPERTY_ADDRESS"));
             bhkText.setText(data.getString("BHK"));
             priceText.setText(data.getString("BUDGET"));
             adUserId.setText(data.getString("USER_ID"));
-            adDate.setText(data.getString("CREATED_AT").substring(0,10));
+            adDate.setText(data.getString("CREATED_AT").substring(0,10));// to eliminate the time stamp from  the server
             locationText.setText(data.getString("PROPERTY_LOCATION"));
             ageText.setText(data.getString("AGE"));
             landArea.setText(data.getString("LAND_AREA"));
@@ -91,6 +96,9 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
             furnishedText.setText(data.getString("FURNISHED"));
             propertyType.setText(data.getString("PROPERTY_TYPE"));
             floorText.setText(data.getString("FLOOR"));
+
+            latitude = Integer.parseInt(data.getString("LATITUDE"));
+            longitude = Integer.parseInt(data.getString("LONGITUDE"));
 
             //facilites array
             JSONArray facilities = data.getJSONArray("FACILITIES");
@@ -126,6 +134,8 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
                 covParking.setText(covCar);
             }
 
+            //pets allowed
+            
         }catch (JSONException e){
             Log.d("JSON EXCEPTION",e.toString());
         }

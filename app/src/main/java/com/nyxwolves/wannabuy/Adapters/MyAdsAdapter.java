@@ -1,6 +1,7 @@
 package com.nyxwolves.wannabuy.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import com.nyxwolves.wannabuy.R;
 import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
 
 import com.nyxwolves.wannabuy.RestApiHelper.AdHelper;
+import com.nyxwolves.wannabuy.activities.AdsDetailActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -54,13 +56,23 @@ public class MyAdsAdapter extends RecyclerView.Adapter<MyAdsViewHolder> implemen
     @Override
     public void onBindViewHolder(@NonNull MyAdsViewHolder myAdsViewHolder, int i) {
         try{
-            JSONObject jsonObject = data.getJSONObject(i);
+            final JSONObject jsonObject = data.getJSONObject(i);
             myAdsViewHolder.areaName.setText(jsonObject.get("PROPERTY_LOCATION").toString());
             myAdsViewHolder.cityName.setText(jsonObject.get("PROPERTY_TYPE").toString());
             myAdsViewHolder.bhkText.setText(jsonObject.get("BHK").toString());
             myAdsViewHolder.priceText.setText(jsonObject.get("BUDGET").toString());
             myAdsViewHolder.landSize.setText(jsonObject.get("LAND_AREA").toString());
             myAdsViewHolder.builtUpSize.setText(jsonObject.get("BUILT_UP_AREA").toString());
+            myAdsViewHolder.detailsBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try {
+                        Intent i = new Intent(ctx, AdsDetailActivity.class);
+                        i.putExtra(ctx.getString(R.string.AD_ID), jsonObject.getString("AD_ID"));
+                        ctx.startActivity(i);
+                    }catch (Exception e){}
+                }
+            });
         }catch (Exception e){}
 
     }

@@ -26,7 +26,7 @@ public class AmmenitiesActivity extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Requirements.getInstance().buyorRent.equals(getString(R.string.rent_text)) ||
+                if(Requirements.getInstance().buyorRent.equals(getString(R.string.rent_text)) &&
                         Requirements.getInstance().subType.equals(getString(R.string.apartments))){
                         startActivity(new Intent(AmmenitiesActivity.this,PetsActivity.class));
                 }else {

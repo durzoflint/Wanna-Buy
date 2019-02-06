@@ -233,6 +233,7 @@ public class Budget extends AppCompatActivity {
                         Requirements.getInstance().minBudgetUnit = minUnit;
                         Requirements.getInstance().maxBudgetUnit = maxUnit;
                         if (Requirements.getInstance().subType.equals(getString(R.string.residential_independent)) ||
+                                Requirements.getInstance().subType.equals(getString(R.string.commercial_floorspace)) ||
                                 Requirements.getInstance().subType.equals(getString(R.string.commercial_independent)) ||
                                 Requirements.getInstance().subType.equals(getString(R.string.factory)) ||
                                 Requirements.getInstance().subType.equals(getString(R.string.cold_storage)) ||
@@ -250,8 +251,7 @@ public class Budget extends AppCompatActivity {
                                 Requirements.getInstance().subType.equals(getString(R.string.pg_rent_apartment))) {
                             startActivity(new Intent(Budget.this, Bhk.class));
 
-                        }else if(Requirements.getInstance().subType.equals(getString(R.string.commercial_floorspace)) ||
-                                Requirements.getInstance().subType.equals(getString(R.string.industrial_floorspace))){
+                        }else if(Requirements.getInstance().subType.equals(getString(R.string.industrial_floorspace))){
                             startActivity(new Intent(Budget.this,FlooringActivity.class));
 
                         } else if (Requirements.getInstance().subType.equals(getString(R.string.residential_land)) ||
@@ -306,13 +306,13 @@ public class Budget extends AppCompatActivity {
                     return false;
                 }
             }else if(minUnit.equals("Thousands") && maxUnit.equals("Thousands")){
-                if(maxBudget >0){
+                if(maxBudget >0 && maxBudget > minBudget){
                     return true;
                 }else{
                     return false;
                 }
             }else if(minUnit.equals("Lakhs") && maxUnit.equals("Lakhs")){
-                if(maxBudget >0){
+                if(maxBudget >0 && maxBudget > minBudget){
                     return true;
                 }else{
                     return false;

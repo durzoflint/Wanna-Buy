@@ -86,7 +86,7 @@ public class AgeOfProperty extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(minAge != 0 || maxAge != 0) {
+                if(minAge < maxAge && maxAge != 0) {
                     Requirements.getInstance().minAge = String.valueOf(minAge);
                     Requirements.getInstance().maxAge = String.valueOf(maxAge);
 
@@ -95,4 +95,6 @@ public class AgeOfProperty extends AppCompatActivity {
             }
         });
     }
+
+
 }

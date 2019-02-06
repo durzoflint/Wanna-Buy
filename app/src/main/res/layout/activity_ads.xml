@@ -169,6 +169,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_medium" />
+
+            <Button
+                android:id="@+id/point_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="@string/point_location"
+                android:background="@drawable/orange_button"
+                android:paddingRight="8dp"
+                android:paddingLeft="8dp"/>
+
         </LinearLayout>
 
         <android.support.constraint.ConstraintLayout
@@ -790,6 +805,7 @@
                     android:layout_marginBottom="8dp"
                     android:fontFamily="@font/montserrat_medium"
                     android:hint="in Sq.Ft"
+                    android:inputType="numberDecimal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -848,6 +864,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/no_of_apartments_each_floor"
+                android:inputType="number"
                 android:fontFamily="@font/montserrat_medium"
                 android:layout_marginBottom="8dp"/>
         </LinearLayout>
@@ -873,7 +890,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_medium"
-                android:hint="@string/total_floors"/>
+                android:hint="@string/total_floors"
+                android:inputType="number"/>
         </LinearLayout>
 
         <android.support.constraint.ConstraintLayout
@@ -1084,6 +1102,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/age_of_property"
                 android:layout_marginTop="8dp"
+                android:inputType="number"
                 android:fontFamily="@font/montserrat_medium"/>
         </LinearLayout>
         <android.support.constraint.ConstraintLayout
@@ -1757,7 +1776,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"

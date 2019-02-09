@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -27,7 +28,8 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
     String buyOrPostRequirement;
     String userMode; //owner or dealer
     String ownerOrDealer;
-    int buyReqNum, rentReqNum;
+    int buyReqNum, rentReqNum,dealerReqCredits;
+    boolean isDealerFree;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,9 +86,9 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PAYMENT_CODE) {
-            if (resultCode == RESULT_OK) {
+            //if (resultCode == RESULT_OK) {
                 startIntentToHome();
-            }
+            //}
         }
     }
 
@@ -97,6 +99,7 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
             ownerOrDealer = data.getString("TYPE");
             buyReqNum = data.getInt("BUY_REQ_NUM");
             rentReqNum = data.getInt("RENT_REQ_NUM");
+            dealerReqCredits = data.getInt("DEALER_REQ_CREDITS");
 
             if(ownerOrDealer.equals(getString(R.string.individual))){
                 if (rentReqNum == 0 && Requirements.getInstance().buyorRent.equals(getString(R.string.RENT))) {
@@ -154,21 +157,37 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
             userMode = getString(R.string.dealer);
             if (Requirements.getInstance().buyorRent.equals(getString(R.string.BUY))) {
                 if (buyReqNum == 0) {
-                    //needs to pay
-                    buyOrPostRequirement = getString(R.string.pay_buy_requirement);
-                    intiatePayment(10000, getString(R.string.pay_buy_requirement));
-                } else {
+                    if(dealerReqCredits > 0){
+                        //still has credits to post requirements
+                        buyOrPostRequirement = getString(R.string.pay_buy_requirement);
+                        startIntentToHome();
+                    }else {
+                        //needs to pay
+                        Log.d("TEST","REACHED");
+                        buyOrPostRequirement = getString(R.string.pay_buy_requirement);
+                        intiatePayment(10000, getString(R.string.pay_buy_requirement));
+                    }
+
+                } else if(buyReqNum == 1){
                     //free
                     buyOrPostRequirement = getString(R.string.pay_buy_requirement);
                     startIntentToHome();
                 }
             } else {
                 if (rentReqNum == 0) {
-                    //needs to pay
-                    intiatePayment(10000, getString(R.string.pay_rent_requirement));
-                } else {
+                    if(dealerReqCredits > 0){
+                        //still has some credits to post requirements
+                        buyOrPostRequirement = getString(R.string.pay_rent_requirement);
+                        startIntentToHome();
+                    }else{
+                        //needs to pay
+                        buyOrPostRequirement = getString(R.string.pay_rent_requirement);
+                        intiatePayment(10000, getString(R.string.pay_rent_requirement));
+                    }
+
+                } else if(rentReqNum == 1){
                     //free
-                    intiatePayment(10000, getString(R.string.pay_rent_requirement));
+                    buyOrPostRequirement = getString(R.string.pay_rent_requirement);
                     startIntentToHome();
                 }
             }

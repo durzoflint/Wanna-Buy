@@ -13,14 +13,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MyAdsViewHolder extends RecyclerView.ViewHolder {
 
     CircleImageView propertyImage;
-    TextView areaName,cityName,bhkText,priceText,landSize,builtUpSize;
+    TextView propertyType,cityName,bhkText,priceText,landSize,builtUpSize;
     Button detailsBtn;
 
     public MyAdsViewHolder(@NonNull View itemView) {
         super(itemView);
 
         propertyImage = itemView.findViewById(R.id.property_image);
-        areaName = itemView.findViewById(R.id.area_name);
+        propertyType = itemView.findViewById(R.id.property_type);
         cityName = itemView.findViewById(R.id.city_name);
         bhkText = itemView.findViewById(R.id.ads_bhk);
         priceText = itemView.findViewById(R.id.ads_price);

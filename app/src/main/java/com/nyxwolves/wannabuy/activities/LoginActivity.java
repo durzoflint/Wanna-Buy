@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     CallbackManager fbCallbackManager;
 
     int GOOGLE_SIGN = 1;
-    int FACEBOOK_SIGN = 2;
+
 
 
     @Override

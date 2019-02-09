@@ -18,7 +18,8 @@ public class UserPaymentCheck {
     public static String UPDATE_RENT_REQ =  "UPDATE_RENT_REQ";
     public static String UPDATE_AD = "UPDATE_AD";
     public static String INCREASE_DEALER_CREDITS = "INCREASE_DEALER_CREDITS";
-    public static String DECREASE_DEALER_REQ = "DECREASE_DEALER_REQ";
+    public static String DECREASE_DEALER_RENT_REQ = "DECREASE_DEALER_RENT_REQ";
+    public static String DECREASE_DEALER_BUY_REQ = "DECREASE_DEALER_BUY_REQ";
     public static String DECREASE_DEALER_ADS = "DECREASE_DEALER_ADS";
 
     private Context ctx;

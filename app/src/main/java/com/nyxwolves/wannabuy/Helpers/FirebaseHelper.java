@@ -81,6 +81,7 @@ public class FirebaseHelper implements CallbackInterface {
             showDialog("Logging in...");
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
+                Log.d("TRY_BLOCK","REACHED");
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 userAuth(account, v);
             } catch (ApiException e) {
@@ -110,6 +111,9 @@ public class FirebaseHelper implements CallbackInterface {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+                if (e.getLocalizedMessage().equals("The email address is already in use by another account.")) {
+                    showSnackBar("User already exists", v);
+                }
                 closeDialog();
                 showSnackBar("Error occured", v);
             }

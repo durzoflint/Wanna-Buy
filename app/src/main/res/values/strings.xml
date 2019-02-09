@@ -107,7 +107,7 @@
     <string name="independent">Independent</string>
     <string name="office_space">  Office Space</string>
     <string name="showroom"> Showroom</string>
-    <string name="rental_showroom">Rental_Showroom</string>
+    <string name="rental_showroom">Rental Showroom</string>
 
     <string name="factory"> Factory</string>
     <string name="rental_factory">Renta Factory</string>
@@ -184,8 +184,8 @@
     <string name="min_road_width">0Ft.</string>
 
     <string name="rent_end_header">Rental Property</string>
-    <string name="rent_end_date_text">Lease/Rent End Date</string>
-    <string name="rent_property_type_header">Lease/Rent Property</string>
+    <string name="rent_end_date_text">Rent End Date</string>
+    <string name="rent_property_type_header">Rent Property</string>
     <string name="rent_advance_header">Advance/Deposit</string>
     <string name="tenant_name">Name of the tenant(optional)</string>
     <string name="roi_text">ROI in (%) Per Year</string>
@@ -270,7 +270,7 @@
     <string name="are_you_text">Are You?</string>
     <string name="iam_a">I am a</string>
 
-    <string name="choose_unit">Choose Unit</string>
+    <string name="choose_unit"><b>Choose Unit</b></string>
 
     <string-array name="unit_spinner">
         <item name="sq.ft">Sq. Ft</item>
@@ -297,7 +297,7 @@
     <string name="boys">Boys</string>
     <string name="family">Family</string>
     <string name="short_stay">Short Stay</string>
-    <string name="rent_start_date">Lease/Rent Start date</string>
+    <string name="rent_start_date">Rent Start date</string>
     <string name="lease_or_rent">Lease Or Rent</string>
     <string name="lease_text">Lease</string>
     <string name="rent_text">Rent</string>
@@ -405,7 +405,6 @@
     <string name="show_match">SHOW_MATCH</string>
     <string name="show_ad">SHOW_AD</string>
 
-    <string name="AD_ID">AD_ID</string>
     <string name="terms_of_service">Terms Of Service</string>
     <string name="about_us">About Us</string>
 
@@ -435,5 +434,10 @@
     <string name="ad_num">ADS_NUM</string>
     <string name="submit">Submit</string>
 
+    <string name="AD_ID">AD_ID</string>
+
     <string name="point_location">Locate</string>
+    <string name="IS_DEALER_AVAIL_FREE">IS_DEALER_AVAIL_FREE</string>
+
+    <string name="no_of_parking">No of Parking space:</string>
 </resources>

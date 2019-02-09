@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.nyxwolves.wannabuy.R;
 import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
 
@@ -21,18 +22,19 @@ public class MyAdsAdapter extends RecyclerView.Adapter<MyAdsViewHolder> implemen
     public JSONArray data = new JSONArray();
     Context ctx;
 
-    public MyAdsAdapter(Context ctx){
+    public MyAdsAdapter(Context ctx) {
         this.ctx = ctx;
         CallbackInterface callback = this;
         AdHelper helper = new AdHelper(ctx);
         helper.getUserAds(callback);
     }
 
-    public void setData(JSONObject jsonObject){
-        try{
+    public void setData(JSONObject jsonObject) {
+        try {
             data = jsonObject.getJSONArray("ads");
             notifyDataSetChanged();
-        }catch(Exception e){}
+        } catch (Exception e) {
+        }
     }
 
     @Override
@@ -48,21 +50,34 @@ public class MyAdsAdapter extends RecyclerView.Adapter<MyAdsViewHolder> implemen
     @NonNull
     @Override
     public MyAdsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.my_ads_item,viewGroup,false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.my_ads_item, viewGroup, false);
 
         return new MyAdsViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyAdsViewHolder myAdsViewHolder, int i) {
-        try{
+        try {
             final JSONObject jsonObject = data.getJSONObject(i);
-            myAdsViewHolder.areaName.setText(jsonObject.get("PROPERTY_LOCATION").toString());
-            myAdsViewHolder.cityName.setText(jsonObject.get("PROPERTY_TYPE").toString());
-            myAdsViewHolder.bhkText.setText(jsonObject.get("BHK").toString());
-            myAdsViewHolder.priceText.setText(jsonObject.get("BUDGET").toString());
-            myAdsViewHolder.landSize.setText(jsonObject.get("LAND_AREA").toString());
-            myAdsViewHolder.builtUpSize.setText(jsonObject.get("BUILT_UP_AREA").toString());
+            myAdsViewHolder.cityName.setText(jsonObject.getString("PROPERTY_LOCATION"));
+            String propType = jsonObject.getString("PROPERTY_TYPE");
+            myAdsViewHolder.propertyType.setText(propType);
+            if (propType.equals(ctx.getString(R.string.residential_land)) ||
+                    propType.equals(ctx.getString(R.string.commercial_land)) ||
+                    propType.equals(ctx.getString(R.string.industrial_land)) ||
+                    propType.equals(ctx.getString(R.string.institutional_land)) ||
+                    propType.equals(ctx.getString(R.string.rental_residential_land)) ||
+                    propType.equals(ctx.getString(R.string.rental_commercial_land)) ||
+                    propType.equals(ctx.getString(R.string.rental_industrial_land)) ||
+                    propType.equals(ctx.getString(R.string.rental_industrial_land))) {
+                myAdsViewHolder.bhkText.setVisibility(View.GONE);
+                myAdsViewHolder.builtUpSize.setVisibility(View.GONE);
+            }
+
+            myAdsViewHolder.bhkText.setText(jsonObject.getString("BHK"));
+            myAdsViewHolder.priceText.setText(jsonObject.getString("BUDGET"));
+            myAdsViewHolder.landSize.setText(jsonObject.getString("LAND_AREA"));
+            myAdsViewHolder.builtUpSize.setText(jsonObject.getString("BUILT_UP_AREA"));
             myAdsViewHolder.detailsBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -70,10 +85,12 @@ public class MyAdsAdapter extends RecyclerView.Adapter<MyAdsViewHolder> implemen
                         Intent i = new Intent(ctx, AdsDetailActivity.class);
                         i.putExtra(ctx.getString(R.string.AD_ID), jsonObject.getString("AD_ID"));
                         ctx.startActivity(i);
-                    }catch (Exception e){}
+                    } catch (Exception e) {
+                    }
                 }
             });
-        }catch (Exception e){}
+        } catch (Exception e) {
+        }
 
     }
 

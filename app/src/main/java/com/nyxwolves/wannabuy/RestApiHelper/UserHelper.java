@@ -34,6 +34,7 @@ public class UserHelper {
         JSONObject params = new JSONObject();
 
         try{
+            Log.d("USER_ID",FirebaseAuth.getInstance().getCurrentUser().getEmail());
             params.put("USER_ID",FirebaseAuth.getInstance().getCurrentUser().getEmail());
             params.put("PHONE_NUMBER",phone);
             params.put("OWNER_OR_DEALER",ownerOrDealer);

@@ -9,12 +9,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-<<<<<<< HEAD
-import android.os.Bundle;
 import android.util.Log;
-=======
 import android.util.Base64;
->>>>>>> 31d533f3031bb5d7816ce11d4a8a0801e4032324
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -45,15 +41,15 @@ public class ImageUpload extends AppCompatActivity {
     final int REQUEST_IMAGE = 1;
     boolean check = true;
     Button submitButton;
-<<<<<<< HEAD
+
 
     String individualOrDealer;
-=======
+
     String ownerOrDealer;
->>>>>>> 31d533f3031bb5d7816ce11d4a8a0801e4032324
+
     int adsNum;
     int PAYMENT_CODE = 120;
-    int adId;
+    String adId;
     ProgressDialog progressDialog;
     String ServerUploadPath = "http://wannabuy.in/api/images/upload_image.php";
     Bitmap bitmap;
@@ -65,23 +61,20 @@ public class ImageUpload extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_upload);
 
-<<<<<<< HEAD
+
         individualOrDealer = getIntent().getStringExtra(getString(R.string.owner_dealer_flag));
-        try{
-            Log.d("AD_ID",getIntent().getStringExtra(getString(R.string.ad_id)));
-            adId = Integer.parseInt(getIntent().getStringExtra(getString(R.string.ad_id)));
-            adsNum = Integer.parseInt(getIntent().getStringExtra(getString(R.string.ad_num)));
-=======
+
+        adId = getIntent().getStringExtra(getString(R.string.AD_ID));
+        Log.d("AD_ID", adId);
+
         setTitle("Upload Images");
 
         Intent intent = getIntent();
         ownerOrDealer = intent.getStringExtra(getString(R.string.owner_dealer_flag));
-        try{
-            adId = Integer.parseInt(intent.getStringExtra(getString(R.string.AD_ID)));
+        try {
             adsNum = Integer.parseInt(intent.getStringExtra(getString(R.string.ad_num)));
->>>>>>> 31d533f3031bb5d7816ce11d4a8a0801e4032324
-        }catch (NumberFormatException e){
-            Log.d("EXCEC",e.toString());
+        } catch (NumberFormatException e) {
+            Log.d("EXCEC", e.toString());
         }
 
         image = findViewById(R.id.image);
@@ -112,9 +105,10 @@ public class ImageUpload extends AppCompatActivity {
                 checkPayment();
             }
         });
+
     }
 
-    private void checkPayment(){
+    private void checkPayment() {
         if (individualOrDealer.equals(getString(R.string.individual))) {//if user is owner
 
             if (SellerAd.getInstance().adsSellOrRent.equals(getString(R.string.SELL))) {
@@ -143,12 +137,11 @@ public class ImageUpload extends AppCompatActivity {
     private void startIntentToHome() {
         Intent i = new Intent(ImageUpload.this, HomeActivity.class);
         i.setAction(getString(R.string.POST_AD));
-<<<<<<< HEAD
-        i.putExtra(getString(R.string.ad_id),adId);
-        i.putExtra(getString(R.string.owner_dealer_flag),individualOrDealer);
-=======
+
         i.putExtra(getString(R.string.AD_ID), adId);
->>>>>>> 31d533f3031bb5d7816ce11d4a8a0801e4032324
+        i.putExtra(getString(R.string.owner_dealer_flag), individualOrDealer);
+
+        i.putExtra(getString(R.string.AD_ID), adId);
         startActivity(i);
     }
 
@@ -162,10 +155,10 @@ public class ImageUpload extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == PAYMENT_CODE){
-            if(resultCode == RESULT_OK){
+        if (requestCode == PAYMENT_CODE) {
+            //if (resultCode == RESULT_OK) {
                 startIntentToHome();
-            }
+            //}
         }
 
         if (requestCode == REQUEST_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
@@ -276,3 +269,4 @@ public class ImageUpload extends AppCompatActivity {
         }
     }
 }
+

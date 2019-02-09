@@ -44,7 +44,8 @@ public class SellerAd {
     public String girlsHostelPrice = "no";
     public String workingMenHostelPrice = "no";
     public String workingWomenHostelPrice = "no";
-    public String vegNonVeg = "NOT_SET";
+    public String veg = "NOT_SET";
+    public String nonVeg = "NOT_SET";
     public String roiIncrementalValue = "NOT_SET";
     public String rentStartDate = "NOT_SET";
     public String rentEndDate = "NOT_SET";

@@ -50,13 +50,13 @@ public class RequirementHelper implements CallbackInterface{
                 CallbackInterface callbackInterface = RequirementHelper.this;
                     if(buyOrRent.equals(ctx.getString(R.string.pay_buy_requirement))){
                         if(type.equals(ctx.getString(R.string.dealer))){
-                            userPaymentCheck.updateUserStatus(UserPaymentCheck.DECREASE_DEALER_REQ,callbackInterface);
+                            userPaymentCheck.updateUserStatus(UserPaymentCheck.DECREASE_DEALER_BUY_REQ,callbackInterface);
                         }else{
                             userPaymentCheck.updateUserStatus(UserPaymentCheck.UPDATE_BUY_REQ,callbackInterface);
                         }
                     }else{
                         if(type.equals(ctx.getString(R.string.dealer))){
-                            userPaymentCheck.updateUserStatus(UserPaymentCheck.DECREASE_DEALER_REQ,callbackInterface);
+                            userPaymentCheck.updateUserStatus(UserPaymentCheck.DECREASE_DEALER_RENT_REQ,callbackInterface);
                         }else{
                             userPaymentCheck.updateUserStatus(UserPaymentCheck.UPDATE_RENT_REQ,callbackInterface);
                         }
@@ -80,45 +80,45 @@ public class RequirementHelper implements CallbackInterface{
     private void getJson() {
 
         try {
-            params.put("USER_ID", FirebaseAuth.getInstance().getCurrentUser().getEmail().toUpperCase());
-            params.put("REQ_NAME", Requirements.getInstance().reqName.toUpperCase());
-            params.put("STATE", Requirements.getInstance().state.toUpperCase());
-            params.put("CITY", Requirements.getInstance().city.toUpperCase());
-            params.put("PROPERTY_LOCATION_ONE", Requirements.getInstance().locationOne.toUpperCase());
-            params.put("PROPERTY_LOCATION_TWO", Requirements.getInstance().locationTwo.toUpperCase());
-            params.put("PROPERTY_LOCATION_THREE", Requirements.getInstance().locationThree.toUpperCase());
-            params.put("PROPERTY_LOCATION_FOUR", Requirements.getInstance().locationFour.toUpperCase());
-            params.put("PROPERTY_LOCATION_FIVE", Requirements.getInstance().locationFive.toUpperCase());
-            params.put("PROPERTY_TYPE", Requirements.getInstance().subType.toUpperCase());
-            params.put("LAND_SIZE_MIN", Requirements.getInstance().minSizeLand.toUpperCase());
-            params.put("LAND_SIZE_MAX", Requirements.getInstance().maxSizeLand.toUpperCase());
-            params.put("BUILT_UP_MIN", Requirements.getInstance().minSizeBuilding.toUpperCase());
-            params.put("BUILT_UP_MAX", Requirements.getInstance().maxSizeBuilding.toUpperCase());
+            params.put("USER_ID", FirebaseAuth.getInstance().getCurrentUser().getEmail());
+            params.put("REQ_NAME", Requirements.getInstance().reqName);
+            params.put("STATE", Requirements.getInstance().state);
+            params.put("CITY", Requirements.getInstance().city);
+            params.put("PROPERTY_LOCATION_ONE", Requirements.getInstance().locationOne);
+            params.put("PROPERTY_LOCATION_TWO", Requirements.getInstance().locationTwo);
+            params.put("PROPERTY_LOCATION_THREE", Requirements.getInstance().locationThree);
+            params.put("PROPERTY_LOCATION_FOUR", Requirements.getInstance().locationFour);
+            params.put("PROPERTY_LOCATION_FIVE", Requirements.getInstance().locationFive);
+            params.put("PROPERTY_TYPE", Requirements.getInstance().subType);
+            params.put("LAND_SIZE_MIN", Requirements.getInstance().minSizeLand);
+            params.put("LAND_SIZE_MAX", Requirements.getInstance().maxSizeLand);
+            params.put("BUILT_UP_MIN", Requirements.getInstance().minSizeBuilding);
+            params.put("BUILT_UP_MAX", Requirements.getInstance().maxSizeBuilding);
             params.put("BHK", getBhkList());
             params.put("FLOOR", getFloorJson());
-            params.put("BUDGET_MIN", Requirements.getInstance().minBudget.toUpperCase());
-            params.put("BUDGET_MAX", Requirements.getInstance().maxBudget.toUpperCase());
-            params.put("BUDGET_MAX_UNIT", Requirements.getInstance().maxBudgetUnit.toUpperCase());
-            params.put("BUDGET_MIN_UNIT", Requirements.getInstance().minBudgetUnit.toUpperCase());
-            params.put("AGE_MIN", Requirements.getInstance().minAge.toUpperCase());
-            params.put("AGE_MAX", Requirements.getInstance().maxAge.toUpperCase());
-            params.put("NEW_RESALE", Requirements.getInstance().isNew.toUpperCase());
-            params.put("BUY_OR_RENT", Requirements.getInstance().buyorRent.toUpperCase());
-            params.put("FURNISHED", Requirements.getInstance().furnished.toUpperCase());
+            params.put("BUDGET_MIN", Requirements.getInstance().minBudget);
+            params.put("BUDGET_MAX", Requirements.getInstance().maxBudget);
+            params.put("BUDGET_MAX_UNIT", Requirements.getInstance().maxBudgetUnit);
+            params.put("BUDGET_MIN_UNIT", Requirements.getInstance().minBudgetUnit);
+            params.put("AGE_MIN", Requirements.getInstance().minAge);
+            params.put("AGE_MAX", Requirements.getInstance().maxAge);
+            params.put("NEW_RESALE", Requirements.getInstance().isNew);
+            params.put("BUY_OR_RENT", Requirements.getInstance().buyorRent);
+            params.put("FURNISHED", Requirements.getInstance().furnished);
             params.put("FACING", getFacingList());
             params.put("APPROVAL", getApprovalList());
             params.put("FACILITIES", getFacilitiesList());
-            params.put("COV_CAR_PARKING", Requirements.getInstance().isCovparking.toUpperCase());
-            params.put("UN_COV_CAR_PARKING", Requirements.getInstance().isUnCovParking.toUpperCase());
-            params.put("COV_PARKING_NUM", Requirements.getInstance().noOfCovParking.toUpperCase());
-            params.put("UN_COV_PARKING_NUM", Requirements.getInstance().noOfUnCovParking.toUpperCase());
+            params.put("COV_CAR_PARKING", Requirements.getInstance().isCovparking);
+            params.put("UN_COV_CAR_PARKING", Requirements.getInstance().isUnCovParking);
+            params.put("COV_PARKING_NUM", Requirements.getInstance().noOfCovParking);
+            params.put("UN_COV_PARKING_NUM", Requirements.getInstance().noOfUnCovParking);
             params.put("PG_TYPE", getPGList());
-            params.put("PETS_ALLOWED", Requirements.getInstance().petsAllowed.toUpperCase());
-            params.put("ROAD_WIDTH_MIN", Requirements.getInstance().minRoadWidth.toUpperCase());
-            params.put("ROAD_WIDTH_MAX", Requirements.getInstance().maxRoadWidth.toUpperCase());
-            params.put("MAINTENANCE_FEE", Requirements.getInstance().maintenanceFee.toUpperCase());
-            params.put("VEG", Requirements.getInstance().isVeg.toUpperCase());
-            params.put("NON_VEG", Requirements.getInstance().isNonVeg.toUpperCase());
+            params.put("PETS_ALLOWED", Requirements.getInstance().petsAllowed);
+            params.put("ROAD_WIDTH_MIN", Requirements.getInstance().minRoadWidth);
+            params.put("ROAD_WIDTH_MAX", Requirements.getInstance().maxRoadWidth);
+            params.put("MAINTENANCE_FEE", Requirements.getInstance().maintenanceFee);
+            params.put("VEG", Requirements.getInstance().isVeg);
+            params.put("NON_VEG", Requirements.getInstance().isNonVeg);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -178,7 +178,7 @@ public class RequirementHelper implements CallbackInterface{
         //JSON STRUCTURE
         //{"requirements":[{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"COMMERCIAL REQ","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"COMMERCIAL_INDEPENDENT","BUDGET_MIN":"42","BUDGET_MAX":"66","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 19:45:43"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"COMMERCIAL REQ2","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"COMMERCIAL_INDEPENDENT","BUDGET_MIN":"42","BUDGET_MAX":"66","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 19:47:15"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"COMMERCIAL REQ3","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"COMMERCIAL_INDEPENDENT","BUDGET_MIN":"42","BUDGET_MAX":"66","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 19:58:41"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"COMMERCIAL REQ4","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"COMMERCIAL_INDEPENDENT","BUDGET_MIN":"42","BUDGET_MAX":"66","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 20:01:12"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"GOOGLE","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"RESIDENTIAL_INDEPENDENT","BUDGET_MIN":"39","BUDGET_MAX":"80","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 20:04:39"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"facebook","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"RESIDENTIAL_INDEPENDENT","BUDGET_MIN":"39","BUDGET_MAX":"80","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 20:07:31"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"amazon","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"RESIDENTIAL_INDEPENDENT","BUDGET_MIN":"39","BUDGET_MAX":"80","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 20:08:46"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"something","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"RESIDENTIAL_INDEPENDENT","BUDGET_MIN":"39","BUDGET_MAX":"80","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 20:09:43"},{"USER_ID":"SIBINEHRU99@GMAIL.COM","REQ_NAME":"TEST","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_TYPE":"RESIDENTIAL_LAND","BUDGET_MIN":"32","BUDGET_MAX":"54","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX_UNIT":"NOT_SET","BUY_OR_RENT":"BUY","CREATED_AT":"2019-01-26 20:58:20"}]}
 
-        String URL = "http://www.wannabuy.in/api/Requirements/requirement_short_info.php?USER_ID=" + FirebaseAuth.getInstance().getCurrentUser().getEmail().toUpperCase();
+        String URL = "http://www.wannabuy.in/api/Requirements/requirement_short_info.php?USER_ID=" + FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
         StringRequest getRequirementRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
@@ -205,7 +205,7 @@ public class RequirementHelper implements CallbackInterface{
         //JSON STRUCTURE
         //{"REQ_NAME":"COMMERCIAL REQ","USER_ID":"SIBINEHRU99@GMAIL.COM","STATE":"NOT_SET","CITY":"NOT_SET","PROPERTY_LOCATION_QUERY":null,"PROPERTY_LOCATION_ONE":"NOT_SET","PROPERTY_LOCATION_TWO":"NOT_SET","PROPERTY_LOCATION_THREE":"NOT_SET","PROPERTY_LOCATION_FOUR":"NOT_SET","PROPERTY_LOCATION_FIVE":"NOT_SET","PROPERTY_SIZE_MIN":null,"PROPERTY_SIZE_MAX":null,"AGE_MIN":null,"AGE_MAX":null,"PROPERTY_TYPE":"COMMERCIAL_INDEPENDENT","PROPERTY_SUB_TYPE":null,"FURNISHED":null,"BHK":[],"FLOOR":[],"REST_ROOM_NUM":null,"FACING":null,"NEW":null,"RESALE":null,"BUDGET_MIN":"42","BUDGET_MIN_UNIT":"NOT_SET","BUDGET_MAX":"66","BUDGET_MAX_UNIT":"NOT_SET","APPROVAL":[],"BUY_OR_RENT":null,"FACILITIES":[],"VEG":null,"NON_VEG":null,"DRAINAGE_CONNECTION":null,"COV_PARKING":null,"UN_COV_PARKING":null,"COV_PARKING_NUM":null,"UN_COV_PARKING_NUM":null,"PG_TYPE":[],"ROAD_WIDTH_MIN":null,"ROAD_WIDTH_MAX":null,"PETS_ALLOWED":null,"QUERY":null,"MAINTENANCE_FEE":null,"BUT_OR_RENT":"BUY","CREATED_AT":"2019-01-26 19:45:43","DIRECTIONS":[]}
 
-        String URL = "http://www.wannabuy.in/api/Requirements/requirement_complete_info.php?REQ_ID=" + reqId.toUpperCase();
+        String URL = "http://www.wannabuy.in/api/Requirements/requirement_complete_info.php?REQ_ID=" + reqId;
 
         StringRequest getRequirementRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
@@ -227,7 +227,7 @@ public class RequirementHelper implements CallbackInterface{
     }
 
     public void getRequirementShortByLocation(String location, final CallbackInterface callbackInterface){
-        String URL = "http://www.wannabuy.in/api/Requirements/requirement_location.php?LOCATION=" + location.toUpperCase();
+        String URL = "http://www.wannabuy.in/api/Requirements/requirement_location.php?LOCATION=" + location;
 
         StringRequest getRequirementRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override

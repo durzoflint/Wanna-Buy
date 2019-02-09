@@ -14,6 +14,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.google.firebase.auth.FirebaseAuth;
 import com.nyxwolves.wannabuy.Interfaces.AdInterface;
 import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
+import com.nyxwolves.wannabuy.Interfaces.ImageRecieved;
 import com.nyxwolves.wannabuy.POJO.SellerAd;
 import com.nyxwolves.wannabuy.R;
 
@@ -67,45 +68,46 @@ public class AdHelper implements CallbackInterface {
 
         try {
             createParams.put("USER_ID", FirebaseAuth.getInstance().getCurrentUser().getEmail());
-            createParams.put("DOOR_NO", SellerAd.getInstance().adsDoorNo.toUpperCase());
-            createParams.put("PROPERTY_LOCATION", SellerAd.getInstance().adsLocation.toUpperCase());
-            createParams.put("PROPERTY_TYPE", SellerAd.getInstance().adsPropertyType.toUpperCase());
-            createParams.put("PROPERTY_ADDRESS", SellerAd.getInstance().adsPropertyAddress.toUpperCase());
-            createParams.put("LAND_AREA", SellerAd.getInstance().adsLandArea.toUpperCase());
-            createParams.put("BUILT_UP_AREA", SellerAd.getInstance().adsBuiltUpArea.toUpperCase());
-            createParams.put("AGE", SellerAd.getInstance().adsAge.toUpperCase());
-            createParams.put("BHK", SellerAd.getInstance().adsBhk.toUpperCase());
-            createParams.put("NO_OF_APARTMENTS", SellerAd.getInstance().adsNoOfApartments.toUpperCase());
-            createParams.put("TOTAL_FLOORS", SellerAd.getInstance().adsTotalFloors.toUpperCase());
-            createParams.put("FLOOR", SellerAd.getInstance().adsFloor.toUpperCase());
+            createParams.put("DOOR_NO", SellerAd.getInstance().adsDoorNo);
+            createParams.put("PROPERTY_LOCATION", SellerAd.getInstance().adsLocation);
+            createParams.put("PROPERTY_TYPE", SellerAd.getInstance().adsPropertyType);
+            createParams.put("PROPERTY_ADDRESS", SellerAd.getInstance().adsPropertyAddress);
+            createParams.put("LAND_AREA", SellerAd.getInstance().adsLandArea);
+            createParams.put("BUILT_UP_AREA", SellerAd.getInstance().adsBuiltUpArea);
+            createParams.put("AGE", SellerAd.getInstance().adsAge);
+            createParams.put("BHK", SellerAd.getInstance().adsBhk);
+            createParams.put("NO_OF_APARTMENTS", SellerAd.getInstance().adsNoOfApartments);
+            createParams.put("TOTAL_FLOORS", SellerAd.getInstance().adsTotalFloors);
+            createParams.put("FLOOR", SellerAd.getInstance().adsFloor);
             createParams.put("BUDGET", SellerAd.getInstance().adsBudget);
-            createParams.put("NEW", SellerAd.getInstance().adsIsNew.toUpperCase());
-            createParams.put("MODE", SellerAd.getInstance().adsSellOrRent.toUpperCase());
-            createParams.put("FURNISHED", SellerAd.getInstance().adsFurnished.toUpperCase());
-            createParams.put("FACING", SellerAd.getInstance().adsFacing.toUpperCase());
+            createParams.put("NEW", SellerAd.getInstance().adsIsNew);
+            createParams.put("MODE", SellerAd.getInstance().adsSellOrRent);
+            createParams.put("FURNISHED", SellerAd.getInstance().adsFurnished);
+            createParams.put("FACING", SellerAd.getInstance().adsFacing);
             createParams.put("APPROVAL", getApprovalList());
             createParams.put("FACILITIES", getFacilitiesList());
-            createParams.put("MAINTENANCE", SellerAd.getInstance().adsMaintance.toUpperCase());
-            createParams.put("COV_CAR_PARKING", SellerAd.getInstance().adsCovCarParking.toUpperCase());
-            createParams.put("UN_COV_CAR_PARKING", SellerAd.getInstance().adsUnCovParking.toUpperCase());
-            createParams.put("COV_PARKING_NUM", SellerAd.getInstance().adsCovCarParkingNum.toUpperCase());
-            createParams.put("UN_COV_PARKING_NUM", SellerAd.getInstance().adsUnCovCarParkingNum.toUpperCase());
-            createParams.put("ROAD_WIDTH", SellerAd.getInstance().adsRoadWidth.toUpperCase());
-            createParams.put("ADVANCE_DEPOSIT", SellerAd.getInstance().adsAdvanceDeposit.toUpperCase());
-            createParams.put("PETS_ALLOWED", SellerAd.getInstance().adsPetsAllowed.toUpperCase());
-            createParams.put("NEGOTIABLE", SellerAd.getInstance().adsBudgetNegotiable.toUpperCase());
-            createParams.put("PG_ROOMS", SellerAd.getInstance().noOfRooms.toUpperCase());
-            createParams.put("PG_PERSON_PER_ROOM", SellerAd.getInstance().personPerRoom.toUpperCase());
-            createParams.put("PG_WITH_FOOD", SellerAd.getInstance().withFood.toUpperCase());
-            createParams.put("PG_RENT_MONTH", SellerAd.getInstance().pgRentPerMonth.toUpperCase());
-            createParams.put("GUEST_PRICE", SellerAd.getInstance().guestHousePrice.toUpperCase());
-            createParams.put("BOYS_HOSTEL_PRICE", SellerAd.getInstance().boysHostelPrice.toUpperCase());
-            createParams.put("GIRLS_HOSTEL_PRICE", SellerAd.getInstance().girlsHostelPrice.toUpperCase());
-            createParams.put("WORKING_MEN_HOSTEL_PRICE", SellerAd.getInstance().workingMenHostelPrice.toUpperCase());
-            createParams.put("WORKING_WOMEN_HOSTEL_PRICE", SellerAd.getInstance().workingWomenHostelPrice.toUpperCase());
-            createParams.put("VEG_NON_VEG", SellerAd.getInstance().vegNonVeg.toUpperCase());
-            createParams.put("ROI_VALUE", SellerAd.getInstance().adsRoi.toUpperCase());
-            createParams.put("ROI_INCREMENT_PERIOD", SellerAd.getInstance().adsRoiIncrementPeriod.toUpperCase());
+            createParams.put("MAINTENANCE", SellerAd.getInstance().adsMaintance);
+            createParams.put("COV_CAR_PARKING", SellerAd.getInstance().adsCovCarParking);
+            createParams.put("UN_COV_CAR_PARKING", SellerAd.getInstance().adsUnCovParking);
+            createParams.put("COV_PARKING_NUM", SellerAd.getInstance().adsCovCarParkingNum);
+            createParams.put("UN_COV_PARKING_NUM", SellerAd.getInstance().adsUnCovCarParkingNum);
+            createParams.put("ROAD_WIDTH", SellerAd.getInstance().adsRoadWidth);
+            createParams.put("ADVANCE_DEPOSIT", SellerAd.getInstance().adsAdvanceDeposit);
+            createParams.put("PETS_ALLOWED", SellerAd.getInstance().adsPetsAllowed);
+            createParams.put("NEGOTIABLE", SellerAd.getInstance().adsBudgetNegotiable);
+            createParams.put("PG_ROOMS", SellerAd.getInstance().noOfRooms);
+            createParams.put("PG_PERSON_PER_ROOM", SellerAd.getInstance().personPerRoom);
+            createParams.put("PG_WITH_FOOD", SellerAd.getInstance().withFood);
+            createParams.put("PG_RENT_MONTH", SellerAd.getInstance().pgRentPerMonth);
+            createParams.put("GUEST_PRICE", SellerAd.getInstance().guestHousePrice);
+            createParams.put("BOYS_HOSTEL_PRICE", SellerAd.getInstance().boysHostelPrice);
+            createParams.put("GIRLS_HOSTEL_PRICE", SellerAd.getInstance().girlsHostelPrice);
+            createParams.put("WORKING_MEN_HOSTEL_PRICE", SellerAd.getInstance().workingMenHostelPrice);
+            createParams.put("WORKING_WOMEN_HOSTEL_PRICE", SellerAd.getInstance().workingWomenHostelPrice);
+            createParams.put("VEG", SellerAd.getInstance().veg);
+            createParams.put("NON_VEG",SellerAd.getInstance().nonVeg);
+            createParams.put("ROI_VALUE", SellerAd.getInstance().adsRoi);
+            createParams.put("ROI_INCREMENT_PERIOD", SellerAd.getInstance().adsRoiIncrementPeriod);
             createParams.put("ROI_INCREMENT_VALUE", SellerAd.getInstance().roiIncrementalValue);
             createParams.put("RENT_START_DATE", SellerAd.getInstance().rentStartDate);
             createParams.put("RENT_END_DATE", SellerAd.getInstance().rentEndDate);
@@ -185,7 +187,7 @@ public class AdHelper implements CallbackInterface {
         StringRequest getRequirementRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("VISIBLE", "SUCCESS");
+                Log.d("VISIBLE", response);
 
             }
         }, new Response.ErrorListener() {
@@ -220,4 +222,27 @@ public class AdHelper implements CallbackInterface {
     public void doesUserExits(boolean isExists) {
 
     }
+
+
+    public void getAdImage(String adId, final ImageRecieved callback){
+        String URL = "http://www.wannabuy.in/api/Ads/get_ad_images.php?AD_ID=" + adId;
+
+        StringRequest getRequirementRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try{
+                    callback.imageRecieved(new JSONObject(response));
+                }catch (Exception e){}
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("IMAGE_READ_RESPONSE", error.toString());
+            }
+        });
+
+        CustomRequestQueue.getInstance(ctx).addRequest(getRequirementRequest);
+    }
+
 }

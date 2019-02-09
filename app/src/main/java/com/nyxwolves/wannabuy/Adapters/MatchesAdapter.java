@@ -60,8 +60,8 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesViewHolder> impl
     public void onBindViewHolder(@NonNull MatchesViewHolder matchesViewHolder, int i) {
         try{
             final JSONObject jsonObject = data.getJSONObject(i);
-            matchesViewHolder.areaName.setText(jsonObject.getString("PROPERTY_LOCATION"));
-            matchesViewHolder.cityName.setText(jsonObject.getString("PROPERTY_TYPE"));
+            matchesViewHolder.cityName.setText(jsonObject.getString("PROPERTY_LOCATION"));
+            matchesViewHolder.propertyType.setText(jsonObject.getString("PROPERTY_TYPE"));
             matchesViewHolder.bhkText.setText(jsonObject.getString("BHK"));
             matchesViewHolder.priceText.setText(jsonObject.getString("BUDGET"));
             matchesViewHolder.landSize.setText(jsonObject.getString("LAND_AREA"));

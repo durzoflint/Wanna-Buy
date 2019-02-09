@@ -4,6 +4,8 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.location.Address;
+import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -48,6 +50,7 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -71,7 +74,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     FrameLayout pgRentLayout, rentalIncomeType;
     RadioButton farmLand, pgRentButton, rentalIncomeButton;
     LinearLayout roiLayout, petsLayout, rentalIncrementalLayout, noOfHouse, tenantPreferances, totalFloors, vegNonVegLayout, showRoomLayout;
-    LinearLayout propertySizeLayout;
+    LinearLayout propertySizeLayout,unCovParkingLayout,covParkingLayout;
     Spinner areaUnitSpinner;
     SeekBar roadWidth;
     TextView roadSelectedWidth, adsBudgetHeader;
@@ -220,6 +223,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         builtUpArea = findViewById(R.id.built_area_input);
 
         //CAR PARKING COVERED
+        covParkingLayout = findViewById(R.id.cov_picker_layout);
         covCarParking = findViewById(R.id.covered_parking_check);
         covPicker = findViewById(R.id.cov_picker);
         covPicker.setMaxValue(10);
@@ -231,6 +235,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         });
 
         //UNCOVERED CAR PARKING
+        unCovParkingLayout = findViewById(R.id.un_cov_picker_layout);
         unCovParking = findViewById(R.id.un_cov_car_park);
         unCovPicker = findViewById(R.id.uncov_picker);
         unCovPicker.setMaxValue(10);
@@ -363,12 +368,14 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     private boolean checkCommonField() {
         if (addressInput.getText().toString().length() > 0 &&
                 cityInput.getText().toString().length() > 0 &&
-                doorNumberInput.getText().toString().length() > 0) {
+                doorNumberInput.getText().toString().length() > 0 &&
+                checkBudget()) {
 
             SellerAd.getInstance().adsPropertyAddress = addressInput.getText().toString().trim();
             SellerAd.getInstance().adsLocation = cityInput.getText().toString().trim();
             SellerAd.getInstance().adsDoorNo = doorNumberInput.getText().toString().trim();
-
+            SellerAd.getInstance().adsBudget = budgetInput.getText().toString().trim();
+            addressToLatLong(addressInput.getText().toString().trim());
             return true;
         } else {
             return false;
@@ -662,6 +669,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 isLandAreaVisible = true;
                 break;
             case R.id.resi_apartments:
+                SellerAd.getInstance().adsPropertyType = getString(R.string.residential_apartments);
                 builtUpAreaLayout.setVisibility(View.VISIBLE);
                 landAreaLayout.setVisibility(View.GONE);
                 propertySizeLayout.setVisibility(View.VISIBLE);
@@ -1022,6 +1030,12 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 SellerAd.getInstance().adsRoiIncrementPeriod = "3";
                 incrementCustomInput.setVisibility(View.GONE);
                 break;
+            case R.id.pets_allowed_btn:
+                SellerAd.getInstance().adsPetsAllowed = "YES";
+                break;
+            case R.id.pets_not_allowed:
+                SellerAd.getInstance().adsPetsAllowed = "NO";
+                break;
         }
     }
 
@@ -1057,22 +1071,27 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         }
     }
 
+    private boolean checkBudget(){
+        long budget = Long.valueOf(budgetInput.getText().toString().trim());
+        return budget > 0;
+    }
+
     public void onCheckBoxClicked(View v) {
         switch (v.getId()) {
             case R.id.covered_parking_check:
                 SellerAd.getInstance().adsCovCarParking = setData((CheckBox) v);
                 if (((CheckBox) v).isChecked()) {
-                    covPicker.setVisibility(View.VISIBLE);
+                    covParkingLayout.setVisibility(View.VISIBLE);
                 } else {
-                    covPicker.setVisibility(View.GONE);
+                    covParkingLayout.setVisibility(View.GONE);
                 }
                 break;
             case R.id.un_cov_car_park:
                 SellerAd.getInstance().adsUnCovParking = setData((CheckBox) v);
                 if (((CheckBox) v).isChecked()) {
-                    unCovPicker.setVisibility(View.VISIBLE);
+                    unCovParkingLayout.setVisibility(View.VISIBLE);
                 } else {
-                    unCovPicker.setVisibility(View.GONE);
+                    unCovParkingLayout.setVisibility(View.GONE);
                 }
                 break;
             case R.id.ads_ground_water_check:
@@ -1133,10 +1152,18 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 setApprovalData((CheckBox) v, getString(R.string.rera_text));
                 break;
             case R.id.veg_check:
-                SellerAd.getInstance().vegNonVeg = getString(R.string.veg);
+                if (((CheckBox) v).isChecked()) {
+                    SellerAd.getInstance().veg = getString(R.string.veg);
+                } else {
+                    SellerAd.getInstance().veg = getString(R.string.not_set_text);
+                }
                 break;
             case R.id.non_veg_check:
-                SellerAd.getInstance().vegNonVeg = getString(R.string.non_veg);
+                if (((CheckBox) v).isChecked()) {
+                    SellerAd.getInstance().veg = getString(R.string.non_veg);
+                } else {
+                    SellerAd.getInstance().veg = getString(R.string.not_set_text);
+                }
                 break;
         }
     }
@@ -1186,7 +1213,6 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
             ownerOrDealer = data.getString("TYPE");
             adsNum = data.getString("ADS_NUM");
 
-
             //upload ad to database
             AdHelper uploadHelper = new AdHelper(AdsActivity.this);
             uploadHelper.createAd(ownerOrDealer,AdsActivity.this);
@@ -1231,4 +1257,26 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
 
         }
     }
+
+    public void addressToLatLong(String strAddress) {
+
+        Geocoder coder = new Geocoder(this);
+        List<Address> address;
+
+        try {
+            address = coder.getFromLocationName(strAddress, 5);
+            try {
+                Address location = address.get(0);
+                SellerAd.getInstance().locationLatitude = Double.toString(location.getLatitude());
+                Log.d("LAT:", location.getLatitude() + "");
+                SellerAd.getInstance().locationLongitude = Double.toString(location.getLongitude());
+                Log.d("LONG:", location.getLongitude() + "");
+            }catch(IndexOutOfBoundsException e){
+
+                Toast.makeText(AdsActivity.this,"Enter a valid address",Toast.LENGTH_SHORT).show();
+            }
+
+        } catch (IOException e) {}
+    }
+
 }

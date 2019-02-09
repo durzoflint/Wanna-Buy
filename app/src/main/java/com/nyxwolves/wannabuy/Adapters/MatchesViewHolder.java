@@ -11,7 +11,7 @@ import com.nyxwolves.wannabuy.R;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MatchesViewHolder extends RecyclerView.ViewHolder {
-    TextView areaName,priceText,cityName,bhkText,landSize,builtUpSize;
+    TextView propertyType,priceText,cityName,bhkText,landSize,builtUpSize;
     Button detailsBtn;
     CircleImageView propertyImage;
 
@@ -19,7 +19,7 @@ public class MatchesViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         
         propertyImage = itemView.findViewById(R.id.property_image);
-        areaName = itemView.findViewById(R.id.area_name);
+        propertyType = itemView.findViewById(R.id.property_type);
         cityName = itemView.findViewById(R.id.city_name);
         bhkText = itemView.findViewById(R.id.ads_bhk);
         priceText = itemView.findViewById(R.id.ads_price);

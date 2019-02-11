@@ -19,7 +19,7 @@ import com.nyxwolves.wannabuy.R;
 public class Building extends Activity {
 
     Button nextBtn;
-    CheckBox factoryBtn,wareHouseBtn,coldStorageBtn,doNotDeviateShowRoom;
+    CheckBox factoryBtn,wareHouseBtn,coldStorageBtn,doNotDeviateShowRoom,groundFloorShowroom;
     RadioButton schoolBtn,collegeBtn,hospitalBtn;
     RadioGroup resiGroup,commGroup,indusGroup,instiGroup,indusIndependentSub;
     LinearLayout rentalGroup;
@@ -60,6 +60,7 @@ public class Building extends Activity {
         showRoom = findViewById(R.id.comm_show_room);
 
         doNotDeviateShowRoom = findViewById(R.id.show_room_do_not_deviate);
+        groundFloorShowroom = findViewById(R.id.show_room_ground_floor);
 
         showGroup();
 
@@ -102,7 +103,6 @@ public class Building extends Activity {
             instiGroup.setVisibility(View.GONE);
             indusGroup.setVisibility(View.GONE);
             farmLandLayout.setVisibility(View.GONE);
-            doNotDeviateShowRoom.setVisibility(View.VISIBLE);
         }else if(propertyType.equals(getString(R.string.residential)) || propertyType.equals(getString(R.string.pg_rent))){
             commGroup.setVisibility(View.GONE);
             resiGroup.setVisibility(View.VISIBLE);
@@ -165,6 +165,8 @@ public class Building extends Activity {
             case R.id.comm_floorspace:
                 Requirements.getInstance().subType = getString(R.string.commercial_floorspace);
                 showRoom.setVisibility(View.VISIBLE);
+                doNotDeviateShowRoom.setVisibility(View.VISIBLE);
+                groundFloorShowroom.setVisibility(View.VISIBLE);
                 break;
             case R.id.indus_independent:
                 indusIndependentSub.setVisibility(View.VISIBLE);

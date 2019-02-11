@@ -6,13 +6,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
-import com.nyxwolves.wannabuy.Adapters.RequirementCallbackAdapter;
+import com.nyxwolves.wannabuy.Adapters.RequirementSearchAdapter;
 import com.nyxwolves.wannabuy.R;
 
 public class RequirementsSearchActivity extends AppCompatActivity{
 
     RecyclerView searchList;
-    RequirementCallbackAdapter searchAdapter;
+    RequirementSearchAdapter searchAdapter;
     Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class RequirementsSearchActivity extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         searchList = findViewById(R.id.search_result_list);
-        searchAdapter = new RequirementCallbackAdapter(this,getIntent().getStringExtra("LOCATION"));
+        searchAdapter = new RequirementSearchAdapter(this,getIntent().getStringExtra("LOCATION"));
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         searchList.setAdapter(searchAdapter);
         searchList.setLayoutManager(linearLayoutManager);

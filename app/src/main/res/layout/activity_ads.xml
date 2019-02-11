@@ -575,8 +575,7 @@
                     android:fontFamily="@font/montserrat_medium"
                     android:onClick="onRadioButtonClicked"
                     android:padding="5dp"
-                    android:text="@string/farm_land"
-                    android:visibility="gone" />
+                    android:text="@string/farm_land"/>
 
                 <RadioGroup
                     android:id="@+id/farm_land_group"

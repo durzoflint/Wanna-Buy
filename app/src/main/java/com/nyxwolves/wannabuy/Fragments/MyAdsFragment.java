@@ -29,7 +29,6 @@ public class MyAdsFragment extends Fragment {
 
     RecyclerView myAdList;
     Button postReqBtn;
-    SharedPreferences sharedPreferences;
     CardView firstAdCard;
 
     MyAdsAdapter adsAdapter;
@@ -50,18 +49,12 @@ public class MyAdsFragment extends Fragment {
         });
 
         firstAdCard = view.findViewById(R.id.first_time_ad_layout);
-        firstAdCard.setVisibility(View.GONE);
-
-        sharedPreferences = getActivity().getSharedPreferences(getString(R.string.shared_pref), Context.MODE_PRIVATE);
-        if (sharedPreferences.getBoolean(getString(R.string.shared_first_ad), true)) {
-            firstAdCard.setVisibility(View.VISIBLE);
-        }
 
         //recyclerview
         myAdList = view.findViewById(R.id.my_ads_list);
         myAdList.setVisibility(View.VISIBLE);
         myAdList.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adsAdapter = new MyAdsAdapter(getActivity());
+        adsAdapter = new MyAdsAdapter(getActivity(),firstAdCard);
         myAdList.setAdapter(adsAdapter);
 
         return view;

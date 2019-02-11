@@ -87,8 +87,8 @@ public class Requirements {
     }
 
     public boolean checkLocation(){
-        if( !city.equals("NOT_SET") || !state.equals("NOT_SET") || !locationFive.equals("NOT_SET") || !locationFour.equals("NOT_SET") || !locationOne.equals("NOT_SET") || !locationThree.equals("NOT_SET") || !locationTwo.equals("NOT_SET")){
-            return true;
+        if( !city.equals("NOT_SET") && !state.equals("NOT_SET")){
+            return (!locationFive.equals("NOT_SET") || !locationFour.equals("NOT_SET") || !locationOne.equals("NOT_SET") || !locationThree.equals("NOT_SET") || !locationTwo.equals("NOT_SET"));
         }else{
             return false;
         }

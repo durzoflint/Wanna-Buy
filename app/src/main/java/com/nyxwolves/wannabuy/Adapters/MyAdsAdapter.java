@@ -1,9 +1,12 @@
 package com.nyxwolves.wannabuy.Adapters;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,25 +18,43 @@ import com.nyxwolves.wannabuy.RestApiHelper.AdHelper;
 import com.nyxwolves.wannabuy.activities.AdsDetailActivity;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MyAdsAdapter extends RecyclerView.Adapter<MyAdsViewHolder> implements CallbackInterface {
 
     public JSONArray data = new JSONArray();
     Context ctx;
+    CardView noAdsCard;
+    ProgressDialog progressDialog;
 
-    public MyAdsAdapter(Context ctx) {
+    public MyAdsAdapter(Context ctx, CardView noAdsCard) {
         this.ctx = ctx;
+        this.noAdsCard = noAdsCard;
+
         CallbackInterface callback = this;
         AdHelper helper = new AdHelper(ctx);
         helper.getUserAds(callback);
+        progressDialog = new ProgressDialog(ctx);
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
     }
 
     public void setData(JSONObject jsonObject) {
         try {
-            data = jsonObject.getJSONArray("ads");
-            notifyDataSetChanged();
+            if (jsonObject.getString("message").equals(ctx.getString(R.string.no_ads_found))) {
+                Log.d("ADS_ADAPTER","NOT_FOUND");
+                progressDialog.cancel();
+                noAdsCard.setVisibility(View.VISIBLE);
+            }
         } catch (Exception e) {
+            try {
+                progressDialog.cancel();
+                data = jsonObject.getJSONArray("ads");
+                notifyDataSetChanged();
+            } catch (JSONException error) {
+            }
         }
     }
 
@@ -62,6 +83,8 @@ public class MyAdsAdapter extends RecyclerView.Adapter<MyAdsViewHolder> implemen
             myAdsViewHolder.cityName.setText(jsonObject.getString("PROPERTY_LOCATION"));
             String propType = jsonObject.getString("PROPERTY_TYPE");
             myAdsViewHolder.propertyType.setText(propType);
+
+            //for land
             if (propType.equals(ctx.getString(R.string.residential_land)) ||
                     propType.equals(ctx.getString(R.string.commercial_land)) ||
                     propType.equals(ctx.getString(R.string.industrial_land)) ||
@@ -73,11 +96,25 @@ public class MyAdsAdapter extends RecyclerView.Adapter<MyAdsViewHolder> implemen
                 myAdsViewHolder.bhkText.setVisibility(View.GONE);
                 myAdsViewHolder.builtUpSize.setVisibility(View.GONE);
             }
+            //for floorspace
+            if(propType.equals(ctx.getString(R.string.commercial_floorspace))){
+                myAdsViewHolder.bhkText.setVisibility(View.GONE);
+                myAdsViewHolder.landSize.setVisibility(View.GONE);
+            }
+            //for budget
+            if(jsonObject.getInt("BUDGET") >= 100000){
 
-            myAdsViewHolder.bhkText.setText(jsonObject.getString("BHK"));
-            myAdsViewHolder.priceText.setText(jsonObject.getString("BUDGET"));
-            myAdsViewHolder.landSize.setText(jsonObject.getString("LAND_AREA"));
-            myAdsViewHolder.builtUpSize.setText(jsonObject.getString("BUILT_UP_AREA"));
+                String displayText = jsonObject.getDouble("BUDGET")/100000+" Lakhs";
+                myAdsViewHolder.priceText.setText(displayText);
+            }else if(jsonObject.getInt("BUDGET") >= 10000000){
+                String displayText = jsonObject.getDouble("BUDGET")/10000000+" Crores";
+                myAdsViewHolder.priceText.setText(displayText);
+            }
+
+            myAdsViewHolder.bhkText.setText(jsonObject.getString("BHK")+" Bhk");
+
+            myAdsViewHolder.landSize.setText(jsonObject.getString("LAND_AREA")+" Sq.Ft");
+            myAdsViewHolder.builtUpSize.setText(jsonObject.getString("BUILT_UP_AREA")+" Sq.Ft");
             myAdsViewHolder.detailsBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -89,8 +126,7 @@ public class MyAdsAdapter extends RecyclerView.Adapter<MyAdsViewHolder> implemen
                     }
                 }
             });
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
 
     }
 

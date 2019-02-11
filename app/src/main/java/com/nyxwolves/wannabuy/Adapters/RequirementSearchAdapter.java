@@ -3,6 +3,7 @@ package com.nyxwolves.wannabuy.Adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,18 +17,21 @@ import com.nyxwolves.wannabuy.R;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class RequirementCallbackAdapter extends RecyclerView.Adapter<RequirementSearchHolder> implements CallbackInterface {
+public class RequirementSearchAdapter extends RecyclerView.Adapter<RequirementSearchHolder> implements CallbackInterface {
 
     private JSONArray data = new JSONArray();
     private Context ctx;
+    private CardView noReqCard;
 
-    public RequirementCallbackAdapter(Context ctx){
+    public RequirementSearchAdapter(Context ctx, CardView noReqCard){
         this.ctx = ctx;
+        this.noReqCard = noReqCard;
+
         CallbackInterface callBack = this;
         RequirementHelper helper = new RequirementHelper(ctx);
         helper.getUserRequirementShortInfo(callBack);
     }
-    public RequirementCallbackAdapter(Context ctx, String location){
+    public RequirementSearchAdapter(Context ctx, String location){
         this.ctx = ctx;
         RequirementHelper searchHelper = new RequirementHelper(ctx);
         CallbackInterface callBack = this;
@@ -43,9 +47,15 @@ public class RequirementCallbackAdapter extends RecyclerView.Adapter<Requirement
 
     public void setData(JSONObject jsonObject){
         try {
-            this.data = jsonObject.getJSONArray("requirements");
-            notifyDataSetChanged();
-        }catch (Exception e){}
+           if(jsonObject.getString("message").equals(ctx.getString(R.string.no_req_found))){
+               noReqCard.setVisibility(View.VISIBLE);
+           }
+        }catch (Exception e){
+            try{
+                this.data = jsonObject.getJSONArray("requirements");
+                notifyDataSetChanged();
+            }catch (Exception error){}
+        }
     }
 
     @Override

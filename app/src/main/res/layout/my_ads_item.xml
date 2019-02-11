@@ -15,25 +15,23 @@
             android:id="@+id/property_image"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:layout_marginBottom="8dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:src="@drawable/model_home"
             app:civ_border_color="@color/orangeBtn"
             app:civ_border_width="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.31" />
 
         <TextView
             android:id="@+id/property_type"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/city_name"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toStartOf="@+id/guideline19"
             app:layout_constraintStart_toEndOf="@+id/property_image"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,23 +39,22 @@
             android:id="@+id/city_name"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginStart="16dp"
             android:fontFamily="@font/montserrat_medium"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="@+id/property_type"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/property_type"
+            app:layout_constraintStart_toStartOf="@+id/guideline19"
             app:layout_constraintTop_toTopOf="@+id/property_type" />
 
         <TextView
             android:id="@+id/ads_bhk"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:fontFamily="@font/montserrat_medium"
             android:text="TextView"
             app:layout_constraintEnd_toStartOf="@+id/guideline19"
@@ -68,13 +65,11 @@
             android:id="@+id/land_area"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_medium"
             android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:visibility="visible"
             app:layout_constraintStart_toEndOf="@+id/view4"
             app:layout_constraintTop_toBottomOf="@+id/city_name" />
 
@@ -82,21 +77,22 @@
             android:id="@+id/ads_price"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:fontFamily="@font/montserrat_medium"
             android:text="TextView"
             app:layout_constraintEnd_toStartOf="@+id/guideline19"
-            app:layout_constraintStart_toStartOf="@+id/ads_bhk"
+            app:layout_constraintStart_toEndOf="@+id/property_image"
             app:layout_constraintTop_toBottomOf="@+id/ads_bhk" />
 
         <Button
             android:id="@+id/ads_details_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/orange_button"
             android:fontFamily="@font/montserrat_medium"
             android:padding="0dp"
@@ -114,7 +110,7 @@
             android:layout_height="0dp"
             android:background="@android:color/darker_gray"
             app:layout_constraintBottom_toBottomOf="@+id/ads_price"
-            app:layout_constraintStart_toStartOf="@+id/guideline19"
+            app:layout_constraintStart_toStartOf="@+id/guideline28"
             app:layout_constraintTop_toTopOf="@+id/ads_bhk"
             app:layout_constraintVertical_bias="0.0" />
 
@@ -122,9 +118,9 @@
             android:id="@+id/bottom_line"
             android:layout_width="match_parent"
             android:layout_height="4dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="30dp"
 
             android:background="@color/orangeBtn"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -137,11 +133,11 @@
             android:id="@+id/built_up_area"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_medium"
             android:text="TextView"
-            app:layout_constraintEnd_toEndOf="@+id/land_area"
-            app:layout_constraintStart_toStartOf="@+id/land_area"
+            app:layout_constraintStart_toEndOf="@+id/view4"
             app:layout_constraintTop_toBottomOf="@+id/land_area" />
 
         <android.support.constraint.Guideline
@@ -149,7 +145,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="218dp" />
+            app:layout_constraintGuide_percent="0.65" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="214dp" />
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

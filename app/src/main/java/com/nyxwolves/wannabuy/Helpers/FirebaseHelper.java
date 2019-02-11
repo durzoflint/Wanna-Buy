@@ -181,6 +181,7 @@ public class FirebaseHelper implements CallbackInterface {
             @Override
             public void onFailure(@NonNull Exception e) {
                 closeDialog();
+                Log.d("EXCEPTION",e.toString());
                 showSnackBar("Error Occurred", view);
             }
         });

@@ -8,6 +8,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
 
@@ -19,6 +20,7 @@ public class CarParking extends AppCompatActivity {
     Button nextBtn;
     CheckBox checkBox;
     NumberPicker covPicker,unCovPicker;
+    LinearLayout covLayout,unCovLayout;
 
     int noOfCov = -1;
     int noOfUnCov = -1;
@@ -29,6 +31,9 @@ public class CarParking extends AppCompatActivity {
         setContentView(R.layout.activity_car_parking);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        covLayout =  findViewById(R.id.cov_park_layout);
+        unCovLayout = findViewById(R.id.un_cov_park_layout);
 
         covPicker = findViewById(R.id.cov_picker);
         covPicker.setMaxValue(5);
@@ -68,10 +73,10 @@ public class CarParking extends AppCompatActivity {
                 checkBox = (CheckBox) v;
                 if(checkBox.isChecked()) {
                     Requirements.getInstance().isCovparking = getString(R.string.yes);
-                    covPicker.setVisibility(View.VISIBLE);
+                    covLayout.setVisibility(View.VISIBLE);
                 }else{
                     Requirements.getInstance().isCovparking = getString(R.string.no);
-                    covPicker.setVisibility(View.GONE);
+                    covLayout.setVisibility(View.GONE);
                 }
                 break;
 
@@ -79,10 +84,10 @@ public class CarParking extends AppCompatActivity {
                 checkBox = (CheckBox) v;
                 if(checkBox.isChecked()) {
                     Requirements.getInstance().isUnCovParking = getString(R.string.yes);
-                    unCovPicker.setVisibility(View.VISIBLE);
+                    unCovLayout.setVisibility(View.VISIBLE);
                 }else{
                     Requirements.getInstance().isUnCovParking = getString(R.string.no);
-                    unCovPicker.setVisibility(View.GONE);
+                    unCovLayout.setVisibility(View.GONE);
                 }
                 break;
         }

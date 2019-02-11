@@ -3,26 +3,32 @@ package com.nyxwolves.wannabuy.Adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.nyxwolves.wannabuy.Fragments.MyMatchesFragment;
 import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
 import com.nyxwolves.wannabuy.R;
 import com.nyxwolves.wannabuy.RestApiHelper.Matches;
 import com.nyxwolves.wannabuy.activities.AdsDetailActivity;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MatchesAdapter extends RecyclerView.Adapter<MatchesViewHolder> implements CallbackInterface {
 
     Context ctx;
     JSONArray data = new JSONArray();
+    CardView noMatchesCard;
 
-    public MatchesAdapter(Context ctx){
+    public MatchesAdapter(Context ctx,CardView noMatchesCard){
         this.ctx = ctx;
+        this.noMatchesCard = noMatchesCard;
 
         CallbackInterface matchesCallback = this;
         Matches matches = new Matches(ctx);
@@ -32,9 +38,18 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesViewHolder> impl
     @Override
     public void setData(JSONObject data) {
         try{
-            this.data = data.getJSONArray("matches");
-            notifyDataSetChanged();
-        }catch (Exception e){}
+            if(data.getString("message").equals("matches not found")) {
+                Log.d("MATCHES", "NOT_FOUND");
+                noMatchesCard.setVisibility(View.VISIBLE);
+            }
+        }catch (Exception e){
+            try{
+                this.data = data.getJSONArray("matches");
+                notifyDataSetChanged();
+            }catch(JSONException error){
+                Log.d("MATCH_ADAPTER","ERROR");
+            }
+        }
 
     }
 
@@ -61,11 +76,44 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesViewHolder> impl
         try{
             final JSONObject jsonObject = data.getJSONObject(i);
             matchesViewHolder.cityName.setText(jsonObject.getString("PROPERTY_LOCATION"));
-            matchesViewHolder.propertyType.setText(jsonObject.getString("PROPERTY_TYPE"));
+            String propType = jsonObject.getString("PROPERTY_TYPE");
+            matchesViewHolder.propertyType.setText(propType);
             matchesViewHolder.bhkText.setText(jsonObject.getString("BHK"));
             matchesViewHolder.priceText.setText(jsonObject.getString("BUDGET"));
             matchesViewHolder.landSize.setText(jsonObject.getString("LAND_AREA"));
             matchesViewHolder.builtUpSize.setText(jsonObject.getString("BUILT_UP_AREA"));
+
+            //for land
+            if (propType.equals(ctx.getString(R.string.residential_land)) ||
+                    propType.equals(ctx.getString(R.string.commercial_land)) ||
+                    propType.equals(ctx.getString(R.string.industrial_land)) ||
+                    propType.equals(ctx.getString(R.string.institutional_land)) ||
+                    propType.equals(ctx.getString(R.string.rental_residential_land)) ||
+                    propType.equals(ctx.getString(R.string.rental_commercial_land)) ||
+                    propType.equals(ctx.getString(R.string.rental_industrial_land)) ||
+                    propType.equals(ctx.getString(R.string.rental_industrial_land))) {
+                matchesViewHolder.bhkText.setVisibility(View.GONE);
+                matchesViewHolder.builtUpSize.setVisibility(View.GONE);
+            }
+            //for floorspace
+            if(propType.equals(ctx.getString(R.string.commercial_floorspace))){
+                matchesViewHolder.bhkText.setVisibility(View.GONE);
+                matchesViewHolder.landSize.setVisibility(View.GONE);
+            }
+            //for budget
+            if(jsonObject.getInt("BUDGET") >= 100000){
+
+                String displayText = jsonObject.getDouble("BUDGET")/100000+" Lakhs";
+                matchesViewHolder.priceText.setText(displayText);
+            }else if(jsonObject.getInt("BUDGET") >= 10000000){
+                String displayText = jsonObject.getDouble("BUDGET")/10000000+" Crores";
+                matchesViewHolder.priceText.setText(displayText);
+            }
+
+            matchesViewHolder.bhkText.setText(jsonObject.getString("BHK")+" Bhk");
+
+            matchesViewHolder.landSize.setText(jsonObject.getString("LAND_AREA")+" Sq.Ft");
+            matchesViewHolder.builtUpSize.setText(jsonObject.getString("BUILT_UP_AREA")+" Sq.Ft");
 
             final String AD_ID = jsonObject.getString("AD_ID");
             matchesViewHolder.detailsBtn.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +124,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesViewHolder> impl
                     ctx.startActivity(detailedAd);
                 }
             });
+
         }catch (Exception e){}
 
     }

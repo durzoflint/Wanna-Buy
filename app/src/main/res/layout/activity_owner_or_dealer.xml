@@ -43,32 +43,20 @@
         app:layout_constraintTop_toTopOf="@+id/owner_btn" />
 
     <TextView
-        android:id="@+id/are_you"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/cocogoose_regular"
-        android:text="@string/are_you_text"
-        android:textColor="@android:color/white"
-        android:textSize="22sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/iam_a"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/cocogoose_regular"
         android:text="@string/iam_a"
         android:textColor="@android:color/white"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/are_you"
-        app:layout_constraintTop_toBottomOf="@+id/are_you" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/phone_number_header"

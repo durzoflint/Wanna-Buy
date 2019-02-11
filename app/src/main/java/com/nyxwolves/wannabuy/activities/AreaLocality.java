@@ -76,14 +76,6 @@ public class AreaLocality extends AppCompatActivity implements View.OnClickListe
         nextBtn.setOnClickListener(this);
     }
 
-    private boolean checkInput() {
-        if(Requirements.getInstance().checkLocation()){
-            return true;
-        }else{
-           return false;
-        }
-    }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -98,31 +90,31 @@ public class AreaLocality extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.location_five:
                 locationFive.setVisibility(View.INVISIBLE);
-                Requirements.getInstance().locationFive = "NONE";
+                Requirements.getInstance().locationFive = "NOT_SET";
                 isFiveFull=false;
                 break;
             case R.id.location_four:
                 locationFour.setVisibility(View.INVISIBLE);
-                Requirements.getInstance().locationFour = "NONE";
+                Requirements.getInstance().locationFour = "NOT_SET";
                 isFourFull=false;
                 break;
             case R.id.location_three:
                 locationThree.setVisibility(View.INVISIBLE);
-                Requirements.getInstance().locationThree = "NONE";
+                Requirements.getInstance().locationThree = "NOT_SET";
                 isThreeFull=false;
                 break;
             case R.id.location_two:
                 locationTwo.setVisibility(View.INVISIBLE);
-                Requirements.getInstance().locationTwo = "NONE";
+                Requirements.getInstance().locationTwo = "NOT_SET";
                 isTwoFull=false;
                 break;
             case R.id.location_one:
                 locationOne.setVisibility(View.INVISIBLE);
-                Requirements.getInstance().locationOne = "NONE";
+                Requirements.getInstance().locationOne = "NOT_SET";
                 isOneFull=false;
                 break;
             case R.id.area_next_btn:
-                if (checkInput()) {
+                if (Requirements.getInstance().checkLocation()) {
                     startActivity(new Intent(AreaLocality.this, PropertyType.class));
                 }else{
                     Toast.makeText(AreaLocality.this,"Check your inputs.",Toast.LENGTH_SHORT).show();

@@ -207,10 +207,9 @@
     <string name="sell_type_text">New or Resale?</string>
     <string name="ads_furnised_header">What type of property?</string>
     <string name="ads_price_header">Price</string>
-    <string name="non_negotiable">Non_Negotiable</string>
+    <string name="non_negotiable">Non Negotiable</string>
     <string name="negotiable">Negotiable</string>
     <string name="upload_property_photo">Upload\nProperty\nPhoto</string>
-    <string name="make_payment">Make Payment</string>
 
     <string name="recent_search_header">Your Recent Searches</string>
     <string name="my_matches">My Matches</string>
@@ -309,8 +308,8 @@
     <string name="corp_guest_house_header">Corporate Guest House Price</string>
     <string name="boys_hostel_header">Boys Hostel Price</string>
     <string name="girls_hostel_header">Girls Hostel Price</string>
-    <string name="working_men_hostel">Working Men Hostel</string>
-    <string name="working_women_hostel">Working Women Hostel</string>
+    <string name="working_men_hostel">Working Men Hostel Price</string>
+    <string name="working_women_hostel">Working Women Hostel Price</string>
     <string name="name_your_requirement">Name your Requirement</string>
     <string name="state_text">State Name</string>
     <string name="city_text">City Name</string>
@@ -395,8 +394,6 @@
     <string name="pay_rent_ad">POST RENT AD</string>
     <string name="pay_sell_ad">POST SELL AD</string>
 
-    <string name="no_matches_found">No Matches Found</string>
-
     <string name="wanna_buy_text">Wanna Buy</string>
     <string name="wanna_rent_text">Wanna Rent</string>
     <string name="support">Support</string>
@@ -424,7 +421,7 @@
     <string name="wanna_rent_out">Wanna Rent out</string>
 
     <string name="buy_rent_flag">BUY_OR_RENT</string>
-    <string name="free">Free</string>
+    <string name="free">Free Submit</string>
 
     <string name="welcome_text">Hi ,welcome to the world\'s exclusive Buyer\'s portal- WannaBuy .This startup will end your constant search on property .  Thanks for choosing WannaBuy . We assure you that we will give our best match .</string>
 
@@ -432,7 +429,7 @@
     <string name="ad_pay_dialog_text">Your Ad will not be shown to any one but only to the correct buyer directly who chose to buy in a particular area, budget and requirements. It\'s a personalized direct matching indicator . HAPPY SELLING!</string>
 
     <string name="ad_num">ADS_NUM</string>
-    <string name="submit">Submit</string>
+    <string name="submit">Make Payment</string>
 
     <string name="AD_ID">AD_ID</string>
 
@@ -440,4 +437,9 @@
     <string name="IS_DEALER_AVAIL_FREE">IS_DEALER_AVAIL_FREE</string>
 
     <string name="no_of_parking">No of Parking space:</string>
+    <string name="no_matches_text">No Matches Found</string>
+
+    <string name="no_matches_found">NO_MATCH_FOUND</string>
+    <string name="no_ads_found">NO_ADS_FOUND</string>
+    <string name="no_req_found">NO_REQ_FOUND</string>
 </resources>

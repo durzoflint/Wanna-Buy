@@ -33,7 +33,8 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
     TextView propertyType, facilitesText, approvalText, floorText;
     TextView covParking, unCovParking, isPetsAllowed, vegNonVeg;
     LinearLayout rentalLayoutOne, rentalLayoutTwo, rentalLayoutThree;
-    LinearLayout pgLayoutOne, pgLayoutTwo;
+    LinearLayout pgLayoutOne, pgLayoutTwo, pgLayoutThree;
+    TextView boysHostelPrice, girlsHostelPrice, workMenHostelPrice, workWomenHostelPrice, corpGuestPrice;
     TextView rentStart, rentEnd, advanceDeposit, roi, roiIncrement, roiIncrementPeriod;
     TextView rentPerMonth, withFood, noOfRooms, personPerRoom;
     ImageView adImage;
@@ -81,11 +82,16 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
 
         pgLayoutOne = findViewById(R.id.pg_layout_one);
         pgLayoutTwo = findViewById(R.id.pg_layout_two);
+        pgLayoutThree = findViewById(R.id.pg_layout_three);
         rentPerMonth = findViewById(R.id.rent_per_month_text);
         noOfRooms = findViewById(R.id.pg_rooms);
         personPerRoom = findViewById(R.id.pg_person);
         withFood = findViewById(R.id.with_food_text);
-
+        boysHostelPrice = findViewById(R.id.boys_hostel_price_text);
+        girlsHostelPrice = findViewById(R.id.girls_hostel_price_text);
+        workMenHostelPrice = findViewById(R.id.work_men_hostel_price_text);
+        workWomenHostelPrice = findViewById(R.id.work_women_hostel_price_text);
+        corpGuestPrice = findViewById(R.id.corp_price_text);
 
         //api call to recieve complete info on the ad
         AdHelper helper = new AdHelper(this);
@@ -224,6 +230,8 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
                 roi.setText(data.getString("ROI"));
                 roiIncrement.setText(data.getString("ROI_INCREMENT"));
                 roiIncrementPeriod.setText(data.getString("ROI_INCREMENT_PERIOD"));
+                rentStart.setText(data.getString("RENT_START"));
+                rentEnd.setText(data.getString("RENT_END"));
             }
 
             //pg service apartments fields
@@ -234,6 +242,16 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
 
                 pgLayoutOne.setVisibility(View.VISIBLE);
                 pgLayoutTwo.setVisibility(View.VISIBLE);
+                pgLayoutThree.setVisibility(View.VISIBLE);
+
+                withFood.setText(data.getString("PG_WITH_FOOD"));
+                noOfRooms.setText(data.getString("PG_ROOMS"));
+                personPerRoom.setText(data.getString("PG_PERSON_PER_ROOM"));
+                boysHostelPrice.setText(data.getString("BOYS_HOSTEL_PRICE"));
+                girlsHostelPrice.setText(data.getString("GIRLS_HOSTEL_PRICE"));
+                workMenHostelPrice.setText(data.getString("WORKING_MEN_HOSTEL_PRICE"));
+                workWomenHostelPrice.setText(data.getString("WORKING_WOMEN_HOSTEL_PRICE"));
+                corpGuestPrice.setText(data.getString("CORP_GUEST_PRICE"));
             }
 
         } catch (JSONException e) {

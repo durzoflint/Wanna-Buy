@@ -61,7 +61,6 @@
         android:fontFamily="@font/montserrat_medium"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
-        android:text="@string/make_payment"
         android:textColor="@android:color/white"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"

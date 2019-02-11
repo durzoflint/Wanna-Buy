@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.nyxwolves.wannabuy.CustomDialog.MessageDialog;
 import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
@@ -56,7 +58,11 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
             @Override
             public void onClick(View v) {
                 if (checkInput()) {
+                    MessageDialog msgDialog = new MessageDialog();
+                    msgDialog.show(getSupportFragmentManager(), "MSG_DIALOG");
                     fixAmount();
+                }else{
+                    Toast.makeText(RequirementName.this,"Cannot be empty",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -110,15 +116,15 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
                     nextButton.setText(getString(R.string.free));
                 }else{
                     nextButton.setVisibility(View.VISIBLE);
-                    nextButton.setText(getString(R.string.make_payment));
+                    nextButton.setText(getString(R.string.submit));
                 }
             }else{
                 if (rentReqNum == 0 && Requirements.getInstance().buyorRent.equals(getString(R.string.RENT))) {
                     nextButton.setVisibility(View.VISIBLE);
-                    nextButton.setText(getString(R.string.make_payment));
+                    nextButton.setText(getString(R.string.submit));
                 } else if (buyReqNum == 0 && Requirements.getInstance().buyorRent.equals(getString(R.string.BUY))) {
                     nextButton.setVisibility(View.VISIBLE);
-                    nextButton.setText(getString(R.string.make_payment));
+                    nextButton.setText(getString(R.string.submit));
                 }else{
                     nextButton.setVisibility(View.VISIBLE);
                     nextButton.setText(getString(R.string.post_now));

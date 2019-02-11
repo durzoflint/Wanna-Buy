@@ -35,16 +35,12 @@ public class RequirementHelper implements CallbackInterface{
         String URL = "http://www.wannabuy.in/api/Requirements/create_requirement.php";
         getJson();
 
-        Log.d("REQ_JSON", params.toString());
+        Log.d("CREATED_REQ_JSON", params.toString());
         JsonObjectRequest createRequest = new JsonObjectRequest(Request.Method.POST, URL, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("REQ_RESPONSE_CREATED", response.toString());
                 //closeDialog();
-                SharedPreferences sharedPreferences = ctx.getSharedPreferences(ctx.getString(R.string.shared_pref), Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean(ctx.getString(R.string.shared_first_req), false);
-                editor.apply();
 
                 UserPaymentCheck userPaymentCheck = new UserPaymentCheck(ctx);
                 CallbackInterface callbackInterface = RequirementHelper.this;

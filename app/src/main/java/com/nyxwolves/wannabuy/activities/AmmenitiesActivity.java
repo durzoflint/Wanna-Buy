@@ -21,58 +21,67 @@ public class AmmenitiesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ammenities);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         nextBtn = findViewById(R.id.ammenities_next_btn);
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Requirements.getInstance().buyorRent.equals(getString(R.string.rent_text)) &&
-                        Requirements.getInstance().subType.equals(getString(R.string.apartments))){
-                        startActivity(new Intent(AmmenitiesActivity.this,PetsActivity.class));
-                }else {
-                    startActivity(new Intent(AmmenitiesActivity.this, ApprovalActivity.class));
+                if (Requirements.getInstance().buyorRent.equals(getString(R.string.rent_text))) {
+                    if (Requirements.getInstance().subType.equals(getString(R.string.residential_apartments)) ||
+                            Requirements.getInstance().subType.equals(getString(R.string.residential_independent))) {
+                        startActivity(new Intent(AmmenitiesActivity.this, PetsActivity.class));
+                    }else{
+                        startActivity(new Intent(AmmenitiesActivity.this, ApprovalActivity.class));
+                    }
+                }else if(Requirements.getInstance().buyorRent.equals(getString(R.string.BUY))){
+                    if(Requirements.getInstance().subType.equals(getString(R.string.residential_apartments))){
+                        startActivity(new Intent(AmmenitiesActivity.this, PetsActivity.class));
+                    }else{
+                        startActivity(new Intent(AmmenitiesActivity.this, ApprovalActivity.class));
+                    }
                 }
             }
         });
     }
 
-    private String setData(CheckBox checkBox, String data){
-        if(checkBox.isChecked()){
+    private String setData(CheckBox checkBox, String data) {
+        if (checkBox.isChecked()) {
             Requirements.getInstance().facilitiesList.add(data);
             return getString(R.string.yes);
-        }else{
+        } else {
             Requirements.getInstance().facilitiesList.remove(data);
             return getString(R.string.no);
         }
     }
-    public void oncheckBoxClicked(View v){
-        switch (v.getId()){
+
+    public void oncheckBoxClicked(View v) {
+        switch (v.getId()) {
             case R.id.gym_check:
-                setData((CheckBox)v, getString(R.string.gym));
+                setData((CheckBox) v, getString(R.string.gym));
                 break;
             case R.id.power_check:
-                setData((CheckBox)v, getString(R.string.power_backup));
+                setData((CheckBox) v, getString(R.string.power_backup));
                 break;
             case R.id.security_check:
-                setData((CheckBox)v, getString(R.string.security_guard));
+                setData((CheckBox) v, getString(R.string.security_guard));
                 break;
             case R.id.lift_check:
-                setData((CheckBox)v, getString(R.string.lift));
+                setData((CheckBox) v, getString(R.string.lift));
                 break;
             case R.id.swimming_check:
-                setData((CheckBox)v, getString(R.string.swimming_pool));
+                setData((CheckBox) v, getString(R.string.swimming_pool));
                 break;
             case R.id.cafetria_check:
-                setData((CheckBox)v, getString(R.string.water));
+                setData((CheckBox) v, getString(R.string.water));
                 break;
             case R.id.garden_check:
-                setData((CheckBox)v, getString(R.string.garden));
+                setData((CheckBox) v, getString(R.string.garden));
                 break;
             case R.id.water_check:
-                setData((CheckBox)v, getString(R.string.water));
+                setData((CheckBox) v, getString(R.string.water));
                 break;
             case R.id.play_area:
-                setData((CheckBox)v, getString(R.string.play_area));
+                setData((CheckBox) v, getString(R.string.play_area));
                 break;
         }
     }

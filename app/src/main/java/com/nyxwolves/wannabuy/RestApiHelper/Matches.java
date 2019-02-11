@@ -46,7 +46,7 @@ public class Matches {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("READ_RESPONSE", error.toString());
+                Log.d("MATCH_ERROR", error.toString());
             }
         });
 

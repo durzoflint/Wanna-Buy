@@ -41,17 +41,13 @@ public class AdHelper implements CallbackInterface {
         String URL = "http://www.wannabuy.in/api/Ads/create_ad.php";
         getJson();
         //Log.d("ADS_JSON",new JSONObject(createParams).toString());
-        Log.d("ADS_JSON", createParams.toString());
+        Log.d("CREATED_ADS_JSON", createParams.toString());
         JsonObjectRequest createAdRequest = new JsonObjectRequest(Request.Method.POST, URL, createParams, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("ADS_RESPONSE_CREATED", response.toString());
                 callback.adCreated(true, response);
 
-                SharedPreferences sharedPreferences = ctx.getSharedPreferences(ctx.getString(R.string.shared_pref), Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean(ctx.getString(R.string.shared_first_ad), false);
-                editor.apply();
 
             }
         }, new Response.ErrorListener() {

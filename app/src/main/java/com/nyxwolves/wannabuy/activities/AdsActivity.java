@@ -55,7 +55,7 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AdsActivity extends AppCompatActivity implements View.OnClickListener,
-        DatePickerDialog.OnDateSetListener, CallbackInterface, AdInterface {
+        DatePickerDialog.OnDateSetListener, CallbackInterface, AdInterface, MessageDialog.CustomDialogListener {
 
     TextInputEditText cityInput, doorNumberInput, addressInput;
     EditText flooringInput, bhkInput, noOfHouseInput, totalFloorsInput;
@@ -92,7 +92,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     boolean isStartDate = true;
     boolean isAddressValid = false;
     String userMode;
-    String ownerOrDealer, adsNum;
+    String ownerOrDealer, adsNum,adId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -1085,8 +1085,12 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     private boolean checkBudget() {
-        long budget = Long.valueOf(budgetInput.getText().toString().trim());
-        return budget > 0;
+        if(budgetInput.getText().toString().trim().length() > 0){
+            long budget = Long.valueOf(budgetInput.getText().toString().trim());
+            return budget > 0;
+        }else{
+            return false;
+        }
     }
 
     public void onCheckBoxClicked(View v) {
@@ -1259,16 +1263,23 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         //start intent to imageUpload activity
         if (isSuccess) {
             try {
-                String adId = data.getString("AD_ID");
+                adId = data.getString("AD_ID");
                 Log.d("ADS_NUM_new", "" + adsNum);
-                Intent i = new Intent(AdsActivity.this, ImageUpload.class);
-                i.putExtra(getString(R.string.owner_dealer_flag), ownerOrDealer);
-                i.putExtra(getString(R.string.ad_num), adsNum);
-                i.putExtra(getString(R.string.AD_ID), adId);
-                startActivity(i);
+
             } catch (Exception e) {
             }
 
+        }
+    }
+    //called when ok button is clicked
+    @Override
+    public void onOkButtonClicked() {
+        if(adId != null) {
+            Intent i = new Intent(AdsActivity.this, ImageUpload.class);
+            i.putExtra(getString(R.string.owner_dealer_flag), ownerOrDealer);
+            i.putExtra(getString(R.string.ad_num), adsNum);
+            i.putExtra(getString(R.string.AD_ID), adId);
+            startActivity(i);
         }
     }
 

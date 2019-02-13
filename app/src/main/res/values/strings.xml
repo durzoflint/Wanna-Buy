@@ -423,7 +423,7 @@
     <string name="buy_rent_flag">BUY_OR_RENT</string>
     <string name="free">Free Submit</string>
 
-    <string name="welcome_text">Hi ,welcome to the world\'s exclusive Buyer\'s portal- WannaBuy .This startup will end your constant search on property .  Thanks for choosing WannaBuy . We assure you that we will give our best match .</string>
+    <string name="welcome_text">Hi ,welcome to the world\'s exclusive Buyer\'s portal- WannaBuy .This startup will end your constant search on property .  Thanks for choosing WannaBuy . We assure you that we will give your best match .</string>
 
     <string name="ad_pay_title">Why Payment and Why we are special?</string>
     <string name="ad_pay_dialog_text">Your Ad will not be shown to any one but only to the correct buyer directly who chose to buy in a particular area, budget and requirements. It\'s a personalized direct matching indicator . HAPPY SELLING!</string>
@@ -445,4 +445,5 @@
 
     <string name="why_pay_text"><u>Why Pay?</u></string>
     <string name="email_subject">Property posted on WannaBuy</string>
+    <string name="ref_text">(Just For Reference)</string>
 </resources>

@@ -25,10 +25,15 @@ public class MessageDialog extends DialogFragment {
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //startActivity(new Intent(getActivity(), ImageUpload.class));
+                CustomDialogListener  listener =  (CustomDialogListener) getActivity();
+                listener.onOkButtonClicked();
                 dialog.cancel();
             }
         });
         return builder.create();
+    }
+
+    public interface CustomDialogListener {
+        void onOkButtonClicked();
     }
 }

@@ -96,6 +96,7 @@
             android:layout_height="match_parent"
             android:fontFamily="@font/montserrat_regular"
             android:hint="@string/phone_num"
+            android:inputType="number"
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white"
             android:textSize="20sp" />

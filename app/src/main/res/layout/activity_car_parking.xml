@@ -84,13 +84,13 @@
         android:id="@+id/un_cov_car_park"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/montserrat_medium"
         android:onClick="onCheckBoxClicked"
         android:padding="5dp"
         android:text="@string/uncovered_parking"
         app:layout_constraintStart_toStartOf="@+id/covered_parking_check"
-        app:layout_constraintTop_toBottomOf="@+id/covered_parking_check" />
+        app:layout_constraintTop_toBottomOf="@+id/cov_park_layout" />
 
     <LinearLayout
         android:id="@+id/un_cov_park_layout"

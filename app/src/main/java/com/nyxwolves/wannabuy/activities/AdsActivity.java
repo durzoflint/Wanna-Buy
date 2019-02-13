@@ -80,6 +80,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     TextView roadSelectedWidth, adsBudgetHeader;
     ImageView startIcon, endIcon;
     ProgressDialog progressDialog;
+    TextView whyPayText;
 
     final int IMAGE_REQ = 1002;
     final int LOCATION_REQUEST = 1003;
@@ -89,6 +90,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     boolean isLandAreaVisible = false;
     boolean isRentalIncome = false;
     boolean isStartDate = true;
+    boolean isAddressValid = false;
     String userMode;
     String ownerOrDealer, adsNum;
 
@@ -141,7 +143,15 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
 
             }
         });
-
+        //why pay text when clicked should show dialog box
+        whyPayText = findViewById(R.id.why_pay);
+        whyPayText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MessageDialog msgDialog = new MessageDialog();
+                msgDialog.show(getSupportFragmentManager(), "MSG_DIALOG");
+            }
+        });
         //tenant preference
         tenantPreferances = findViewById(R.id.tenant_preference_layout);
 
@@ -288,11 +298,6 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         doorNumberInput = findViewById(R.id.ads_door_input);
         addressInput = findViewById(R.id.ads_address_input);
 
-        propertyPic = findViewById(R.id.prop_pic);
-
-        picUploadBtn = findViewById(R.id.upload_btn);
-        picUploadBtn.setOnClickListener(this);
-
         paymentBtn = findViewById(R.id.next_btn);
         paymentBtn.setOnClickListener(this);
 
@@ -321,14 +326,16 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 if (checkData()) {
                     checkFloor();
                     checkBhk();
-
-                    Log.d("REACHED", "TEST");
-                    MessageDialog msgDialog = new MessageDialog();
-                    msgDialog.show(getSupportFragmentManager(), "MSG_DIALOG");
-                    UserPaymentCheck helper = new UserPaymentCheck(AdsActivity.this);
-                    CallbackInterface callbackInterface = AdsActivity.this;
-                    helper.getUserStatus(callbackInterface);
-
+                    if(isAddressValid){
+                        Log.d("REACHED", "TEST");
+                        MessageDialog msgDialog = new MessageDialog();
+                        msgDialog.show(getSupportFragmentManager(), "MSG_DIALOG");
+                        UserPaymentCheck helper = new UserPaymentCheck(AdsActivity.this);
+                        CallbackInterface callbackInterface = AdsActivity.this;
+                        helper.getUserStatus(callbackInterface);
+                    }else{
+                        Toast.makeText(AdsActivity.this, "Please Check the inputs", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
                     Toast.makeText(AdsActivity.this, "Please Check the inputs", Toast.LENGTH_SHORT).show();
                 }
@@ -1278,96 +1285,14 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 Log.d("LAT:", location.getLatitude() + "");
                 SellerAd.getInstance().locationLongitude = Double.toString(location.getLongitude());
                 Log.d("LONG:", location.getLongitude() + "");
+                isAddressValid = true;
             } catch (IndexOutOfBoundsException e) {
-
+                isAddressValid = false;
                 Toast.makeText(AdsActivity.this, "Enter a valid address", Toast.LENGTH_SHORT).show();
             }
 
         } catch (IOException e) {
         }
     }
-
-
-    /*private class ViewVisibilty{
-
-        int rentalIncomeBtn = View.GONE;
-        int builtArea = View.GONE;
-        int landArea = View.GONE;
-        int resiSub = View.GONE;
-        int commSub = View.GONE;
-        int indusSub = View.GONE;
-        int insSub = View.GONE;
-        int pgRentLayout = View.GONE;
-        int roiLayout = View.GONE;
-        int rentalStart = View.GONE;
-        int rentalEnd = View.GONE;
-        int rentalIncrement = View.GONE;
-        int advanceDeposit = View.GONE;
-        int rentalIncomeType = View.GONE;
-        int indusIndependent = View.GONE;
-        int tenantPrefer = View.GONE;
-        int vegNonVeg = View.GONE;
-        int propertySize = View.GONE;
-        int noOfHouse = View.GONE;
-        int totalFloor = View.GONE;
-        int flooringLayout = View.GONE;
-        int resiBuild = View.GONE;
-        int commBuild = View.GONE;
-        int indusBuild = View.GONE;
-        int bhkLayout = View.GONE;
-        int furnishedLayout = View.GONE;
-        int petsLayout = View.GONE;
-        int showroomLayout = View.GONE;
-        int rentalResiSub = View.GONE;
-        int rentalCommSub = View.GONE;
-        int rentalIndusSub = View.GONE;
-        int rentalInsSub = View.GONE;
-        int rentalResiBuild = View.GONE;
-        int rentalCommBuild = View.GONE;
-        int rentalIndusBuild = View.GONE;
-        int farmLand = View.GONE;
-    }*/
-    /*private void displayView(ViewVisibilty visibilty) {
-
-        resiSub.setVisibility(visibilty.resiSub);
-        commSub.setVisibility(visibilty.commSub);
-        insSub.setVisibility(visibilty.insSub);
-        indusSub.setVisibility(visibilty.indusSub);
-        resiBuild.setVisibility(visibilty.resiBuild);
-        commBuild.setVisibility(visibilty.commBuild);
-        indusBuild.setVisibility(visibilty.indusBuild);
-
-        rentalResiSub.setVisibility(visibilty.rentalResiSub);
-        rentalCommSub.setVisibility(visibilty.rentalCommSub);
-        rentalIndusSub.setVisibility(visibilty.rentalIndusSub);
-        rentalInsSub.setVisibility(visibilty.rentalInsSub);
-        rentalResiBuild.setVisibility(visibilty.rentalResiBuild);
-        rentalCommBuild.setVisibility(visibilty.rentalCommBuild);
-        rentalIndusBuild.setVisibility(visibilty.rentalIndusBuild);
-
-        landAreaLayout.setVisibility(visibilty.landArea);
-        builtUpAreaLayout.setVisibility(visibilty.builtArea);
-
-        rentalIncomeButton.setVisibility(visibilty.rentalIncomeBtn);
-        roiLayout.setVisibility(visibilty.roiLayout);
-        rentalIncrementalLayout.setVisibility(visibilty.rentalIncrement);
-        advanceDeposit.setVisibility(visibilty.advanceDeposit);
-        petsLayout.setVisibility(visibilty.petsLayout);
-        pgRentLayout.setVisibility(visibilty.pgRentLayout);
-        rentalStart.setVisibility(visibilty.rentalStart);
-        rentalEnd.setVisibility(visibilty.rentalEnd);
-        rentalIncomeType.setVisibility(visibilty.rentalIncomeType);
-        indusIndependentGroup.setVisibility(visibilty.indusIndependent);
-        tenantPreferances.setVisibility(visibilty.tenantPrefer);
-        vegNonVegLayout.setVisibility(visibilty.vegNonVeg);
-        propertySizeLayout.setVisibility(visibilty.propertySize);
-        bhkLayout.setVisibility(visibilty.bhkLayout);
-        noOfHouse.setVisibility(visibilty.noOfHouse);
-        totalFloors.setVisibility(visibilty.totalFloor);
-        flooringLayout.setVisibility(visibilty.flooringLayout);
-        furnishedLayout.setVisibility(visibilty.furnishedLayout);
-        showRoomLayout.setVisibility(visibilty.showroomLayout);
-        farmLand.setVisibility(visibilty.farmLand);
-    }*/
 
 }

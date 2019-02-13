@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.nyxwolves.wannabuy.Fragments.MyMatchesFragment;
 import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
 import com.nyxwolves.wannabuy.R;
@@ -82,6 +83,10 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesViewHolder> impl
             matchesViewHolder.priceText.setText(jsonObject.getString("BUDGET"));
             matchesViewHolder.landSize.setText(jsonObject.getString("LAND_AREA"));
             matchesViewHolder.builtUpSize.setText(jsonObject.getString("BUILT_UP_AREA"));
+
+            //set image of property
+            String imageURL = "http://wannabuy.in/api/images/"+jsonObject.getString("IMAGE");
+            Glide.with(ctx).load(imageURL).into(matchesViewHolder.propertyImage);
 
             //for land
             if (propType.equals(ctx.getString(R.string.residential_land)) ||

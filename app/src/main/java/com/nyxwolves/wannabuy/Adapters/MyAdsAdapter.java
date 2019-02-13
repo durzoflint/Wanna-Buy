@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.nyxwolves.wannabuy.R;
 import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
 
@@ -83,6 +84,10 @@ public class MyAdsAdapter extends RecyclerView.Adapter<MyAdsViewHolder> implemen
             myAdsViewHolder.cityName.setText(jsonObject.getString("PROPERTY_LOCATION"));
             String propType = jsonObject.getString("PROPERTY_TYPE");
             myAdsViewHolder.propertyType.setText(propType);
+
+            //set image of property
+            String imageURL = "http://wannabuy.in/api/images/"+jsonObject.getString("IMAGE");
+            Glide.with(ctx).load(imageURL).into(myAdsViewHolder.propertyImage);
 
             //for land
             if (propType.equals(ctx.getString(R.string.residential_land)) ||

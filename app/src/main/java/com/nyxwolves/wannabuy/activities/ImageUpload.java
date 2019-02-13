@@ -156,9 +156,9 @@ public class ImageUpload extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PAYMENT_CODE) {
-            //if (resultCode == RESULT_OK) {
+            if (resultCode == RESULT_OK) {
                 startIntentToHome();
-            //}
+            }
         }
 
         if (requestCode == REQUEST_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {

@@ -442,4 +442,7 @@
     <string name="no_matches_found">NO_MATCH_FOUND</string>
     <string name="no_ads_found">NO_ADS_FOUND</string>
     <string name="no_req_found">NO_REQ_FOUND</string>
+
+    <string name="why_pay_text"><u>Why Pay?</u></string>
+    <string name="email_subject">Property posted on WannaBuy</string>
 </resources>

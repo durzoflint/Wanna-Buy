@@ -1,13 +1,21 @@
 package com.nyxwolves.wannabuy.activities;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -38,8 +46,11 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
     TextView rentStart, rentEnd, advanceDeposit, roi, roiIncrement, roiIncrementPeriod;
     TextView rentPerMonth, withFood, noOfRooms, personPerRoom;
     ImageView adImage;
+    Button emailBtn, callBtn,chatBtn;
 
     double latitude, longitude;
+    int PERMISSION_CALL = 1200;
+    String phoneNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +103,10 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
         workMenHostelPrice = findViewById(R.id.work_men_hostel_price_text);
         workWomenHostelPrice = findViewById(R.id.work_women_hostel_price_text);
         corpGuestPrice = findViewById(R.id.corp_price_text);
+
+        callBtn = findViewById(R.id.call_btn);
+        emailBtn = findViewById(R.id.email_btn);
+        chatBtn = findViewById(R.id.chat_btn);
 
         //api call to recieve complete info on the ad
         AdHelper helper = new AdHelper(this);
@@ -254,13 +269,58 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
                 corpGuestPrice.setText(data.getString("CORP_GUEST_PRICE"));
             }
 
+            //call btn
+            phoneNum = data.getString("PHONE_NUMBER");
+            callBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        if(ContextCompat.checkSelfPermission(AdsDetailActivity.this,Manifest.permission.CALL_PHONE)!=PackageManager.PERMISSION_GRANTED){
+                            requestPermissions(new String[]{Manifest.permission.CALL_PHONE},PERMISSION_CALL);
+                        }else{
+                            makeCall();
+                        }
+                    } else {
+                       makeCall();
+                    }
+                }
+            });
+
+            //email btn
+            final String email = data.getString("USER_ID");
+            emailBtn.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_SENDTO);
+                    intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+                    intent.putExtra(Intent.EXTRA_EMAIL, email);
+                    intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.email_subject));
+                    if (intent.resolveActivity(getPackageManager()) != null) {
+                        startActivity(intent);
+                    }
+                }
+            });
+
+            //chat button
+            chatBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(AdsDetailActivity.this,"Comming soon",Toast.LENGTH_SHORT).show();
+                }
+            });
+
         } catch (JSONException e) {
             Log.d("JSON EXCEPTION", e.toString());
         }
-
-
     }
 
+    private void makeCall(){
+        if(ContextCompat.checkSelfPermission(AdsDetailActivity.this, Manifest.permission.CALL_PHONE)==PackageManager.PERMISSION_GRANTED){
+            Intent callIntent = new Intent(Intent.ACTION_CALL);
+            callIntent.setData(Uri.parse("tel:"+phoneNum));
+            startActivity(callIntent);
+        }
+    }
     @Override
     public void isSuccess(boolean isSuccess) {
 
@@ -285,5 +345,11 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
         Glide.with(AdsDetailActivity.this).load(firstImageUrl).into(adImage);
     }
 
-
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == PERMISSION_CALL && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+            makeCall();
+        }
+    }
 }

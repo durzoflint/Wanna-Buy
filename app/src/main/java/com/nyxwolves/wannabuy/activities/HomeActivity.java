@@ -188,7 +188,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private void searchByLocation() {
         try {
             AutocompleteFilter filter = new AutocompleteFilter.Builder().setCountry("IN").build();
-            Intent locationIntent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+            Intent locationIntent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY)
                     .setFilter(filter)
                     .build(this);
             startActivityForResult(locationIntent, AUTO_COMPLETION_CODE);

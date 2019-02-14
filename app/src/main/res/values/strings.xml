@@ -417,7 +417,7 @@
     <string name="SET">SET</string>
     <string name="NOT_SET">NOT_SET</string>
 
-    <string name="max_of_five">(Maximum of 5 locations can be selected)</string>
+    <string name="max_of_five">(Minimum of 1 and Maximum of 5 locations can be selected)</string>
     <string name="wanna_rent_out">Wanna Rent out</string>
 
     <string name="buy_rent_flag">BUY_OR_RENT</string>
@@ -427,7 +427,7 @@
 
     <string name="ad_pay_title">Why Payment and Why we are special?</string>
     <string name="ad_pay_dialog_text">Your Ad will not be shown to any one but only to the correct buyer directly who chose to buy in a particular area, budget and requirements. It\'s a personalized direct matching indicator . HAPPY SELLING!</string>
-
+    <string name="req_pay_dialog_text">Your Requirement will be only shown to correct seller directly who chose to sell in a particular area, budget. It\'s a personalized direct matching indicator . HAPPY BUYING!</string>
     <string name="ad_num">ADS_NUM</string>
     <string name="submit">Make Payment</string>
 
@@ -446,4 +446,17 @@
     <string name="why_pay_text"><u>Why Pay?</u></string>
     <string name="email_subject">Property posted on WannaBuy</string>
     <string name="ref_text">(Just For Reference)</string>
+
+    <string name="individual_payment_info">WannaBuy  Pricing Launch  OFFER:
+
+                    POST 2 Requirement(Buy/Rent)(Free For Three months)
+                    POST Sale : ₹ 2999 ( For Three months )
+                    POST Rent : ₹ 999 ( For Three months )
+
+                    All the price  is valid for one post only. For Extra Ad sale Post  additional ₹2999 have to be charged for three months . For extra Rent post ₹999 have to be charged for three months.
+
+                    For Buyers/ rentals  one post is free on sale and also for rental totally 2 requirements is free for three months (The location choice is 5 locations in single post )
+                    For additional requirements Buyer has to pay for ₹4999 for three months for sale for rental ₹1999 for three months.</string>
+
+    <string name="dealer_payment_info"> )</string>
 </resources>

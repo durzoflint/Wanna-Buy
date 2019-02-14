@@ -149,6 +149,9 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View v) {
                 MessageDialog msgDialog = new MessageDialog();
+                Bundle bundle = new Bundle();
+                bundle.putInt("OPTION",MessageDialog.AD_DIALOG);
+                msgDialog.setArguments(bundle);
                 msgDialog.show(getSupportFragmentManager(), "MSG_DIALOG");
             }
         });
@@ -329,6 +332,9 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                     if(isAddressValid){
                         Log.d("REACHED", "TEST");
                         MessageDialog msgDialog = new MessageDialog();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("OPTION",MessageDialog.AD_DIALOG);
+                        msgDialog.setArguments(bundle);
                         msgDialog.show(getSupportFragmentManager(), "MSG_DIALOG");
                         UserPaymentCheck helper = new UserPaymentCheck(AdsActivity.this);
                         CallbackInterface callbackInterface = AdsActivity.this;
@@ -361,7 +367,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     private void getLocation() {
         try {
             AutocompleteFilter filter = new AutocompleteFilter.Builder().setCountry("IN").build();
-            Intent locationIntent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+            Intent locationIntent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY)
                     .setFilter(filter)
                     .build(this);
             startActivityForResult(locationIntent, LOCATION_REQUEST);

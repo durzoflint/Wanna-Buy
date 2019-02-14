@@ -126,7 +126,7 @@ public class AreaLocality extends AppCompatActivity implements View.OnClickListe
     private void getStateName(){
         try {
             AutocompleteFilter filter = new AutocompleteFilter.Builder().setTypeFilter(Place.TYPE_COUNTRY).setCountry("IN").build();
-            Intent cityIntent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+            Intent cityIntent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY)
                     .setFilter(filter)
                     .build(this);
             startActivityForResult(cityIntent, STATE_REQUEST);
@@ -140,7 +140,7 @@ public class AreaLocality extends AppCompatActivity implements View.OnClickListe
     private void getCityName(){
         try {
             AutocompleteFilter filter = new AutocompleteFilter.Builder().setCountry("IN").build();
-            Intent locationIntent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+            Intent locationIntent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY)
                     .setFilter(filter)
                     .build(this);
             startActivityForResult(locationIntent, CITY_REQUEST);
@@ -153,7 +153,7 @@ public class AreaLocality extends AppCompatActivity implements View.OnClickListe
     private void getLocationName() {
         try {
             AutocompleteFilter filter = new AutocompleteFilter.Builder().setCountry("IN").build();
-            Intent locationIntent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+            Intent locationIntent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY)
                     .setFilter(filter)
                     .build(this);
             startActivityForResult(locationIntent, LOCATION_REQUEST);

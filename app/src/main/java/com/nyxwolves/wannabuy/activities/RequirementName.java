@@ -20,7 +20,7 @@ import com.nyxwolves.wannabuy.RestApiHelper.UserPaymentCheck;
 
 import org.json.JSONObject;
 
-public class RequirementName extends AppCompatActivity implements CallbackInterface {
+public class RequirementName extends AppCompatActivity implements CallbackInterface, MessageDialog.CustomDialogListener {
 
     Button nextButton;
     EditText requirementInput;
@@ -30,7 +30,7 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
     String buyOrPostRequirement;
     String userMode; //owner or dealer
     String ownerOrDealer;
-    int buyReqNum, rentReqNum,dealerReqCredits;
+    int buyReqNum, rentReqNum, dealerReqCredits;
     boolean isDealerFree;
 
     @Override
@@ -59,10 +59,12 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
             public void onClick(View v) {
                 if (checkInput()) {
                     MessageDialog msgDialog = new MessageDialog();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("OPTION",MessageDialog.REQ_DIALOG);
+                    msgDialog.setArguments(bundle);
                     msgDialog.show(getSupportFragmentManager(), "MSG_DIALOG");
-                    fixAmount();
-                }else{
-                    Toast.makeText(RequirementName.this,"Cannot be empty",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(RequirementName.this, "Cannot be empty", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -107,25 +109,22 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
             rentReqNum = data.getInt("RENT_REQ_NUM");
             dealerReqCredits = data.getInt("DEALER_REQ_CREDITS");
 
-            if(ownerOrDealer.equals(getString(R.string.individual))){
-                if (rentReqNum == 0 && Requirements.getInstance().buyorRent.equals(getString(R.string.RENT))) {
-                    nextButton.setVisibility(View.VISIBLE);
-                    nextButton.setText(getString(R.string.free));
-                } else if (buyReqNum == 0 && Requirements.getInstance().buyorRent.equals(getString(R.string.BUY))) {
-                    nextButton.setVisibility(View.VISIBLE);
-                    nextButton.setText(getString(R.string.free));
-                }else{
+            if (ownerOrDealer.equals(getString(R.string.individual))) {
+                if (buyReqNum + rentReqNum >= 2) {
                     nextButton.setVisibility(View.VISIBLE);
                     nextButton.setText(getString(R.string.submit));
+                } else {
+                    nextButton.setVisibility(View.VISIBLE);
+                    nextButton.setText(getString(R.string.free));
                 }
-            }else{
+            } else {
                 if (rentReqNum == 0 && Requirements.getInstance().buyorRent.equals(getString(R.string.RENT))) {
                     nextButton.setVisibility(View.VISIBLE);
                     nextButton.setText(getString(R.string.submit));
                 } else if (buyReqNum == 0 && Requirements.getInstance().buyorRent.equals(getString(R.string.BUY))) {
                     nextButton.setVisibility(View.VISIBLE);
                     nextButton.setText(getString(R.string.submit));
-                }else{
+                } else {
                     nextButton.setVisibility(View.VISIBLE);
                     nextButton.setText(getString(R.string.post_now));
                 }
@@ -139,7 +138,7 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
         if (ownerOrDealer.equals(getString(R.string.individual))) {//if user is owner
             userMode = getString(R.string.individual);
             if (Requirements.getInstance().buyorRent.equals(getString(R.string.BUY))) {
-                if (buyReqNum > 0) {
+                if (buyReqNum + rentReqNum >= 2) {
                     //needs to pay
                     buyOrPostRequirement = getString(R.string.pay_buy_requirement);
                     intiatePayment(4999, getString(R.string.pay_buy_requirement));
@@ -149,7 +148,7 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
                     startIntentToHome();
                 }
             } else {
-                if (rentReqNum > 0) {
+                if (buyReqNum + rentReqNum >= 2) {
                     //needs to pay
                     buyOrPostRequirement = getString(R.string.pay_rent_requirement);
                     intiatePayment(1999, getString(R.string.pay_rent_requirement));
@@ -162,36 +161,36 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
         } else if (ownerOrDealer.equals(getString(R.string.dealer))) {//if user is dealer
             userMode = getString(R.string.dealer);
             if (Requirements.getInstance().buyorRent.equals(getString(R.string.BUY))) {
-                if (buyReqNum == 0) {
-                    if(dealerReqCredits > 0){
+                if (buyReqNum + rentReqNum >= 2) {
+                    if (dealerReqCredits > 0) {
                         //still has credits to post requirements
                         buyOrPostRequirement = getString(R.string.pay_buy_requirement);
                         startIntentToHome();
-                    }else {
+                    } else {
                         //needs to pay
-                        Log.d("TEST","REACHED");
+                        Log.d("TEST", "REACHED");
                         buyOrPostRequirement = getString(R.string.pay_buy_requirement);
                         intiatePayment(10000, getString(R.string.pay_buy_requirement));
                     }
 
-                } else if(buyReqNum == 1){
+                } else {
                     //free
                     buyOrPostRequirement = getString(R.string.pay_buy_requirement);
                     startIntentToHome();
                 }
             } else {
-                if (rentReqNum == 0) {
-                    if(dealerReqCredits > 0){
+                if (rentReqNum + buyReqNum >= 2) {
+                    if (dealerReqCredits > 0) {
                         //still has some credits to post requirements
                         buyOrPostRequirement = getString(R.string.pay_rent_requirement);
                         startIntentToHome();
-                    }else{
+                    } else {
                         //needs to pay
                         buyOrPostRequirement = getString(R.string.pay_rent_requirement);
                         intiatePayment(10000, getString(R.string.pay_rent_requirement));
                     }
 
-                } else if(rentReqNum == 1){
+                } else {
                     //free
                     buyOrPostRequirement = getString(R.string.pay_rent_requirement);
                     startIntentToHome();
@@ -217,5 +216,11 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
     @Override
     public void doesUserExits(boolean isExists) {
 
+    }
+
+    //callback from ok button in dialog box
+    @Override
+    public void onOkButtonClicked() {
+        fixAmount();
     }
 }

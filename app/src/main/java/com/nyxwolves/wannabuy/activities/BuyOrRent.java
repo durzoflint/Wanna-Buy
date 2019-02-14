@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
@@ -25,8 +26,10 @@ public class BuyOrRent extends AppCompatActivity{
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Requirements.getInstance().buyorRent != null) {
+                if(!Requirements.getInstance().buyorRent.equals("NOT_SET")) {
                     startActivity(new Intent(BuyOrRent.this, AreaLocality.class));
+                }else{
+                    Toast.makeText(BuyOrRent.this, "Select one", Toast.LENGTH_SHORT).show();
                 }
             }
         });

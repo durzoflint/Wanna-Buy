@@ -20,6 +20,8 @@ import com.google.android.gms.location.places.GeoDataClient;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
 
@@ -29,6 +31,7 @@ public class AreaLocality extends AppCompatActivity implements View.OnClickListe
     EditText areaInput,cityInput,stateInput;
     GeoDataClient geoDataClient;
     TextView locationOne, locationTwo, locationThree, locationFour, locationFive;
+    LatLng latLngBounds;
 
     final int LOCATION_REQUEST = 1200;
     final int CITY_REQUEST = 1300;
@@ -173,6 +176,7 @@ public class AreaLocality extends AppCompatActivity implements View.OnClickListe
 
         }else if(requestCode == STATE_REQUEST && resultCode == RESULT_OK){
             Place places = PlaceAutocomplete.getPlace(this,data);
+            Log.d("LAT_LONG_TEST",""+places.getLatLng());
             stateInput.setText(places.getName().toString());
             Requirements.getInstance().state = places.getName().toString();
 

@@ -4,11 +4,14 @@ import java.util.ArrayList;
 
 public class SellerAd {
 
-    public String adsLocation = "no";
-    public String adsPropertyAddress = "no";
+    public String adsArea = "no";
+    public String adsStreet = "no";
+    public String adsDoorNo = "no";
+    public String adsDistrict = "no";
+    public String adsState = "no";
+    public String adsPinCode = "no";
     public String adsPropertyType = "no";
     public String adsSubType = "no";
-    public String adsDoorNo = "no";
     public String adsSellOrRent = "no";
     public String adsFacing = "no";
     public String adsBhk = "no";

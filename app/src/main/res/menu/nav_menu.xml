@@ -24,7 +24,7 @@
 
     <item
         android:id="@+id/payment_information"
-        android:title="Payments" />
+        android:title="@string/pricing" />
 
     <item android:id="@+id/menu_how_we_work"
         android:title="@string/how_we_work"/>

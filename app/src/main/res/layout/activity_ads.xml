@@ -88,43 +88,13 @@
         </android.support.constraint.ConstraintLayout>
 
         <LinearLayout
-            android:id="@+id/area_layout"
+            android:id="@+id/address_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/area_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/montserrat_medium"
-                android:text="@string/ad_area_header" />
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/ads_area_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusableInTouchMode="false"
-                android:fontFamily="@font/montserrat_medium" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/door_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/area_layout"
-            app:layout_constraintTop_toBottomOf="@+id/area_layout">
 
             <TextView
                 android:id="@+id/door_header"
@@ -134,42 +104,87 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/montserrat_medium"
                 android:text="@string/door_number" />
-
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/ads_door_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:fontFamily="@font/montserrat_medium" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/address_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/door_layout"
-            app:layout_constraintTop_toBottomOf="@+id/door_layout">
 
             <TextView
-                android:id="@+id/address_header"
+                android:id="@+id/street_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/montserrat_medium"
-                android:text="@string/address_header_text" />
-
+                android:text="@string/street_name" />
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/ads_address_input"
+                android:id="@+id/ads_street_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:focusableInTouchMode="false"
                 android:fontFamily="@font/montserrat_medium" />
+
+            <TextView
+                android:id="@+id/area_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="@string/area_header_text" />
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/ads_area_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="false"
+                android:fontFamily="@font/montserrat_medium" />
+
+            <TextView
+                android:id="@+id/district_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="@string/district_header_text"/>
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/ads_district_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:focusableInTouchMode="false"/>
+
+            <TextView
+                android:id="@+id/state_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="@string/state_header_text"/>
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/ads_state_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:focusableInTouchMode="false"/>
+
+            <TextView
+                android:id="@+id/pincode_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="@string/pin_header_text"/>
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/ads_pincode_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:inputType="number"/>
         </LinearLayout>
 
         <android.support.constraint.ConstraintLayout

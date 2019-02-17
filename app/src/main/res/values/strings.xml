@@ -198,6 +198,7 @@
     <string name="ad_area_header">Your Area / Locality / City?</string>
     <string name="door_number">Door number</string>
     <string name="address_header_text">Address</string>
+    <string name="area_header_text">Area</string>
     <string name="ad_property_type">Type Of Property</string>
     <string name="size_header">Choose the area of the Property</string>
     <string name="yes">Yes</string>
@@ -206,7 +207,7 @@
     <string name="how_many_rooms">How Many Rooms?</string>
     <string name="sell_type_text">New or Resale?</string>
     <string name="ads_furnised_header">What type of property?</string>
-    <string name="ads_price_header">Price</string>
+    <string name="ads_price_header">Price </string>
     <string name="non_negotiable">Non Negotiable</string>
     <string name="negotiable">Negotiable</string>
     <string name="upload_property_photo">Upload\nProperty\nPhoto</string>
@@ -379,8 +380,8 @@
     <string name="start_date_text">Start Date</string>
     <string name="end_data_text">End Date</string>
     <string name="date_format">dd/mm/yyyy</string>
-    <string name="in_rupees">In Rupees</string>
-
+    <string name="in_rupees">In \u20B9</string>
+    <string name="rupee_symbol">\u20B9</string>
     <string name="preferred_tenant">Preferred Tenant</string>
     <string name="showroom_floor">Showroom Floor</string>
     <string name="ground_floor">Ground Floor</string>
@@ -445,18 +446,11 @@
 
     <string name="why_pay_text"><u>Why Pay?</u></string>
     <string name="email_subject">Property posted on WannaBuy</string>
-    <string name="ref_text">(Just For Reference)</string>
+    <string name="ref_text">(Just For Reference For eg: Chromepet House)</string>
+    <string name="pricing">Pricing</string>
+    <string name="street_name">Street</string>
+    <string name="district_header_text">District </string>
+    <string name="state_header_text">State </string>
+    <string name="pin_header_text">Pincode</string>
 
-    <string name="individual_payment_info">WannaBuy  Pricing Launch  OFFER:
-
-                    POST 2 Requirement(Buy/Rent)(Free For Three months)
-                    POST Sale : ₹ 2999 ( For Three months )
-                    POST Rent : ₹ 999 ( For Three months )
-
-                    All the price  is valid for one post only. For Extra Ad sale Post  additional ₹2999 have to be charged for three months . For extra Rent post ₹999 have to be charged for three months.
-
-                    For Buyers/ rentals  one post is free on sale and also for rental totally 2 requirements is free for three months (The location choice is 5 locations in single post )
-                    For additional requirements Buyer has to pay for ₹4999 for three months for sale for rental ₹1999 for three months.</string>
-
-    <string name="dealer_payment_info"> )</string>
 </resources>

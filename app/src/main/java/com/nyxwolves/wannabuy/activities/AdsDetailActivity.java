@@ -36,7 +36,7 @@ import org.json.JSONObject;
 
 public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCallback, CallbackInterface, ImageRecieved {
 
-    TextView addressText, bhkText, priceText, locationText, ageText;
+    TextView  bhkText, priceText, locationText, ageText, doorText, streetText, areaText, districtText, stateText;
     TextView adUserId, adDate, landArea, builtUpArea, furnishedText;
     TextView propertyType, facilitesText, approvalText, floorText;
     TextView covParking, unCovParking, isPetsAllowed, vegNonVeg;
@@ -63,7 +63,11 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
 
         //ui elements
         adImage = findViewById(R.id.ad_image_header);
-        addressText = findViewById(R.id.address_text);
+        doorText = findViewById(R.id.door_text);
+        areaText = findViewById(R.id.area_text);
+        streetText = findViewById(R.id.street_text);
+        districtText = findViewById(R.id.district_text);
+        stateText = findViewById(R.id.state_text);
         bhkText = findViewById(R.id.bhk_text);
         priceText = findViewById(R.id.price_text);
         adUserId = findViewById(R.id.ad_user_id);
@@ -137,12 +141,15 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
             mapFragment.getMapAsync(AdsDetailActivity.this);
 
             //get data from JSON object
-            addressText.setText(data.getString("PROPERTY_ADDRESS"));
+            doorText.setText(data.getString("DOOR_NO"));
+            areaText.setText(data.getString("PROPERTY_AREA"));
+            streetText.setText(data.getString("PROPERTY_STREET"));
+            districtText.setText(data.getString("PROPERTY_DISTRICT"));
+            stateText.setText(data.getString("PROPERTY_STATE"));
             bhkText.setText(data.getString("BHK"));
-            priceText.setText(data.getString("BUDGET"));
+            priceText.setText(getString(R.string.rupee_symbol)+data.getString("BUDGET"));
             adUserId.setText(data.getString("USER_ID"));
             adDate.setText(data.getString("CREATED_AT").substring(0, 10));// to eliminate the time stamp from  the server
-            locationText.setText(data.getString("PROPERTY_LOCATION"));
             ageText.setText(data.getString("AGE"));
             landArea.setText(data.getString("LAND_AREA"));
             builtUpArea.setText(data.getString("BUILT_UP_AREA"));
@@ -183,18 +190,18 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
 
 
             //car parking
-            if (data.getString("COV_CAR_PARKING").equals("YES") ||
-                    data.getString("UN_COV_CAR_PARKING").equals("YES")) {
+            if (data.getString("COV_CAR_PARKING").equals(getString(R.string.yes)) ||
+                    data.getString("UN_COV_CAR_PARKING").equals(getString(R.string.yes))) {
 
                 String covCar = "Covered Car Parking: " + data.getString("COV_CAR_PARKING_NUM");
                 String unCovCar = "Uncovered Car Parking: " + data.getString("UN_COV_CAR_PARKING_NUM");
                 covParking.setText(covCar);
                 unCovParking.setText(unCovCar);
-            } else if (data.getString("UN_COV_CAR_PARKING").equals("YES")) {
+            } else if (data.getString("UN_COV_CAR_PARKING").equals(getString(R.string.yes))) {
 
                 String unCovCar = "Uncovered Car Parking: " + data.getString("UN_COV_CAR_PARKING_NUM");
                 unCovParking.setText(unCovCar);
-            } else if (data.getString("COV_CAR_PARKING").equals("YES")) {
+            } else if (data.getString("COV_CAR_PARKING").equals(getString(R.string.yes))) {
 
                 String covCar = "Covered Car Parking: " + data.getString("COV_CAR_PARKING_NUM");
                 covParking.setText(covCar);

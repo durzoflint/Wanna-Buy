@@ -112,9 +112,11 @@ public class ImageUpload extends AppCompatActivity {
         if (individualOrDealer.equals(getString(R.string.individual))) {//if user is owner
 
             if (SellerAd.getInstance().adsSellOrRent.equals(getString(R.string.SELL))) {
-                intiatePayment(2999, getString(R.string.pay_sell_ad));
+                //intiatePayment(2999, getString(R.string.pay_sell_ad));
+                startIntentToHome();
             } else {
-                intiatePayment(999, getString(R.string.pay_rent_ad));
+                //intiatePayment(999, getString(R.string.pay_rent_ad));
+                startIntentToHome();
             }
 
         } else if (individualOrDealer.equals(getString(R.string.dealer))) {//if user is dealer
@@ -122,9 +124,11 @@ public class ImageUpload extends AppCompatActivity {
             if (adsNum == 0) {
                 //needs to pay
                 if (SellerAd.getInstance().adsSellOrRent.equals(getString(R.string.SELL))) {
-                    intiatePayment(10000, getString(R.string.pay_sell_ad));
+                    //intiatePayment(10000, getString(R.string.pay_sell_ad));
+                    startIntentToHome();
                 } else {
-                    intiatePayment(10000, getString(R.string.pay_rent_ad));
+                    //intiatePayment(10000, getString(R.string.pay_rent_ad));
+                    startIntentToHome();
                 }
             } else if (adsNum > 0) {
                 //still has credits left

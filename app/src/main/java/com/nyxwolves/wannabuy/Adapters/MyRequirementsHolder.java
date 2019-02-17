@@ -10,14 +10,17 @@ import com.nyxwolves.wannabuy.R;
 
 public class MyRequirementsHolder extends RecyclerView.ViewHolder {
 
-    TextView locationName,bhkOrLand,price;
-    ConstraintLayout rootLayout;
+    TextView reqName,propertyType,minBudget,maxBudget,minBudgetUnit,maxBudgetUnit,buyOrSell,propertyLocations;
 
     public MyRequirementsHolder(@NonNull View itemView) {
         super(itemView);
-        locationName = itemView.findViewById(R.id.location_name);
-        bhkOrLand = itemView.findViewById(R.id.bhk_or_land);
-        price = itemView.findViewById(R.id.price);
-        rootLayout = itemView.findViewById(R.id.rootLayout);
+        reqName = itemView.findViewById(R.id.req_name);
+        propertyType = itemView.findViewById(R.id.property_type_item);
+        minBudget = itemView.findViewById(R.id.min_budget_value);
+        maxBudget = itemView.findViewById(R.id.max_budget_value);
+        buyOrSell = itemView.findViewById(R.id.buy_or_rent);
+        minBudgetUnit = itemView.findViewById(R.id.min_budget_unit);
+        maxBudgetUnit = itemView.findViewById(R.id.max_budget_unit);
+        propertyLocations = itemView.findViewById(R.id.prop_location);
     }
 }

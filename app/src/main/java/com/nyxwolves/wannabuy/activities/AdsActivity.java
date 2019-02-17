@@ -1,14 +1,11 @@
 package com.nyxwolves.wannabuy.activities;
 
 import android.app.DatePickerDialog;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.location.Address;
 import android.location.Geocoder;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TextInputEditText;
@@ -52,16 +49,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 public class AdsActivity extends AppCompatActivity implements View.OnClickListener,
         DatePickerDialog.OnDateSetListener, CallbackInterface, AdInterface, MessageDialog.CustomDialogListener {
 
-    TextInputEditText cityInput, doorNumberInput, addressInput;
+    TextInputEditText doorNumberInput, streetInput, areaInput, districtInput, stateInput, pincodeInput;
     EditText flooringInput, bhkInput, noOfHouseInput, totalFloorsInput;
     EditText landAreaInput, builtUpArea, budgetInput, rentalIncrementalInput, roiInput, leaseStartInput, leaseEndInput, advanceInput, incrementCustomInput;
-    Button picUploadBtn, paymentBtn;
-    CircleImageView propertyPic;
+    Button paymentBtn;
     CheckBox covCarParking, unCovParking;
     NumberPicker covPicker, unCovPicker;
     RadioGroup resiSub, commSub, insSub, indusSub, pgRentSub, farmLandGroup;
@@ -79,19 +73,19 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     SeekBar roadWidth;
     TextView roadSelectedWidth, adsBudgetHeader;
     ImageView startIcon, endIcon;
-    ProgressDialog progressDialog;
     TextView whyPayText;
 
-    final int IMAGE_REQ = 1002;
-    final int LOCATION_REQUEST = 1003;
-    final int PAYMENT_CODE = 1002;
+    final int LOCATION_STREET_REQUEST = 1003;
+    final int LOCATION_AREA_REQUEST = 1004;
+    final int LOCATION_DISTRICT_REQUEST = 1005;
+    final int LOCATION_STATE_REQUEST = 1006;
+
     int roadWidthInt;
     boolean isBuiltUpVisible = false;
     boolean isLandAreaVisible = false;
     boolean isRentalIncome = false;
     boolean isStartDate = true;
     boolean isAddressValid = false;
-    String userMode;
     String ownerOrDealer, adsNum,adId;
 
     @Override
@@ -295,11 +289,17 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
 
         pgRentLayout = findViewById(R.id.pg_rent_layout);
 
-        cityInput = findViewById(R.id.ads_area_input);
-        cityInput.setOnClickListener(this);
-
+        //address
         doorNumberInput = findViewById(R.id.ads_door_input);
-        addressInput = findViewById(R.id.ads_address_input);
+        streetInput = findViewById(R.id.ads_street_input);
+        streetInput.setOnClickListener(this);
+        areaInput = findViewById(R.id.ads_area_input);
+        areaInput.setOnClickListener(this);
+        districtInput = findViewById(R.id.ads_district_input);
+        districtInput.setOnClickListener(this);
+        stateInput = findViewById(R.id.ads_state_input);
+        stateInput.setOnClickListener(this);
+        pincodeInput = findViewById(R.id.ads_pincode_input);
 
         paymentBtn = findViewById(R.id.next_btn);
         paymentBtn.setOnClickListener(this);
@@ -347,7 +347,16 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 }
                 break;
             case R.id.ads_area_input:
-                getLocation();
+                getArea(LOCATION_AREA_REQUEST);
+                break;
+            case R.id.ads_street_input:
+                getArea(LOCATION_STREET_REQUEST);
+                break;
+            case R.id.ads_state_input:
+                getArea(LOCATION_STATE_REQUEST);
+                break;
+            case R.id.ads_district_input:
+                getArea(LOCATION_DISTRICT_REQUEST);
                 break;
         }
     }
@@ -364,13 +373,13 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         }
     }
 
-    private void getLocation() {
+    private void getArea(int option) {
         try {
             AutocompleteFilter filter = new AutocompleteFilter.Builder().setCountry("IN").build();
             Intent locationIntent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY)
                     .setFilter(filter)
                     .build(this);
-            startActivityForResult(locationIntent, LOCATION_REQUEST);
+            startActivityForResult(locationIntent, option);
         } catch (GooglePlayServicesNotAvailableException e) {
             Toast.makeText(this, "Google Play Services missing", Toast.LENGTH_SHORT).show();
         } catch (GooglePlayServicesRepairableException e) {
@@ -379,16 +388,22 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     private boolean checkCommonField() {
-        if (addressInput.getText().toString().length() > 0 &&
-                cityInput.getText().toString().length() > 0 &&
-                doorNumberInput.getText().toString().length() > 0 &&
+        if (areaInput.getText().toString().trim().length() > 0 &&
+                streetInput.getText().toString().trim().length() > 0&&
+                stateInput.getText().toString().trim().length() > 0&&
+                pincodeInput.getText().toString().trim().length() > 0&&
+                districtInput.getText().toString().trim().length() > 0 &&
+                doorNumberInput.getText().toString().trim().length() > 0 &&
                 checkBudget()) {
 
-            SellerAd.getInstance().adsPropertyAddress = addressInput.getText().toString().trim();
-            SellerAd.getInstance().adsLocation = cityInput.getText().toString().trim();
             SellerAd.getInstance().adsDoorNo = doorNumberInput.getText().toString().trim();
+            SellerAd.getInstance().adsStreet = streetInput.getText().toString();
+            SellerAd.getInstance().adsArea = areaInput.getText().toString().trim();
+            SellerAd.getInstance().adsDistrict = districtInput.getText().toString();
+            SellerAd.getInstance().adsState = stateInput.getText().toString();
+            SellerAd.getInstance().adsPinCode = pincodeInput.getText().toString();
             SellerAd.getInstance().adsBudget = budgetInput.getText().toString().trim();
-            addressToLatLong(addressInput.getText().toString().trim());
+            addressToLatLong(streetInput.getText().toString().trim());
             return true;
         } else {
             return false;
@@ -1057,15 +1072,6 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         }
     }
 
-
-    private void chooseImage() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), IMAGE_REQ);
-    }
-
     private String setData(CheckBox checkBox) {
         if (checkBox.isChecked()) {
             return getString(R.string.yes);
@@ -1194,39 +1200,26 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == IMAGE_REQ && resultCode == RESULT_OK && data != null) {
-            if (data.getData() != null) {//for single image
-                Uri uri = data.getData();
-                try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                    processImage(bitmap);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } else if (data.getClipData() != null) {//for multiple images
 
-                int numOfImages = data.getClipData().getItemCount();
-                for (int i = 0; i < numOfImages; i++) {
-                    Uri uri = data.getClipData().getItemAt(i).getUri();
-                    try {
-                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                        processImage(bitmap);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-
-        } else if (requestCode == LOCATION_REQUEST && resultCode == RESULT_OK) {
+         if (requestCode == LOCATION_STREET_REQUEST && resultCode == RESULT_OK) {
             Place place = PlaceAutocomplete.getPlace(AdsActivity.this, data);
+            streetInput.setText(place.getName().toString());
 
-            SellerAd.getInstance().adsLocation = place.getName().toString();
-            SellerAd.getInstance().locationLatitude = Double.toString(place.getLatLng().latitude);
-            SellerAd.getInstance().locationLongitude = Double.toString(place.getLatLng().longitude);
+        }else if (requestCode == LOCATION_AREA_REQUEST && resultCode == RESULT_OK) {
+             Place place = PlaceAutocomplete.getPlace(AdsActivity.this, data);
+             SellerAd.getInstance().adsArea = place.getName().toString();
+             SellerAd.getInstance().locationLatitude = Double.toString(place.getLatLng().latitude);
+             SellerAd.getInstance().locationLongitude = Double.toString(place.getLatLng().longitude);
+             areaInput.setText(place.getName().toString());
 
-            cityInput.setText(place.getName().toString());
-        }
+         }else if (requestCode == LOCATION_DISTRICT_REQUEST && resultCode == RESULT_OK) {
+            Place place = PlaceAutocomplete.getPlace(AdsActivity.this, data);
+            districtInput.setText(place.getName().toString());
+
+        }else if(requestCode == LOCATION_STATE_REQUEST && resultCode == RESULT_OK){
+             Place place = PlaceAutocomplete.getPlace(AdsActivity.this, data);
+             stateInput.setText(place.getName().toString());
+         }
     }
 
     @Override
@@ -1253,15 +1246,6 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
 
     }
 
-    private void processImage(Bitmap bitmap) {
-        ByteArrayOutputStream byteArrayOutputStreamObject;
-        byteArrayOutputStreamObject = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 1, byteArrayOutputStreamObject);
-        byte[] byteArrayVar = byteArrayOutputStreamObject.toByteArray();
-        final String convertedImage = Base64.encodeToString(byteArrayVar, Base64.DEFAULT);
-        //SellerAd.getInstance().imageList.add(ConvertImage);
-        SellerAd.getInstance().singleImage = convertedImage;
-    }
 
     //callback if ad is posted successfully
     @Override

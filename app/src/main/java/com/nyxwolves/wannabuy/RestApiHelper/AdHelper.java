@@ -1,11 +1,9 @@
 package com.nyxwolves.wannabuy.RestApiHelper;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -16,16 +14,10 @@ import com.nyxwolves.wannabuy.Interfaces.AdInterface;
 import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
 import com.nyxwolves.wannabuy.Interfaces.ImageRecieved;
 import com.nyxwolves.wannabuy.POJO.SellerAd;
-import com.nyxwolves.wannabuy.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class AdHelper implements CallbackInterface {
 
@@ -53,6 +45,7 @@ public class AdHelper implements CallbackInterface {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Log.d("AD_ERROR",error.toString());
                 callback.adCreated(false, null);
                 Toast.makeText(ctx, "Error Occurred", Toast.LENGTH_SHORT).show();
             }
@@ -65,9 +58,12 @@ public class AdHelper implements CallbackInterface {
         try {
             createParams.put("USER_ID", FirebaseAuth.getInstance().getCurrentUser().getEmail());
             createParams.put("DOOR_NO", SellerAd.getInstance().adsDoorNo);
-            createParams.put("PROPERTY_LOCATION", SellerAd.getInstance().adsLocation);
+            createParams.put("PROPERTY_STREET", SellerAd.getInstance().adsStreet);
+            createParams.put("PROPERTY_AREA", SellerAd.getInstance().adsArea);
+            createParams.put("PROPERTY_DISTRICT", SellerAd.getInstance().adsDistrict);
+            createParams.put("PROPERTY_STATE", SellerAd.getInstance().adsState);
+            createParams.put("PINCODE",SellerAd.getInstance().adsPinCode);
             createParams.put("PROPERTY_TYPE", SellerAd.getInstance().adsPropertyType);
-            createParams.put("PROPERTY_ADDRESS", SellerAd.getInstance().adsPropertyAddress);
             createParams.put("LAND_AREA", SellerAd.getInstance().adsLandArea);
             createParams.put("BUILT_UP_AREA", SellerAd.getInstance().adsBuiltUpArea);
             createParams.put("AGE", SellerAd.getInstance().adsAge);

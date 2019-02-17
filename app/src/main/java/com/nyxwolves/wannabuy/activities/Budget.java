@@ -124,7 +124,7 @@ public class Budget extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 minBudgetSeekBar.setProgress(0);
                 minUnit = parent.getSelectedItem().toString();
-                if(minUnit.equals("Lakhs")){
+                if (minUnit.equals("Lakhs")) {
                     minBudgetSeekBar.setMax(101);
                 }
                 String minDisplayText = "0 " + parent.getSelectedItem();
@@ -167,7 +167,7 @@ public class Budget extends AppCompatActivity {
                     if (maxUnit.equals(maxNextUnit)) {
                         maxSelectedPrice.setText(String.valueOf(progress - 1) + "+ " + maxNextUnit);
                     } else {
-                        maxSelectedPrice.setText(String.valueOf(progress/100) + "+ " + maxNextUnit);
+                        maxSelectedPrice.setText(String.valueOf(progress / 100) + "+ " + maxNextUnit);
                     }
                 } else {
                     if (maxUnit != null) {
@@ -176,6 +176,7 @@ public class Budget extends AppCompatActivity {
                 }
 
             }
+
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
 
@@ -195,7 +196,7 @@ public class Budget extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 maxBudgetSeekBar.setProgress(0);
                 maxUnit = parent.getSelectedItem().toString();
-                if(maxUnit.equals("Lakhs")){
+                if (maxUnit.equals("Lakhs")) {
                     maxBudgetSeekBar.setMax(101);
                 }
                 String minDisplayText = "0 " + parent.getSelectedItem();
@@ -232,27 +233,13 @@ public class Budget extends AppCompatActivity {
                         Requirements.getInstance().maxBudget = String.valueOf(maxBudget);
                         Requirements.getInstance().minBudgetUnit = minUnit;
                         Requirements.getInstance().maxBudgetUnit = maxUnit;
-                        if (Requirements.getInstance().subType.equals(getString(R.string.residential_independent)) ||
-                                Requirements.getInstance().subType.equals(getString(R.string.commercial_floorspace)) ||
-                                Requirements.getInstance().subType.equals(getString(R.string.commercial_independent)) ||
-                                Requirements.getInstance().subType.equals(getString(R.string.factory)) ||
-                                Requirements.getInstance().subType.equals(getString(R.string.cold_storage)) ||
-                                Requirements.getInstance().subType.equals(getString(R.string.warehouse)) ||
-                                Requirements.getInstance().subType.equals(getString(R.string.institutional_building)) ||
-                                Requirements.getInstance().subType.equals(getString(R.string.pg_rent_independent)) ||
-                                Requirements.getInstance().rentalResi.equals(getString(R.string.yes)) ||
-                                Requirements.getInstance().rentalComm.equals(getString(R.string.yes)) ||
-                                Requirements.getInstance().rentalIns.equals(getString(R.string.yes)) ||
-                                Requirements.getInstance().rentalIndus.equals(getString(R.string.yes)) ||
-                                Requirements.getInstance().rentalPgApartments.equals(getString(R.string.yes))) {
-                            startActivity(new Intent(Budget.this, FurnishedOrNot.class));
 
-                        } else if (Requirements.getInstance().subType.equals(getString(R.string.residential_apartments)) ||
+                        if (Requirements.getInstance().subType.equals(getString(R.string.residential_apartments)) ||
                                 Requirements.getInstance().subType.equals(getString(R.string.pg_rent_apartment))) {
                             startActivity(new Intent(Budget.this, Bhk.class));
 
-                        }else if(Requirements.getInstance().subType.equals(getString(R.string.industrial_floorspace))){
-                            startActivity(new Intent(Budget.this,FlooringActivity.class));
+                        } else if (Requirements.getInstance().subType.equals(getString(R.string.industrial_floorspace))) {
+                            startActivity(new Intent(Budget.this, FlooringActivity.class));
 
                         } else if (Requirements.getInstance().subType.equals(getString(R.string.residential_land)) ||
                                 Requirements.getInstance().subType.equals(getString(R.string.commercial_land)) ||
@@ -260,6 +247,8 @@ public class Budget extends AppCompatActivity {
                                 Requirements.getInstance().subType.equals(getString(R.string.institutional_land)) ||
                                 Requirements.getInstance().subType.equals(getString(R.string.farm_land))) {
                             startActivity(new Intent(Budget.this, PropertySize.class));
+                        } else {
+                            startActivity(new Intent(Budget.this, FurnishedOrNot.class));
                         }
                     }
                 } else {
@@ -269,60 +258,61 @@ public class Budget extends AppCompatActivity {
         });
     }
 
-    private boolean checkPrice(){
-        if(Requirements.getInstance().buyorRent.equals(getString(R.string.BUY))){
-            if(minUnit.equals("Crores") && maxUnit.equals("Crores")){
-                if(minBudget <= maxBudget){
+    private boolean checkPrice() {
+        if (Requirements.getInstance().buyorRent.equals(getString(R.string.BUY))) {
+            if (minUnit.equals("Crores") && maxUnit.equals("Crores")) {
+                if (minBudget <= maxBudget) {
                     return true;
-                }else{
+                } else {
                     return false;
                 }
-            }else if(minUnit.equals("Lakhs") && maxUnit.equals("Crores")){
-                if(maxBudget > 0){
+            } else if (minUnit.equals("Lakhs") && maxUnit.equals("Crores")) {
+                if (maxBudget > 0) {
                     return true;
-                }else{
+                } else {
                     return false;
                 }
-            }else if(minUnit.equals("Lakhs") && maxUnit.equals("Lakhs")){
-                if(maxBudget >0 && minBudget < maxBudget){
+            } else if (minUnit.equals("Lakhs") && maxUnit.equals("Lakhs")) {
+                if (maxBudget > 0 && minBudget < maxBudget) {
                     return true;
-                }else{
+                } else {
                     return false;
                 }
-            }else{
+            } else {
                 return false;
             }
-        }else{
-            if(minUnit.equals("Lakhs") && maxUnit.equals("Lakhs")){
-                if(minBudget <= maxBudget){
+        } else {
+            if (minUnit.equals("Lakhs") && maxUnit.equals("Lakhs")) {
+                if (minBudget <= maxBudget) {
                     return true;
-                }else{
+                } else {
                     return false;
                 }
-            }else if(minUnit.equals("Thousands") && maxUnit.equals("Lakhs")){
-                if(maxBudget > 0){
+            } else if (minUnit.equals("Thousands") && maxUnit.equals("Lakhs")) {
+                if (maxBudget > 0) {
                     return true;
-                }else{
+                } else {
                     return false;
                 }
-            }else if(minUnit.equals("Thousands") && maxUnit.equals("Thousands")){
-                if(maxBudget >0 && maxBudget > minBudget){
+            } else if (minUnit.equals("Thousands") && maxUnit.equals("Thousands")) {
+                if (maxBudget > 0 && maxBudget > minBudget) {
                     return true;
-                }else{
+                } else {
                     return false;
                 }
-            }else if(minUnit.equals("Lakhs") && maxUnit.equals("Lakhs")){
-                if(maxBudget >0 && maxBudget > minBudget){
+            } else if (minUnit.equals("Lakhs") && maxUnit.equals("Lakhs")) {
+                if (maxBudget > 0 && maxBudget > minBudget) {
                     return true;
-                }else{
+                } else {
                     return false;
                 }
-            }else{
+            } else {
                 return false;
             }
         }
 
     }
+
     public void onRadioButtonClicked(View v) {
         switch (v.getId()) {
             case R.id.min_greater_yes:

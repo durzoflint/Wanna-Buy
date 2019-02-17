@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.nyxwolves.wannabuy.Adapters.MyRequirementsAdapter;
 import com.nyxwolves.wannabuy.Adapters.RequirementSearchAdapter;
 import com.nyxwolves.wannabuy.R;
 import com.nyxwolves.wannabuy.activities.BuyOrRent;
@@ -24,7 +25,7 @@ public class MyRequirementsFragment extends Fragment {
     CardView firstReqCard;
 
 
-    RequirementSearchAdapter adapter;
+    MyRequirementsAdapter adapter;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -41,7 +42,7 @@ public class MyRequirementsFragment extends Fragment {
 
         //recycler list
         myRequirementsList = view.findViewById(R.id.my_requirements_list);
-        adapter = new RequirementSearchAdapter(getActivity(),firstReqCard);
+        adapter = new MyRequirementsAdapter(getActivity(),firstReqCard);
         myRequirementsList.setLayoutManager(new LinearLayoutManager(getActivity()));
         myRequirementsList.setAdapter(adapter);
 

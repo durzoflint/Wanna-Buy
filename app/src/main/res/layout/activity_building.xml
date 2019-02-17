@@ -381,22 +381,24 @@
             android:layout_height="match_parent"
             android:fillViewport="true">
 
-            <LinearLayout
+            <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <CheckBox
+                <RadioButton
                     android:id="@+id/rental_resi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:fontFamily="@font/montserrat_medium"
-                    android:onClick="onCheckBoxClicked"
+                    android:button="@drawable/custom_radio_button"
                     android:padding="5dp"
+                    android:textSize="15sp"
+                    android:onClick="onRadioButtonClicked"
                     android:text="@string/residential" />
 
-                <LinearLayout
+                <RadioGroup
                     android:id="@+id/rental_resi_sub_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -406,34 +408,44 @@
                     android:orientation="vertical"
                     android:visibility="gone">
 
-                    <CheckBox
+                    <RadioButton
                         android:id="@+id/rental_resi_independent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:button="@drawable/custom_radio_button"
                         android:padding="5dp"
-                        android:text="@string/independent" />
+                        android:textSize="15sp"
+                        android:text="@string/independent"
+                        android:onClick="onRadioButtonClicked"/>
 
-                    <CheckBox
+                    <RadioButton
                         android:id="@+id/rental_resi_apartments"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:button="@drawable/custom_radio_button"
                         android:padding="5dp"
-                        android:text="@string/apartments" />
-                </LinearLayout><!-- RENTAL RESI SUB GROUP-->
+                        android:textSize="15sp"
+                        android:text="@string/apartments"
+                        android:onClick="onRadioButtonClicked"/>
+                </RadioGroup><!-- RENTAL RESI SUB GROUP-->
 
-                <CheckBox
+                <RadioButton
                     android:id="@+id/rental_comm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:onClick="onRadioButtonClicked"
                     android:fontFamily="@font/montserrat_medium"
-                    android:onClick="onCheckBoxClicked"
+                    android:button="@drawable/custom_radio_button"
                     android:padding="5dp"
+                    android:textSize="15sp"
                     android:text="@string/commercial" />
 
-                <LinearLayout
+                <RadioGroup
                     android:id="@+id/rental_comm_sub_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -443,34 +455,44 @@
                     android:orientation="vertical"
                     android:visibility="gone">
 
-                    <CheckBox
+                    <RadioButton
                         android:id="@+id/rental_comm_independent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:button="@drawable/custom_radio_button"
                         android:padding="5dp"
-                        android:text="@string/independent" />
+                        android:textSize="15sp"
+                        android:text="@string/independent"
+                        android:onClick="onRadioButtonClicked"/>
 
-                    <CheckBox
+                    <RadioButton
                         android:id="@+id/rental_comm_floorspace"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:button="@drawable/custom_radio_button"
                         android:padding="5dp"
-                        android:text="@string/floorspace" />
-                </LinearLayout><!--RENTAL COMM SUBGROUP-->
+                        android:textSize="15sp"
+                        android:text="@string/floorspace"
+                        android:onClick="onRadioButtonClicked"/>
+                </RadioGroup><!--RENTAL COMM SUBGROUP-->
 
-                <CheckBox
+                <RadioButton
                     android:id="@+id/rental_ins"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:onClick="onRadioButtonClicked"
                     android:fontFamily="@font/montserrat_medium"
-                    android:onClick="onCheckBoxClicked"
+                    android:button="@drawable/custom_radio_button"
                     android:padding="5dp"
+                    android:textSize="15sp"
                     android:text="@string/institutional" />
 
-                <LinearLayout
+                <RadioGroup
                     android:id="@+id/rental_ins_sub_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -480,42 +502,56 @@
                     android:orientation="vertical"
                     android:visibility="gone">
 
-                    <CheckBox
+                    <RadioButton
                         android:id="@+id/rental_school"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:button="@drawable/custom_radio_button"
                         android:padding="5dp"
-                        android:text="@string/school" />
+                        android:textSize="15sp"
+                        android:text="@string/school"
+                        android:onClick="onRadioButtonClicked"/>
 
-                    <CheckBox
+                    <RadioButton
                         android:id="@+id/rental_hospital"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:button="@drawable/custom_radio_button"
                         android:padding="5dp"
-                        android:text="@string/hospital" />
+                        android:textSize="15sp"
+                        android:text="@string/hospital"
+                        android:onClick="onRadioButtonClicked"/>
 
-                    <CheckBox
+                    <RadioButton
                         android:id="@+id/rental_college"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:button="@drawable/custom_radio_button"
                         android:padding="5dp"
-                        android:text="@string/college" />
-                </LinearLayout><!--RENTAL INSTITUTIONAL SUB GROUP-->
+                        android:textSize="15sp"
+                        android:text="@string/college"
+                        android:onClick="onRadioButtonClicked"/>
+                </RadioGroup><!--RENTAL INSTITUTIONAL SUB GROUP-->
 
-                <CheckBox
+                <RadioButton
                     android:id="@+id/rental_indus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:onClick="onRadioButtonClicked"
                     android:fontFamily="@font/montserrat_medium"
-                    android:onClick="onCheckBoxClicked"
+                    android:button="@drawable/custom_radio_button"
                     android:padding="5dp"
+                    android:textSize="15sp"
                     android:text="@string/industrial" />
 
-                <LinearLayout
+                <RadioGroup
                     android:id="@+id/rental_indus_sub_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -525,44 +561,56 @@
                     android:orientation="vertical"
                     android:visibility="gone">
 
-                    <CheckBox
+                    <RadioButton
                         android:id="@+id/rental_indus_independent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:button="@drawable/custom_radio_button"
                         android:padding="5dp"
-                        android:text="@string/independent" />
+                        android:textSize="15sp"
+                        android:text="@string/independent"
+                        android:onClick="onRadioButtonClicked"/>
 
-                    <CheckBox
+                    <RadioButton
                         android:id="@+id/rental_indus_floorspace"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:button="@drawable/custom_radio_button"
                         android:padding="5dp"
-                        android:text="@string/floorspace" />
-                </LinearLayout><!--RENTAL INDUSTRIAL SUB GROUP-->
+                        android:textSize="15sp"
+                        android:text="@string/floorspace"
+                        android:onClick="onRadioButtonClicked"/>
+                </RadioGroup><!--RENTAL INDUSTRIAL SUB GROUP-->
 
-                <CheckBox
+                <RadioButton
                     android:id="@+id/rental_farm_land"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:onClick="onRadioButtonClicked"
                     android:fontFamily="@font/montserrat_medium"
-                    android:onClick="onCheckBoxClicked"
+                    android:button="@drawable/custom_radio_button"
                     android:padding="5dp"
+                    android:textSize="15sp"
                     android:text="@string/farm_land" />
 
-                <CheckBox
+                <RadioButton
                     android:id="@+id/rental_pg_rent_service_apartment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:onClick="onRadioButtonClicked"
                     android:fontFamily="@font/montserrat_medium"
-                    android:onClick="onCheckBoxClicked"
+                    android:button="@drawable/custom_radio_button"
                     android:padding="5dp"
+                    android:textSize="15sp"
                     android:text="@string/pg_rent_service_aparments" />
 
-                <LinearLayout
+                <RadioGroup
                     android:id="@+id/rental_pg_apartments_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -572,23 +620,31 @@
                     android:orientation="vertical"
                     android:visibility="gone">
 
-                    <CheckBox
+                    <RadioButton
                         android:id="@+id/rental_pg_independent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:button="@drawable/custom_radio_button"
                         android:padding="5dp"
+                        android:textSize="15sp"
+                        android:onClick="onRadioButtonClicked"
                         android:text="@string/independent" />
 
-                    <CheckBox
+                    <RadioButton
                         android:id="@+id/rental_pg_apartments"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:button="@drawable/custom_radio_button"
                         android:padding="5dp"
+                        android:textSize="15sp"
+                        android:onClick="onRadioButtonClicked"
                         android:text="@string/apartments" />
-                </LinearLayout><!-- RENTAL PGSUB GROUP-->
-            </LinearLayout>
+                </RadioGroup><!-- RENTAL PGSUB GROUP-->
+            </RadioGroup>
         </ScrollView>
     </LinearLayout>
 

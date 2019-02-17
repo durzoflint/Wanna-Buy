@@ -16,7 +16,7 @@ public class SplashScreen extends AppCompatActivity {
 
     ImageView splashImage;
     final int TIME_DELAY = 2000;
-    SharedPreferences sharedPreferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,6 @@ public class SplashScreen extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        sharedPreferences = getSharedPreferences(getString(R.string.shared_pref), Context.MODE_PRIVATE);
         splashImage = findViewById(R.id.splash_image);
     }
 
@@ -38,14 +37,8 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-                    String userMode = sharedPreferences.getString(getString(R.string.user_mode),"NOT_SET");
 
-                    if(userMode.equals(getString(R.string.individual)) || userMode.equals(getString(R.string.dealer))){
-                        startActivity(new Intent(SplashScreen.this, HomeActivity.class));
-                    }else{
-                        startActivity(new Intent(SplashScreen.this,OwnerOrDealer.class));
-                    }
-
+                    startActivity(new Intent(SplashScreen.this, HomeActivity.class));
                 } else {
                     startActivity(new Intent(SplashScreen.this, LoginActivity.class));
                 }

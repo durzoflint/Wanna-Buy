@@ -21,11 +21,12 @@ public class Building extends Activity {
     Button nextBtn;
     CheckBox factoryBtn,wareHouseBtn,coldStorageBtn,doNotDeviateShowRoom,groundFloorShowroom;
     RadioButton schoolBtn,collegeBtn,hospitalBtn;
-    RadioGroup resiGroup,commGroup,indusGroup,instiGroup,indusIndependentSub;
+    LinearLayout resiGroup,commGroup,indusGroup,instiGroup,indusIndependentSub;
     LinearLayout rentalGroup;
-    LinearLayout rentalResiSub,rentalCommSub,rentalIndusSub,rentalInsSub,rentalPgSub;
+    RadioGroup rentalResiSub,rentalCommSub,rentalIndusSub,rentalInsSub,rentalPgSub;
     ConstraintLayout farmLandLayout;
     CheckBox showRoom;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -198,45 +199,92 @@ public class Building extends Activity {
             case R.id.ins_hospital:
                 Requirements.getInstance().subType =  getString(R.string.hospital);
                 break;
-        }
-    }
-
-    private String setData(CheckBox checkBox,LinearLayout layout){
-        if(checkBox.isChecked()){
-            layout.setVisibility(View.VISIBLE);
-            return getString(R.string.yes);
-        }else{
-            layout.setVisibility(View.GONE);
-            return getString(R.string.no);
-        }
-    }
-
-    public void onCheckBoxClicked(View v){
-        switch(v.getId()){
             case R.id.rental_resi:
-                Requirements.getInstance().rentalResi = setData(((CheckBox)v),rentalResiSub);
+                rentalResiSub.setVisibility(View.VISIBLE);
+                rentalCommSub.setVisibility(View.GONE);
+                rentalIndusSub.setVisibility(View.GONE);
+                rentalInsSub.setVisibility(View.GONE);
+                rentalPgSub.setVisibility(View.GONE);
                 break;
             case R.id.rental_comm:
-                Requirements.getInstance().rentalComm = setData(((CheckBox)v),rentalCommSub);
+                rentalResiSub.setVisibility(View.GONE);
+                rentalCommSub.setVisibility(View.VISIBLE);
+                rentalIndusSub.setVisibility(View.GONE);
+                rentalInsSub.setVisibility(View.GONE);
+                rentalPgSub.setVisibility(View.GONE);
                 break;
             case R.id.rental_ins:
-                Requirements.getInstance().rentalIns = setData(((CheckBox)v),rentalInsSub);
+                rentalResiSub.setVisibility(View.GONE);
+                rentalCommSub.setVisibility(View.GONE);
+                rentalIndusSub.setVisibility(View.GONE);
+                rentalInsSub.setVisibility(View.VISIBLE);
+                rentalPgSub.setVisibility(View.GONE);
                 break;
             case R.id.rental_indus:
-                Requirements.getInstance().rentalIndus = setData(((CheckBox)v),rentalIndusSub);
+                rentalResiSub.setVisibility(View.GONE);
+                rentalCommSub.setVisibility(View.GONE);
+                rentalIndusSub.setVisibility(View.VISIBLE);
+                rentalInsSub.setVisibility(View.GONE);
+                rentalPgSub.setVisibility(View.GONE);
                 break;
             case R.id.rental_farm_land:
-                if(((CheckBox)v).isChecked()){
-                    Requirements.getInstance().rentalFarmLand = getString(R.string.yes);
-                }else{
-                    Requirements.getInstance().rentalFarmLand = getString(R.string.no);
-                }
+                Requirements.getInstance().subType = getString(R.string.rental_farm_land);
+                rentalResiSub.setVisibility(View.GONE);
+                rentalCommSub.setVisibility(View.GONE);
+                rentalIndusSub.setVisibility(View.GONE);
+                rentalInsSub.setVisibility(View.GONE);
+                rentalPgSub.setVisibility(View.GONE);
                 break;
             case R.id.rental_pg_rent_service_apartment:
-                Requirements.getInstance().rentalPgApartments = setData(((CheckBox)v),rentalPgSub);
+                rentalResiSub.setVisibility(View.GONE);
+                rentalCommSub.setVisibility(View.GONE);
+                rentalIndusSub.setVisibility(View.GONE);
+                rentalInsSub.setVisibility(View.GONE);
+                rentalPgSub.setVisibility(View.VISIBLE);
+                break;
+            case R.id.rental_resi_independent:
+                if(((RadioButton)v).isChecked()){
+
+                }else{
+
+                }
+                Requirements.getInstance().subType = getString(R.string.rental_residential_independent);
+                break;
+            case R.id.rental_resi_apartments:
+                Requirements.getInstance().subType = getString(R.string.rental_residential_apartments);
+                break;
+            case R.id.rental_comm_independent:
+                Requirements.getInstance().subType = getString(R.string.rental_commercial_independent);
+                break;
+            case R.id.rental_comm_floorspace:
+                Requirements.getInstance().subType = getString(R.string.rental_commercial_independent);
+                break;
+            case R.id.rental_school:
+                Requirements.getInstance().subType  = getString(R.string.rental_school);
+                break;
+            case R.id.rental_college:
+                Requirements.getInstance().subType = getString(R.string.rental_college);
+                break;
+            case R.id.rental_hospital:
+                Requirements.getInstance().subType = getString(R.string.rental_hospital);
+                break;
+            case R.id.rental_indus_independent:
+                Requirements.getInstance().subType = getString(R.string.rental_industrial_independent);
+                break;
+            case R.id.rental_indus_floorspace:
+                Requirements.getInstance().subType = getString(R.string.rental_industrial_floorspace);
+                break;
+            case R.id.rental_pg_independent:
+                Requirements.getInstance().subType = getString(R.string.rental_pg_independent);
+                break;
+            case R.id.rental_pg_apartments:
+                Requirements.getInstance().subType = getString(R.string.rental_pg_apartments);
                 break;
         }
     }
+
+
+
 
     @Override
     public void onBackPressed() {

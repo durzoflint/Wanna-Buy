@@ -60,7 +60,7 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
                 if (checkInput()) {
                     MessageDialog msgDialog = new MessageDialog();
                     Bundle bundle = new Bundle();
-                    bundle.putInt("OPTION",MessageDialog.REQ_DIALOG);
+                    bundle.putInt("OPTION", MessageDialog.REQ_DIALOG);
                     msgDialog.setArguments(bundle);
                     msgDialog.show(getSupportFragmentManager(), "MSG_DIALOG");
                 } else {
@@ -112,21 +112,21 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
             if (ownerOrDealer.equals(getString(R.string.individual))) {
                 if (buyReqNum + rentReqNum >= 2) {
                     nextButton.setVisibility(View.VISIBLE);
-                    nextButton.setText(getString(R.string.submit));
+                    //nextButton.setText(getString(R.string.submit));
+                    nextButton.setText(getString(R.string.free));
                 } else {
                     nextButton.setVisibility(View.VISIBLE);
                     nextButton.setText(getString(R.string.free));
                 }
             } else {
-                if (rentReqNum == 0 && Requirements.getInstance().buyorRent.equals(getString(R.string.RENT))) {
+                if (rentReqNum+buyReqNum == 0) {
                     nextButton.setVisibility(View.VISIBLE);
-                    nextButton.setText(getString(R.string.submit));
-                } else if (buyReqNum == 0 && Requirements.getInstance().buyorRent.equals(getString(R.string.BUY))) {
-                    nextButton.setVisibility(View.VISIBLE);
-                    nextButton.setText(getString(R.string.submit));
+                    //nextButton.setText(getString(R.string.submit));
+                    nextButton.setText(getString(R.string.free));
                 } else {
                     nextButton.setVisibility(View.VISIBLE);
-                    nextButton.setText(getString(R.string.post_now));
+                    //nextButton.setText(getString(R.string.post_now));
+                    nextButton.setText(getString(R.string.free));
                 }
             }
 
@@ -141,7 +141,8 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
                 if (buyReqNum + rentReqNum >= 2) {
                     //needs to pay
                     buyOrPostRequirement = getString(R.string.pay_buy_requirement);
-                    intiatePayment(4999, getString(R.string.pay_buy_requirement));
+                    //intiatePayment(4999, getString(R.string.pay_buy_requirement));
+                    startIntentToHome();
                 } else {
                     //free
                     buyOrPostRequirement = getString(R.string.pay_buy_requirement);
@@ -151,7 +152,8 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
                 if (buyReqNum + rentReqNum >= 2) {
                     //needs to pay
                     buyOrPostRequirement = getString(R.string.pay_rent_requirement);
-                    intiatePayment(1999, getString(R.string.pay_rent_requirement));
+                    //intiatePayment(1999, getString(R.string.pay_rent_requirement));
+                    startIntentToHome();
                 } else {
                     //free
                     buyOrPostRequirement = getString(R.string.pay_rent_requirement);
@@ -161,37 +163,42 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
         } else if (ownerOrDealer.equals(getString(R.string.dealer))) {//if user is dealer
             userMode = getString(R.string.dealer);
             if (Requirements.getInstance().buyorRent.equals(getString(R.string.BUY))) {
-                if (buyReqNum + rentReqNum >= 2) {
-                    if (dealerReqCredits > 0) {
-                        //still has credits to post requirements
-                        buyOrPostRequirement = getString(R.string.pay_buy_requirement);
-                        startIntentToHome();
-                    } else {
+                if (dealerReqCredits == 0) {
+                    if (buyReqNum+rentReqNum <=0) {
                         //needs to pay
                         Log.d("TEST", "REACHED");
                         buyOrPostRequirement = getString(R.string.pay_buy_requirement);
-                        intiatePayment(10000, getString(R.string.pay_buy_requirement));
+                        //intiatePayment(10000, getString(R.string.pay_buy_requirement));
+                        startIntentToHome();
+
+                    } else {
+                        //intial free req left
+                        buyOrPostRequirement = getString(R.string.pay_buy_requirement);
+                        startIntentToHome();
                     }
 
-                } else {
-                    //free
+                } else if (dealerReqCredits > 0) {
+                    //still has credits to post requirements
                     buyOrPostRequirement = getString(R.string.pay_buy_requirement);
                     startIntentToHome();
                 }
             } else {
-                if (rentReqNum + buyReqNum >= 2) {
-                    if (dealerReqCredits > 0) {
+                if (dealerReqCredits == 0) {
+                    if (buyReqNum+rentReqNum <= 0) {
+                        //needs to pay
+                        buyOrPostRequirement = getString(R.string.pay_rent_requirement);
+                        //intiatePayment(10000, getString(R.string.pay_rent_requirement));
+                        startIntentToHome();
+
+                    } else {
+                        //intial free req left
                         //still has some credits to post requirements
                         buyOrPostRequirement = getString(R.string.pay_rent_requirement);
                         startIntentToHome();
-                    } else {
-                        //needs to pay
-                        buyOrPostRequirement = getString(R.string.pay_rent_requirement);
-                        intiatePayment(10000, getString(R.string.pay_rent_requirement));
                     }
 
-                } else {
-                    //free
+                } else if (dealerReqCredits > 0) {
+                    //still has some credits to post requirements
                     buyOrPostRequirement = getString(R.string.pay_rent_requirement);
                     startIntentToHome();
                 }

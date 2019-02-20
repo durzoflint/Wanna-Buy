@@ -105,6 +105,7 @@ public class AdHelper implements CallbackInterface {
             createParams.put("RENT_END_DATE", SellerAd.getInstance().rentEndDate);
             createParams.put("LATITUDE", SellerAd.getInstance().locationLatitude);
             createParams.put("LONGITUDE", SellerAd.getInstance().locationLongitude);
+            createParams.put("BROKERAGE", SellerAd.getInstance().brokerageAmount);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -212,6 +213,11 @@ public class AdHelper implements CallbackInterface {
 
     @Override
     public void doesUserExits(boolean isExists) {
+
+    }
+
+    @Override
+    public void dealerOrUser(boolean isDealer) {
 
     }
 

@@ -64,6 +64,11 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesViewHolder> impl
 
     }
 
+    @Override
+    public void dealerOrUser(boolean isDealer) {
+
+    }
+
     @NonNull
     @Override
     public MatchesViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {

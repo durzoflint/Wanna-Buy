@@ -69,6 +69,11 @@ public class RequirementSearchAdapter extends RecyclerView.Adapter<RequirementSe
     }
 
     @Override
+    public void dealerOrUser(boolean isDealer) {
+
+    }
+
+    @Override
     public void onBindViewHolder(@NonNull RequirementSearchHolder requirementSearchHolder, int i) {
 
         try{

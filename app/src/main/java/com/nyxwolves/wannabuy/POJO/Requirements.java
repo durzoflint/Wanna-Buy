@@ -76,6 +76,7 @@ public class Requirements {
     public String corporationWater = "NO";
     public String isVeg = "NOT_SET";
     public String isNonVeg = "NOT_SET";
+    public String brokeragePerCent = "NOT_SET";
 
     private static Requirements instance;
 

@@ -69,6 +69,11 @@ public class MyAdsAdapter extends RecyclerView.Adapter<MyAdsViewHolder> implemen
 
     }
 
+    @Override
+    public void dealerOrUser(boolean isDealer) {
+
+    }
+
     @NonNull
     @Override
     public MyAdsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {

@@ -62,4 +62,9 @@ public class PaymentInformationActivity extends AppCompatActivity implements Cal
     public void doesUserExits(boolean isExists) {
 
     }
+
+    @Override
+    public void dealerOrUser(boolean isDealer) {
+
+    }
 }

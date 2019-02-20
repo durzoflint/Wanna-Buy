@@ -115,6 +115,7 @@ public class RequirementHelper implements CallbackInterface{
             params.put("MAINTENANCE_FEE", Requirements.getInstance().maintenanceFee);
             params.put("VEG", Requirements.getInstance().isVeg);
             params.put("NON_VEG", Requirements.getInstance().isNonVeg);
+            params.put("BROKERAGE", Requirements.getInstance().brokeragePerCent);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -269,6 +270,11 @@ public class RequirementHelper implements CallbackInterface{
 
     @Override
     public void doesUserExits(boolean isExists) {
+
+    }
+
+    @Override
+    public void dealerOrUser(boolean isDealer) {
 
     }
 }

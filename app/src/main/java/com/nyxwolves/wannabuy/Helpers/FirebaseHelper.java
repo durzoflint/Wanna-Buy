@@ -276,6 +276,11 @@ public class FirebaseHelper implements CallbackInterface {
     }
 
     @Override
+    public void dealerOrUser(boolean isDealer) {
+
+    }
+
+    @Override
     public void isSuccess(boolean isSuccess) {
 
     }

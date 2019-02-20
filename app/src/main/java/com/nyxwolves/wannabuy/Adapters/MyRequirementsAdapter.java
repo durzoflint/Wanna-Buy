@@ -63,6 +63,11 @@ public class MyRequirementsAdapter extends RecyclerView.Adapter<MyRequirementsHo
     }
 
     @Override
+    public void dealerOrUser(boolean isDealer) {
+
+    }
+
+    @Override
     public void onBindViewHolder(@NonNull MyRequirementsHolder requirementSearchHolder, int i) {
 
         try{

@@ -90,4 +90,33 @@ public class UserHelper {
         CustomRequestQueue.getInstance(ctx).addRequest(getRequirementRequest);
     }
 
+    public void isDealer(final CallbackInterface callbackInterface){
+        String URL = "http://www.wannabuy.in/api/User/is_user_dealer.php?USER_ID="+ FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
+        StringRequest getRequirementRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                Log.d("USER_JSON_RESPONSE", response);
+                try{
+                    JSONObject object = new JSONObject(response);
+                    if(!object.getString("message").equals("no_user_found")){
+                        Log.d("TEST_USER","EXISTS"+object.getString("message"));
+                        callbackInterface.dealerOrUser(object.getString("message").equals(ctx.getString(R.string.dealer)));
+                    }else {
+                        Log.d("TEST_USER","NOT EXISTS");
+                        callbackInterface.doesUserExits(false);
+                    }
+                }catch(JSONException e){}
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("READ_RESPONSE", error.toString());
+            }
+        });
+
+        CustomRequestQueue.getInstance(ctx).addRequest(getRequirementRequest);
+    }
 }

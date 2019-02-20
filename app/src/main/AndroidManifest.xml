@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
+    <uses-feature android:name="android.hardware.screen.portrait" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,17 +15,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.ImageUpload"
+        <activity android:name=".activities.BrokerageActivity"></activity>
+        <activity
+            android:name=".activities.ImageUpload"
+            android:screenOrientation="portrait"
             android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.WelcomeScreen"
             android:noHistory="true"
+            android:screenOrientation="portrait"
             android:theme="@style/noActionbar" />
-        <activity android:name=".activities.PaymentInformationActivity" />
+        <activity
+            android:name=".activities.PaymentInformationActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.UploadImageActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/noActionbar" />
-        <activity android:name=".activities.ChangePasswordActivity" />
+        <activity
+            android:name=".activities.ChangePasswordActivity"
+            android:screenOrientation="portrait" />
 
         <uses-library
             android:name="org.apache.http.legacy"
@@ -75,6 +86,7 @@
         <activity
             android:name=".activities.SplashScreen"
             android:noHistory="true"
+            android:screenOrientation="portrait"
             android:theme="@style/noActionbar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -84,138 +96,185 @@
         </activity>
         <activity
             android:name=".activities.LoginActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.NameAndEmail"
+            android:screenOrientation="portrait"
             android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.PasswordActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.HomeActivity"
             android:label="@string/title_activity_home"
+            android:screenOrientation="portrait"
             android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.EmailLogin"
+            android:screenOrientation="portrait"
             android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.BuyOrRent"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.AreaLocality"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.PropertyType"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.PropertySubType"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.FurnishedOrNot"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.Bhk"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.NewOrResale"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.Budget"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.PropertySize"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.FacingActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.RequirementsSearchActivity"
             android:parentActivityName=".activities.HomeActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.FacilitiesActivities"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.ApprovalActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.RoadWidth"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.RentalEndDate"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.RentalPropertyType"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.RentalAdvance"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.RentalTenantName"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.ROIRentalActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.RentalInvestment"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.PetsActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.AdsActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.MessageActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.MyAdsActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.AccountActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/noActionbar" />
-        <activity android:name=".chat.ChatActivity" />
+        <activity
+            android:name=".chat.ChatActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".contacts.ContactActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.CarParking"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.AgeOfProperty"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.CornerActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.FlooringActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
             android:name=".activities.SettingsActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.RequirementDetailedActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.MaintanceActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.OwnerOrDealer"
+            android:screenOrientation="portrait"
             android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.AmmenitiesActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.Building"
-            android:label="@string/title_activity_building" />
+            android:label="@string/title_activity_building"
+            android:screenOrientation="portrait"
+            android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.SchoolCollegeHospital"
+            android:screenOrientation="portrait"
             android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.PgRentOptions"
+            android:screenOrientation="portrait"
             android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.RequirementName"
+            android:screenOrientation="portrait"
             android:theme="@style/noActionbar" />
 
         <meta-data
@@ -225,14 +284,17 @@
         <activity android:name=".activities.PaymentActivity" />
         <activity
             android:name=".activities.VegNonVeg"
+            android:screenOrientation="portrait"
             android:theme="@style/noActionbar" />
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".activities.AdsDetailActivity"
-            android:theme="@style/noActionbar"/>
+        <activity
+            android:name=".activities.AdsDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/noActionbar" />
     </application>
 
 </manifest>

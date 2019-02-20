@@ -108,7 +108,6 @@
                 android:id="@+id/ads_door_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
                 android:fontFamily="@font/montserrat_medium" />
 
             <TextView
@@ -935,11 +934,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginTop="20dp"
             android:visibility="gone">
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="@string/showroom_floor"
-               android:layout_marginBottom="15dp"/>
+
             <android.support.v7.widget.AppCompatCheckBox
                 android:id="@+id/ground_floor_showroom"
                 android:layout_width="wrap_content"
@@ -948,10 +943,10 @@
                 android:layout_margin="5dp"
                 android:padding="5dp"/>
             <android.support.v7.widget.AppCompatCheckBox
-                android:id="@+id/showroom_floor_do_no_deviate"
+                android:id="@+id/basement"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/do_not_deviate"
+                android:text="@string/basement_text"
                 android:layout_margin="5dp"
                 android:padding="5dp"/>
         </LinearLayout>
@@ -1520,36 +1515,33 @@
                 android:fontFamily="@font/montserrat_medium"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
-            <SeekBar
+            <EditText
                 android:id="@+id/ads_road_width_seekbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:progressBackgroundTint="@android:color/darker_gray"
+                android:fontFamily="@font/montserrat_medium"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ads_road_width_header" />
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/min_width"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="@string/min_road_width"
                 app:layout_constraintStart_toStartOf="@+id/ads_road_width_seekbar"
-                app:layout_constraintTop_toBottomOf="@+id/ads_road_width_seekbar" />
+                app:layout_constraintTop_toBottomOf="@+id/ads_road_width_seekbar" />-->
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/max_width"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="200+ Ft"
                 app:layout_constraintEnd_toEndOf="@+id/ads_road_width_seekbar"
-                app:layout_constraintTop_toTopOf="@+id/min_width" />
+                app:layout_constraintTop_toTopOf="@+id/min_width" />-->
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/selected_width"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -1559,7 +1551,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/max_width"
                 app:layout_constraintStart_toEndOf="@+id/min_width"
-                app:layout_constraintTop_toTopOf="@+id/min_width" />
+                app:layout_constraintTop_toTopOf="@+id/min_width" />-->
 
         </android.support.constraint.ConstraintLayout>
         <LinearLayout
@@ -2145,35 +2137,121 @@
                 android:hint="@string/roi_text"
                 android:inputType="number" />
         </LinearLayout>
-        <android.support.constraint.ConstraintLayout
+
+        <LinearLayout
             android:id="@+id/budget_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp">
+            android:layout_marginEnd="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/ads_budget_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_medium"
-                android:text="@string/ads_price_header"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:text="@string/ads_price_header"/>
 
             <EditText
                 android:id="@+id/ads_budget_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:fontFamily="@font/montserrat_medium"
+                android:inputType="number"/>
+        </LinearLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/brokage_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp">
+
+            <TextView
+                android:id="@+id/do_you_charge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="@string/do_you_charge_brokage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <RadioGroup
+                android:id="@+id/brokage_yes_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="@+id/do_you_charge"
+                app:layout_constraintTop_toBottomOf="@+id/do_you_charge">
+
+                <RadioButton
+                    android:id="@+id/brokage_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:button="@drawable/custom_radio_button"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:onClick="onRadioButtonClicked"
+                    android:padding="5dp"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/brokage_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:button="@drawable/custom_radio_button"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:onClick="onRadioButtonClicked"
+                    android:padding="5dp"
+                    android:text="@string/no" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/brokage_input_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp"
-                android:hint="@string/in_rupees"
-                android:fontFamily="@font/montserrat_medium"
-                android:inputType="number"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ads_budget_header"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="@+id/brokage_yes_no"
+                app:layout_constraintTop_toBottomOf="@+id/brokage_yes_no">
+
+                <TextView
+                    android:id="@+id/brokerage_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/brokerage_text"/>
+
+                <EditText
+                    android:id="@+id/brokage_per_cent_input"
+                    android:layout_weight="2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium" />
+                <TextView
+                    android:id="@+id/brokerage_per_cent_symbol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="%"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/montserrat_medium"/>
+
+            </LinearLayout>
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/brokage_negotiable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/negotiable"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/brokage_input_layout"
+                app:layout_constraintStart_toStartOf="@+id/brokage_input_layout"
                 app:layout_constraintBottom_toBottomOf="parent"/>
         </android.support.constraint.ConstraintLayout>
 

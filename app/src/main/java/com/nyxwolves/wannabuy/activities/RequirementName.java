@@ -3,6 +3,7 @@ package com.nyxwolves.wannabuy.activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.nyxwolves.wannabuy.CustomDialog.MessageDialog;
@@ -23,15 +25,17 @@ import org.json.JSONObject;
 public class RequirementName extends AppCompatActivity implements CallbackInterface, MessageDialog.CustomDialogListener {
 
     Button nextButton;
-    EditText requirementInput;
+    EditText requirementInput, brokerageInput;
     ProgressDialog progressDialog;
+    LinearLayout brokerageLayout;
+    LinearLayout brokerageInputLayout;
 
     int PAYMENT_CODE = 1200;
     String buyOrPostRequirement;
     String userMode; //owner or dealer
     String ownerOrDealer;
     int buyReqNum, rentReqNum, dealerReqCredits;
-    boolean isDealerFree;
+    boolean isBrokerageSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +61,7 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkInput()) {
+                if (checkInput() && checkBrokerage()) {
                     MessageDialog msgDialog = new MessageDialog();
                     Bundle bundle = new Bundle();
                     bundle.putInt("OPTION", MessageDialog.REQ_DIALOG);
@@ -68,6 +72,11 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
                 }
             }
         });
+
+        //layout visible for dealers only
+        brokerageLayout = findViewById(R.id.brokerage_layout);//visible only for dealers
+        brokerageInputLayout = findViewById(R.id.brokerage_input_layout);//visible only if user selects yes for brokerage
+        brokerageInput = findViewById(R.id.req_brokerage_per_cent_input);//brokerage amount in %
     }
 
     private void startIntentToHome() {
@@ -90,6 +99,17 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
         }
     }
 
+    private boolean checkBrokerage(){
+        if(isBrokerageSelected){
+            if(brokerageInput.getText().toString().trim().length() > 0){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return true;
+        }
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -97,6 +117,19 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
             if (resultCode == RESULT_OK) {
                 startIntentToHome();
             }
+        }
+    }
+
+    public void onRadioButtonClicked(View v){
+        switch (v.getId()){
+            case R.id.req_brokerage_yes:
+                isBrokerageSelected = true;
+                brokerageInputLayout.setVisibility(View.VISIBLE);
+                break;
+            case R.id.req_brokerage_no:
+                isBrokerageSelected = false;
+                brokerageInputLayout.setVisibility(View.GONE);
+                break;
         }
     }
 
@@ -110,6 +143,8 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
             dealerReqCredits = data.getInt("DEALER_REQ_CREDITS");
 
             if (ownerOrDealer.equals(getString(R.string.individual))) {
+                //hide brokerage layout
+                brokerageLayout.setVisibility(View.GONE);
                 if (buyReqNum + rentReqNum >= 2) {
                     nextButton.setVisibility(View.VISIBLE);
                     //nextButton.setText(getString(R.string.submit));
@@ -119,6 +154,9 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
                     nextButton.setText(getString(R.string.free));
                 }
             } else {
+                //make brokerage layout visible
+                brokerageLayout.setVisibility(View.VISIBLE);
+
                 if (rentReqNum+buyReqNum == 0) {
                     nextButton.setVisibility(View.VISIBLE);
                     //nextButton.setText(getString(R.string.submit));
@@ -222,6 +260,11 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
 
     @Override
     public void doesUserExits(boolean isExists) {
+
+    }
+
+    @Override
+    public void dealerOrUser(boolean isDealer) {
 
     }
 

@@ -339,6 +339,11 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
     }
 
     @Override
+    public void dealerOrUser(boolean isDealer) {
+
+    }
+
+    @Override
     public void imageRecieved(JSONObject imageUrl) {
         String firstImageUrl = "";
         try {

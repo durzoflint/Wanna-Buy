@@ -106,6 +106,11 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
     }
 
     @Override
+    public void dealerOrUser(boolean isDealer) {
+
+    }
+
+    @Override
     public void onPaymentError(int i, String s) {
         Toast.makeText(this, "Payment Failed", Toast.LENGTH_SHORT).show();
         Checkout.clearUserData(this);

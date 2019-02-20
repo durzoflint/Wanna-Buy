@@ -109,4 +109,9 @@ public class OwnerOrDealer extends AppCompatActivity implements CallbackInterfac
     public void doesUserExits(boolean isExists) {
 
     }
+
+    @Override
+    public void dealerOrUser(boolean isDealer) {
+
+    }
 }

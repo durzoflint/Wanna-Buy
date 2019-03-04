@@ -72,10 +72,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/min_unit_header">
 
                 <TextView
+                    android:id="@+id/greater_than_text_min"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:text="@string/greater_than_10_crores" />
+                    android:fontFamily="@font/montserrat_medium"/>
 
                 <RadioButton
                     android:id="@+id/min_greater_yes"
@@ -181,6 +181,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/max_unit_header">
 
                 <TextView
+                    android:id="@+id/greater_than_text_max"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat_medium"

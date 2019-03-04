@@ -1,5 +1,8 @@
 package com.nyxwolves.wannabuy.POJO;
 
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+
 import java.util.ArrayList;
 
 public class Requirements {
@@ -77,6 +80,9 @@ public class Requirements {
     public String isVeg = "NOT_SET";
     public String isNonVeg = "NOT_SET";
     public String brokeragePerCent = "NOT_SET";
+    public String rentDeposit = "NOT_SET";
+    public LatLng stateBoundary = null;
+    public LatLng cityBoundary = null;
 
     private static Requirements instance;
 

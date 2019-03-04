@@ -18,6 +18,7 @@ public class SellerAd {
     public String adsNoOfApartments = "no";
     public String adsTotalFloors = "no";
     public String adsAge = "no";
+    public String adsAgeType = "no";
     public String adsIsNew = "no";
     public String adsFloor = "no";
     public String adsBudget = "NO_SET";
@@ -56,6 +57,7 @@ public class SellerAd {
     public String locationLongitude = "NOT_SET";
     public ArrayList<String> imageList = new ArrayList<>();
     public String brokerageAmount = "NOT_SET";
+    public String rentDeposit = "NOT_SET";
 
     private static SellerAd instance = null;
 

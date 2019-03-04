@@ -113,31 +113,35 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.9" />
 
-    <android.support.v7.widget.AppCompatCheckBox
-        android:id="@+id/no_preference"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="@font/montserrat_medium"
-        android:padding="5dp"
-        android:text="@string/no_preference"
-        app:layout_constraintBottom_toTopOf="@+id/do_not_deviate_facing"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/west_check_box" />
-
-    <android.support.v7.widget.AppCompatCheckBox
-        android:id="@+id/do_not_deviate_facing"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:fontFamily="@font/montserrat_medium"
-        android:padding="5dp"
-        android:text="@string/do_not_deviate"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/guideline12"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/west_check_box">
 
+        <RadioButton
+            android:id="@+id/no_preference"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_medium"
+            android:padding="5dp"
+            android:text="@string/no_preference" />
+
+        <RadioButton
+            android:id="@+id/do_not_deviate_facing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/custom_radio_button"
+            android:fontFamily="@font/montserrat_medium"
+            android:padding="5dp"
+            android:text="@string/do_not_deviate" />
+
+    </RadioGroup>
     <Button
         android:id="@+id/facing_next_btn"
         android:layout_width="wrap_content"

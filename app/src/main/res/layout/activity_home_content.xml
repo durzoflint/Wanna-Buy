@@ -223,4 +223,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/your_matches_header"
         app:srcCompat="@drawable/how_we_work_btn" />
+
+    <TextView
+        android:id="@+id/hi_header_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="56dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/welcome_text_header"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/welcome_text_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="Hi, "
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/hi_header_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/hi_header_text" />
 </android.support.constraint.ConstraintLayout>

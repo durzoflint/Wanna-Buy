@@ -31,8 +31,8 @@ public class AdHelper implements CallbackInterface {
 
     public void createAd(final String type, final AdInterface callback) {
         String URL = "http://www.wannabuy.in/api/Ads/create_ad.php";
+        Log.d("CREATED","AD");
         getJson();
-        //Log.d("ADS_JSON",new JSONObject(createParams).toString());
         Log.d("CREATED_ADS_JSON", createParams.toString());
         JsonObjectRequest createAdRequest = new JsonObjectRequest(Request.Method.POST, URL, createParams, new Response.Listener<JSONObject>() {
             @Override
@@ -67,6 +67,7 @@ public class AdHelper implements CallbackInterface {
             createParams.put("LAND_AREA", SellerAd.getInstance().adsLandArea);
             createParams.put("BUILT_UP_AREA", SellerAd.getInstance().adsBuiltUpArea);
             createParams.put("AGE", SellerAd.getInstance().adsAge);
+            createParams.put("AGE_TYPE", SellerAd.getInstance().adsAgeType);
             createParams.put("BHK", SellerAd.getInstance().adsBhk);
             createParams.put("NO_OF_APARTMENTS", SellerAd.getInstance().adsNoOfApartments);
             createParams.put("TOTAL_FLOORS", SellerAd.getInstance().adsTotalFloors);
@@ -106,6 +107,7 @@ public class AdHelper implements CallbackInterface {
             createParams.put("LATITUDE", SellerAd.getInstance().locationLatitude);
             createParams.put("LONGITUDE", SellerAd.getInstance().locationLongitude);
             createParams.put("BROKERAGE", SellerAd.getInstance().brokerageAmount);
+            createParams.put("RENT_DEPOSIT", SellerAd.getInstance().rentDeposit);
         } catch (Exception e) {
             e.printStackTrace();
         }

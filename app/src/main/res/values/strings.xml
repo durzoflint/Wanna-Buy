@@ -180,13 +180,13 @@
     <string name="dtcp_text">DTCP</string>
     <string name="cmda_text">CMDA</string>
     <string name="rera_text">RERA</string>
-    <string name="road_width">Road Width?</string>
+    <string name="road_width">Road Width (in ft)</string>
     <string name="min_road_width">0Ft.</string>
 
     <string name="rent_end_header">Rental Property</string>
     <string name="rent_end_date_text">Rent End Date</string>
     <string name="rent_property_type_header">Rent Property</string>
-    <string name="rent_advance_header">Advance/Deposit</string>
+    <string name="rent_advance_header">Advance/Deposit \u20B9</string>
     <string name="tenant_name">Name of the tenant(optional)</string>
     <string name="roi_text">ROI in (%) Per Year</string>
     <string name="investment_text">Investment  Price:</string>
@@ -340,10 +340,11 @@
     <string name="rental_incremental_text">Rental Incremental (%)</string>
 
     <string name="min_rest_room">Minimum No.of Rest Rooms</string>
-    <string name="min_roi_hint">Minimum Roi in %</string>
-    <string name="max_roi_hint">Maximum Roi in %</string>
+    <string name="min_roi_hint">Minimum Roi </string>
+    <string name="max_roi_hint">Maximum Roi </string>
 
     <string name="greater_than_10_crores">Greater than 10 Crores?</string>
+    <string name="greater_than_10_lakhs">Greater than 10 Lakhs?</string>
 
     <string name="floor">Select the Floor</string>
 
@@ -451,6 +452,8 @@
     <string name="street_name">Street</string>
     <string name="district_header_text">District </string>
     <string name="state_header_text">State </string>
+    <string name="city_header_text">City </string>
+    <string name="location_header_text">Location </string>
     <string name="pin_header_text">Pincode</string>
 
     <string name="do_you_charge_brokage">Do You charge Brokerage?</string>
@@ -460,4 +463,9 @@
     <string name="no_of_days">No.of Days</string>
     <string name="free_for_now">All Requirements and Ad Posts are free!!</string>
     <string name="basement_text">Basement</string>
+
+    <string name="deposit_header">Deposit \u20B9</string>
+    <string name="brand_new">Brand New</string>
+    <string name="month">Months</string>
+    <string name="years">Years</string>
 </resources>

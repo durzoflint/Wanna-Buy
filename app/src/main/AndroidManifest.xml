@@ -15,7 +15,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.BrokerageActivity"></activity>
+
+        <activity android:name=".activities.LocationInputActivity"
+            android:theme="@style/noActionbar"/>
+        <activity android:name=".activities.CityInputActivity"
+            android:theme="@style/noActionbar"/>
+        <activity
+            android:name=".activities.LocationSelection"
+            android:theme="@style/noActionbar" />
+        <activity
+            android:name=".activities.BrokerageActivity"
+            android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.ImageUpload"
             android:screenOrientation="portrait"
@@ -120,7 +130,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity
-            android:name=".activities.AreaLocality"
+            android:name=".activities.StateInputActivity"
             android:screenOrientation="portrait"
             android:theme="@style/questionTheme" />
         <activity

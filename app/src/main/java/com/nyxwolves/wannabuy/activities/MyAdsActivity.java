@@ -16,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.nyxwolves.wannabuy.Fragments.ViewPagerAdapter;
 import com.nyxwolves.wannabuy.Helpers.FirebaseHelper;
 import com.nyxwolves.wannabuy.POJO.Requirements;
@@ -139,12 +138,12 @@ public class MyAdsActivity extends AppCompatActivity implements View.OnClickList
 
             case R.id.menu_wanna_buy:
                 Requirements.getInstance().buyorRent = getString(R.string.BUY);
-                startActivity(new Intent(MyAdsActivity.this,AreaLocality.class));
+                startActivity(new Intent(MyAdsActivity.this, StateInputActivity.class));
                 break;
 
             case R.id.menu_wanna_rent:
                 Requirements.getInstance().buyorRent = getString(R.string.RENT);
-                startActivity(new Intent(MyAdsActivity.this,AreaLocality.class));
+                startActivity(new Intent(MyAdsActivity.this, StateInputActivity.class));
                 break;
 
             case R.id.menu_wanna_sell:

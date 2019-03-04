@@ -9,6 +9,8 @@ import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,7 +25,6 @@ import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +35,7 @@ import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.nyxwolves.wannabuy.CustomDialog.MessageDialog;
+import com.nyxwolves.wannabuy.Helpers.NumberToWords;
 import com.nyxwolves.wannabuy.Interfaces.AdInterface;
 import com.nyxwolves.wannabuy.Interfaces.CallbackInterface;
 import com.nyxwolves.wannabuy.POJO.SellerAd;
@@ -51,7 +53,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         DatePickerDialog.OnDateSetListener, CallbackInterface, AdInterface, MessageDialog.CustomDialogListener {
 
     TextInputEditText doorNumberInput, streetInput, areaInput, districtInput, stateInput, pincodeInput;
-    EditText flooringInput, bhkInput, noOfHouseInput, totalFloorsInput;
+    EditText flooringInput, bhkInput, noOfHouseInput, totalFloorsInput, ageInput;
     EditText landAreaInput, builtUpArea, budgetInput, rentalIncrementalInput, roiInput, leaseStartInput, leaseEndInput, advanceInput, incrementCustomInput;
     Button paymentBtn;
     CheckBox covCarParking, unCovParking, brokageNegotiable;
@@ -69,11 +71,12 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     LinearLayout propertySizeLayout, unCovParkingLayout, covParkingLayout, brokerageInputLayout;
     Spinner areaUnitSpinner;
     EditText roadWidth;
-    TextView roadSelectedWidth, adsBudgetHeader;
+    TextView roadSelectedWidth, adsBudgetHeader, budgetInText;
     ImageView startIcon, endIcon;
-    TextView whyPayText;
-    EditText brokerageLayout, brokeragePerCent;
-    TextView  brokerageHeader,brokeragePerCentSymbol;
+    TextView whyPayText,rentalIncomeAdvanceText;
+    EditText brokerageLayout, brokeragePerCent, depositForRentInput;
+    TextView  brokerageHeader,brokeragePerCentSymbol, depositAmountText;
+    LinearLayout depositForRentLayout;
 
     final int LOCATION_STREET_REQUEST = 1003;
     final int LOCATION_AREA_REQUEST = 1004;
@@ -88,6 +91,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     boolean isStartDate = true;
     boolean isAddressValid = false;
     boolean isBrokageSelected;
+    boolean isRentSelected = false;
 
     String ownerOrDealer, adsNum, adId;
 
@@ -125,31 +129,6 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
 
         roadSelectedWidth = findViewById(R.id.selected_width);
         roadWidth = findViewById(R.id.ads_road_width_seekbar);
-        //roadWidth.setMax(201);
-        /*roadWidth.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                roadWidthInt = progress;
-                if (progress > 200) {
-                    String text = Integer.valueOf(progress - 1) + "+ Ft";
-                    roadSelectedWidth.setText(text);
-                } else {
-                    String text = Integer.valueOf(progress) + " Ft";
-                    roadSelectedWidth.setText(text);
-                }
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });*/
 
         //why pay text when clicked should show dialog box
         whyPayText = findViewById(R.id.why_pay);
@@ -217,7 +196,33 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         leaseEndInput = findViewById(R.id.end_date);
 
         advanceDeposit = findViewById(R.id.advance_layout);
+        rentalIncomeAdvanceText = findViewById(R.id.advance_deposit_text);
         advanceInput = findViewById(R.id.advance_input);
+        advanceInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(count !=0){
+                    try{
+                        rentalIncomeAdvanceText.setText(NumberToWords.convert(Integer.parseInt(s.toString())));
+                    }catch (Exception e){
+                        Log.d("ERROR",e.toString());
+                        Toast.makeText(AdsActivity.this, "Check your inputs", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    rentalIncomeAdvanceText.setText("");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         leaseOrRent = findViewById(R.id.lease_rent_layout);
 
@@ -226,7 +231,33 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         incrementCustomInput = findViewById(R.id.increment_custom_input);
 
         //budget
+        budgetInText = findViewById(R.id.budget_in_text);
         budgetInput = findViewById(R.id.ads_budget_input);
+        budgetInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(count !=0){
+                    try{
+                        budgetInText.setText(NumberToWords.convert(Integer.parseInt(s.toString())));
+                    }catch (Exception e){
+                        Log.d("ERROR",e.toString());
+                        Toast.makeText(AdsActivity.this, "Check your inputs", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    budgetInText.setText("");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         adsBudgetHeader = findViewById(R.id.ads_budget_header);
 
         //petsLayout
@@ -267,6 +298,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
             }
         });
 
+        ageInput = findViewById(R.id.ads_age_input);
         bhkLayout = findViewById(R.id.bhk_layout);
         flooringLayout = findViewById(R.id.flooring_layout);
         carParkingLayout = findViewById(R.id.car_parking_layout);
@@ -317,6 +349,35 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
 
         paymentBtn = findViewById(R.id.next_btn);
         paymentBtn.setOnClickListener(this);
+
+        //layout shown only for rent
+        depositForRentLayout = findViewById(R.id.deposit_layout);
+        depositForRentInput = findViewById(R.id.deposit_input);
+        depositAmountText = findViewById(R.id.deposit_amount_text);
+        depositForRentInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(count !=0){
+                    try{
+                        depositAmountText.setText(NumberToWords.convert(Integer.parseInt(s.toString())));
+                    }catch (Exception e){
+                        Toast.makeText(AdsActivity.this, "Check your inputs", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    depositAmountText.setText(" ");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         //brokage layout
         brokageLayout = findViewById(R.id.brokage_layout);
@@ -388,6 +449,19 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         }
     }
 
+    private boolean checkDeposit(){
+        if(isRentSelected){
+            if(depositForRentInput.getText().toString().trim().length() > 0){
+                SellerAd.getInstance().rentDeposit = depositForRentInput.getText().toString();
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return true;
+        }
+    }
+
     private boolean checkData() {
         if (checkCommonField() && checkPropertySize() && checkBrokerage()) {
             if (isRentalIncome) {
@@ -435,6 +509,8 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 districtInput.getText().toString().trim().length() > 0 &&
                 doorNumberInput.getText().toString().trim().length() > 0 &&
                 roadWidth.getText().toString().trim().length() > 0 &&
+                checkAge() &&
+                checkDeposit() &&
                 checkBudget()) {
 
             SellerAd.getInstance().adsRoadWidth = roadWidth.getText().toString().trim();
@@ -452,6 +528,18 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         }
     }
 
+    private boolean checkAge(){
+        if(!SellerAd.getInstance().adsAgeType.equals(getString(R.string.brand_new))){
+            if(ageInput.getText().toString().trim().length() >  0){
+                SellerAd.getInstance().adsAge = ageInput.getText().toString().trim();
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return true;
+        }
+    }
 
     private boolean checkPropertySize() {
         if (isLandAreaVisible && isBuiltUpVisible) {
@@ -525,8 +613,11 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
 
         switch (v.getId()) {
             case R.id.sell_btn:
+                isRentSelected = false;
+                depositForRentLayout.setVisibility(View.GONE);
                 brokerageHeader.setText(getString(R.string.brokerage_text_for_sell));
                 brokeragePerCentSymbol.setVisibility(View.VISIBLE);
+                pgRentLayout.setVisibility(View.VISIBLE);
                 Log.d("SELL", "SELL");
                 SellerAd.getInstance().adsSellOrRent = getString(R.string.SELL);
                 rentalIncomeButton.setVisibility(View.VISIBLE);
@@ -536,8 +627,10 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 petsLayout.setVisibility(View.GONE);
                 break;
             case R.id.rent_btn:
+                isRentSelected = true;
                 brokerageHeader.setText(getString(R.string.brokerage_text));
                 brokeragePerCent.setHint(getString(R.string.no_of_days));
+                depositForRentLayout.setVisibility(View.VISIBLE);
                 brokeragePerCentSymbol.setVisibility(View.GONE);
                 SellerAd.getInstance().adsSellOrRent = getString(R.string.RENT);
                 rentalIncomeButton.setVisibility(View.GONE);
@@ -545,14 +638,14 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 rentalIncrementalLayout.setVisibility(View.GONE);
                 advanceDeposit.setVisibility(View.GONE);
                 petsLayout.setVisibility(View.GONE);
-                budgetInput.setHint(getString(R.string.rent));
-                adsBudgetHeader.setText(getString(R.string.rent));
                 break;
             case R.id.resi_radio_btn:
                 resiSub.setVisibility(View.VISIBLE);
                 commSub.setVisibility(View.GONE);
                 insSub.setVisibility(View.GONE);
                 indusSub.setVisibility(View.GONE);
+                farmLandGroup.setVisibility(View.GONE);
+                rentalIncomeType.setVisibility(View.GONE);
                 pgRentLayout.setVisibility(View.GONE);
                 roiLayout.setVisibility(View.GONE);
                 rentalIncrementalLayout.setVisibility(View.GONE);
@@ -573,6 +666,8 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 insSub.setVisibility(View.GONE);
                 indusSub.setVisibility(View.GONE);
                 pgRentLayout.setVisibility(View.GONE);
+                farmLandGroup.setVisibility(View.GONE);
+                rentalIncomeType.setVisibility(View.GONE);
                 roiLayout.setVisibility(View.GONE);
                 rentalIncrementalLayout.setVisibility(View.GONE);
                 rentalStart.setVisibility(View.GONE);
@@ -594,6 +689,8 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 commSub.setVisibility(View.GONE);
                 insSub.setVisibility(View.GONE);
                 indusSub.setVisibility(View.VISIBLE);
+                farmLandGroup.setVisibility(View.GONE);
+                rentalIncomeType.setVisibility(View.GONE);
                 pgRentLayout.setVisibility(View.GONE);
                 roiLayout.setVisibility(View.GONE);
                 rentalIncrementalLayout.setVisibility(View.GONE);
@@ -656,6 +753,8 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 commSub.setVisibility(View.GONE);
                 insSub.setVisibility(View.VISIBLE);
                 indusSub.setVisibility(View.GONE);
+                farmLandGroup.setVisibility(View.GONE);
+                rentalIncomeType.setVisibility(View.GONE);
                 pgRentLayout.setVisibility(View.GONE);
                 roiLayout.setVisibility(View.GONE);
                 rentalIncrementalLayout.setVisibility(View.GONE);
@@ -914,6 +1013,13 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 Log.d("TEST", "REACH00ED");
                 break;
             case R.id.ads_rental_income:
+                resiSub.setVisibility(View.GONE);
+                commSub.setVisibility(View.GONE);
+                insSub.setVisibility(View.GONE);
+                indusSub.setVisibility(View.GONE);
+                farmLandGroup.setVisibility(View.GONE);
+                brokerageHeader.setText(getString(R.string.brokerage_text));
+                brokeragePerCent.setHint(getString(R.string.no_of_days));
                 bhkLayout.setVisibility(View.GONE);
                 builtUpAreaLayout.setVisibility(View.GONE);
                 landAreaLayout.setVisibility(View.GONE);
@@ -925,7 +1031,6 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 rentalStart.setVisibility(View.VISIBLE);
                 rentalEnd.setVisibility(View.VISIBLE);
                 advanceDeposit.setVisibility(View.VISIBLE);
-                budgetInput.setHint(getString(R.string.budget_header));
                 isRentalIncome = true;
                 break;
             case R.id.rental_resi_radio_btn:
@@ -1018,7 +1123,12 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 furnishedLayout.setVisibility(View.VISIBLE);
                 break;
             case R.id.ads_farm_land:
+                resiSub.setVisibility(View.GONE);
+                commSub.setVisibility(View.GONE);
+                insSub.setVisibility(View.GONE);
+                indusSub.setVisibility(View.GONE);
                 bhkLayout.setVisibility(View.GONE);
+                rentalIncomeType.setVisibility(View.GONE);
                 furnishedLayout.setVisibility(View.GONE);
                 rentalFarmLandSub.setVisibility(View.GONE);
                 rentalPgServiceSub.setVisibility(View.GONE);
@@ -1137,6 +1247,20 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
             case R.id.brokage_no:
                 isBrokageSelected = false;
                 brokerageInputLayout.setVisibility(View.GONE);
+                break;
+            case R.id.age_brand_new:
+                SellerAd.getInstance().adsAgeType = getString(R.string.brand_new);
+                ageInput.setVisibility(View.GONE);
+                break;
+            case R.id.age_months:
+                SellerAd.getInstance().adsAgeType = getString(R.string.age_months);
+                ageInput.setHint(getString(R.string.age_months));
+                ageInput.setVisibility(View.VISIBLE);
+                break;
+            case R.id.age_years:
+                SellerAd.getInstance().adsAgeType = getString(R.string.age_years);
+                ageInput.setHint(getString(R.string.age_years));
+                ageInput.setVisibility(View.VISIBLE);
                 break;
         }
     }
@@ -1365,5 +1489,4 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         } catch (IOException e) {
         }
     }
-
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.AreaLocality">
+    tools:context=".activities.LocationInputActivity">
 
     <ImageView
         android:id="@+id/area_image_view"
@@ -32,50 +32,46 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/montserrat_medium"
-        android:text="@string/property_location"
+        android:text="@string/location_header_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/size_guideline" />
 
 
-    <EditText
-        android:id="@+id/location_input"
+    <fragment
+        android:id="@+id/location_input_frag"
+        android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:hint="@string/area_text"
-        android:focusableInTouchMode="false"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/montserrat_medium"
+        android:hint="@string/area_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/location_five" />
+        app:layout_constraintStart_toStartOf="@+id/location_header"
+        app:layout_constraintTop_toBottomOf="@+id/location_header" />
 
     <Button
-        android:id="@+id/area_next_btn"
+        android:id="@+id/location_next_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/orange_button"
         android:text="@string/next"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/location_input"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/location_one"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
         android:fontFamily="@font/montserrat_medium"
         android:maxLines="1"
         android:padding="5dp"
@@ -84,7 +80,7 @@
         app:layout_constraintEnd_toStartOf="@+id/location_two"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/city_input" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/location_two"
@@ -144,46 +140,16 @@
         app:layout_constraintStart_toStartOf="@+id/location_one"
         app:layout_constraintTop_toBottomOf="@+id/location_one" />
 
-    <EditText
-        android:id="@+id/state_input"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:fontFamily="@font/montserrat_medium"
-        android:hint="@string/state_text"
-        android:focusableInTouchMode="false"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/location_header"
-        app:layout_constraintTop_toBottomOf="@+id/location_header" />
-
-    <EditText
-        android:id="@+id/city_input"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="@string/city_text"
-        android:focusableInTouchMode="false"
-        android:fontFamily="@font/montserrat_medium"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/state_input"
-        app:layout_constraintTop_toBottomOf="@+id/state_input" />
-
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/max_of_five"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/location_input"
-        app:layout_constraintTop_toBottomOf="@+id/location_input" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/location_input_frag" />
 
 </android.support.constraint.ConstraintLayout>

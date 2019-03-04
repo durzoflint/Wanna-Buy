@@ -29,7 +29,7 @@ import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
 import com.nyxwolves.wannabuy.activities.AccountActivity;
 import com.nyxwolves.wannabuy.activities.AdsActivity;
-import com.nyxwolves.wannabuy.activities.AreaLocality;
+import com.nyxwolves.wannabuy.activities.StateInputActivity;
 import com.nyxwolves.wannabuy.activities.BuyOrRent;
 import com.nyxwolves.wannabuy.activities.MyAdsActivity;
 import com.nyxwolves.wannabuy.activities.PaymentInformationActivity;
@@ -190,12 +190,12 @@ public class ContactActivity extends AppCompatActivity implements NavigationView
 
             case R.id.menu_wanna_buy:
                 Requirements.getInstance().buyorRent = getString(R.string.BUY);
-                startActivity(new Intent(ContactActivity.this, AreaLocality.class));
+                startActivity(new Intent(ContactActivity.this, StateInputActivity.class));
                 break;
 
             case R.id.menu_wanna_rent:
                 Requirements.getInstance().buyorRent = getString(R.string.RENT);
-                startActivity(new Intent(ContactActivity.this, AreaLocality.class));
+                startActivity(new Intent(ContactActivity.this, StateInputActivity.class));
                 break;
 
             case R.id.menu_wanna_sell:

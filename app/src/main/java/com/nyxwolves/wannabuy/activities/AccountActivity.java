@@ -146,12 +146,12 @@ public class AccountActivity extends AppCompatActivity implements NavigationView
 
             case R.id.menu_wanna_buy:
                 Requirements.getInstance().buyorRent = getString(R.string.BUY);
-                startActivity(new Intent(AccountActivity.this, AreaLocality.class));
+                startActivity(new Intent(AccountActivity.this, StateInputActivity.class));
                 break;
 
             case R.id.menu_wanna_rent:
                 Requirements.getInstance().buyorRent = getString(R.string.RENT);
-                startActivity(new Intent(AccountActivity.this, AreaLocality.class));
+                startActivity(new Intent(AccountActivity.this, StateInputActivity.class));
                 break;
 
             case R.id.menu_wanna_sell:

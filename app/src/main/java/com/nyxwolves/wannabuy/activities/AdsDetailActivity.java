@@ -47,6 +47,7 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
     TextView rentPerMonth, withFood, noOfRooms, personPerRoom;
     ImageView adImage;
     Button emailBtn, callBtn,chatBtn;
+    TextView brokerageValueText, rentDepositValue;
 
     double latitude, longitude;
     int PERMISSION_CALL = 1200;
@@ -107,6 +108,9 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
         workMenHostelPrice = findViewById(R.id.work_men_hostel_price_text);
         workWomenHostelPrice = findViewById(R.id.work_women_hostel_price_text);
         corpGuestPrice = findViewById(R.id.corp_price_text);
+
+        brokerageValueText = findViewById(R.id.brokerage_value);
+        rentDepositValue = findViewById(R.id.rent_deposit_value);
 
         callBtn = findViewById(R.id.call_btn);
         emailBtn = findViewById(R.id.email_btn);
@@ -315,6 +319,18 @@ public class AdsDetailActivity extends AppCompatActivity implements OnMapReadyCa
                     Toast.makeText(AdsDetailActivity.this,"Comming soon",Toast.LENGTH_SHORT).show();
                 }
             });
+
+            //brokerage value
+            String brokerageValue = data.getString("BROKERAGE");
+            brokerageValueText.setText(brokerageValue);
+
+            //rent deposit
+            String rentOrBuy = data.getString("MODE");
+            if(rentOrBuy.equals(getString(R.string.rent))){
+                rentDepositValue.setText(data.getString("RENT_DEPOSIT"));
+            }else{
+                rentDepositValue.setText("-");
+            }
 
         } catch (JSONException e) {
             Log.d("JSON EXCEPTION", e.toString());

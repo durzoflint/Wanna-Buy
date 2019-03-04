@@ -3,6 +3,7 @@ package com.nyxwolves.wannabuy.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -11,7 +12,6 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,8 +25,9 @@ public class Budget extends AppCompatActivity {
     TextView minSelectedPrice, maxSelectedPrice, modeHeader;
     TextView minMinPrice, minMaxPrice;
     TextView maxMinPrice, maxMaxPrice;
+    TextView greaterThanTextMin,greaterThanTextMax;
     Spinner minPriceUnitSpinner, maxPriceUnitSpinner;
-    RadioGroup minGreaterThanTenCrores, maxGreaterThanTenCrores;
+    RadioGroup minGreaterThanTen, maxGreaterThanTen;
     int minBudget = 0;
     int maxBudget = 0;
     String minUnit, minNextUnit, maxUnit, maxNextUnit;
@@ -38,8 +39,8 @@ public class Budget extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        minGreaterThanTenCrores = findViewById(R.id.min_greater_than);
-        maxGreaterThanTenCrores = findViewById(R.id.max_greater_than);
+        minGreaterThanTen = findViewById(R.id.min_greater_than);
+        maxGreaterThanTen = findViewById(R.id.max_greater_than);
 
         //min price unit spinner
         minPriceUnitSpinner = findViewById(R.id.min_price_unit_spinner);
@@ -71,6 +72,9 @@ public class Budget extends AppCompatActivity {
 
         maxMinPrice = findViewById(R.id.max_min_price);
         maxMaxPrice = findViewById(R.id.max_max_price);
+
+        greaterThanTextMax = findViewById(R.id.greater_than_text_max);
+        greaterThanTextMin = findViewById(R.id.greater_than_text_min);
 
         final boolean isRent = Requirements.getInstance().buyorRent.equals(getString(R.string.rent_text));
 
@@ -129,11 +133,25 @@ public class Budget extends AppCompatActivity {
                 }
                 String minDisplayText = "0 " + parent.getSelectedItem();
                 minMinPrice.setText(minDisplayText);
-                if (minUnit.equals("Crores")) {
-                    minGreaterThanTenCrores.setVisibility(View.VISIBLE);
-                } else {
-                    minGreaterThanTenCrores.setVisibility(View.GONE);
+
+                if(isRent){
+                    if (minUnit.equals("Lakhs")) {
+                        Log.d("MIN_PRICE","LESS 10");
+                        greaterThanTextMin.setText(getString(R.string.greater_than_10_lakhs));
+                        minGreaterThanTen.setVisibility(View.VISIBLE);
+                    } else {
+                        minGreaterThanTen.setVisibility(View.GONE);
+                    }
+                }else{
+                    if (minUnit.equals("Crores")) {
+                        greaterThanTextMin.setText(getString(R.string.greater_than_10_crores));
+                        minGreaterThanTen.setVisibility(View.VISIBLE);
+                    } else {
+                        minGreaterThanTen.setVisibility(View.GONE);
+                    }
                 }
+
+
                 try {
                     minNextUnit = parent.getItemAtPosition(position + 1).toString();
                     minMaxPrice.setText("1+ " + minNextUnit);
@@ -201,11 +219,24 @@ public class Budget extends AppCompatActivity {
                 }
                 String minDisplayText = "0 " + parent.getSelectedItem();
                 maxMinPrice.setText(minDisplayText);
-                if (maxUnit.equals("Crores")) {
-                    maxGreaterThanTenCrores.setVisibility(View.VISIBLE);
-                } else {
-                    maxGreaterThanTenCrores.setVisibility(View.GONE);
+
+                if(isRent){
+                    if (maxUnit.equals("Lakhs")) {
+                        greaterThanTextMax.setText(getString(R.string.greater_than_10_lakhs));
+                        maxGreaterThanTen.setVisibility(View.VISIBLE);
+                    } else {
+                        maxGreaterThanTen.setVisibility(View.GONE);
+                    }
+                }else{
+                    if (maxUnit.equals("Crores")) {
+                        greaterThanTextMax.setText(getString(R.string.greater_than_10_crores));
+                        maxGreaterThanTen.setVisibility(View.VISIBLE);
+                    } else {
+                        maxGreaterThanTen.setVisibility(View.GONE);
+                    }
                 }
+
+
                 try {
                     maxNextUnit = parent.getItemAtPosition(position + 1).toString();
                     maxMaxPrice.setText("1+ " + maxNextUnit);
@@ -320,14 +351,23 @@ public class Budget extends AppCompatActivity {
                 break;
             case R.id.min_greater_no:
                 minBudgetSeekBar.setMax(10);
-                minMaxPrice.setText("10 Crores");
+                if(minUnit.equals("Crores")){
+                    minMaxPrice.setText("10 Crores");
+                }else{
+                    minMaxPrice.setText("10 Lakhs");
+                }
+
                 break;
             case R.id.max_greater_yes:
                 maxBudgetSeekBar.setMax(101);
                 break;
             case R.id.max_greater_no:
                 maxBudgetSeekBar.setMax(10);
-                maxMaxPrice.setText("10 Crores");
+                if(minUnit.equals("Crores")){
+                    maxMaxPrice.setText("10 Crores");
+                }else{
+                    maxMaxPrice.setText("10 Lakhs");
+                }
                 break;
         }
     }

@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
@@ -51,6 +52,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
 
     ImageView homeButton,msgButton,adsButton,profileButton,postRequirement,wannaBuyTempBtn,howWeWorkBtn;
+    TextView hiHeaderText;
     LinearLayout rentButton,postAdBtn;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -97,6 +99,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
 
+        }
+
+        hiHeaderText = findViewById(R.id.hi_header_text);
+        //display user name
+        String userName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+        if( userName != null){
+            hiHeaderText.setText(userName);
+        }else{
+            hiHeaderText.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
         }
 
         wannaBuyTempBtn = findViewById(R.id.wanna_buy_temp_btn);
@@ -233,7 +244,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.home_rent_btn:
                 //startActivity(new Intent(HomeActivity.this,RentalEndDate.class));
                 Requirements.getInstance().buyorRent = getString(R.string.RENT);
-                startActivity(new Intent(HomeActivity.this,AreaLocality.class));
+                startActivity(new Intent(HomeActivity.this, StateInputActivity.class));
                 break;
             case R.id.post_property_btn:
                 startActivity(new Intent(HomeActivity.this,AdsActivity.class));
@@ -303,12 +314,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.menu_wanna_buy:
                 Requirements.getInstance().buyorRent = getString(R.string.BUY);
-                startActivity(new Intent(HomeActivity.this,AreaLocality.class));
+                startActivity(new Intent(HomeActivity.this, StateInputActivity.class));
                 break;
 
             case R.id.menu_wanna_rent:
                 Requirements.getInstance().buyorRent = getString(R.string.RENT);
-                startActivity(new Intent(HomeActivity.this,AreaLocality.class));
+                startActivity(new Intent(HomeActivity.this, StateInputActivity.class));
                 break;
 
             case R.id.menu_wanna_sell:

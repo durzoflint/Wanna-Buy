@@ -38,23 +38,23 @@ import java.util.UUID;
 import javax.net.ssl.HttpsURLConnection;
 
 public class ImageUpload extends AppCompatActivity {
-    final int REQUEST_IMAGE = 1;
-    boolean check = true;
+
     Button submitButton;
-
-
-    String individualOrDealer;
-
-    String ownerOrDealer;
+    Bitmap bitmap;
+    ImageView image;
+    Button select;
+    ProgressDialog progressDialog;
 
     int adsNum;
     int PAYMENT_CODE = 120;
     String adId;
-    ProgressDialog progressDialog;
+    String individualOrDealer;
+    String ownerOrDealer;
+    final int REQUEST_IMAGE = 1;
+    boolean check = true;
+    boolean isImageSelected = false;
     String ServerUploadPath = "http://wannabuy.in/api/images/upload_image.php";
-    Bitmap bitmap;
-    ImageView image;
-    Button select;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +102,8 @@ public class ImageUpload extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkPayment();
+                if (isImageSelected)
+                    checkPayment();
             }
         });
 
@@ -197,14 +198,21 @@ public class ImageUpload extends AppCompatActivity {
         protected String doInBackground(Void... params) {
             ByteArrayOutputStream byteArrayOutputStreamObject;
             byteArrayOutputStreamObject = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 10, byteArrayOutputStreamObject);
-            byte[] byteArrayVar = byteArrayOutputStreamObject.toByteArray();
-            final String ConvertImage = Base64.encodeToString(byteArrayVar, Base64.DEFAULT);
-            HashMapParams.put("image_name", UUID.randomUUID().toString());
-            HashMapParams.put("image", ConvertImage);
-            HashMapParams.put(getString(R.string.AD_ID), adId + "");
-            String FinalData = imageProcessClass.ImageHttpRequest(ServerUploadPath, HashMapParams);
-            return FinalData;
+            if (bitmap != null) {
+                isImageSelected = true;
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 10, byteArrayOutputStreamObject);
+                byte[] byteArrayVar = byteArrayOutputStreamObject.toByteArray();
+                final String ConvertImage = Base64.encodeToString(byteArrayVar, Base64.DEFAULT);
+                HashMapParams.put("image_name", UUID.randomUUID().toString());
+                HashMapParams.put("image", ConvertImage);
+                HashMapParams.put(getString(R.string.AD_ID), adId + "");
+                String FinalData = imageProcessClass.ImageHttpRequest(ServerUploadPath, HashMapParams);
+                Log.d("FINAL_DATA", FinalData);
+                return FinalData;
+            } else {
+                isImageSelected = false;
+                return "Please Choose an Image.";
+            }
         }
 
         @Override

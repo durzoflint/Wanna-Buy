@@ -57,6 +57,16 @@ public class AccountActivity extends AppCompatActivity implements NavigationView
         TextView name = findViewById(R.id.name);
         name.setText(user.getDisplayName());
 
+        TextView requirements = findViewById(R.id.requirements);
+        requirements.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AccountActivity.this, MyAdsActivity.class);
+                intent.setAction(getString(R.string.show_req));
+                startActivity(intent);
+            }
+        });
+
         TextView settings = findViewById(R.id.settings);
         settings.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -194,6 +194,7 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                android:id="@+id/requirements"
                                 android:layout_width="0dp"
                                 android:layout_height="50dp"
                                 android:layout_margin="8dp"
@@ -218,7 +219,7 @@
                                 android:textColor="@color/colorPrimaryDark"
                                 android:textSize="12sp" />
 
-                            <TextView
+                            <!--<TextView
                                 android:layout_width="0dp"
                                 android:layout_height="50dp"
                                 android:layout_margin="8dp"
@@ -228,7 +229,7 @@
                                 android:padding="8dp"
                                 android:text="Recently Viewed"
                                 android:textColor="@color/colorPrimaryDark"
-                                android:textSize="12sp" />
+                                android:textSize="12sp" />-->
                         </LinearLayout>
 
                         <LinearLayout
@@ -250,7 +251,7 @@
                                 android:textColor="@color/colorPrimaryDark"
                                 android:textSize="12sp" />
 
-                            <TextView
+                            <!--<TextView
                                 android:layout_width="0dp"
                                 android:layout_height="50dp"
                                 android:layout_margin="8dp"
@@ -260,7 +261,7 @@
                                 android:padding="8dp"
                                 android:text="Feedback &amp; Help"
                                 android:textColor="@color/colorPrimaryDark"
-                                android:textSize="12sp" />
+                                android:textSize="12sp" />-->
 
                             <TextView
                                 android:id="@+id/logout"

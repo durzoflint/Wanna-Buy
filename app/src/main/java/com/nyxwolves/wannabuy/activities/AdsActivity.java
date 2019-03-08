@@ -1397,18 +1397,15 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
         if (requestCode == LOCATION_STREET_REQUEST && resultCode == RESULT_OK) {
             Place place = PlaceAutocomplete.getPlace(AdsActivity.this, data);
             streetInput.setText(place.getName().toString());
-
         } else if (requestCode == LOCATION_AREA_REQUEST && resultCode == RESULT_OK) {
             Place place = PlaceAutocomplete.getPlace(AdsActivity.this, data);
             SellerAd.getInstance().adsArea = place.getName().toString();
             SellerAd.getInstance().locationLatitude = Double.toString(place.getLatLng().latitude);
             SellerAd.getInstance().locationLongitude = Double.toString(place.getLatLng().longitude);
             areaInput.setText(place.getName().toString());
-
         } else if (requestCode == LOCATION_DISTRICT_REQUEST && resultCode == RESULT_OK) {
             Place place = PlaceAutocomplete.getPlace(AdsActivity.this, data);
             districtInput.setText(place.getName().toString());
-
         } else if (requestCode == LOCATION_STATE_REQUEST && resultCode == RESULT_OK) {
             Place place = PlaceAutocomplete.getPlace(AdsActivity.this, data);
             stateInput.setText(place.getName().toString());

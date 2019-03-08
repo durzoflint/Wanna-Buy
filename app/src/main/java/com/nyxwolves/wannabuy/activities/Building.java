@@ -1,8 +1,8 @@
 package com.nyxwolves.wannabuy.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.view.WindowManager;
@@ -11,7 +11,6 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.ScrollView;
 
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
@@ -19,7 +18,7 @@ import com.nyxwolves.wannabuy.R;
 public class Building extends Activity {
 
     Button nextBtn;
-    CheckBox factoryBtn,wareHouseBtn,coldStorageBtn,doNotDeviateShowRoom,groundFloorShowroom;
+    CheckBox factoryBtn, wareHouseBtn, coldStorageBtn/*,doNotDeviateShowRoom,groundFloorShowroom*/;
     RadioButton schoolBtn,collegeBtn,hospitalBtn;
     LinearLayout resiGroup,commGroup,indusGroup,instiGroup,indusIndependentSub;
     LinearLayout rentalGroup;
@@ -60,8 +59,8 @@ public class Building extends Activity {
 
         showRoom = findViewById(R.id.comm_show_room);
 
-        doNotDeviateShowRoom = findViewById(R.id.show_room_do_not_deviate);
-        groundFloorShowroom = findViewById(R.id.show_room_ground_floor);
+        //doNotDeviateShowRoom = findViewById(R.id.show_room_do_not_deviate);
+        //groundFloorShowroom = findViewById(R.id.show_room_ground_floor);
 
         showGroup();
 
@@ -110,28 +109,28 @@ public class Building extends Activity {
             instiGroup.setVisibility(View.GONE);
             indusGroup.setVisibility(View.GONE);
             farmLandLayout.setVisibility(View.GONE);
-            doNotDeviateShowRoom.setVisibility(View.GONE);
+            //doNotDeviateShowRoom.setVisibility(View.GONE);
         }else if(propertyType.equals(getString(R.string.institutional))){
             commGroup.setVisibility(View.GONE);
             resiGroup.setVisibility(View.GONE);
             instiGroup.setVisibility(View.VISIBLE);
             indusGroup.setVisibility(View.GONE);
             farmLandLayout.setVisibility(View.GONE);
-            doNotDeviateShowRoom.setVisibility(View.GONE);
+            //doNotDeviateShowRoom.setVisibility(View.GONE);
         }else if(propertyType.equals(getString(R.string.industrial))){
             commGroup.setVisibility(View.GONE);
             resiGroup.setVisibility(View.GONE);
             instiGroup.setVisibility(View.GONE);
             indusGroup.setVisibility(View.VISIBLE);
             farmLandLayout.setVisibility(View.GONE);
-            doNotDeviateShowRoom.setVisibility(View.GONE);
+            //doNotDeviateShowRoom.setVisibility(View.GONE);
         }else if(propertyType.equals(getString(R.string.farm_land))){
             commGroup.setVisibility(View.GONE);
             resiGroup.setVisibility(View.GONE);
             instiGroup.setVisibility(View.GONE);
             indusGroup.setVisibility(View.GONE);
             farmLandLayout.setVisibility(View.VISIBLE);
-            doNotDeviateShowRoom.setVisibility(View.GONE);
+            //doNotDeviateShowRoom.setVisibility(View.GONE);
         }else if(propertyType.equals(getString(R.string.rental_income))){
             commGroup.setVisibility(View.GONE);
             resiGroup.setVisibility(View.GONE);
@@ -139,7 +138,7 @@ public class Building extends Activity {
             indusGroup.setVisibility(View.GONE);
             farmLandLayout.setVisibility(View.GONE);
             rentalGroup.setVisibility(View.VISIBLE);
-            doNotDeviateShowRoom.setVisibility(View.GONE);
+            //doNotDeviateShowRoom.setVisibility(View.GONE);
         }
     }
 
@@ -166,8 +165,8 @@ public class Building extends Activity {
             case R.id.comm_floorspace:
                 Requirements.getInstance().subType = getString(R.string.commercial_floorspace);
                 showRoom.setVisibility(View.VISIBLE);
-                doNotDeviateShowRoom.setVisibility(View.VISIBLE);
-                groundFloorShowroom.setVisibility(View.VISIBLE);
+                //doNotDeviateShowRoom.setVisibility(View.VISIBLE);
+                //groundFloorShowroom.setVisibility(View.VISIBLE);
                 break;
             case R.id.indus_independent:
                 indusIndependentSub.setVisibility(View.VISIBLE);

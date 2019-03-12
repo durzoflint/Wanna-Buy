@@ -57,7 +57,7 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat_medium"
         android:padding="5dp"
-        android:text="Old"
+        android:text="Resale"
         android:onClick="onCheckBoxClicked"
         app:layout_constraintStart_toStartOf="@+id/new_check"
         app:layout_constraintTop_toBottomOf="@+id/new_check" />

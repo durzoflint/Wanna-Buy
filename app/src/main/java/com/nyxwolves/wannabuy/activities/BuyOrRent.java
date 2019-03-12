@@ -27,7 +27,7 @@ public class BuyOrRent extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if(!Requirements.getInstance().buyorRent.equals("NOT_SET")) {
-                    startActivity(new Intent(BuyOrRent.this, StateInputActivity.class));
+                    startActivity(new Intent(BuyOrRent.this, AreaLocality.class));
                 }else{
                     Toast.makeText(BuyOrRent.this, "Select one", Toast.LENGTH_SHORT).show();
                 }

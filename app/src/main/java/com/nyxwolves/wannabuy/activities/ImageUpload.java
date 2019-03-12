@@ -1,6 +1,7 @@
 package com.nyxwolves.wannabuy.activities;
 
 import android.app.ProgressDialog;
+import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -9,15 +10,17 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.nyxwolves.wannabuy.POJO.SellerAd;
 import com.nyxwolves.wannabuy.R;
+import com.nyxwolves.wannabuy.imageAdapter.ImageAdapter;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -31,6 +34,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -41,10 +45,9 @@ public class ImageUpload extends AppCompatActivity {
 
     Button submitButton;
     Bitmap bitmap;
-    ImageView image;
     Button select;
     ProgressDialog progressDialog;
-
+    ArrayList<Uri> mArrayUri;
     int adsNum;
     int PAYMENT_CODE = 120;
     String adId;
@@ -54,18 +57,16 @@ public class ImageUpload extends AppCompatActivity {
     boolean check = true;
     boolean isImageSelected = false;
     String ServerUploadPath = "http://wannabuy.in/api/images/upload_image.php";
-
+    int imageCount = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_upload);
 
-
         individualOrDealer = getIntent().getStringExtra(getString(R.string.owner_dealer_flag));
 
         adId = getIntent().getStringExtra(getString(R.string.AD_ID));
-        Log.d("AD_ID", adId);
 
         setTitle("Upload Images");
 
@@ -74,10 +75,8 @@ public class ImageUpload extends AppCompatActivity {
         try {
             adsNum = Integer.parseInt(intent.getStringExtra(getString(R.string.ad_num)));
         } catch (NumberFormatException e) {
-            Log.d("EXCEC", e.toString());
+            Log.e("ImageUpload", e.toString());
         }
-
-        image = findViewById(R.id.image);
 
         select = findViewById(R.id.select);
         select.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +85,7 @@ public class ImageUpload extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                 startActivityForResult(Intent.createChooser(intent, "Select Image"), REQUEST_IMAGE);
             }
         });
@@ -106,7 +106,6 @@ public class ImageUpload extends AppCompatActivity {
                     checkPayment();
             }
         });
-
     }
 
     private void checkPayment() {
@@ -166,48 +165,65 @@ public class ImageUpload extends AppCompatActivity {
             }
         }
 
-        if (requestCode == REQUEST_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri uri = data.getData();
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                image.setImageBitmap(bitmap);
-                select.setText("Select Another Image");
-            } catch (IOException e) {
-                e.printStackTrace();
+        if (requestCode == REQUEST_IMAGE && resultCode == RESULT_OK && data != null) {
+            mArrayUri = new ArrayList<>();
+
+            if (data.getData() != null) {
+                Uri mImageUri = data.getData();
+                mArrayUri.add(mImageUri);
             }
+
+            if (data.getClipData() != null) {
+                ClipData mClipData = data.getClipData();
+                for (int i = 0; i < mClipData.getItemCount(); i++) {
+                    ClipData.Item item = mClipData.getItemAt(i);
+                    Uri uri2 = item.getUri();
+                    mArrayUri.add(uri2);
+                }
+            }
+            setTitle(mArrayUri.size() + " image selected");
+            setupRecyclerView(mArrayUri);
         }
     }
 
-    public void ImageUploadToServerFunction() {
-        AsyncTaskUploadClass upload = new AsyncTaskUploadClass();
-        upload.execute();
+    void setupRecyclerView(ArrayList<Uri> images) {
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        ImageAdapter imageAdapter = new ImageAdapter(this, images);
+        recyclerView.setAdapter(imageAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    class AsyncTaskUploadClass extends AsyncTask<Void, Void, String> {
+    public void ImageUploadToServerFunction() {
+        progressDialog = ProgressDialog.show(ImageUpload.this, "Please Wait",
+                "Uploading Images " + imageCount + "/" + mArrayUri.size());
+        for (int i = 0; i < mArrayUri.size(); i++) {
+            AsyncTaskUploadClass upload = new AsyncTaskUploadClass();
+            upload.execute(mArrayUri.get(i));
+        }
+    }
+
+    class AsyncTaskUploadClass extends AsyncTask<Uri, Void, String> {
         HashMap<String, String> HashMapParams = new HashMap<>();
         ImageProcessClass imageProcessClass = new ImageProcessClass();
 
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressDialog = ProgressDialog.show(ImageUpload.this, "Image is Uploading",
-                    "Please Wait", false, false);
-        }
-
-        @Override
-        protected String doInBackground(Void... params) {
+        protected String doInBackground(Uri... uris) {
             ByteArrayOutputStream byteArrayOutputStreamObject;
             byteArrayOutputStreamObject = new ByteArrayOutputStream();
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uris[0]);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (bitmap != null) {
                 isImageSelected = true;
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 10, byteArrayOutputStreamObject);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 60, byteArrayOutputStreamObject);
                 byte[] byteArrayVar = byteArrayOutputStreamObject.toByteArray();
                 final String ConvertImage = Base64.encodeToString(byteArrayVar, Base64.DEFAULT);
                 HashMapParams.put("image_name", UUID.randomUUID().toString());
-                HashMapParams.put("image", ConvertImage);
                 HashMapParams.put(getString(R.string.AD_ID), adId + "");
+                HashMapParams.put("image", ConvertImage);
                 String FinalData = imageProcessClass.ImageHttpRequest(ServerUploadPath, HashMapParams);
-                Log.d("FINAL_DATA", FinalData);
                 return FinalData;
             } else {
                 isImageSelected = false;
@@ -218,9 +234,13 @@ public class ImageUpload extends AppCompatActivity {
         @Override
         protected void onPostExecute(String string1) {
             super.onPostExecute(string1);
-            progressDialog.dismiss();
-            Toast.makeText(ImageUpload.this, string1, Toast.LENGTH_LONG).show();
-            //finish();
+            imageCount++;
+            progressDialog.setMessage("Uploading Images " + imageCount + "/" + mArrayUri.size());
+            if (imageCount == mArrayUri.size()) {
+                progressDialog.dismiss();
+                Toast.makeText(ImageUpload.this, "Images Uploaded Successfully",
+                        Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

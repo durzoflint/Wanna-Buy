@@ -30,8 +30,7 @@
             android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.ImageUpload"
-            android:screenOrientation="portrait"
-            android:theme="@style/noActionbar" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.WelcomeScreen"
             android:noHistory="true"
@@ -40,10 +39,6 @@
         <activity
             android:name=".activities.PaymentInformationActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.UploadImageActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/noActionbar" />
         <activity
             android:name=".activities.ChangePasswordActivity"
             android:screenOrientation="portrait" />

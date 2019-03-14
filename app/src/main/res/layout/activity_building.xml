@@ -384,7 +384,73 @@
                 android:layout_height="match_parent"
                 android:fillViewport="true">
 
-                <RadioGroup
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:onClick="onRadioButtonClicked"
+                        android:padding="5dp"
+                        android:text="@string/residential"
+                        android:textSize="15sp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:onClick="onRadioButtonClicked"
+                        android:padding="5dp"
+                        android:text="@string/commercial"
+                        android:textSize="15sp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:onClick="onRadioButtonClicked"
+                        android:padding="5dp"
+                        android:text="@string/institutional"
+                        android:textSize="15sp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:onClick="onRadioButtonClicked"
+                        android:padding="5dp"
+                        android:text="@string/industrial"
+                        android:textSize="15sp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:onClick="onRadioButtonClicked"
+                        android:padding="5dp"
+                        android:text="@string/farm_land"
+                        android:textSize="15sp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:onClick="onRadioButtonClicked"
+                        android:padding="5dp"
+                        android:text="@string/pg_rent_service_aparments"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <!--<RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -434,7 +500,7 @@
                             android:padding="5dp"
                             android:text="@string/apartments"
                             android:textSize="15sp" />
-                    </RadioGroup><!-- RENTAL RESI SUB GROUP-->
+                    </RadioGroup>&lt;!&ndash; RENTAL RESI SUB GROUP&ndash;&gt;
 
                     <RadioButton
                         android:id="@+id/rental_comm"
@@ -481,7 +547,7 @@
                             android:padding="5dp"
                             android:text="@string/floorspace"
                             android:textSize="15sp" />
-                    </RadioGroup><!--RENTAL COMM SUBGROUP-->
+                    </RadioGroup>&lt;!&ndash;RENTAL COMM SUBGROUP&ndash;&gt;
 
                     <RadioButton
                         android:id="@+id/rental_ins"
@@ -540,7 +606,7 @@
                             android:padding="5dp"
                             android:text="@string/college"
                             android:textSize="15sp" />
-                    </RadioGroup><!--RENTAL INSTITUTIONAL SUB GROUP-->
+                    </RadioGroup>&lt;!&ndash;RENTAL INSTITUTIONAL SUB GROUP&ndash;&gt;
 
                     <RadioButton
                         android:id="@+id/rental_indus"
@@ -587,7 +653,7 @@
                             android:padding="5dp"
                             android:text="@string/floorspace"
                             android:textSize="15sp" />
-                    </RadioGroup><!--RENTAL INDUSTRIAL SUB GROUP-->
+                    </RadioGroup>&lt;!&ndash;RENTAL INDUSTRIAL SUB GROUP&ndash;&gt;
 
                     <RadioButton
                         android:id="@+id/rental_farm_land"
@@ -646,8 +712,8 @@
                             android:padding="5dp"
                             android:text="@string/apartments"
                             android:textSize="15sp" />
-                    </RadioGroup><!-- RENTAL PGSUB GROUP-->
-                </RadioGroup>
+                    </RadioGroup>&lt;!&ndash; RENTAL PGSUB GROUP&ndash;&gt;
+                </RadioGroup>-->
             </ScrollView>
         </LinearLayout>
 

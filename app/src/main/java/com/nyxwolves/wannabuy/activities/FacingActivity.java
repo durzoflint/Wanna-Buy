@@ -1,12 +1,13 @@
 package com.nyxwolves.wannabuy.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ public class FacingActivity extends AppCompatActivity {
     Button nextBtn;
     TextView modeHeader;
     String direction = null;
+    RadioButton noPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,27 @@ public class FacingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_facing);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        noPref = findViewById(R.id.no_preference);
+        noPref.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (noPref.isChecked()) {
+                    Requirements.getInstance().facingWest = getString(R.string.not_set_text);
+                    Requirements.getInstance().facingNorth = getString(R.string.not_set_text);
+                    Requirements.getInstance().facingSouth = getString(R.string.not_set_text);
+                    Requirements.getInstance().facingEast = getString(R.string.not_set_text);
+                    CheckBox north = findViewById(R.id.north_check_box);
+                    north.setChecked(false);
+                    CheckBox south = findViewById(R.id.south_check_box);
+                    south.setChecked(false);
+                    CheckBox east = findViewById(R.id.east_check_box);
+                    east.setChecked(false);
+                    CheckBox west = findViewById(R.id.west_check_box);
+                    west.setChecked(false);
+                }
+            }
+        });
 
         modeHeader  = findViewById(R.id.facing_mode);
         modeHeader.setText(Requirements.getInstance().buyorRent);

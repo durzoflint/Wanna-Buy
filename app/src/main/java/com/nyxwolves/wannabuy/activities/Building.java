@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 import com.nyxwolves.wannabuy.POJO.Requirements;
 import com.nyxwolves.wannabuy.R;
@@ -22,7 +21,7 @@ public class Building extends Activity {
     RadioButton schoolBtn,collegeBtn,hospitalBtn;
     LinearLayout resiGroup,commGroup,indusGroup,instiGroup,indusIndependentSub;
     LinearLayout rentalGroup;
-    RadioGroup rentalResiSub,rentalCommSub,rentalIndusSub,rentalInsSub,rentalPgSub;
+    //RadioGroup rentalResiSub,rentalCommSub,rentalIndusSub,rentalInsSub,rentalPgSub;
     ConstraintLayout farmLandLayout;
     CheckBox showRoom;
 
@@ -39,11 +38,11 @@ public class Building extends Activity {
         instiGroup = findViewById(R.id.ins_building_group);
         rentalGroup = findViewById(R.id.rental_income_group);
 
-        rentalResiSub = findViewById(R.id.rental_resi_sub_layout);
+        /*rentalResiSub = findViewById(R.id.rental_resi_sub_layout);
         rentalCommSub = findViewById(R.id.rental_comm_sub_layout);
         rentalInsSub = findViewById(R.id.rental_ins_sub_layout);
         rentalIndusSub = findViewById(R.id.rental_indus_sub_layout);
-        rentalPgSub = findViewById(R.id.rental_pg_apartments_layout);
+        rentalPgSub = findViewById(R.id.rental_pg_apartments_layout);*/
 
         indusIndependentSub = findViewById(R.id.indus_independent_sub);
 
@@ -198,7 +197,7 @@ public class Building extends Activity {
             case R.id.ins_hospital:
                 Requirements.getInstance().subType =  getString(R.string.hospital);
                 break;
-            case R.id.rental_resi:
+            /*case R.id.rental_resi:
                 rentalResiSub.setVisibility(View.VISIBLE);
                 rentalCommSub.setVisibility(View.GONE);
                 rentalIndusSub.setVisibility(View.GONE);
@@ -240,7 +239,7 @@ public class Building extends Activity {
                 rentalIndusSub.setVisibility(View.GONE);
                 rentalInsSub.setVisibility(View.GONE);
                 rentalPgSub.setVisibility(View.VISIBLE);
-                break;
+                break;*/
             case R.id.rental_resi_independent:
                 if(((RadioButton)v).isChecked()){
 
@@ -258,7 +257,7 @@ public class Building extends Activity {
             case R.id.rental_comm_floorspace:
                 Requirements.getInstance().subType = getString(R.string.rental_commercial_independent);
                 break;
-            case R.id.rental_school:
+            /*case R.id.rental_school:
                 Requirements.getInstance().subType  = getString(R.string.rental_school);
                 break;
             case R.id.rental_college:
@@ -266,7 +265,7 @@ public class Building extends Activity {
                 break;
             case R.id.rental_hospital:
                 Requirements.getInstance().subType = getString(R.string.rental_hospital);
-                break;
+                break;*/
             case R.id.rental_indus_independent:
                 Requirements.getInstance().subType = getString(R.string.rental_industrial_independent);
                 break;

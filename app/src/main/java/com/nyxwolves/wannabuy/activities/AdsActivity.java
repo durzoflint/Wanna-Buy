@@ -654,6 +654,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 advanceDeposit.setVisibility(View.GONE);
                 rentalIncomeType.setVisibility(View.GONE);
                 indusIndependentGroup.setVisibility(View.GONE);
+                pgRentSub.setVisibility(View.GONE);
                 tenantPreferances.setVisibility(View.GONE);
                 vegNonVegLayout.setVisibility(View.GONE);
                 propertySizeLayout.setVisibility(View.GONE);
@@ -669,6 +670,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 farmLandGroup.setVisibility(View.GONE);
                 rentalIncomeType.setVisibility(View.GONE);
                 roiLayout.setVisibility(View.GONE);
+                pgRentSub.setVisibility(View.GONE);
                 rentalIncrementalLayout.setVisibility(View.GONE);
                 rentalStart.setVisibility(View.GONE);
                 rentalEnd.setVisibility(View.GONE);
@@ -692,6 +694,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 farmLandGroup.setVisibility(View.GONE);
                 rentalIncomeType.setVisibility(View.GONE);
                 pgRentLayout.setVisibility(View.GONE);
+                pgRentSub.setVisibility(View.GONE);
                 roiLayout.setVisibility(View.GONE);
                 rentalIncrementalLayout.setVisibility(View.GONE);
                 rentalStart.setVisibility(View.GONE);
@@ -756,6 +759,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 farmLandGroup.setVisibility(View.GONE);
                 rentalIncomeType.setVisibility(View.GONE);
                 pgRentLayout.setVisibility(View.GONE);
+                pgRentSub.setVisibility(View.GONE);
                 roiLayout.setVisibility(View.GONE);
                 rentalIncrementalLayout.setVisibility(View.GONE);
                 rentalStart.setVisibility(View.GONE);
@@ -796,6 +800,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 rentalIncomeType.setVisibility(View.GONE);
                 rentalIncomeType.setVisibility(View.GONE);
                 pgRentSub.setVisibility(View.VISIBLE);
+                farmLandGroup.setVisibility(View.GONE);
                 vegNonVegLayout.setVisibility(View.GONE);
                 showRoomLayout.setVisibility(View.GONE);
                 isRentalIncome = false;
@@ -1020,6 +1025,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 farmLandGroup.setVisibility(View.GONE);
                 brokerageHeader.setText(getString(R.string.brokerage_text));
                 brokeragePerCent.setHint(getString(R.string.no_of_days));
+                pgRentSub.setVisibility(View.GONE);
                 bhkLayout.setVisibility(View.GONE);
                 builtUpAreaLayout.setVisibility(View.GONE);
                 landAreaLayout.setVisibility(View.GONE);
@@ -1130,6 +1136,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 bhkLayout.setVisibility(View.GONE);
                 rentalIncomeType.setVisibility(View.GONE);
                 furnishedLayout.setVisibility(View.GONE);
+                pgRentSub.setVisibility(View.GONE);
                 rentalFarmLandSub.setVisibility(View.GONE);
                 rentalPgServiceSub.setVisibility(View.GONE);
                 farmLandGroup.setVisibility(View.VISIBLE);
@@ -1172,9 +1179,9 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 isBuiltUpVisible = true;
                 isLandAreaVisible = false;
                 break;
-            case R.id.rental_farm_land:
+            /*case R.id.rental_farm_land:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.rental_farm_land);
-                break;
+                break;*/
             case R.id.rental_farm_building:
                 SellerAd.getInstance().adsPropertyType = getString(R.string.rental_farm_building);
                 break;

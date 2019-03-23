@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TextInputEditText;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -109,6 +110,14 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ads);
+
+        new AlertDialog.Builder(this)
+                .setTitle("Attention")
+                .setMessage("Please provide accurate information to help us in providing you the " +
+                        "best service.")
+                .setIcon(android.R.drawable.ic_menu_agenda)
+                .setPositiveButton(android.R.string.ok, null)
+                .create().show();
 
         areaUnitSpinner = findViewById(R.id.ads_unit_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.unit_spinner, android.R.layout.simple_spinner_item);

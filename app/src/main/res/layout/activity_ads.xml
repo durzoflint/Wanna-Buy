@@ -2272,6 +2272,58 @@
         </LinearLayout>
 
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/price_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp">
+
+            <TextView
+                android:id="@+id/price_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="@string/is_negotiable"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioGroup
+                android:id="@+id/negotiable_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/price_header"
+                app:layout_constraintTop_toBottomOf="@+id/price_header">
+
+                <RadioButton
+                    android:id="@+id/negotiable_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:button="@drawable/custom_radio_button"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:onClick="onRadioButtonClicked"
+                    android:padding="5dp"
+                    android:text="@string/negotiable" />
+
+                <RadioButton
+                    android:id="@+id/non_negotiable_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:button="@drawable/custom_radio_button"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:onClick="onRadioButtonClicked"
+                    android:padding="5dp"
+                    android:text="@string/non_negotiable" />
+            </RadioGroup>
+
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
             android:id="@+id/brokage_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -2363,58 +2415,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/brokage_input_layout"
                 app:layout_constraintTop_toBottomOf="@+id/brokage_input_layout" />
-        </android.support.constraint.ConstraintLayout>
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/price_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp">
-
-            <TextView
-                android:id="@+id/price_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_medium"
-                android:text="@string/is_negotiable"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <RadioGroup
-                android:id="@+id/negotiable_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/price_header"
-                app:layout_constraintTop_toBottomOf="@+id/price_header">
-
-                <RadioButton
-                    android:id="@+id/negotiable_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:button="@drawable/custom_radio_button"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:onClick="onRadioButtonClicked"
-                    android:padding="5dp"
-                    android:text="@string/negotiable" />
-
-                <RadioButton
-                    android:id="@+id/non_negotiable_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:button="@drawable/custom_radio_button"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:onClick="onRadioButtonClicked"
-                    android:padding="5dp"
-                    android:text="@string/non_negotiable" />
-            </RadioGroup>
-
-
         </android.support.constraint.ConstraintLayout>
 
         <TextView

@@ -90,20 +90,13 @@ public class ImageUpload extends AppCompatActivity {
             }
         });
 
-        Button upload = findViewById(R.id.upload);
-        upload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ImageUploadToServerFunction();
-            }
-        });
-
         submitButton = findViewById(R.id.ad_submit_btn);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isImageSelected)
                     checkPayment();
+                ImageUploadToServerFunction();
             }
         });
     }

@@ -32,18 +32,6 @@
             android:textColor="@android:color/white" />
 
         <Button
-            android:id="@+id/upload"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_weight="1"
-            android:background="@drawable/orange_button"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:text="Upload Image(s)"
-            android:textColor="@android:color/white" />
-
-        <Button
             android:id="@+id/ad_submit_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

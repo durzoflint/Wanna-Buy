@@ -516,7 +516,6 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 stateInput.getText().toString().trim().length() > 0 &&
                 pincodeInput.getText().toString().trim().length() > 0 &&
                 districtInput.getText().toString().trim().length() > 0 &&
-                doorNumberInput.getText().toString().trim().length() > 0 &&
                 roadWidth.getText().toString().trim().length() > 0 &&
                 checkAge() &&
                 checkDeposit() &&

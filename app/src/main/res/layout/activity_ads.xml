@@ -1538,12 +1538,12 @@
                 android:onClick="onCheckBoxClicked"
                 android:padding="5dp"
                 android:text="@string/water"
-                app:layout_constraintBottom_toTopOf="@+id/maintance_check"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/garden_check" />
 
-            <android.support.v7.widget.AppCompatCheckBox
+            <!--<android.support.v7.widget.AppCompatCheckBox
                 android:id="@+id/maintance_check"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1557,7 +1557,36 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/water_check" />
+                app:layout_constraintTop_toBottomOf="@+id/water_check" />-->
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp">
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Maintainece Fee"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/maintance_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:inputType="numberDecimal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text" />
+
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout

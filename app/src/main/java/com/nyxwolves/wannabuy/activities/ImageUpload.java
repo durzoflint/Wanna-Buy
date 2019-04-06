@@ -94,8 +94,6 @@ public class ImageUpload extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isImageSelected)
-                    checkPayment();
                 ImageUploadToServerFunction();
             }
         });
@@ -227,12 +225,15 @@ public class ImageUpload extends AppCompatActivity {
         @Override
         protected void onPostExecute(String string1) {
             super.onPostExecute(string1);
-            imageCount++;
-            progressDialog.setMessage("Uploading Images " + imageCount + "/" + mArrayUri.size());
             if (imageCount == mArrayUri.size()) {
                 progressDialog.dismiss();
                 Toast.makeText(ImageUpload.this, "Images Uploaded Successfully",
                         Toast.LENGTH_SHORT).show();
+                if (isImageSelected)
+                    checkPayment();
+            } else {
+                imageCount++;
+                progressDialog.setMessage("Uploading Images " + imageCount + "/" + mArrayUri.size());
             }
         }
     }

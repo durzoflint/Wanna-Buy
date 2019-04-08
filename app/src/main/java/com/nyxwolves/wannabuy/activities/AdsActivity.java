@@ -426,7 +426,7 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 if (checkData()) {
                     checkFloor();
                     checkBhk();
-                    if (isAddressValid) {
+                    //if (isAddressValid) {
                         Log.d("REACHED", "TEST");
                         MessageDialog msgDialog = new MessageDialog();
                         Bundle bundle = new Bundle();
@@ -436,9 +436,9 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                         UserPaymentCheck helper = new UserPaymentCheck(AdsActivity.this);
                         CallbackInterface callbackInterface = AdsActivity.this;
                         helper.getUserStatus(callbackInterface);
-                    } else {
+                    /*} else {
                         Toast.makeText(AdsActivity.this, "Please Check the inputs", Toast.LENGTH_SHORT).show();
-                    }
+                    }*/
                 } else {
                     Toast.makeText(AdsActivity.this, "Please Check the inputs", Toast.LENGTH_SHORT).show();
                 }
@@ -1494,8 +1494,9 @@ public class AdsActivity extends AppCompatActivity implements View.OnClickListen
                 Log.d("LONG:", location.getLongitude() + "");
                 isAddressValid = true;
             } catch (IndexOutOfBoundsException e) {
-                isAddressValid = false;
-                Toast.makeText(AdsActivity.this, "Enter a valid address", Toast.LENGTH_SHORT).show();
+                /*isAddressValid = false;
+                Toast.makeText(AdsActivity.this, "Enter a valid address", Toast.LENGTH_SHORT)
+                .show();*/
             }
 
         } catch (IOException e) {

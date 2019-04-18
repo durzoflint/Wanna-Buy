@@ -2,10 +2,9 @@ package com.nyxwolves.wannabuy.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -92,20 +91,12 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
     }
 
     private boolean checkInput() {
-        if (requirementInput.getText().toString().length() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return requirementInput.getText().toString().length() > 0;
     }
 
     private boolean checkBrokerage(){
         if(isBrokerageSelected){
-            if(brokerageInput.getText().toString().trim().length() > 0){
-                return true;
-            }else{
-                return false;
-            }
+            return brokerageInput.getText().toString().trim().length() > 0;
         }else{
             return true;
         }
@@ -242,7 +233,7 @@ public class RequirementName extends AppCompatActivity implements CallbackInterf
                 }
             }
         }
-
+        startIntentToHome();
     }
 
     private void intiatePayment(int amount, String buyOrRent) {
